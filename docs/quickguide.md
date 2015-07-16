@@ -63,11 +63,11 @@ Username, Password and Fiware-Service:
 Now you have to switch to your subservice {{Fiware-ServicePath}} at
 right top switch:
 
-![](media/image13.png)
+![](media/image05.png)
 
 After that, you will see your device data the Entities list:
 
-![](media/image07.png)
+![](media/image01.png)
 
 Step 3 - Get the last data using the API
 ========================================
@@ -251,17 +251,17 @@ Things Cloud don’t do it from the scratch, just sign up at:
 
 After this, you will be able to create a dashboard:
 
-![](media/image08.png)
+![](media/image02.png)
 
 Once your are at your new dashboard, create an Orion FIWARE datasource
 per device.
 
-![](media/image12.png)
+![](media/image04.png)
 
 On the FIWARE Orion datasource configuration introduce there your credentials and your device type and ID as retrieved on Step 3 from the Thinking Things Cloud API.
 ====================================================================================================================================================================
 
-![](media/image15.png)
+![](media/image07.png)
 
 Now it’s time to add widgets to your dashboard, representing your device
 data.
@@ -279,7 +279,7 @@ device at the website.
 
 First, create a new device on the “Devices” management tab:
 
-![](media/image06.png)
+![](media/image00.png)
 
 After that, register a new command for the device taking into account:
 
@@ -289,7 +289,7 @@ After that, register a new command for the device taking into account:
 -   Command value: it must follow these convention
     > device\_id@{{command\_name}}|%s
 
-![](media/image11.png)
+![](media/image03.png)
 
 Remember that you can also setup your device via API, you will find an
 example on the POSTMAN collection.
@@ -301,7 +301,7 @@ web interface.
 On the Entities section, select the entity linked to that device and
 click on the “Send Command” green button to submit it.
 
-![](media/image14.png)
+![](media/image06.png)
 
 The commands will be received on the device endpoint if configured on
 the device setup. Remember that if you left that field empty, the
