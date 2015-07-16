@@ -1,16 +1,19 @@
-Step 0 - Get your account credentials
-=====================================
+Getting started in 5 steps
+==========================
+
+### Step 0 - Get your account credentials
 
 Please, check your inbox for an email with your credentials. It contains
 these fields that are required for the following steps:
 
-  |Field name | Description | 
-  |-----------|-------------|
-  |{{apikey}}| API Key used for devices to send data |
-  |{{Fiware-Service}}| Service name |
-  |{{Fiware-ServicePath}}| Sub-service name|
-  |{{user-name}}| User name for web portal|
-  |{{user-password}}| Password for web portal|
+| Field name           | Description                                     | 
+| ------------------- |:---------------------------------------------- |
+| {{apikey}}       	      | API Key used for devices to send data |
+|{{Fiware-Service}}| Service name |
+|{{Fiware-ServicePath}}| Sub-service name|
+|{{user-name}}| User name for web portal|
+|{{user-password}}| Password for web portal|
+
 
 In order test the API, we really recommend you use the following sample
 collection for [*POSTMAN extension for Google
@@ -22,8 +25,7 @@ all this guide samples and some additional operations are there.
 In that email, there is also attached a POSTMAN environment with your
 credentials for this POSTMAN collection.
 
-Step 1 - Send the data from the device
-======================================
+### Step 1 - Send the data from the device
 
 Before doing any coding, identify the sensors on your device and decide
 which data do you want to send to Thinking Things Cloud.
@@ -55,8 +57,7 @@ the message length sent from the device.
 Your will simply receive an HTTP 200 OK response to confirm the data was
 properly received at Thinking Things Cloud.
 
-Step 2 - See the data
-=====================
+### Step 2 - See the data
 
 Your device data is now stored in the Thinking Things Cloud, and your
 can see it on the web portal. Please access the web portal with your
@@ -73,8 +74,7 @@ After that, you will see your device data the Entities list:
 
 ![](media/image01.png)
 
-Step 3 - Get the last data using the API
-========================================
+### Step 3 - Get the last data using the API
 
 Now your know your data is stored in the Thinking Things Cloud, lets get
 it via API.
@@ -252,8 +252,7 @@ NGSI compliant:
 Please, notice that you will see one attribute per sensor.
 
 
-Step 4 - Show in a dashboard
-============================
+### Step 4 - Show in a dashboard
 
 JSON documents are fine, but dashboards are better for humans. If you
 want to create a responsive website to see your device data at Thinking
@@ -284,7 +283,7 @@ Anyway, you can always clone this sample freeboard and use it as a template for 
 
 [*https://freeboard.io/board/69lZ9V*](https://freeboard.io/board/69lZ9V)
 
-Step 5 - Send commands to the device
+### Step 5 - Send commands to the device
 
 You can send commands to the device in order to trigger any action like
 turning on a LED or a relay. In order to do so, you need to set your
@@ -339,7 +338,7 @@ The command received will be as follows:
 
 
 
-In more detail …
+### In more detail …
 
 **Sending data**
 
