@@ -134,6 +134,7 @@ First, you need to login in the API to get a valid token:
 You will receive an HTTP 201 Created response with a header called
 X-Subject-Token, this is your {{user-token}} like this:
 
+
   --------------------------------------------------------------------
   **HTTP**               201 Created
                          
@@ -238,7 +239,7 @@ NGSI compliant:
   --------------------------------------------------------------
 
 Please, notice that you will see one attribute per sensor.
-==========================================================
+
 
 Step 4 - Show in a dashboard
 ============================
@@ -259,7 +260,8 @@ per device.
 ![](media/image04.png)
 
 On the FIWARE Orion datasource configuration introduce there your credentials and your device type and ID as retrieved on Step 3 from the Thinking Things Cloud API.
-====================================================================================================================================================================
+
+
 
 ![](media/image07.png)
 
@@ -267,7 +269,7 @@ Now it’s time to add widgets to your dashboard, representing your device
 data.
 
 Anyway, you can always clone this sample freeboard and use it as a template for yours:
-======================================================================================
+
 
 [*https://freeboard.io/board/69lZ9V*](https://freeboard.io/board/69lZ9V)
 
