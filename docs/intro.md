@@ -2,7 +2,7 @@ Test IoT Platform doc website
 =============================
 Intro
 
-Chapter 2
+Chapter 1
 ---------
 
-Text
+Testo
