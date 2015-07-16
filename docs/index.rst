@@ -1,8 +1,6 @@
-Test IoT Platform doc website
-=============================
-Intro
+.. toctree::
+   :maxdepth: 2
 
-Chapter 2
----------
-
-Text
+   intro
+   tutorial
+   
