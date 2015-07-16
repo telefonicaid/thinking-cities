@@ -11,6 +11,7 @@ Content
    :maxdepth: 2
 
    intro
+   quickguide
    Installation <getting_started/install>
 
 
