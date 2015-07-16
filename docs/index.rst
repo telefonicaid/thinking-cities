@@ -1,24 +1,40 @@
-=================
-Table of Contents
-=================
+Graphite-API documentation
+==========================
 
 
+IoT Platform allows you to connect devices and receive data, integrating all 
+device protocols and connectivity methods, understanding and interpreting relevant information. 
+It isolates data processing and application service layers from the device and network complexity, 
+in terms of access, security and network protocols.
 
-Content
-=======
+Why should I use it?
+--------------------
+
+The platform offers a number of great key features. Namely:
+
+* Feature 1
+
+* Feature 2:
+
+  * Item 1.
+
+
+.. note::
+
+    Content note.
+
+Contents
+--------
 
 .. toctree::
    :maxdepth: 2
 
    intro
    quickguide
-   Installation <getting_started/install>
 
+Indices and tables
+==================
 
-.. Indices and tables
-.. ==================
-
-.. * :ref:`genindex`
-.. * :ref:`search`
-
-.. * :ref:`modindex`
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
