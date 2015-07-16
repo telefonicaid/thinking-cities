@@ -5,7 +5,6 @@ Please, check your inbox for an email with your credentials. It contains
 these fields that are required for the following steps:
 
   {{apikey}}
-  ------------------------
   {{Fiware-Service}}
   {{Fiware-ServicePath}}
   {{user-name}}
@@ -318,10 +317,8 @@ The command received will be as follows:
 
   --------------------------------------------------------------------------
   **HTTP Response code**   200
-  ======================   ===
   ------------------------ -------------------------------------------------
   **HTTP Body**            device\_id@{{command\_name}}|{{comand\_params}}
-  =============            ===============================================
   --------------------------------------------------------------------------
 
  {#section-2}
@@ -331,7 +328,6 @@ The command received will be as follows:
  {#section-4}
 
 In more detail …
-================
 
 **Sending data**
 
