@@ -1,4 +1,4 @@
-Graphite-API documentation
+IoT Platform documentation
 ==========================
 
 
