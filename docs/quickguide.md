@@ -4,11 +4,13 @@ Step 0 - Get your account credentials
 Please, check your inbox for an email with your credentials. It contains
 these fields that are required for the following steps:
 
-  {{apikey}}
-  {{Fiware-Service}}
-  {{Fiware-ServicePath}}
-  {{user-name}}
-  {{user-password}}
+  |Field name | Description | 
+  |-----------|-------------|
+  |{{apikey}}| API Key used for devices to send data |
+  |{{Fiware-Service}}| Service name |
+  |{{Fiware-ServicePath}}| Sub-service name|
+  |{{user-name}}| User name for web portal|
+  |{{user-password}}| Password for web portal|
 
 In order test the API, we really recommend you use the following sample
 collection for [*POSTMAN extension for Google
@@ -29,6 +31,8 @@ which data do you want to send to Thinking Things Cloud.
 Sending data is as simple as sending an HTTP POST request using your API
 key with your measures. Please use “\#” and “|” separators to split data
 and measures.
+```
+
 
   ---------------------------------------------------------------------------------
   **HTTP method**    POST
@@ -42,6 +46,7 @@ and measures.
   **Body**           
   ---------------------------------------------------------------------------------
 
+```
 Take into account that no device provisioning or data modeling is
 required in advance to send your device data. Anyway, we recommend to
 use short magnitude identifiers (like “t”, “p” on the sample) to reduce
@@ -75,7 +80,7 @@ Now your know your data is stored in the Thinking Things Cloud, lets get
 it via API.
 
 First, you need to login in the API to get a valid token:
-
+```
   ----------------------------------------------------------------
   **HTTP method**    POST
   ------------------ ---------------------------------------------
@@ -129,11 +134,13 @@ First, you need to login in the API to get a valid token:
                      
                      }
   ----------------------------------------------------------------
+```
 
 You will receive an HTTP 201 Created response with a header called
 X-Subject-Token, this is your {{user-token}} like this:
 
 
+ ```
   --------------------------------------------------------------------
   **HTTP**               201 Created
                          
@@ -163,6 +170,7 @@ X-Subject-Token, this is your {{user-token}} like this:
                          
                          }
   --------------------------------------------------------------------
+```
 
 Please, be careful pasting your {{user-token}} properly on next steps.
 This is your API token and it will be valid for 3 years.
@@ -170,6 +178,7 @@ This is your API token and it will be valid for 3 years.
 Now you are ready to invoke the API to get your device data. Just do an
 HTTP GET request like this:
 
+```
   ------------------------------------------------------------------------------------
   **HTTP method**    GET
   ------------------ -----------------------------------------------------------------
@@ -183,10 +192,12 @@ HTTP GET request like this:
                      
                      X-Auth-Token: {{user-token}}
   ------------------------------------------------------------------------------------
+```
 
 You will get you device data in a json document like this that is FIWARE
 NGSI compliant:
 
+```
   --------------------------------------------------------------
   **HTTP**               200
                          
@@ -236,6 +247,7 @@ NGSI compliant:
                          
                          }
   --------------------------------------------------------------
+```
 
 Please, notice that you will see one attribute per sensor.
 
@@ -308,24 +320,24 @@ The commands will be received on the device endpoint if configured on
 the device setup. Remember that if you left that field empty, the
 commands can be pulled directly from the device:
 
+```
   **HTTP method**    GET
   ------------------ ------------------------------------------------------------
   **URL**            http://test.ttcloud.net:8082/iot/d?k={{apikey}}&i=mydevice
   **HTTP headers**   -
+```
 
 The command received will be as follows:
 
+```
   --------------------------------------------------------------------------
   **HTTP Response code**   200
   ------------------------ -------------------------------------------------
   **HTTP Body**            device\_id@{{command\_name}}|{{comand\_params}}
   --------------------------------------------------------------------------
+```
 
- {#section-2}
 
- {#section-3}
-
- {#section-4}
 
 In more detail …
 
@@ -356,6 +368,7 @@ Historic data is accessible using the Short Term historic API.
 
 Example:
 
+```
   -------------------------------------------------------------------------------------------------------------------------------
   **HTTP method**    GET
   ------------------ ------------------------------------------------------------------------------------------------------------
@@ -369,6 +382,7 @@ Example:
                      
                      X-Auth-Token: {{user-token}}
   -------------------------------------------------------------------------------------------------------------------------------
+```
 
 Remember that in order to collect historic data, it is necessary to
 configure the required subscription (endpoint:
