@@ -25,7 +25,7 @@ all this guide samples and some additional operations are there.
 In that email, there is also attached a POSTMAN environment with your
 credentials for this POSTMAN collection.
 
-### Step 1 - Send data from the device
+### Step 1 - Send the data from the device
 
 Before doing any coding, identify the sensors on your device and decide
 which data do you want to send to Thinking Things Cloud.
@@ -33,22 +33,14 @@ which data do you want to send to Thinking Things Cloud.
 Sending data is as simple as sending an HTTP POST request using your API
 key with your measures. Please use “\#” and “|” separators to split data
 and measures.
-```
+
+HTTP method | POST      
+----------- | ---- 
+URL| http://test.ttcloud.net:8082/iot/d?k={{apikey}}&i=mydevice
+HTTP Headers| -
+HTTP Body | t|15.5\#p|1015\#g|40.516304/-3.661756\#a|"some-text"\#h|33.5
 
 
-  ---------------------------------------------------------------------------------
-  **HTTP method**    POST
-  ------------------ --------------------------------------------------------------
-  **URL**            http://test.ttcloud.net:8082/iot/d?k={{apikey}}&i=mydevice
-
-  **HTTP headers**   -
-
-  **HTTP**           t|15.5\#p|1015\#g|40.516304/-3.661756\#a|"some-text"\#h|33.5
-                     
-  **Body**           
-  ---------------------------------------------------------------------------------
-
-```
 Take into account that no device provisioning or data modeling is
 required in advance to send your device data. Anyway, we recommend to
 use short magnitude identifiers (like “t”, “p” on the sample) to reduce
