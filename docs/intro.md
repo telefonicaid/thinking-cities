@@ -5,13 +5,18 @@ Intro
 Chapter 1
 ---------
 
-Text
 
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
+
+Windows
+
+==========================	=====================================
+Select Block				Right Mouse Button + :kbd:`⇧`
+Add to Selection			Ctrl + Right Mouse Button + :kbd:`⇧`
+Remove from Selection		Alt + Right Mouse Button + :kbd:`⇧`
+==========================	=====================================
+
+Linux
+
 
 .. note::
   Content note.
