@@ -25,7 +25,7 @@ all this guide samples and some additional operations are there.
 In that email, there is also attached a POSTMAN environment with your
 credentials for this POSTMAN collection.
 
-### Step 1 - Send the data from the device
+### Step 1 - Send data from the device
 
 Before doing any coding, identify the sensors on your device and decide
 which data do you want to send to Thinking Things Cloud.
