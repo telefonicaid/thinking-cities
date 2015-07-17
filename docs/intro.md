@@ -5,4 +5,12 @@ Intro
 Chapter 1
 ---------
 
-Testo
+Text
+
+====  =====  =================
+Size  Color  Fragrance
+----  -----  -----------------
+9     Red    Excelsior
+10    Blue   Icey Cool
+8     Green  Breezy Meadow
+====  =====  =================
