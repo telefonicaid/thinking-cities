@@ -126,12 +126,13 @@ First, you need to login in the API to get a valid token:
   <tr>
     <th>HTTP Body</th>
     <td>
+    ```
       {
             "auth": {
                      "identity": {
-                     "methods": \[
+                     "methods": [
                      "password"
-                     \],
+                     ],
                      "password": {
                      "user": {
                      "domain": {
@@ -149,69 +150,12 @@ First, you need to login in the API to get a valid token:
                      }
                      }
                      }
-    
+    ```
     </td>
   </tr>
 </table>
 </p>
 
-
-
-```
-  ----------------------------------------------------------------
-  **HTTP method**    POST
-  ------------------ ---------------------------------------------
-  **URL**            http://test.ttcloud.net:5001/v3/auth/tokens
-
-  **HTTP headers**   Content-Type: application/json
-
-  **HTTP**           {
-                     
-  **Body**           "auth": {
-                     
-                     "identity": {
-                     
-                     "methods": \[
-                     
-                     "password"
-                     
-                     \],
-                     
-                     "password": {
-                     
-                     "user": {
-                     
-                     "domain": {
-                     
-                     "name": "{{Fiware-Service}}"
-                     
-                     },
-                     
-                     "name": "{{user-name}}",
-                     
-                     "password": "{{user-pass}}"
-                     
-                     }
-                     
-                     }
-                     
-                     },
-                     
-                     "scope": {
-                     
-                     "domain": {
-                     
-                     "name": "{{Fiware-Service}}"
-                     
-                     }
-                     
-                     }
-                     
-                     }
-                     
-                     }
-  ----------------------------------------------------------------
-```
 
 You will receive an HTTP 201 Created response with a header called
 X-Subject-Token, this is your {{user-token}} like this:
