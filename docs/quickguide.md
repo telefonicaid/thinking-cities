@@ -76,7 +76,6 @@ and measures.
 </p>
 
 
-
 Take into account that no device provisioning or data modeling is
 required in advance to send your device data. Anyway, we recommend to
 use short magnitude identifiers (like “t”, “p” on the sample) to reduce
@@ -158,38 +157,36 @@ First, you need to login in the API to get a valid token:
 You will receive an HTTP 201 Created response with a header called
 X-Subject-Token, this is your {{user-token}} like this:
 
-
- ```
-  --------------------------------------------------------------------
-  **HTTP**               201 Created
-                         
-  **Response**           
-                         
-  **code**               
-  ---------------------- ---------------------------------------------
-  **HTTP **              Content-Type: application/json
-                         
-  **Response headers**   Vary: X-Auth-Token
-                         
-                         X-Subject-Token: {{user-token}}
-
-  **HTTP **              {
-                         
-  **Body**               "token": {
-                         
+<p>
+<table cellpadding="10", border="1" >
+  <tr>
+    <th>HTTP response code</th>
+    <td>201 Created</td>
+  </tr>
+  <tr>
+    <th>HTTP response headers</th>
+    <td>Content-Type: application/json ; Vary: X-Auth-Token ; X-Subject-Token: {{user-token}}</td>
+  </tr>
+  <tr>
+    <th>HTTP Headers</th>
+    <td>Content-Type: application/json</td>
+  </tr>
+  <tr>
+    <th>HTTP Body</th>
+    {
+                 "token": {
                          "domain": {
-                         
                          "id": "67576fe70df44bc280da74916a58d0f1",
-                         
-                         ....
-                         
+                         [...]
                          "issued\_at": "2015-07-03T07:43:42.517728Z"
-                         
                          }
-                         
                          }
-  --------------------------------------------------------------------
-```
+    <td>
+    </td>
+  </tr>
+</table>
+</p>
+
 
 Please, be careful pasting your {{user-token}} properly on next steps.
 This is your API token and it will be valid for 3 years.
