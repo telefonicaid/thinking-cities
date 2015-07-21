@@ -61,15 +61,15 @@ and measures.
     <td>POST</td>
   </tr>
   <tr>
-    <td>URL</td>
+    <th>URL</th>
     <td>http://test.ttcloud.net:8082/iot/d?k={{apikey}}&i=mydevice</td>
   </tr>
   <tr>
-    <td>HTTP Headers</td>
+    <th>HTTP Headers</th>
     <td>-</td>
   </tr>
   <tr>
-    <td>HTTP Body</td>
+    <th>HTTP Body</th>
     <td>t|15.5\#p|1015\#g|40.516304/-3.661756\#a|"some-text"\#h|33.5</td>
   </tr>
 </table>
