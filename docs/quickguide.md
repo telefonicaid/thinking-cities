@@ -61,6 +61,29 @@ HTTP Headers| -
 HTTP Body | t|15.5\#p|1015\#g|40.516304/-3.661756\#a|"some-text"\#h|33.5
 
 
+<p>
+<table cellpadding="10">
+  <tr>
+    <td>HTTP method</td>
+    <td>POST</td>
+  </tr>
+  <tr>
+    <td>URL</td>
+    <td>http://test.ttcloud.net:8082/iot/d?k={{apikey}}&i=mydevice</td>
+  </tr>
+  <tr>
+    <td>HTTP Headers</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>HTTP Body</td>
+    <td>t|15.5\#p|1015\#g|40.516304/-3.661756\#a|"some-text"\#h|33.5</td>
+  </tr>
+</table>
+</p>
+
+
+
 Take into account that no device provisioning or data modeling is
 required in advance to send your device data. Anyway, we recommend to
 use short magnitude identifiers (like “t”, “p” on the sample) to reduce
