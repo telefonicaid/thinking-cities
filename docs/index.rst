@@ -7,6 +7,17 @@ device protocols and connectivity methods, understanding and interpreting releva
 It isolates data processing and application service layers from the device and network complexity, 
 in terms of access, security and network protocols.
 
+=====  =====  =======
+A      B      A and B
+=====  =====  =======
+False  False  False
+True   False  False
+False  True   False
+True   True   True
+=====  =====  =======
+
+
+
 Why should I use it?
 --------------------
 
