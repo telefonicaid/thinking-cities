@@ -34,6 +34,8 @@ these fields that are required for the following steps:
   </tr>
 </table>
 
+
+
 In order test the API, we really recommend you use the following sample
 collection for [*POSTMAN extension for Google
 Chrome*](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop),
