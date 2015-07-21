@@ -424,7 +424,4 @@ our set of data visualization tools connectors:
 
 [*https://github.com/telefonicaid/fiware-dataviz*](https://github.com/telefonicaid/fiware-dataviz)
 
-Comments and improvements
-
-We are happy to hear your feedback!
 
