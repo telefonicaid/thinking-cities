@@ -57,7 +57,7 @@ and measures.
 <p>
 <table cellpadding="10", border="1" >
   <tr>
-    <td>HTTP method</td>
+    <th>HTTP method</th>
     <td>POST</td>
   </tr>
   <tr>
