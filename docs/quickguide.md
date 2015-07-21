@@ -6,6 +6,28 @@ Getting started in 5 steps
 Please, check your inbox for an email with your credentials. It contains
 these fields that are required for the following steps:
 
+
+<table>
+  <tr>
+    <th>Option</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>data</td>
+    <td>path to data files to supply the data that will be passed into templates.</td>
+  </tr>
+  <tr>
+    <td>engine</td>
+    <td>engine to be used for processing templates. Handlebars is the default.</td>
+  </tr>
+  <tr>
+    <td>ext</td>
+    <td>extension to be used for dest files.</td>
+  </tr>
+</table>
+
+
+
 | Field name           | Description                                     | 
 | ------------------- |:---------------------------------------------- |
 | {{apikey}}       	      | API Key used for devices to send data |
