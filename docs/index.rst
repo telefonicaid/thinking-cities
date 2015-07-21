@@ -8,11 +8,11 @@ It isolates data processing and application service layers from the device and n
 in terms of access, security and network protocols.
 
 =====  =====  =======
-A      B      A and B
+HTTP Method      B      A and B
 =====  =====  =======
-False  False  False
-True   False  False
-False  True   False
+Headers  False  False
+Method   False  False
+Parameters  True   False
 True   True   True
 =====  =====  =======
 
