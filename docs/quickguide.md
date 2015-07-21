@@ -9,33 +9,30 @@ these fields that are required for the following steps:
 
 <table>
   <tr>
-    <th>Option</th>
+    <th>Field name</th>
     <th>Description</th>
   </tr>
   <tr>
-    <td>data</td>
-    <td>path to data files to supply the data that will be passed into templates.</td>
+    <td>{{apikey}}</td>
+    <td>API Key used for devices to send data</td>
   </tr>
   <tr>
-    <td>engine</td>
-    <td>engine to be used for processing templates. Handlebars is the default.</td>
+    <td>{{Fiware-Service}}</td>
+    <td>Service name</td>
   </tr>
   <tr>
-    <td>ext</td>
-    <td>extension to be used for dest files.</td>
+    <td>{{Fiware-ServicePath}}</td>
+    <td>Sub-service name</td>
+  </tr>
+  <tr>
+    <td>{{user-name}}</td>
+    <td>User name for web portal</td>
+  </tr>
+  <tr>
+    <td>{{user-password}}</td>
+    <td>Password for web portal</td>
   </tr>
 </table>
-
-
-
-| Field name           | Description                                     | 
-| ------------------- |:---------------------------------------------- |
-| {{apikey}}       	      | API Key used for devices to send data |
-|{{Fiware-Service}}| Service name |
-|{{Fiware-ServicePath}}| Sub-service name|
-|{{user-name}}| User name for web portal|
-|{{user-password}}| Password for web portal|
-
 
 In order test the API, we really recommend you use the following sample
 collection for [*POSTMAN extension for Google
