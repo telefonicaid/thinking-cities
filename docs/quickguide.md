@@ -54,15 +54,8 @@ Sending data is as simple as sending an HTTP POST request using your API
 key with your measures. Please use “\#” and “|” separators to split data
 and measures.
 
-HTTP method | POST      
------------ | ---- 
-URL| http://test.ttcloud.net:8082/iot/d?k={{apikey}}&i=mydevice
-HTTP Headers| -
-HTTP Body | t|15.5\#p|1015\#g|40.516304/-3.661756\#a|"some-text"\#h|33.5
-
-
 <p>
-<table cellpadding="10">
+<table cellpadding="10", border="1" >
   <tr>
     <td>HTTP method</td>
     <td>POST</td>
