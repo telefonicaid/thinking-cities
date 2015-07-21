@@ -3,8 +3,7 @@ Getting started in 5 steps
 
 ### Step 0 - Credentials
 
-Please, check your inbox for an email with your credentials. It contains
-these fields that are required for the following steps:
+Please, request your credentials. You will receive an email containing these fields that are required for the following steps:
 
 <p>
 <table cellpadding="10", border="1" >
