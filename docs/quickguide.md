@@ -84,7 +84,7 @@ the message length sent from the device.
 Your will simply receive an HTTP 200 OK response to confirm the data was
 properly received at Thinking Things Cloud.
 
-### Step 2 - See the data
+### Step 2 - See data
 
 Your device data is now stored in the Thinking Things Cloud, and your
 can see it on the web portal. Please access the web portal with your
