@@ -1,7 +1,7 @@
 Getting started in 5 steps
 ==========================
 
-### Step 0 - Get your account credentials
+### Step 0 - Credentials
 
 Please, check your inbox for an email with your credentials. It contains
 these fields that are required for the following steps:
@@ -45,7 +45,7 @@ all this guide samples and some additional operations are there.
 In that email, there is also attached a POSTMAN environment with your
 credentials for this POSTMAN collection.
 
-### Step 1 - Send the data from the device
+### Step 1 - Send data
 
 Before doing any coding, identify the sensors on your device and decide
 which data do you want to send to Thinking Things Cloud.
@@ -102,7 +102,7 @@ After that, you will see your device data the Entities list:
 
 ![](media/image01.png)
 
-### Step 3 - Get the last data using the API
+### Step 3 - Get data
 
 Now your know your data is stored in the Thinking Things Cloud, lets get
 it via API.
@@ -311,7 +311,7 @@ Anyway, you can always clone this sample freeboard and use it as a template for 
 
 [*https://freeboard.io/board/69lZ9V*](https://freeboard.io/board/69lZ9V)
 
-### Step 5 - Send commands to the device
+### Step 5 - Send commands 
 
 You can send commands to the device in order to trigger any action like
 turning on a LED or a relay. In order to do so, you need to set your
