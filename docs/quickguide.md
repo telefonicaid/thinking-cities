@@ -173,15 +173,16 @@ X-Subject-Token, this is your {{user-token}} like this:
   </tr>
   <tr>
     <th>HTTP Body</th>
-    {
-                 "token": {
-                         "domain": {
-                         "id": "67576fe70df44bc280da74916a58d0f1",
-                         [...]
-                         "issued\_at": "2015-07-03T07:43:42.517728Z"
-                         }
-                         }
     <td>
+    {
+       "token": {
+               "domain": {
+               "id": "67576fe70df44bc280da74916a58d0f1",
+               [...]
+               "issued\_at": "2015-07-03T07:43:42.517728Z"
+               }
+        }
+    }     
     </td>
   </tr>
 </table>
