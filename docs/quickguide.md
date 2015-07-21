@@ -126,7 +126,6 @@ First, you need to login in the API to get a valid token:
   <tr>
     <th>HTTP Body</th>
     <td>
-    ```
       {
             "auth": {
                      "identity": {
@@ -150,7 +149,6 @@ First, you need to login in the API to get a valid token:
                      }
                      }
                      }
-    ```
     </td>
   </tr>
 </table>
