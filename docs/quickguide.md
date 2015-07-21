@@ -6,8 +6,8 @@ Getting started in 5 steps
 Please, check your inbox for an email with your credentials. It contains
 these fields that are required for the following steps:
 
-
-<table cellpadding="10" align="left">
+<p>
+<table cellpadding="10">
   <tr>
     <th>Field name</th>
     <th>Description</th>
@@ -33,7 +33,7 @@ these fields that are required for the following steps:
     <td>Password for web portal</td>
   </tr>
 </table>
-
+</p>
 
 In order test the API, we really recommend you use the following sample
 collection for [*POSTMAN extension for Google
