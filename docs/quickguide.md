@@ -195,76 +195,61 @@ This is your API token and it will be valid for 3 years.
 Now you are ready to invoke the API to get your device data. Just do an
 HTTP GET request like this:
 
-```
-  ------------------------------------------------------------------------------------
-  **HTTP method**    GET
-  ------------------ -----------------------------------------------------------------
-  **URL**            http://test.ttcloud.net:1026/v1/contextEntities/device:mydevice
+<p>
+<table cellpadding="10", border="1" >
+  <tr>
+    <th>HTTP method</th>
+    <td>GET</td>
+  </tr>
+  <tr>
+    <th>HTTP headers</th>
+    <td>Accept: application/json ; Fiware-Service: {{Fiware-Service}} ; Fiware-ServicePath: {{Fiware-ServicePath}} ;     X-Auth-Token: {{user-token}}</td>
+  </tr>
 
-  **HTTP headers**   Accept: application/json
-                     
-                     Fiware-Service: {{Fiware-Service}}
-                     
-                     Fiware-ServicePath: {{Fiware-ServicePath}}
-                     
-                     X-Auth-Token: {{user-token}}
-  ------------------------------------------------------------------------------------
-```
+</table>
+</p>
+
+
 
 You will get you device data in a json document like this that is FIWARE
 NGSI compliant:
 
-```
-  --------------------------------------------------------------
-  **HTTP**               200
-                         
-  **Response**           
-                         
-  **code**               
-  ---------------------- ---------------------------------------
-  **HTTP **              Content-Type: application/json
-                         
-  **Response headers**   
-
-  **HTTP **              {
-                         
-  **Body**               "contextElement": {
-                         
+<p>
+<table cellpadding="10", border="1" >
+  <tr>
+    <th>HTTP response code</th>
+    <td>200</td>
+  </tr>
+  <tr>
+    <th>HTTP response headers</th>
+    <td>Content-Type: application/json</td>
+  </tr>
+  <tr>
+    <th>HTTP Body</th>
+    <td>
+      {
+                "contextElement": {
                          "type": "device",
-                         
-                         "isPattern": "false",
-                         
-                         "id": "mydevice",
-                         
-                         "attributes": \[
-                         
-                         {
-                         
+                          "isPattern": "false",
+                          "id": "mydevice",
+                         "attributes": [
+                          {
                          "name": "TimeInstant",
-                         
-                         "type": "ISO8601",
-                         
-                         "value": "2015-06-25T14:13:54.953107"
-                         
-                         }
-                         
-                         ...
-                         
-                         \]
-                         
+                          "type": "ISO8601",
+                          "value": "2015-06-25T14:13:54.953107"
+                          }
+                          [...]
+                          ]
                          },
-                         
                          "statusCode": {
-                         
                          "code": "200",
-                         
                          "reasonPhrase": "OK"
-                         
                          }
-                         
-                         }
-  --------------------------------------------------------------
-```
+      }    
+      </td>
+  </tr>
+</table>
+</p>
 
 Please, notice that you will see one attribute per sensor.
 
@@ -336,23 +321,38 @@ The commands will be received on the device endpoint if configured on
 the device setup. Remember that if you left that field empty, the
 commands can be pulled directly from the device:
 
-```
-  **HTTP method**    GET
-  ------------------ ------------------------------------------------------------
-  **URL**            http://test.ttcloud.net:8082/iot/d?k={{apikey}}&i=mydevice
-  **HTTP headers**   -
-```
+<p>
+<table cellpadding="10", border="1" >
+  <tr>
+    <th>HTTP method</th>
+    <td>GET</td>
+  </tr>
+  <tr>
+    <th>URL</th>
+    <td>http://test.ttcloud.net:8082/iot/d?k={{apikey}}&i=mydevice</td>
+  </tr>
+  <tr>
+    <th>HTTP headers</th>
+    <td>-</td>
+  </tr>
+</table>
+</p>
+
 
 The command received will be as follows:
 
-```
-  --------------------------------------------------------------------------
-  **HTTP Response code**   200
-  ------------------------ -------------------------------------------------
-  **HTTP Body**            device\_id@{{command\_name}}|{{comand\_params}}
-  --------------------------------------------------------------------------
-```
-
+<p>
+<table cellpadding="10", border="1" >
+  <tr>
+    <th>HTTP Response code</th>
+    <td>200</td>
+  </tr>
+  <tr>
+    <th>HTTP Body</th>
+    <td>device\_id@{{command\_name}}|{{comand\_params}}</td>
+  </tr>
+</table>
+</p>
 
 
 ### In more detail …
@@ -384,21 +384,23 @@ Historic data is accessible using the Short Term historic API.
 
 Example:
 
-```
-  -------------------------------------------------------------------------------------------------------------------------------
-  **HTTP method**    GET
-  ------------------ ------------------------------------------------------------------------------------------------------------
-  **URL**            <http://test.ttcloud.net:8666/STH/v1/contextEntities/type/device/id/device:mydevice/attributes/h?lastN=10>
+<p>
+<table cellpadding="10", border="1" >
+  <tr>
+    <th>HTTP method</th>
+    <td>GET</td>
+  </tr>
+  <tr>
+    <th>URL</th>
+    <td>http://test.ttcloud.net:8666/STH/v1/contextEntities/type/device/id/device:mydevice/attributes/h?lastN=10</td>
+  </tr>
+  <tr>
+    <th>HTTP headers</th>
+    <td>Accept: application/json ; Fiware-Service: {{Fiware-Service}} ; Fiware-ServicePath: {{Fiware-ServicePath}} ; X-Auth-Token: {{user-token}}</td>
+  </tr>
+</table>
+</p>
 
-  **HTTP headers**   Accept: application/json
-                     
-                     Fiware-Service: {{Fiware-Service}}
-                     
-                     Fiware-ServicePath: {{Fiware-ServicePath}}
-                     
-                     X-Auth-Token: {{user-token}}
-  -------------------------------------------------------------------------------------------------------------------------------
-```
 
 Remember that in order to collect historic data, it is necessary to
 configure the required subscription (endpoint:
