@@ -13,23 +13,23 @@ these fields that are required for the following steps:
     <th>Description</th>
   </tr>
   <tr>
-    <td>{{apikey}}</td>
+    <td>{{apikey}}      </td>
     <td>API Key used for devices to send data</td>
   </tr>
   <tr>
-    <td>{{Fiware-Service}}</td>
+    <td>{{Fiware-Service}}      </td>
     <td>Service name</td>
   </tr>
   <tr>
-    <td>{{Fiware-ServicePath}}</td>
+    <td>{{Fiware-ServicePath}}      </td>
     <td>Sub-service name</td>
   </tr>
   <tr>
-    <td>{{user-name}}</td>
+    <td>{{user-name}}      </td>
     <td>User name for web portal</td>
   </tr>
   <tr>
-    <td>{{user-password}}</td>
+    <td>{{user-password}}      </td>
     <td>Password for web portal</td>
   </tr>
 </table>
