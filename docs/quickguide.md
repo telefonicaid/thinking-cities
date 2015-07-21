@@ -7,7 +7,7 @@ Please, check your inbox for an email with your credentials. It contains
 these fields that are required for the following steps:
 
 <p>
-<table cellpadding="10">
+<table cellpadding="10", border="1" >
   <tr>
     <th>Field name</th>
     <th>Description</th>
