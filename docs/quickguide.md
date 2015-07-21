@@ -108,6 +108,55 @@ Now your know your data is stored in the Thinking Things Cloud, lets get
 it via API.
 
 First, you need to login in the API to get a valid token:
+
+<p>
+<table cellpadding="10", border="1" >
+  <tr>
+    <th>HTTP method</th>
+    <td>POST</td>
+  </tr>
+  <tr>
+    <th>URL</th>
+    <td>http://test.ttcloud.net:5001/v3/auth/tokens</td>
+  </tr>
+  <tr>
+    <th>HTTP Headers</th>
+    <td>Content-Type: application/json</td>
+  </tr>
+  <tr>
+    <th>HTTP Body</th>
+    <td>
+      {
+            "auth": {
+                     "identity": {
+                     "methods": \[
+                     "password"
+                     \],
+                     "password": {
+                     "user": {
+                     "domain": {
+                     "name": "{{Fiware-Service}}"
+                     },
+                     "name": "{{user-name}}",
+                     "password": "{{user-pass}}"
+                     }
+                     }
+                     },
+                     "scope": {
+                     "domain": {
+                     "name": "{{Fiware-Service}}"
+                     }
+                     }
+                     }
+                     }
+    
+    </td>
+  </tr>
+</table>
+</p>
+
+
+
 ```
   ----------------------------------------------------------------
   **HTTP method**    POST
