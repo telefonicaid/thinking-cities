@@ -1,5 +1,5 @@
-Test IoT Platform doc website
-=============================
+IoT Platform doc website
+========================
 Intro
 
 Chapter 1
@@ -12,5 +12,5 @@ Chapter 1
 
 > **note**
 >
-> Content 
+> Site under construction! 
 
