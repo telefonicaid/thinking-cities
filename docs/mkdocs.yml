@@ -1,0 +1,14 @@
+site_name: FIWARE-IOT-Stack
+site_url: https://github.com/telefonicaid/fiware-iot-stack/
+repo_url: https://github.com/telefonicaid/fiware-iot-stack.git
+site_description: IoT Platform document site
+docs_dir: docs/
+site_dir: html
+markdown_extensions: [toc,fenced_code]
+use_directory_urls: false
+theme: readthedocs
+pages:
+  - Home: 'index.md'
+  - 'Getting Started': 'quickguide.md'
+  - 'User Manual':
+      - Introduction: '.md'
