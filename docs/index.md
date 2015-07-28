@@ -22,7 +22,7 @@ Benefits of solutions ‘powered by the IoT Platform’:
 - With transparent and efficient manage of:
  - Devices
  - Communications
- _ Security
+ - Security
  - Data generated
 - With independence of volume of data and devices managed.
 - Allowing interoperability with 3rd parties BBDD, ERPs, CRMs, Big data sources, and other m2m solutions.
