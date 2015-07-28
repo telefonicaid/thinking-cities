@@ -8,7 +8,7 @@ markdown_extensions: [toc,fenced_code]
 use_directory_urls: false
 theme: readthedocs
 pages:
-  - Home: 'index.md'
+  - 'IoT Platform doc site': 'index.md'
   - 'Getting Started': 'quickguide.md'
   - 'User Manual':
       - Introduction: '.md'
