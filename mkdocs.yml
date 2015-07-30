@@ -38,7 +38,7 @@ pages:
     - 'Connector Framework (Cygnus)':
       - 'Introduction': 'WorkInProgress.md'
     - 'Complex Event Processing (Perseo)':
-      - 'Introduction': WorkInProgress.md'
+      - 'Introduction': 'WorkInProgress.md'
     - 'Identity Management (IDM)':
       - 'Introduction': 'WorkInProgress.md'
     - 'Management Portal':
