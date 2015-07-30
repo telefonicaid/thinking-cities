@@ -12,7 +12,7 @@ pages:
   - 'Getting Started': 'quickguide.md'
   - 'Reference Manuals':
     - 'Device Gateway (IDAS)':
-      - 'Introduction': 'index.md'
+      - 'Introduction': 'WorkInProgress.md'
     - 'Context Broker (Orion)':
       - Introduction: 'externals/fiware-orion/doc/manuals/user/walkthrough_apiv1.md'
       - 'Adding entities and attributes': 'externals/fiware-orion/doc/manuals/user/append_and_delete.md'
@@ -34,12 +34,12 @@ pages:
       - 'Known limitations': 'externals/fiware-orion/doc/manuals/user/known_limitations.md'
       - 'Forbidden characters': 'externals/fiware-orion/doc/manuals/user/forbidden_characters.md'
     - 'Short Term Historic (STH)':
-      - 'Introduction': 'index.md'
+      - 'Introduction': 'WorkInProgress.md'
     - 'Connector Framework (Cygnus)':
-      - 'Introduction': 'index.md'
+      - 'Introduction': 'WorkInProgress.md'
     - 'Complex Event Processing (Perseo)':
-      - 'Introduction': 'index.md'
+      - 'Introduction': WorkInProgress.md'
     - 'Identity Management (IDM)':
-      - 'Introduction': 'index.md'
+      - 'Introduction': 'WorkInProgress.md'
     - 'Management Portal':
-      - 'Introduction': 'index.md'
+      - 'Introduction': 'WorkInProgress.md'
