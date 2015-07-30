@@ -41,5 +41,5 @@ pages:
       - 'Introduction': 'index.md'
     - 'Identity Management (IDM)':
       - 'Introduction': 'index.md'
-    - 'Management Portal (IDM)':
+    - 'Management Portal':
       - 'Introduction': 'index.md'
