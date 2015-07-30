@@ -1,0 +1,32 @@
+site_name: FIWARE-IOT-Stack
+site_url: https://github.com/telefonicaid/fiware-iot-stack/
+repo_url: https://github.com/telefonicaid/fiware-iot-stack.git
+site_description: IoT Platform document site
+docs_dir: docs/
+site_dir: html
+markdown_extensions: [toc,fenced_code]
+use_directory_urls: false
+theme: readthedocs
+pages:
+  - 'Introduction': 'index.md'
+  - 'Getting Started': 'quickguide.md'
+  - 'Reference Manuals':
+      - Introduction: 'externals/fiware-orion/doc/manuals/user/walkthrough_apiv1.md'
+      - 'Adding entities and attributes': 'externals/fiware-orion/doc/manuals/user/append_and_delete.md'
+      - 'Attribute Metadata': 'externals/fiware-orion/doc/manuals/user/metadata.md'
+      - 'Empty Types': 'externals/fiware-orion/doc/manuals/user/empty_types.md'
+      - 'Structured values for attributes': 'externals/fiware-orion/doc/manuals/user/structured_attribute_valued.md'
+      - Filtering: 'externals/fiware-orion/doc/manuals/user/filtering.md'
+      - Pagination: 'externals/fiware-orion/doc/manuals/user/pagination.md'
+      - Geolocation: 'externals/fiware-orion/doc/manuals/user/geolocation.md'
+      - 'Context Providers': 'externals/fiware-orion/doc/manuals/user/context_providers.md'
+      - 'Updating Registrations and Subscriptions': 'externals/fiware-orion/doc/manuals/user/updating_regs_and_subs.md'
+      - 'Multi tenancy': 'externals/fiware-orion/doc/manuals/user/multitenancy.md'
+      - 'Entity service paths': 'externals/fiware-orion/doc/manuals/user/service_path.md'
+      - 'Context Broker federation': 'externals/fiware-orion/doc/manuals/user/federation.md'
+      - 'Duration (for registrations and subscriptions)': 'externals/fiware-orion/doc/manuals/user/duration.md'
+      - 'Mixing standard and convenience operations': 'externals/fiware-orion/doc/manuals/user/std_conv_mix.md'
+      - 'HTTP and NGSI response codes': 'externals/fiware-orion/doc/manuals/user/http_and_ngsi_sc.md'
+      - 'Security considerations': 'externals/fiware-orion/doc/manuals/user/security.md'
+      - 'Known limitations': 'externals/fiware-orion/doc/manuals/user/known_limitations.md'
+      - 'Forbidden characters': 'externals/fiware-orion/doc/manuals/user/forbidden_characters.md'
