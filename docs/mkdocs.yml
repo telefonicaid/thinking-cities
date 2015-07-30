@@ -10,8 +10,7 @@ theme: readthedocs
 pages:
   - 'Introduction': 'index.md'
   - 'Getting Started': 'quickguide.md'
- - 'Reference Manuals':
-    - 'Context Broker (Orion)':
+  - 'Reference Manuals':
       - Introduction: 'externals/fiware-orion/doc/manuals/user/walkthrough_apiv1.md'
       - 'Adding entities and attributes': 'externals/fiware-orion/doc/manuals/user/append_and_delete.md'
       - 'Attribute Metadata': 'externals/fiware-orion/doc/manuals/user/metadata.md'
