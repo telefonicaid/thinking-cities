@@ -11,6 +11,7 @@ pages:
   - 'Introduction': 'index.md'
   - 'Getting Started': 'quickguide.md'
   - 'Reference Manuals':
+    - 'Device Gateway (IDAS)':
     - 'Context Broker (Orion)':
       - Introduction: 'externals/fiware-orion/doc/manuals/user/walkthrough_apiv1.md'
       - 'Adding entities and attributes': 'externals/fiware-orion/doc/manuals/user/append_and_delete.md'
@@ -31,3 +32,9 @@ pages:
       - 'Security considerations': 'externals/fiware-orion/doc/manuals/user/security.md'
       - 'Known limitations': 'externals/fiware-orion/doc/manuals/user/known_limitations.md'
       - 'Forbidden characters': 'externals/fiware-orion/doc/manuals/user/forbidden_characters.md'
+    - 'Short Term Historic (STH)':
+    - 'Connector Framework (Cygnus)':
+    - 'Complex Event Processing (Perseo)':
+    - 'Identity Management (IDM)':
+    - 'Management Portal (IDM)':
+    
