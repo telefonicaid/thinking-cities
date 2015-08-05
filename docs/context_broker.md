@@ -18,9 +18,9 @@ One of the most important features of the Context Broker is that it allows to mo
 
 If you are interested in more details about how to make your application a context-aware application check out:
 
-- [How to update and query context information](context_broker_detail.md#UPDATE)
-- [How to subscribe to changes on context information](context_broker_detail.md#UPDATE)
-- [How to perform geo-location queries](context_broker_detail.md#GEOLOCATED)
+- [How to update and query context information](context_broker_detail.md#update-query-context)
+- [How to subscribe to changes on context information](context_broker_detail.md#subscription-to-context-changes)
+- [How to perform geo-location queries](context_broker_detail.md#geolocated-context-queries)
 
 ## API Reference Documentation ##
 
