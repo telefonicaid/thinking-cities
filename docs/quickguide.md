@@ -381,7 +381,7 @@ Read the full reference at:
 
 Historic data is accessible using the Short Term historic API.
 
-Example:
+RAW data query example:
 
 <p>
 <table cellpadding="10", border="1" >
@@ -392,6 +392,26 @@ Example:
   <tr>
     <th>URL</th>
     <td>http://test.ttcloud.net:8666/STH/v1/contextEntities/type/device/id/device:mydevice/attributes/h?lastN=10</td>
+  </tr>
+  <tr>
+    <th>HTTP headers</th>
+    <td>Accept: application/json ; Fiware-Service: {{Fiware-Service}} ; Fiware-ServicePath: {{Fiware-ServicePath}} ; X-Auth-Token: {{user-token}}</td>
+  </tr>
+</table>
+</p>
+
+Aggregated data (sum/hourly) query example:
+<p>
+<table cellpadding="10", border="1" >
+  <tr>
+    <th>HTTP method</th>
+    <td>GET</td>
+  </tr>
+  <tr>
+    <th>URL</th>
+    <td>
+    http://test.ttcloud.net:8666/STH/v1/contextEntities/type/device/id/device:mydevice/attributes/h?aggrMethod=sum&aggrPeriod=hour&dateFrom=2015-02-22T00:00:00.000Z&dateTo=2016-01-22T23:00:00.000Z
+    http://test.ttcloud.net:8666/STH/v1/contextEntities/type/device/id/device:mydevice/attributes/h?lastN=10</td>
   </tr>
   <tr>
     <th>HTTP headers</th>
