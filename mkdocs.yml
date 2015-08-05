@@ -19,7 +19,8 @@ pages:
     - 'Complex Event Processing (Perseo)': 'WorkInProgress.md'
     - 'Identity Management (IDM)': 'WorkInProgress.md'
     - 'Management Portal': 'WorkInProgress.md'
-  - 'Reference Manuals': 'WorkInProgress.md'    
+  - 'In Detail':
+    - 'Context Broker': 'context_broker_detail.md'    
     
 
     
