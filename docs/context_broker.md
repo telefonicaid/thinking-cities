@@ -1,4 +1,4 @@
-## Connection to the Internet of Things ##
+## Development of context-aware applications ##
 
 This components provides you with means to produce, gather, publish and consume context information at large scale and exploit it to transform your application into a truly smart application.  
 
