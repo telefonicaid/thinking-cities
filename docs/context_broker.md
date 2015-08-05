@@ -1,25 +1,30 @@
 ## Connection to the Internet of Things ##
 
-Connecting “objects” or “things” involves the need to overcome a set of problems arising in the different layers of the communication model. Using its data or acting upon them requires interaction with a heterogeneous environment of devices running different protocols (due to the lack of globally accepted standards), dispersed and accessible through multiple wireless technologies.  
+This components provides you with means to produce, gather, publish and consume context information at large scale and exploit it to transform your application into a truly smart application.  
 
-Devices have a lot of particularities so it is not feasible to provide a solution where one size fits all. They are resource constrained and can’t use full standard protocol stacks: they cannot transmit information too frequently due to battery drainage, they are not always reachable since they are connected through heterogeneous wireless networks, their communication protocols are too specific and lack integrated approach, and they use different data encoding languages, so it is tricky to find a global deployment.  
+Context information is represented through values assigned to attributes that characterize those entities relevant to your application. The Context Broker GE (open source reference implementation: Orion) is able to handle context information at large scale by implementing standard REST APIs.  
 
-This compontents allow to simplify the management and integration of devices. It collects data from devices using heterogeneous protocols and translates them into standard platform language: NGSI entities.
+![](media/cb1.png)
 
-It also allows to send commands to the devices, supportong both push and Pull modes. 
+Context information may come from many different sources:
 
-IDAS supports several IoT protocols with a modular architecture where modules are called “IoT Agents”. Therefore, integrators need to determine first which protocol they will be using to connect devices and select the right IoT Agent. 
+- Already existing systems
+- Users, through mobile apps
+- Sensor networks
 
-![](media/iot_agents.png)
+One of the most important features of the Context Broker is that it allows to model and gain access to context information in a way that is independent from the source of that information. As an example, your application may need to be aware about “Places” (identified by their specific geographical coordinates) and the “temperature” in them.  The way in which the temperature of a given place is obtained may vary from place to place.  Thus, the temperature of a given street may be measured through temperature sensors deployed in that street, while in another street it may be obtained through temperature sensors deployed on buses that circulate through the street and even in some other streets may be obtained through users who report the temperature using their smartphones.  Using the RESTAPI exported by the Context Broker GE, the way in which your application will be able to query the temperature of places, or subscribe to changes on temperatures of places will be the same no matter which is the source of a temperature and it will not vary if the source of the temperature for a given place changes over time (e.g., the temperature of a given street turns to be measured through temperature sensors deployed on the streets rather than through buses equipped with sensors).
 
-At present, the following IoT Agents and supported IoT protocols are:
+![](media/cb2.png)
 
-- [HTTP Ultralight 2.0](https://github.com/telefonicaid/fiware-IoTAgent-Cplusplus/blob/release/1.0.2/doc/UL20_protocol.md)
-- [MQTT](https://github.com/telefonicaid/fiware-IoTAgent-Cplusplus/blob/release/1.0.2/doc/MQTT_protocol.md)
-- [OMA LWM2M](https://github.com/telefonicaid/lightweightm2m-iotagent)
-- [Thinking Things Open](https://github.com/telefonicaid/iotagent-thinking-things)
+If you are interested in more details about how to make your application a context-aware application check out:
 
-If the device uses a different protocol from the provided, it will be necessary to perform a translation between the device specific platform and the platform standard model (NGSI). For that, different IoT Agents development frameworks are provided: 
+- [How to update and query context information](context_broker_detail.md#UPDATE)
+- [How to subscribe to changes on context information](context_broker_detail.md#UPDATE)
+- [How to perform geo-location queries](context_broker_detail.md#GEOLOCATED)
 
-- [Node.js framework](https://github.com/telefonicaid/iotagent-node-lib)
-- [IoT Agents C++ framework](https://github.com/telefonicaid/fiware-IoTAgent-Cplusplus)
+## API Reference Documentation ##
+
+- [API V1](http://telefonicaid.github.io/fiware-orion/api/v1/)
+- [API V2](http://telefonicaid.github.io/fiware-orion/api/v2/cookbook/) ongoing, not yet suitable for production
+
+
