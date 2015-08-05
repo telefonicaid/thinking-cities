@@ -16,8 +16,11 @@ POST <cb_host>:<cb_port>/v1/contextEntities/type/Rating/id/LeBistro::Client1234
     }
   ]
 }
+```
+
 Each time a new Rating entity is created, the average rating for the corresponding restaurant is recalculated by the application backend which (playing also the role of Context Producer) updates the Restaurant entity accordingly:
 
+```
 PUT <cb_host>:<cb_port>/v1/contextEntities/type/Restaurant/id/LeBistro/attributes/average_scoring
 {
    "value" : "4.2"
