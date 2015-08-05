@@ -9,7 +9,7 @@ use_directory_urls: false
 theme: readthedocs
 pages:
   - 'Introduction': 'index.md'
-  - 'Getting Started': 'quickguide.md'
+  - 'Getting Started': 'device_gateway.md'
   - 'Walkthrough': 'walkthrough.md'
   - 'Reference Manuals':
     - 'Device Backend Gateway (IDAS)':
