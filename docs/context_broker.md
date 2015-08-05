@@ -2,7 +2,7 @@
 
 This components provides you with means to produce, gather, publish and consume context information at large scale and exploit it to transform your application into a truly smart application.  
 
-Context information is represented through values assigned to attributes that characterize those entities relevant to your application. The Context Broker GE (open source reference implementation: Orion) is able to handle context information at large scale by implementing standard REST APIs.  
+Context information is represented through values assigned to attributes that characterize those entities relevant to your application. The Context Broker is able to handle context information at large scale by implementing standard REST APIs.  
 
 ![](media/cb1.png)
 
