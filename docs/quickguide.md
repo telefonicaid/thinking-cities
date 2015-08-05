@@ -381,6 +381,7 @@ Read the full reference at:
 
 Historic data is accessible using the Short Term historic API.
 
+
 ##### RAW data query example:
 
 <p>
@@ -399,6 +400,7 @@ Historic data is accessible using the Short Term historic API.
   </tr>
 </table>
 </p>
+
 
 ##### Aggregated data (sum/hourly) query example:
 <p>
@@ -421,9 +423,9 @@ Historic data is accessible using the Short Term historic API.
 </p>
 
 
-Remember that in order to collect historic data, it is necessary to
-configure the required subscription (endpoint:
-http://test.ttcloud.net:8666/notify).
+>> Remember that in order to collect historic data, it is necessary to
+>> configure the required subscription (endpoint:
+>> http://test.ttcloud.net:8666/notify).
 
 More info:
 [*https://github.com/telefonicaid/IoT-STH*](https://github.com/telefonicaid/IoT-STH)
