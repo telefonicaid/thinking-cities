@@ -9,11 +9,11 @@ use_directory_urls: false
 theme: readthedocs
 pages:
   - 'Introduction': 'index.md'
-  - 'Getting Started': 'device_gateway.md'
+  - 'Getting Started': 'quickguide.md'
   - 'Walkthrough': 'walkthrough.md'
   - 'Reference Manuals':
     - 'Device Backend Gateway (IDAS)':
-      - 'Introduction': 'https://github.com/telefonicaid/fiware-IoTAgent-Cplusplus/blob/release/1.0.2/README.md'
+      - 'Introduction': 'device_gateway.md'
     - 'Context Broker (Orion)':
       - Introduction: 'externals/fiware-orion/doc/manuals/user/walkthrough_apiv1.md'
       - 'Adding entities and attributes': 'externals/fiware-orion/doc/manuals/user/append_and_delete.md'
