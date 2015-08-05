@@ -1,5 +1,3 @@
-[TOC]
-
 ## Update/Query context
 
 Processes running as part of your application architecture that update context information using REST operations that the Context Broker GE exports, are said to play a Context Producer role.  As an example, let’s consider an application for rating restaurants (let’s call it NiceEating). The client part of that application running on the smartphone of users would play the role of Context Producer, enabling them to rate restaurants.
