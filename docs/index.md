@@ -6,26 +6,18 @@ device protocols and connectivity methods, understanding and interpreting releva
 It isolates data processing and application service layers from the device and network complexity, 
 in terms of access, security and network protocols.
 
-
-> **note**
->
-> Site under construction! 
-
-
-
 Benefits
 --------
 
 Benefits of solutions ‘powered by the IoT Platform’:
 
-- Enhances device data integration & speeds application development.
-- With transparent and efficient manage of:
- - Devices
- - Communications
- - Security
- - Data generated
-- With independence of volume of data and devices managed.
-- Allowing interoperability with 3rd parties BBDD, ERPs, CRMs, Big data sources, and other m2m solutions.
-- Granting high availability for all the platform.
-- FIWARE compliant
+- Simple sensor data integration 
+- Device-independent APIs for quick app development & lock-in prevention
+- Modular
+- Scalable. High available
+- Open & standards based. FIWARE compliant
 
+
+> **note**
+>
+> Site under construction! 
