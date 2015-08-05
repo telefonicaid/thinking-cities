@@ -9,13 +9,3 @@ use_directory_urls: false
 theme: readthedocs
 pages:
   - 'Introduction': 'index.md'
-  - 'Getting Started': 'quickguide.md'
-  - 'Walkthrough': 'walkthrough.md'
-    - 'Device Backend Gateway (IDAS)': 'device_gateway.md'
-    - 'Context Broker (Orion)': 'context_broker.md'
-    - 'Short Term Historic (STH)': 'WorkInProgress.md'
-    - 'Connector Framework (Cygnus)':'WorkInProgress.md'
-    - 'Complex Event Processing (Perseo)':'WorkInProgress.md'
-    - 'Identity Management (IDM)':'WorkInProgress.md'
-    - 'Management Portal':'WorkInProgress.md'
-  - 'Reference Manuals':'WorkInProgress.md'    
