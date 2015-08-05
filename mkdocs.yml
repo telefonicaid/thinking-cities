@@ -4,7 +4,7 @@ repo_url: https://github.com/telefonicaid/fiware-iot-stack.git
 site_description: IoT Platform document site
 docs_dir: docs/
 site_dir: html
-markdown_extensions: [toc,fenced_code]
+markdown_extensions: [toc,tables, fenced_code]
 use_directory_urls: false
 theme: readthedocs
 pages:
