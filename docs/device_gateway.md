@@ -12,6 +12,13 @@ Tha platform supports several IoT protocols with a modular architecture where mo
 
 ![](media/iot_agents.png)
 
+
+If you are interested in more details about how to connect your devices and sensros to the platform check out:
+
+- [How to publish data from your IoT Devices](device_gateway_detail.md#publishing-data-from-your-iot-devices)
+- [How to send commands to your IoT Devices](device_gateway_detail.md#acting-upon-devices)
+
+ 
 At present, the following IoT Agents and supported IoT protocols are:
 
 - [HTTP Ultralight 2.0](https://github.com/telefonicaid/fiware-IoTAgent-Cplusplus/blob/release/1.0.2/doc/UL20_protocol.md)
@@ -33,8 +40,5 @@ Provisioning API is specified here:
  
 - [IoT Agents Manager](http://docs.telefonicaiotiotagents.apiary.io/)
 
-If you are interested in more details about how to connect your devices and sensros to the platform check out:
 
-- [How to publishing data from your IoT Devices](device_gateway_detail.md#publishing-data-from-your-iot-devices)
-- [How to send commands to your IoT Devices](device_gateway_detail.md#acting-upon-devices)
 

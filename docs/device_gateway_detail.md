@@ -10,7 +10,7 @@ If you want to quickly connect or simulate virtual devices you may also check FI
 Basically, there are 3 simple steps to follow:
 
 
-## 1.    Register your IoT device (optional) ##
+### 1.    Register your IoT device (optional)
 
 Before your device sends observations or receives commands a register operation is needed:
 
@@ -51,7 +51,7 @@ The important parameters to be defined are:
 - "commands": Used to indicate which commands the device supports. Depending on the "endpoint" configuration, commands will be considered as push or pull.
 - "static_attributes": Used to define static attributes (sent in every observation)
 
-## 2.     Send Observations related to your IoT device ##
+### 2.     Send Observations related to your IoT device
 
 Sending an observation from IoT devices is extremely efficient and simple with the following query:
 
@@ -72,7 +72,7 @@ Headers: {'content-type': 'application/text’; 'X-Auth-Token' : [TOKEN]; "Fiwar
 Payload: ‘t|23#h|80#l|95#m|Quiet‘
 ```
 
-## 3.     Reading measurements sent by your IoT device ##
+### 3.     Reading measurements sent by your IoT device
 
 Finally, after connecting your IoT devices this way you (or any other developer with the right access permissions) should be able to use the ContextBroker NGSI API to read the NGSI entity assigned to your device. 
 
@@ -140,7 +140,7 @@ Payload:
 
 
 
-## Sending individual measures ##
+### Sending individual measures
 
 This is the simplest and more straightforward scenario. Devices (once provisioned under a service) can publish MQTT messages to the IoTAgent. Those messages contain one piece of information each. That means that one message will be translated into one single entity on the ContexBroker domain. The information can be typically sensors' measures.
 
@@ -162,7 +162,7 @@ Example:
 $ mosquitto_pub -h $HOST_IOTAGENT_MQTT -t <api_key>/mydevicemqtt/t -m 44.4 -u <api_key>
 ```
 
-## Sending block measures ##
+### Sending block measures
 
 Another scenario can happen when devices send more than one phenomena within the payload. That is to say, one single MQTT message carries all measures. When it comes to ContextBroker, there will be one entity publication (per device) but containing all different attributes as per measures included in the mqtt message (each phenomenon or measure will be a separate attribute). In order to be able to parse the information on the IoTAgent, devices should follow this format:
 
