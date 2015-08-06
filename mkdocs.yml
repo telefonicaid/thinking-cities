@@ -11,7 +11,7 @@ pages:
   - 'Introduction': 'index.md'
   - 'Getting Started': 'quickguide.md'
   - 'Walkthrough': 
-    - 'Intro': 'walkthrough.md'
+    - 'Components': 'walkthrough.md'
     - 'Device Backend Gateway (IDAS)': 'device_gateway.md'
     - 'Context Broker (Orion)': 'context_broker.md'
     - 'Short Term Historic (STH)': 'sth.md'

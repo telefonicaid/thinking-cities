@@ -1,13 +1,9 @@
-IoT Platform documentation
-==========================
-
 IoT Platform allows you to connect devices and receive data, integrating all 
 device protocols and connectivity methods, understanding and interpreting relevant information. 
 It isolates data processing and application service layers from the device and network complexity, 
 in terms of access, security and network protocols.
 
-Benefits
---------
+## Benefits
 
 Benefits of solutions ‘powered by the IoT Platform’:
 
@@ -18,6 +14,3 @@ Benefits of solutions ‘powered by the IoT Platform’:
 - Open & standards based. FIWARE compliant
 
 
-> **note**
->
-> Site under construction! 
