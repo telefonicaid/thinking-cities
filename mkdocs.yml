@@ -21,4 +21,4 @@ pages:
     - 'Management Portal': 'WorkInProgress.md'
   - 'In Detail':
     - 'Context Broker': 'context_broker_detail.md'
-	- 'Device Backend Gateway': 'device_gateway.md'
+    - 'Device Backend Gateway': 'device_gateway.md'
