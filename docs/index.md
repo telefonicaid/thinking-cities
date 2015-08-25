@@ -3,9 +3,7 @@ device protocols and connectivity methods, understanding and interpreting releva
 It isolates data processing and application service layers from the device and network complexity, 
 in terms of access, security and network protocols.
 
-## Benefits
-
-Benefits of solutions 'powered by the IoT Platform':
+These are the main benefits of solutions 'powered by the FIWARE IoT Stack':
 
 - Simple sensor data integration 
 - Device-independent APIs for quick app development & lock-in prevention
@@ -15,13 +13,27 @@ Benefits of solutions 'powered by the IoT Platform':
 
 ## APIs available 
 
-IoT Platform provides the following APIs:
+FIWARE IoT Stack provides the following APIs:
 
-- '''Authentication API''': allows to login 
 - Device API: allows managing devices, sending data from the device and receive commands and the device.
-- Data API: allows recieving data stored at the FIWARE IoT Stack.
-- Historic data API: allows 
-- Data Processing API: allows 
+- Authentication API: provides authentication for Data, Historic Data and Data Processing APIs.
+- Data API: allows querying and subscribing to data stored at the FIWARE IoT Stack.
+- Historic Data API: allows querying historic data series and statistics.
+- Data Processing API: allows analyzing data on real time and triggering notifications based on it.
+- Management API: allows creating new services, subservices, users and roles. 
 
+## Management Portal 
 
-## Understanding 
+FIWARE IoT Stack provides also a management portal for performing most of the FIWARE IoT Stack operations available at Management API and also at Device API, Data API and Data Processing API:
+
+- Creating new services and subservices
+- Creating new users 
+- Creating new devices
+- Visualize stored data
+- Send commands to devices
+- Set up simple notifications based on data. 
+
+## FIWARE Components
+
+TODO
+
