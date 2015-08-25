@@ -13,4 +13,7 @@ Benefits of solutions ‘powered by the IoT Platform’:
 - Scalable. High available
 - Open & standards based. FIWARE compliant
 
+## APIs available 
 
+
+## Reference
