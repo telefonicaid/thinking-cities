@@ -17,7 +17,7 @@ Benefits of solutions 'powered by the IoT Platform':
 
 IoT Platform provides the following APIs:
 
-- Authentication API: allows to login 
+- '''Authentication API''': allows to login 
 - Device API: allows managing devices, sending data from the device and receive commands and the device.
 - Data API: allows recieving data stored at the FIWARE IoT Stack.
 - Historic data API: allows 
