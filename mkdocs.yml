@@ -11,7 +11,7 @@ pages:
   - 'Introduction': 'index.md'
   - 'Getting Started': 'quickguide.md'
   - 'APIs':
-    - 'Authentication API': 'device_gateway_detail.md'
+    - 'Authentication API': 'authentication_api.md'
     - 'Device API': 'device_gateway_detail.md'
     - 'Data API': 'context_broker_detail.md'
     - 'Historic Data API': 'device_gateway_detail.md'
