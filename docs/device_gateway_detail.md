@@ -151,8 +151,7 @@ Example:
 $ mosquitto_pub -h $HOST_IOTAGENT_MQTT -t <api_key>/mydevicemqtt/mul20 -m "t|5.4#o|4.3#n|3.2#c|2.1" -u <api_key>
 ```
 
- 
-# Acting upon devices #
+# Acting upon devices 
 
 In order to send commands to devices, you just need to know which attributes correspond to commands and update them.
 
@@ -175,7 +174,9 @@ http://130.206.80.40:5371/iot/d?k=[APIKEY]&i=[DEV_ID]
 
 ```
 
+# In more detail ...
 
+Device API is provided by Device Backend Gateway IDAS, you can read full reference.
 
 
 
