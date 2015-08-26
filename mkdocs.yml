@@ -14,9 +14,9 @@ pages:
     - 'Authentication API':
     - 'Device API': 'device_gateway_detail.md'
     - 'Data API': 'context_broker_detail.md'
-    - 'Historic Data API': 
-    - 'Data Processing API':
-    - 'Management API': 
+    - 'Historic Data API': 'device_gateway_detail.md'
+    - 'Data Processing API': 'device_gateway_detail.md'
+    - 'Management API': 'device_gateway_detail.md'
   - 'Management Portal': 'portal.md'
   - 'FIWARE Components': 
     - 'Components': 'walkthrough.md'
