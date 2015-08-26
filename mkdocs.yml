@@ -14,7 +14,7 @@ pages:
     - 'Authentication API': 'authentication_api.md'
     - 'Device API': 'device_gateway_detail.md'
     - 'Data API': 'context_broker_detail.md'
-    - 'Historic Data API': 'device_gateway_detail.md'
+    - 'Historic Data API': 'historicdata_api.md'
     - 'Data Processing API': 'device_gateway_detail.md'
     - 'Management API': 'device_gateway_detail.md'
   - 'Management Portal': 'portal.md'
