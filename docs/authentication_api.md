@@ -1,8 +1,7 @@
+# Authentication API 
 
-= Authentication API 
 
+# Login 
 
-= Login 
-
-= Get your token status
+# Get your token status
 
