@@ -16,7 +16,7 @@ pages:
     - 'Data API': 'context_broker_detail.md'
     - 'Historic Data API': 'historicdata_api.md'
     - 'Data Processing API': 'device_gateway_detail.md'
-    - 'Management API': 'device_gateway_detail.md'
+    - 'Management API': 'management_api.md'
   - 'Management Portal': 'portal.md'
   - 'FIWARE Components': 
     - 'Components': 'walkthrough.md'
