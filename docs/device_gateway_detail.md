@@ -5,16 +5,15 @@ Device API allows you to:
 - Send data from the device to the FIWARE IoT Stack
 - Send commands from your application to the device
 
-In the following paragraphs, we provide an example on how you would connect your devices using Ultralight2.0 (UL2.0) – which is a proposed simplification of the SensorML (SML) standard – and get those devices sending  their measurements (observations) to the ContextBroker. Ultralight2.0 is selected in this example because of its simplicity. 
-
 If you want to quickly connect or simulate virtual devices you may also check FIGWAY, a set of simple python scripts working as a client SDK for any desktop PC, laptop or gateway supporting a python2.7 environment. This way you may skip the steps described below and use the python commands as described in the README.md file available at this [Github repository](https://github.com/telefonicaid/fiware-figway).
-
 
 # Register your IoT device 
 
 Remember this step is optional, it is only required if you want to use commands in order to act upon devices or want to define a mapping to reduce the attributes identifier when you send observations to reduce the message size. 
 
 If you simply want to send observations you can skip this and just to Send Obsersations.
+
+## Registering for using UL2.0
 
 On this sample a device is registered to send temperature observations using UL2.0 protocol and a PING command:
 
@@ -55,7 +54,45 @@ The important parameters to be defined are:
 - "commands": Used to indicate which commands the device supports. Depending on the "endpoint" configuration, commands will be considered as push or pull.
 - "static_attributes": Used to define static attributes (sent in every observation)
 
-# Send Observations related to your IoT device
+## Registering for using MQTT 
+
+In this case, it will be necessary to provision a device in the MQTT IoT Agent:
+
+```
+POST $HOST_IOTAGENT/iot/devices
+
+Headers: {'content-type': 'application/json’; 'X-Auth-Token' : [TOKEN]; "Fiware-Service: OpenIoT”; "Fiware-ServicePath: /"}
+Payload:
+{"devices": [
+	{ "device_id": ”[DEV_ID]",
+  	"entity_name": ”[ENTITY_ID]",
+  	"entity_type": "thing",
+ 	"protocol": "PDI-IoTA-MQTT-UltraLight",
+  	"timezone": ”Europe/Madrid",
+	"endpoint": "http://[DEVICE_IP]:[PORT]",
+"attributes": [
+    	{ "object_id": "t",
+      	"name": "temperature",
+      	"type": "int"
+    	} ],
+"commands": [
+    	{ "name": "ping",
+      	"type": "command",
+      	"value": "[Dev_ID]@ping|%s"
+    	} ],
+ "static_attributes": [
+    	{ "name": "att_name",
+      	"type": "string",
+      	"value": "value"
+    	}]}]}
+```
+
+
+
+
+# Send Observations (UL2.0)
+
+Ultralight2.0 (UL2.0) is a proposed simplification of the SensorML (SML) standard – and get those devices sending  their measurements (observations) to the ContextBroker. Ultralight2.0 is selected in this example because of its simplicity. 
 
 Sending an observation from IoT devices is extremely efficient and simple with the following HTTP POST request:
 
@@ -104,37 +141,7 @@ http://130.206.80.40:5371/iot/d?k=[APIKEY]&i=[DEV_ID]
 
 # MQTT Example #
 
-In this case, it will be necessary to provision a device in the MQTT IoT Agent:
 
-
-```
-POST $HOST_IOTAGENT/iot/devices
-
-Headers: {'content-type': 'application/json’; 'X-Auth-Token' : [TOKEN]; "Fiware-Service: OpenIoT”; "Fiware-ServicePath: /"}
-Payload:
-{"devices": [
-	{ "device_id": ”[DEV_ID]",
-  	"entity_name": ”[ENTITY_ID]",
-  	"entity_type": "thing",
- 	"protocol": "PDI-IoTA-MQTT-UltraLight",
-  	"timezone": ”Europe/Madrid",
-	"endpoint": "http://[DEVICE_IP]:[PORT]",
-"attributes": [
-    	{ "object_id": "t",
-      	"name": "temperature",
-      	"type": "int"
-    	} ],
-"commands": [
-    	{ "name": "ping",
-      	"type": "command",
-      	"value": "[Dev_ID]@ping|%s"
-    	} ],
- "static_attributes": [
-    	{ "name": "att_name",
-      	"type": "string",
-      	"value": "value"
-    	}]}]}
-```
 
 
 
