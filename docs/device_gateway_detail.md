@@ -1,18 +1,22 @@
-# Publishing data from your IoT Devices #
+# Device API
 
-The first thing you need to do is to connect your IoT devices or Gateways to the above described scenario. This basically means that your IoT devices’ observations reach a ContextBroker.
+Device API allows you to:
+- Register your device to reduce the message footprint and use commands.
+- Send data from the device to the FIWARE IoT Stack
+- Send commands from your application to the device
 
 In the following paragraphs, we provide an example on how you would connect your devices using Ultralight2.0 (UL2.0) – which is a proposed simplification of the SensorML (SML) standard – and get those devices sending  their measurements (observations) to the ContextBroker. Ultralight2.0 is selected in this example because of its simplicity. 
 
 If you want to quickly connect or simulate virtual devices you may also check FIGWAY, a set of simple python scripts working as a client SDK for any desktop PC, laptop or gateway supporting a python2.7 environment. This way you may skip the steps described below and use the python commands as described in the README.md file available at this [Github repository](https://github.com/telefonicaid/fiware-figway).
 
 
-Basically, there are 3 simple steps to follow:
+# Register your IoT device 
 
+Remember this step is optional, it is only required if you want to use commands in order to act upon devices or want to define a mapping to reduce the attributes identifier when you send observations to reduce the message size. 
 
-### 1.    Register your IoT device (optional)
+If you simply want to send observations you can skip this and just to Send Obsersations.
 
-Before your device sends observations or receives commands a register operation is needed:
+On this sample a device is registered to send temperature observations using UL2.0 protocol and a PING command:
 
 ```
 POST $HOST_IOTAGENT/iot/devices
@@ -51,9 +55,9 @@ The important parameters to be defined are:
 - "commands": Used to indicate which commands the device supports. Depending on the "endpoint" configuration, commands will be considered as push or pull.
 - "static_attributes": Used to define static attributes (sent in every observation)
 
-### 2.     Send Observations related to your IoT device
+# Send Observations related to your IoT device
 
-Sending an observation from IoT devices is extremely efficient and simple with the following query:
+Sending an observation from IoT devices is extremely efficient and simple with the following HTTP POST request:
 
 ```
 POST  $HOST_IOTAGENT/d?k= <apikey>&i= <device_ID>
@@ -72,19 +76,13 @@ Headers: {'content-type': 'application/text’; 'X-Auth-Token' : [TOKEN]; "Fiwar
 Payload: ‘t|23#h|80#l|95#m|Quiet‘
 ```
 
-### 3.     Reading measurements sent by your IoT device
-
-Finally, after connecting your IoT devices this way you (or any other developer with the right access permissions) should be able to use the ContextBroker NGSI API to read the NGSI entity assigned to your device. 
-
-The Entity ID will be the following “[ENTITY_ID]”.
-
-
+Finally, after connecting your IoT devices this way you (or any other developer with the right access permissions) should be able to use the Data API to read the NGSI entity assigned to your device or see the data on the Management Portal.
 
 # Acting upon devices #
 
-In order to send commands to devices, developers just need to know which attributes correspond to commands and update them.
+In order to send commands to devices, you just need to know which attributes correspond to commands and update them.
 
-IoT integrators need to declare the command related attributes at the registry process (POST request) in the following way:
+You can declare the command related attributes at the registry process (POST request) in the following way:
 
 If you take a look to the previous device example, you can find that a "Ping" command was defined. 
 
