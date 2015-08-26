@@ -13,7 +13,7 @@ Remember this step is optional, it is only required if you want to use commands 
 
 If you simply want to send observations you can skip this and just to Send Obsersations.
 
-## Registering for using UL2.0
+## Registering for UL2.0
 
 On this sample a device is registered to send temperature observations using UL2.0 protocol and a PING command:
 
@@ -54,7 +54,7 @@ The important parameters to be defined are:
 - "commands": Used to indicate which commands the device supports. Depending on the "endpoint" configuration, commands will be considered as push or pull.
 - "static_attributes": Used to define static attributes (sent in every observation)
 
-## Registering for using MQTT 
+## Registering for MQTT 
 
 In this case, it will be necessary to provision a device in the MQTT IoT Agent:
 
@@ -87,10 +87,9 @@ Payload:
     	}]}]}
 ```
 
+# Send Observations 
 
-
-
-# Send Observations (UL2.0)
+## Sending using UL2.0
 
 Ultralight2.0 (UL2.0) is a proposed simplification of the SensorML (SML) standard – and get those devices sending  their measurements (observations) to the ContextBroker. Ultralight2.0 is selected in this example because of its simplicity. 
 
@@ -115,39 +114,10 @@ Payload: ‘t|23#h|80#l|95#m|Quiet‘
 
 Finally, after connecting your IoT devices this way you (or any other developer with the right access permissions) should be able to use the Data API to read the NGSI entity assigned to your device or see the data on the Management Portal.
 
-# Acting upon devices #
 
-In order to send commands to devices, you just need to know which attributes correspond to commands and update them.
+## Sending using MQTT 
 
-You can declare the command related attributes at the registry process (POST request) in the following way:
-
-If you take a look to the previous device example, you can find that a "Ping" command was defined. 
-
-Any update on this attribute “Ping” at the NGSI entity in the ContextBroker will send a command to your device.
-
-If the row "endpoint": "http://[DEVICE_IP]:[PORT]" is declared, then your device is supposed to be listening for commands at that URL in a synchronous way.
-
-If that enpoint is not declared (if that row does not exist) then your devices is supposed to work in a polling mode and therefore receiving commands in an asynchronous way (i.e. when the device proactively asks for commands).
-
-For a device working in the polling mode to receive commands, the full pending queue of commands will be received with the following HTTP GET request:
-
- 
-```
-GET  $HOST_IOTAGENT/d?k=<apikey>&i=<device_ID>
-Headers: {'content-type': 'application/text’; 'X-Auth-Token' : [TOKEN]; "Fiware-Service: OpenIoT”; "Fiware-ServicePath: /"}
-http://130.206.80.40:5371/iot/d?k=[APIKEY]&i=[DEV_ID]
-
-```
-
-# MQTT Example #
-
-
-
-
-
-### Sending individual measures
-
-This is the simplest and more straightforward scenario. Devices (once provisioned under a service) can publish MQTT messages to the IoTAgent. Those messages contain one piece of information each. That means that one message will be translated into one single entity on the ContexBroker domain. The information can be typically sensors' measures.
+Devices (once provisioned under a service) can publish MQTT messages to the IoTAgent. Those messages contain one piece of information each. That means that one message will be translated into one single entity on the ContexBroker domain. The information can be typically sensors' measures.
 
 This is the topic hierarchy that has to be used by devices:
 
@@ -167,8 +137,6 @@ Example:
 $ mosquitto_pub -h $HOST_IOTAGENT_MQTT -t <api_key>/mydevicemqtt/t -m 44.4 -u <api_key>
 ```
 
-### Sending block measures
-
 Another scenario can happen when devices send more than one phenomena within the payload. That is to say, one single MQTT message carries all measures. When it comes to ContextBroker, there will be one entity publication (per device) but containing all different attributes as per measures included in the mqtt message (each phenomenon or measure will be a separate attribute). In order to be able to parse the information on the IoTAgent, devices should follow this format:
 
 Topic:
@@ -184,3 +152,30 @@ $ mosquitto_pub -h $HOST_IOTAGENT_MQTT -t <api_key>/mydevicemqtt/mul20 -m "t|5.4
 ```
 
  
+# Acting upon devices #
+
+In order to send commands to devices, you just need to know which attributes correspond to commands and update them.
+
+You can declare the command related attributes at the registry process (POST request) in the following way:
+
+If you take a look to the previous device example, you can find that a "Ping" command was defined. 
+
+Any update on this attribute “Ping” at the NGSI entity in the ContextBroker will send a command to your device.
+
+If the row "endpoint": "http://[DEVICE_IP]:[PORT]" is declared, then your device is supposed to be listening for commands at that URL in a synchronous way.
+
+If that enpoint is not declared (if that row does not exist) then your devices is supposed to work in a polling mode and therefore receiving commands in an asynchronous way (i.e. when the device proactively asks for commands).
+
+For a device working in the polling mode to receive commands, the full pending queue of commands will be received with the following HTTP GET request:
+ 
+```
+GET  $HOST_IOTAGENT/d?k=<apikey>&i=<device_ID>
+Headers: {'content-type': 'application/text’; 'X-Auth-Token' : [TOKEN]; "Fiware-Service: OpenIoT”; "Fiware-ServicePath: /"}
+http://130.206.80.40:5371/iot/d?k=[APIKEY]&i=[DEV_ID]
+
+```
+
+
+
+
+
