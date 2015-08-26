@@ -10,7 +10,15 @@ theme: readthedocs
 pages:
   - 'Introduction': 'index.md'
   - 'Getting Started': 'quickguide.md'
-  - 'Walkthrough': 
+  - 'APIs':
+    - 'Authentication API':
+    - 'Device API': 'device_gateway_detail.md'
+    - 'Data API': 'context_broker_detail.md'
+    - 'Historic Data API': 
+    - 'Data Processing API':
+    - 'Management API': 
+  - 'Management Portal': 'portal.md'
+  - 'FIWARE Components': 
     - 'Components': 'walkthrough.md'
     - 'Device Backend Gateway (IDAS)': 'device_gateway.md'
     - 'Context Broker (Orion)': 'context_broker.md'
@@ -18,7 +26,4 @@ pages:
     - 'Connector Framework (Cygnus)': 'cygnus.md'
     - 'Complex Event Processing (Perseo)': 'cep.md'
     - 'Identity Management (IDM)': 'idm.md'
-    - 'Management Portal': 'portal.md'
-  - 'In Detail':
-    - 'Context Broker': 'context_broker_detail.md'
-    - 'Device Backend Gateway': 'device_gateway_detail.md'
+
