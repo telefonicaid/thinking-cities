@@ -35,5 +35,13 @@ FIWARE IoT Stack provides also a management portal for performing most of the FI
 
 ## FIWARE Components
 
-TODO
+FIWARE IoT Stack is based on FIWARE components in order to provide its functionality. 
+
+- Device Backend Gateway (IDAS)
+- Context Broker (Orion)
+- Short Term Historic (STH)
+- Connector Framework (Cygnus)
+- Complex Event Processing (Perseo)
+- Identity Management (IDM)
+
 
