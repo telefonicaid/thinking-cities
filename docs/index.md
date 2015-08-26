@@ -15,11 +15,11 @@ These are the main benefits of solutions 'powered by the FIWARE IoT Stack':
 
 FIWARE IoT Stack provides the following APIs:
 
-- Device API: allows managing devices, sending data from the device and receive commands and the device.
-- Authentication API: provides authentication for Data, Historic Data and Data Processing APIs.
+- Authentication API: manages tokens for APIs usage.
+- Device API: allows managing devices, sending data from the device to the FIWARE IoT Stack and receiving commands on the device.
 - Data API: allows querying and subscribing to data stored at the FIWARE IoT Stack.
-- Historic Data API: allows querying historic data series and statistics.
-- Data Processing API: allows analyzing data on real time and triggering notifications based on it.
+- Historic Data API: allows querying historic data series and statistics stored at the FIWARE IoT Stack.
+- Data Processing API: allows analyzing data stored at the FIWARE IoT Stack on real time and triggering notifications based on it.
 - Management API: allows creating new services, subservices, users and roles. 
 
 ## Management Portal 
