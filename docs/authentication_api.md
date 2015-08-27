@@ -130,4 +130,4 @@ Token expiration date can not be extended, but you can request a new token anyti
 
 # In more detail ...
 
-You can get more information about the FIWARE component providing this functionalty, reference API documentation and source code at [idm.md](idm.md)
+You can get more information about the FIWARE component providing this functionalty, reference API documentation and source code at [Identity Management (IDM)](idm.md)
