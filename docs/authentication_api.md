@@ -129,3 +129,5 @@ You can check when the token was issued and when it will expire on the response 
 Token expiration date can not be extended, but you can request a new token anytime and the ones you got before will still be valid.
 
 # In more detail ...
+
+You can get more information about the FIWARE component providing this functionalty, reference API documentation and source code at [idm.md]
