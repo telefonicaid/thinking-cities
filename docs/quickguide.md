@@ -1,7 +1,4 @@
-Getting started in 5 steps
-==========================
-
-### Step 0 - Credentials
+# Step 0 - Credentials
 
 Please, request your credentials. You will receive an email containing these fields that are required for the following steps:
 
@@ -44,7 +41,7 @@ all this guide samples and some additional operations are there.
 In that email, there is also attached a POSTMAN environment with your
 credentials for this POSTMAN collection.
 
-### Step 1 - Send data
+# Step 1 - Send data
 
 Before doing any coding, identify the sensors on your device and decide
 which data do you want to send to Thinking Things Cloud.
@@ -83,7 +80,7 @@ the message length sent from the device.
 Your will simply receive an HTTP 200 OK response to confirm the data was
 properly received at Thinking Things Cloud.
 
-### Step 2 - See data
+# Step 2 - See data
 
 Your device data is now stored in the Thinking Things Cloud, and your
 can see it on the web portal. Please access the web portal with your
@@ -354,7 +351,7 @@ The command received will be as follows:
 </p>
 
 
-### In more detail …
+# In more detail …
 
 #### Sending data
 
