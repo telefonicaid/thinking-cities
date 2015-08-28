@@ -87,7 +87,7 @@ Payload:
     	}]}]}
 ```
 
-# Send Observations 
+# Send observations 
 
 **Sending using UL2.0**
 
@@ -151,7 +151,7 @@ Example:
 $ mosquitto_pub -h $HOST_IOTAGENT_MQTT -t <api_key>/mydevicemqtt/mul20 -m "t|5.4#o|4.3#n|3.2#c|2.1" -u <api_key>
 ```
 
-# Acting upon devices 
+# Act upon devices 
 
 In order to send commands to devices, you just need to know which attributes correspond to commands and update them.
 
