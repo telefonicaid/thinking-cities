@@ -353,7 +353,7 @@ The command received will be as follows:
 
 # In more detail …
 
-##### Sending data
+**Sending data**
 
 Devices can provide data using many other protocols like MQTT or COAP,
 it is also feasible to set different timestamps, configure customized
@@ -362,7 +362,7 @@ measures via HTTP GET. Read the full detail at:
 
 [*https://drive.google.com/open?id=1TfpQdPcU\_tE\_hl79y-4r\_Znk8ZGYAZzQsmvZ4ZWu6yg*](https://drive.google.com/open?id=1TfpQdPcU_tE_hl79y-4r_Znk8ZGYAZzQsmvZ4ZWu6yg)
 
-#### Last Data API
+**Data API**
 
 Thinking things data API is FIWARE NGSI compliant so it provides lots of
 features: subscriptions, partial updates, bulk entities retrieval,
@@ -374,7 +374,7 @@ Read the full reference at:
 
 [*https://forge.fiware.org/plugins/mediawiki/wiki/fiware/index.php/Publish/Subscribe\_Broker\_-\_Orion\_Context\_Broker\_-\_User\_and\_Programmers\_Guide*](https://forge.fiware.org/plugins/mediawiki/wiki/fiware/index.php/Publish/Subscribe_Broker_-_Orion_Context_Broker_-_User_and_Programmers_Guide)
 
-#### Historic Data API
+**Historic Data API**
 
 Historic data is accessible using the Short Term historic API.
 
@@ -427,7 +427,7 @@ Historic data is accessible using the Short Term historic API.
 More info:
 [*https://github.com/telefonicaid/IoT-STH*](https://github.com/telefonicaid/IoT-STH)
 
-#### New accounts and subservices
+** New accounts and subservices **
 
 You can create new users and credentials at the web portal. It is also
 possible to have different subservices in order to segment properly your
@@ -435,7 +435,7 @@ data.
 
 [*https://drive.google.com/open?id=0BwLx3ffvQDehSktHdElKOTg3dWs*](https://drive.google.com/open?id=0BwLx3ffvQDehSktHdElKOTg3dWs)
 
-#### Data visualization tools
+**Data visualization tools**
 
 Do you need to show your devices on a map? want your data in a Google
 Sheet? prefer to use Ducksboard for creating dashboards? Take a look to
