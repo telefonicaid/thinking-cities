@@ -24,7 +24,7 @@ FIWARE IoT Stack provides the following APIs:
 
 ## Management Portal 
 
-FIWARE IoT Stack provides also a website for performing most of the FIWARE IoT Stack management operations available on APIs. These are the most relevant actions you can perform:
+FIWARE IoT Stack provides also a [admin website](portal.md) for performing most of the FIWARE IoT Stack management operations available on APIs. These are the most relevant actions you can perform:
 
 - Creating new services and subservices
 - Creating new users 
@@ -35,7 +35,7 @@ FIWARE IoT Stack provides also a website for performing most of the FIWARE IoT S
 
 ## FIWARE Components
 
-FIWARE IoT Stack is based on the following FIWARE components in order to provide its functionality:
+FIWARE IoT Stack is based on the following [FIWARE components](walkthrough.md) in order to provide its functionality:
 
 - Device Backend Gateway (IDAS)
 - Context Broker (Orion)
@@ -43,5 +43,3 @@ FIWARE IoT Stack is based on the following FIWARE components in order to provide
 - Connector Framework (Cygnus)
 - Complex Event Processing (Perseo)
 - Identity Management (IDM)
-
-
