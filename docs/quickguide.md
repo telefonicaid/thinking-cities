@@ -353,7 +353,7 @@ The command received will be as follows:
 
 # In more detail …
 
-#### Sending data
+##### Sending data
 
 Devices can provide data using many other protocols like MQTT or COAP,
 it is also feasible to set different timestamps, configure customized
