@@ -176,7 +176,5 @@ http://130.206.80.40:5371/iot/d?k=[APIKEY]&i=[DEV_ID]
 
 # In more detail ...
 
-Device API is provided by Device Backend Gateway IDAS, you can read full reference.
-
 You can get more information about the FIWARE component providing this functionalty, reference API documentation and source code at Identity Management [Backend Gateway IDAS](device_gateway.md)
 
