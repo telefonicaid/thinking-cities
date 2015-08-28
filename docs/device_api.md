@@ -1,6 +1,6 @@
-# Device API
 
 Device API allows you to:
+
 - Register your device to reduce the message footprint and use commands.
 - Send data from the device to the FIWARE IoT Stack
 - Send commands from your application to the device
@@ -13,7 +13,7 @@ Remember this step is optional, it is only required if you want to use commands 
 
 If you simply want to send observations you can skip this and just to Send Obsersations.
 
-## Registering for UL2.0
+**Registering for UL2.0**
 
 On this sample a device is registered to send temperature observations using UL2.0 protocol and a PING command:
 
@@ -54,7 +54,7 @@ The important parameters to be defined are:
 - "commands": Used to indicate which commands the device supports. Depending on the "endpoint" configuration, commands will be considered as push or pull.
 - "static_attributes": Used to define static attributes (sent in every observation)
 
-## Registering for MQTT 
+**Registering for MQTT**
 
 In this case, it will be necessary to provision a device in the MQTT IoT Agent:
 
@@ -89,7 +89,7 @@ Payload:
 
 # Send Observations 
 
-## Sending using UL2.0
+**Sending using UL2.0**
 
 Ultralight2.0 (UL2.0) is a proposed simplification of the SensorML (SML) standard – and get those devices sending  their measurements (observations) to the ContextBroker. Ultralight2.0 is selected in this example because of its simplicity. 
 
@@ -115,7 +115,7 @@ Payload: ‘t|23#h|80#l|95#m|Quiet‘
 Finally, after connecting your IoT devices this way you (or any other developer with the right access permissions) should be able to use the Data API to read the NGSI entity assigned to your device or see the data on the Management Portal.
 
 
-## Sending using MQTT 
+**Sending using MQTT**
 
 Devices (once provisioned under a service) can publish MQTT messages to the IoTAgent. Those messages contain one piece of information each. That means that one message will be translated into one single entity on the ContexBroker domain. The information can be typically sensors' measures.
 
