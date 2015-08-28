@@ -24,7 +24,7 @@ FIWARE IoT Stack provides the following APIs:
 
 ## Management Portal 
 
-FIWARE IoT Stack provides also a [admin website](portal.md) for performing most of the FIWARE IoT Stack management operations available on APIs. These are the most relevant actions you can perform:
+FIWARE IoT Stack provides also an [admin website](portal.md) for performing most of the FIWARE IoT Stack management operations available on APIs. These are the most relevant actions you can perform:
 
 - Creating new services and subservices
 - Creating new users 
