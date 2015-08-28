@@ -245,3 +245,8 @@ POST <cb_host>:<cb_port>/v1/queryContext
 }
 
 ```
+
+# In more detail ...
+
+
+You can get more information about the FIWARE component providing this functionalty, reference API documentation and source code at [Context Broker (Orion)](context_broker.md).
