@@ -1,8 +1,4 @@
 
-
-
-# Connection to the Internet of Things
-
 Connecting “objects” or “things” involves the need to overcome a set of problems arising in the different layers of the communication model. Using its data or acting upon them requires interaction with a heterogeneous environment of devices running different protocols (due to the lack of globally accepted standards), dispersed and accessible through multiple wireless technologies.  
 
 Devices have a lot of particularities so it is not feasible to provide a solution where one size fits all. They are resource constrained and can’t use full standard protocol stacks: they cannot transmit information too frequently due to battery drainage, they are not always reachable since they are connected through heterogeneous wireless networks, their communication protocols are too specific and lack integrated approach, and they use different data encoding languages, so it is tricky to find a global deployment.  
