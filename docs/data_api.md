@@ -1,4 +1,11 @@
-## Update/Query context
+Data API allows you to access the information stored at the FIWARE IoT Stack from your devices:
+
+- Update and query data 
+- Subscribe to data updates
+- Geolocated data queries
+
+
+# Update/Query data
 
 Processes running as part of your application architecture that update context information using REST operations that the Context Broker GE exports, are said to play a **Context Producer** role.  As an example, let’s consider an application for rating restaurants (let’s call it NiceEating). The client part of that application running on the smartphone of users would play the role of Context Producer, enabling them to rate restaurants.
 
@@ -148,7 +155,7 @@ GET <cb_host>:<cb_port>/v1/contextEntities/type/Restaurant/id/LeBistro?attribute
 ```
 
 
-## Subscription to context changes ##
+# Subscribe to data updates
 
 Apart from getting information using queries in a synchronous way (as illustrated in the “How to update and query context information” section above), **Context Consumers** can also get context information in an asynchronous way using notifications. In this scenario, the Context Broker GE is “programmed” to send notifications upon given conditions (specified in the subscription request).
 
@@ -206,7 +213,8 @@ POST <cb_host>:<cb_port>/v1/subscribeContext
 ```
 
 
-## Geolocated context queries ##
+# Geolocated data queries 
+
 One very powerful feature in Context Broker GE is the ability to perform geo-located queries. You can query entities located inside (or outside) a region defined by a circle or a polygon.
 For example, to query for all the restaurants within 13 km of the Madrid city center (identified by GPS coordinates 40.418889, -3.691944) a Context Consumer application will use the following query:
 
