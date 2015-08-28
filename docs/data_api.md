@@ -4,6 +4,7 @@ Data API allows you to access the information stored at the FIWARE IoT Stack fro
 - Subscribe to data updates
 - Geolocated data queries
 
+All the communications between the various components of the FIWARE IoT Stack occur via the NGSI RESTful interface interfaces/protocols, which is described in a following sections. NGSI RESTful interface is inspired and based on the OMA NGSI specification. This is a standard interface allowing to handle any type of data, which may include meta-data. 
 
 # Update/Query data
 
