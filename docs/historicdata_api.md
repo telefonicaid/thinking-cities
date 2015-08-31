@@ -43,6 +43,61 @@ If you are familiar with FIWARE components, on this request you are using the Da
 
 # Get raw time series data
 
+Your device data is now stored in the FIWARE IoT Stack, and your can get the raw time series in you application.
+
+You can get the last N values stored as follows:
+
+```
+GET /STH/v1/contextEntities/type/device/id/mydevice/attributes/temperature?lastN=10 HTTP/1.1
+Host: test.ttcloud.net:8666
+Accept: application/json
+Content-Type: application/json
+Fiware-Service: {{Fiware-Service}} 
+Fiware-ServicePath: {{Fiware-ServicePath}} 
+X-Auth-Token: {{user-token}}
+```
+
+More complex filtering like data interval selection and results pagination is also available:
+
+```
+GET /STH/v1/contextEntities/type/device/id/mydevice/attributes/temperature?hLimit=3&hOffset=0&dateFrom=2014-02-14T00:00:00.00
+Host: test.ttcloud.net:8666
+Accept: application/json
+Content-Type: application/json
+Fiware-Service: {{Fiware-Service}} 
+Fiware-ServicePath: {{Fiware-ServicePath}} 
+X-Auth-Token: {{user-token}}
+```
+
+You will get a list with the requested attribute values and its associated timestamps:
+
+```
+{
+  "contextResponses": [
+    {
+      "contextElement": {
+        "attributes": [
+          {
+            "name": "temperature",
+            "values": [...]
+          }
+        ],
+        "id": "mydevice",
+        "isPattern": false,
+        "type": "device"
+      },
+      "statusCode": {
+        "code": "200",
+        "reasonPhrase": "OK"
+      }
+    }
+  ]
+}
+
+```
+
+Please, take into account that you will be able to get one attribute (i.e. temperature, hummidity ...) per request.
+
 # Get aggregated time series data
 
 # In more detail ...
