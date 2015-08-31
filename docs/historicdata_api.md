@@ -84,8 +84,8 @@ Content-Type : application/json
             "name": "temperature",
             "values": [
                 {
-                 "recvTime": "2014-02-14T13:43:33.306Z"
-                 "attrValue": "21.28"
+                    "recvTime": "2014-02-14T13:43:33.306Z"
+                    "attrValue": "21.28"
                 },
                 {
                     "recvTime": "2014-02-14T13:43:34.636Z",
