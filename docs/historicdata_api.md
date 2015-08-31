@@ -39,7 +39,7 @@ X-Auth-Token: {{user-token}}
 "throttling": "PT1S" }
 ```
 
-If you are familiar with FIWARE componentes, on this request you are using the Data API subscription operation to notify new data from your device to the FIWARE STH component providing the Historic Data API.
+If you are familiar with FIWARE components, on this request you are using the Data API subscription operation to notify new data from your device to the FIWARE STH component providing the Historic Data API.
 
 # Get raw time series data
 
