@@ -18,8 +18,8 @@ pages:
     - 'Data Processing API': 'dataprocessing_api.md'
     - 'Management API': 'management_api.md'
   - 'Management Portal': 'portal.md'
-  - 'FIWARE Components': 
-    - 'Components': 'walkthrough.md'
+  - 'Architecture': 
+    - 'FIWARE Components': 'walkthrough.md'
     - 'Device Backend Gateway (IDAS)': 'device_gateway.md'
     - 'Context Broker (Orion)': 'context_broker.md'
     - 'Short Term Historic (STH)': 'sth.md'
