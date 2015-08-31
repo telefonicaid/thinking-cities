@@ -29,11 +29,11 @@ You will receive a response with your {{service-id}}, which is relevant on next 
 
 ```
 HTTP 201 CREATED
+Content-Type: application/json
 
 {
   "id": "5e333fcadadc4707b2a3b26e73c07b69"
 }
-
 ```
 
 # Create subservice 
@@ -52,6 +52,18 @@ Postman-Token: 28ce14a6-4e8e-9ab2-3a18-b0df09cd74bf
     "SERVICE_NAME":"{{Fiware-Service}}",
     "NEW_SUBSERVICE_NAME":"{{FiwareService-Path}}",
     "NEW_SUBSERVICE_DESCRIPTION":"new subservice"
+}
+```
+
+You will recieve now a {{subservice-id}} identifying your subservice
+
+
+```
+HTTP 201 CREATED
+Content-Type: application/json
+
+{
+  "id": "2a3b26e73c07b695e333fcadadc4707b"
 }
 ```
 
