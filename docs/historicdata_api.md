@@ -131,6 +131,7 @@ X-Auth-Token: {{user-token}}
 ```
 
 As aggrMethog you can specify the following values that let you calculate:
+
 - max: maximum value
 - min: minimum value
 - sum: sum of all the samples
