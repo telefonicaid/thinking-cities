@@ -8,7 +8,7 @@ Please, remember that most of these operations are available at the Admin Portal
 
 # Create service
 
-You can create a service just 
+First, you have to create your service.  Please, take into accout that you will need the IoT Stack admin token (mentioned as {{admin-token}} in the examples) to do so:
 
 ```
 POST /orc/service/{{service-id}}/subservice HTTP/1.1
