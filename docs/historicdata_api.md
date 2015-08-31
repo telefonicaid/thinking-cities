@@ -72,6 +72,9 @@ X-Auth-Token: {{user-token}}
 You will get a list with the requested attribute values and its associated timestamps:
 
 ```
+HTTP 200 OK
+Content-Type : application/json
+
 {
   "contextResponses": [
     {
