@@ -74,7 +74,7 @@ Once the service is created, you can create a user as follows:
 ```
 POST /orc/service/669b1e1a3e6c41ee9a1cbe5ab5165f6e/user HTTP/1.1
 Host: test.ttcloud.net:8008
-X-Auth-Token: 5290d19f7edc42bda76e65597e2195b9
+X-Auth-Token: {{admin-token}}
 Content-Type: application/json
 Cache-Control: no-cache
 Postman-Token: 336095c3-b9ec-949b-6fc0-ad626adab55f
@@ -94,7 +94,7 @@ First, retrieve the roles created by default on your subservice:
 ```
 GET /orc/service/{{subservice-id}}/role HTTP/1.1
 Host: test.ttcloud.net:8008
-X-Auth-Token: 5290d19f7edc42bda76e65597e2195b9
+X-Auth-Token: {{admin-token}}
 Content-Type: application/json
 Cache-Control: no-cache
 Postman-Token: 4e29d01c-2988-41b1-ab7b-62ec3895293d
@@ -135,7 +135,7 @@ Now you know the roles ids for your subservice, you can assign one role to the u
 ```
 POST /orc/service/{{subservice-id}}/role_assignments HTTP/1.1
 Host: test.ttcloud.net:8008
-X-Auth-Token: 5290d19f7edc42bda76e65597e2195b9
+X-Auth-Token: {{admin-token}}
 Content-Type: application/json
 
 {
