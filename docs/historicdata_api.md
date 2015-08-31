@@ -7,8 +7,8 @@ Historic Data API provides aggregated time series information about the evolutio
 
 # Activate historic
 
-# Get last values
+# Get raw time series data
 
-# Get stats from values
+# Get aggregated time series data
 
 # In more detail ...
