@@ -15,7 +15,7 @@ pages:
     - 'Device API': 'device_api.md'
     - 'Data API': 'data_api.md'
     - 'Historic Data API': 'historicdata_api.md'
-    - 'Data Processing API': 'dataprocessing_api.md'
+    - 'Complex Event Processing API': 'dataprocessing_api.md'
     - 'Management API': 'management_api.md'
   - 'Management Portal': 'portal.md'
   - 'Architecture': 
