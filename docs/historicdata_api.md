@@ -116,4 +116,69 @@ Please, take into account that you will be able to get one attribute (i.e. tempe
 
 # Get aggregated time series data
 
+Sometimes, the amount of stored data may be huge and it is not efficient to get the whole dataset in order to calculate basic statistics like average value.  
+
+You can get aggregated data to calculate this basic statistics as follows:
+
+```
+GET /STH/v1/contextEntities/type/device/id/mydevice/attributes/temperature?aggrMethod=sum&aggrPeriod=second&dateFrom=2015-02-22T00:00:00.000Z&dateTo=2015-02-22T23:00:00.000Z
+Host: test.ttcloud.net:8666
+Accept: application/json
+Content-Type: application/json
+Fiware-Service: {{Fiware-Service}} 
+Fiware-ServicePath: {{Fiware-ServicePath}} 
+X-Auth-Token: {{user-token}}
+```
+
+As aggrMethog you can specify the following values that let you calculate:
+- max: maximum value
+- min: minimum value
+- sum: sum of all the samples
+- sum2: sum of the square value of all the samples. 
+ 
+Combining the information provided by these aggregated methods with the number of samples you will also get on the response, it is possible to calculate basic statistics such as the average value, the variance as well as the standard deviation.
+
+You will get the aggregated data value and the number of samples on the response:
+
+```
+HTTP 200 OK
+Content-Type : application/json
+
+{
+    "contextResponses": [
+        {
+            "contextElement": {
+                "attributes": [
+                    {
+                        "name": "temperature",
+                        "values": [
+                            {
+                                "_id": {
+                                    "origin": "2015-02-18T02:46:00.000Z",
+                                    "range": "minute",
+                                    "resolution": "second"
+                                },
+                                "points": [
+                                    {
+                                        "offset": 0,
+                                        "samples": 123,
+                                        "sum": 34.59
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "id": "entityId",
+                "isPattern": false
+            },
+            "statusCode": {
+                "code": "200",
+                "reasonPhrase": "OK"
+            }
+        }
+    ]
+}
+```
+
 # In more detail ...
