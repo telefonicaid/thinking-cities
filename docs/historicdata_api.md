@@ -9,9 +9,9 @@ In a nutshell, using Historic Data API you can get basic statistics from your Io
 
 # Activate historic
 
-You have to choose which data historic is relevant for you to be stored at the FIWARE IoT Stack.
+You have to choose which data historic from your IoT device is relevant fto be stored at the FIWARE IoT Stack.
 
-In order to do so, you have to select which Data API entity attributes are relevant:
+In order to do so, you have to select the Data API entity attributes.  On the following examples, the temperature attribute will be selected:
 
 ```
 POST /NGSI10/subscribeContext HTTP/1.1
@@ -27,7 +27,6 @@ X-Auth-Token: {{user-token}}
         {"type": "device",
         "isPattern": "false",
         "id": "mydevice"
-            
         }
     ],
     "reference": "http://test.ttcloud.net:8666/notify", 
