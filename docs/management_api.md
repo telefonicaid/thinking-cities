@@ -19,8 +19,7 @@ Cache-Control: no-cache
 Postman-Token: 28ce14a6-4e8e-9ab2-3a18-b0df09cd74bf
 
 {
-    "SERVICE_NAME":"{{Fiware-Service}}",
-    "NEW_SERVICE_NAME":"{{FiwareService-Path}}",
+    "NEW_SERVICE_NAME":"{{FiwareService}}",
     "NEW_SERVICE_DESCRIPTION":"new subservice"
 }
 ```
