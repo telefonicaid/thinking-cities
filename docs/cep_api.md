@@ -43,5 +43,32 @@ If you are familiar with FIWARE components, on this request you are using the Da
 
 # Create rule
 
+Once you have activated the processing for your data, you can create a rule to trigger actions as follows:
+
+```
+
+POST /NGSI10/subscribeContext HTTP/1.1
+Host: test.ttcloud.net:1026
+Accept: application/json
+Content-Type: application/json
+Fiware-Service: {{Fiware-Service}} 
+Fiware-ServicePath: {{Fiware-ServicePath}} 
+X-Auth-Token: {{user-token}}
+
+{
+   "name":"train-rule",
+   "text":"@Audit select *,\"train-rule\" as ruleName, \"webinar\" as tenant, \"/\" as service from pattern [every ev=iotEvent(cast(cast(ev.longitude?,String),float)>200.0)]",
+   "action":{
+      "name":"train-rule_action",
+      "type":"update",
+      "parameters":{
+         "name":"longtrain_alarm",
+         "value":"true",
+         "type": "String"
+      }
+   }
+}
+```
+
 # In more detail ...
 
