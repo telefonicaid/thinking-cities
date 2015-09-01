@@ -2,7 +2,7 @@ Management API allow you to:
 
 - Create services and subservices
 - Create users
-- Assign roles to users 
+- Assign roles to users in service
 
 Please, remember that most of these operations are available at the Admin Portal, unless you are integrating dynamic service and user creation with your application, you don't need to use Management API.
 
@@ -15,8 +15,6 @@ POST /orc/service/{{service-id}}/service HTTP/1.1
 Host: test.ttcloud.net:8008
 X-Auth-Token: {{admin-token}}
 Content-Type: application/json
-Cache-Control: no-cache
-Postman-Token: 28ce14a6-4e8e-9ab2-3a18-b0df09cd74bf
 
 {
     "NEW_SERVICE_NAME":"{{Fiware-Service}}",
@@ -44,8 +42,6 @@ POST /orc/service/{{service-id}}/subservice HTTP/1.1
 Host: test.ttcloud.net:8008
 X-Auth-Token: {{admin-token}}
 Content-Type: application/json
-Cache-Control: no-cache
-Postman-Token: 28ce14a6-4e8e-9ab2-3a18-b0df09cd74bf
 
 {
     "SERVICE_NAME":"{{Fiware-Service}}",
@@ -75,8 +71,6 @@ POST /orc/service/669b1e1a3e6c41ee9a1cbe5ab5165f6e/user HTTP/1.1
 Host: test.ttcloud.net:8008
 X-Auth-Token: {{admin-token}}
 Content-Type: application/json
-Cache-Control: no-cache
-Postman-Token: 336095c3-b9ec-949b-6fc0-ad626adab55f
 
 {
     "NEW_SERVICE_USER_NAME":"{{subservice-user-name}}",
@@ -95,8 +89,6 @@ GET /orc/service/{{subservice-id}}/role HTTP/1.1
 Host: test.ttcloud.net:8008
 X-Auth-Token: {{admin-token}}
 Content-Type: application/json
-Cache-Control: no-cache
-Postman-Token: 4e29d01c-2988-41b1-ab7b-62ec3895293d
 ```
 
 You will get the list of roles in the response:
