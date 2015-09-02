@@ -110,8 +110,8 @@ You can send a tweet from your account with the text build from the template fie
 Remember you must create your Twitter app and get its OAuth credentials.
 
 ```
-POST /NGSI10/subscribeContext HTTP/1.1
-Host: test.ttcloud.net:1026
+POST /rules HTTP/1.1
+Host: test.ttcloud.net:9090
 Accept: application/json
 Content-Type: application/json
 Fiware-Service: {{Fiware-Service}} 
