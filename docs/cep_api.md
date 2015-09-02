@@ -36,7 +36,7 @@ X-Auth-Token: {{user-token}}
         "id": "mydevice"
         }
     ],
-    "reference": "http://test.ttcloud.net:xxxx/notify", 
+    "reference": "http://test.ttcloud.net:9090/notices", 
     "duration": "P1Y",
     "notifyConditions": [
            {
@@ -53,8 +53,8 @@ If you are familiar with FIWARE components, on this request you are using the Da
 Once you have activated the processing for your data, you can create a rule to trigger actions as follows:
 
 ```
-POST /NGSI10/subscribeContext HTTP/1.1
-Host: test.ttcloud.net:1026
+POST /rules HTTP/1.1
+Host: test.ttcloud.net:9090
 Accept: application/json
 Content-Type: application/json
 Fiware-Service: {{Fiware-Service}} 
@@ -62,11 +62,11 @@ Fiware-ServicePath: {{Fiware-ServicePath}}
 X-Auth-Token: {{user-token}}
 
 {
-   "name":"train-rule",
-   "text":"@Audit select *,\"train-rule\" as ruleName, \"webinar\" as tenant, \"/\" as service from pattern [every ev=iotEvent(cast(cast(ev.longitude?,String),float)>200.0)]",
+   "name":"temperature-rule",
+   "text":"select *,\"temperature-rule\" as ruleName from pattern [every ev=iotEvent(cast(cast(ev.temperature?,String),float)>40.0)]",
     "action": {
         "type": "email",
-        "template": "Meter ${Meter} has pression ${Pression} (GEN RULE)",
+        "template": "Alert! temperature is now ${ev.temperature}.",
         "parameters": {
             "to": "someone@yourclient.com",
             "from": "notificactions@yourdomain.com"
@@ -83,8 +83,8 @@ X-Auth-Token: {{user-token}}
 You can also trigger an HTTP POST to an URL specified sending a body built from template:
 
 ```
-POST /NGSI10/subscribeContext HTTP/1.1
-Host: test.ttcloud.net:1026
+POST /rules HTTP/1.1
+Host: test.ttcloud.net:9090
 Accept: application/json
 Content-Type: application/json
 Fiware-Service: {{Fiware-Service}} 
@@ -92,14 +92,13 @@ Fiware-ServicePath: {{Fiware-ServicePath}}
 X-Auth-Token: {{user-token}}
 
 {
-   "name":"train-rule",
-   "text":"@Audit select *,\"train-rule\" as ruleName, \"webinar\" as tenant, \"/\" as service from pattern [every ev=iotEvent(cast(cast(ev.longitude?,String),float)>200.0)]",
-
+   "name":"temperature-rule",
+   "text":"select *,\"temperature-rule\" as ruleName from pattern [every ev=iotEvent(cast(cast(ev.temperature?,String),float)>40.0)]",
     "action": {
         "type": "post",
-        "template": "Meter ${Meter} has pression ${Pression}.",
+        "template": "Alert! temperature is now ${ev.temperature}.",
         "parameters": {
-            "url": "localhost:1111"
+            "url": "http://yourcustomer.com"
         }
     }
 ```
@@ -120,12 +119,11 @@ Fiware-ServicePath: {{Fiware-ServicePath}}
 X-Auth-Token: {{user-token}}
 
 {
-    "name":"train-rule",
-    "text":"@Audit select *,\"train-rule\" as ruleName, \"webinar\" as tenant, \"/\" as service from pattern [every ev=iotEvent(cast(cast(ev.longitude?,String),float)>200.0)]",
-
+    "name":"temperature-rule",
+    "text":"select *,\"temperature-rule\" as ruleName from pattern [every ev=iotEvent(cast(cast(ev.temperature?,String),float)>40.0)]",
     "action": {
         "type": "twitter",
-        "template": "Meter ${Meter} has pression ${Pression} (GEN RULE)",
+        "template": "Alert! temperature is now ${ev.temperature}.",
         "parameters": {
           "consumer_key": "xvz1evFS4wEEPTGEFPHBog",
           "consumer_secret": "L8qq9PZyRg6ieKGEKhZolGC0vJWLw8iEJ88DRdyOg",
