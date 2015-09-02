@@ -58,17 +58,27 @@ X-Auth-Token: {{user-token}}
 {
    "name":"train-rule",
    "text":"@Audit select *,\"train-rule\" as ruleName, \"webinar\" as tenant, \"/\" as service from pattern [every ev=iotEvent(cast(cast(ev.longitude?,String),float)>200.0)]",
-   "action":{
-      "name":"train-rule_action",
-      "type":"update",
-      "parameters":{
-         "name":"longtrain_alarm",
-         "value":"true",
-         "type": "String"
-      }
-   }
+    "action": {
+        "type": "email",
+        "template": "Meter ${Meter} has pression ${Pression} (GEN RULE)",
+        "parameters": {
+            "to": "someone@yourclient.com",
+            "from": "notificactions@yourdomain.com"
+            "subject": "Alert! high pression detected"
+        }
+    }
 }
 ```
+
+The following action types are available:
+
+- update: update an entity's attribute
+- sms: send a SMS
+- email: send an email
+- post: make an HTTP POST
+- twitter: send a tweet
+
+
 
 # In more detail ...
 
