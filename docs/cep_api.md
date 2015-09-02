@@ -139,3 +139,4 @@ X-Auth-Token: {{user-token}}
 
 # In more detail ...
 
+You can get more information about the FIWARE component providing this functionalty, reference API documentation and source code at [CEP](cep.md).
