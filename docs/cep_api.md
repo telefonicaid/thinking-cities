@@ -106,7 +106,9 @@ X-Auth-Token: {{user-token}}
 
 # Create rule to send a Tweet
 
-Updates the status of a twitter account, with the text build from the template field. The field parameters must contain the values for the consumer key and secret and the access token key and access token secret of the pre-provisioned application associated to the twitter user.
+You can send a tweet from your account with the text build from the template field. 
+
+Remember you must create your Twitter app and get its OAuth credentials.
 
 ```
 POST /NGSI10/subscribeContext HTTP/1.1
