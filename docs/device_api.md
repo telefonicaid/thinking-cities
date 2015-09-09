@@ -11,7 +11,7 @@ If you want to quickly connect or simulate virtual devices you may also check FI
 
 Remember this step is optional, it is only required if you want to use commands in order to act upon devices or want to define a mapping to reduce the attributes identifier when you send observations to reduce the message size. 
 
-If you simply want to send observations you can skip this and just to Send Obsersations.
+If you simply want to send observations you can skip this and just go to the "Send observations" section.
 
 **Registering for UL2.0**
 
