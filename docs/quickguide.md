@@ -371,9 +371,7 @@ regular expression queries, geolocated entities search.
 
 [*http://es.slideshare.net/fermingalan/fiware-managing-context-information-at-large-scale*](http://es.slideshare.net/fermingalan/fiware-managing-context-information-at-large-scale)
 
-Read the full reference at:
-
-[Data API guide](data_api.md)
+More info: [Data API guide](data_api.md)
 
 **Historic Data API**
 
@@ -426,8 +424,7 @@ Historic data is accessible using the Short Term historic API.
 >> configure the required subscription (endpoint:
 >> http://test.ttcloud.net:8666/notify).
 
-More info:
-[Historic Data API](historicdata_api.md)
+More info: [Historic Data API](historicdata_api.md)
 
 ** New accounts and subservices **
 
@@ -435,7 +432,7 @@ You can create new users and credentials at the web portal. It is also
 possible to have different subservices in order to segment properly your
 data.
 
-[Management API](management_api.md)
+More info: [Management API](management_api.md)
 
 **Data visualization tools**
 
