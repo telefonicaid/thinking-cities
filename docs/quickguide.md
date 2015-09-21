@@ -38,8 +38,7 @@ all this guide samples and some additional operations are there.
 
 [*https://dl.dropboxusercontent.com/u/107902873/ttcloud/ttcloud-gettingstarted.zip*](https://dl.dropboxusercontent.com/u/107902873/ttcloud/ttcloud-gettingstarted.zip)
 
-In that email, there is also attached a POSTMAN environment with your
-credentials for this POSTMAN collection.
+Please, remember to create a POSTMAN environment with your credentials for this POSTMAN collection.
 
 # Step 1 - Send data
 
