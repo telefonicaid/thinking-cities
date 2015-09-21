@@ -47,7 +47,9 @@ which data do you want to send to Thinking Things Cloud.
 
 Sending data is as simple as sending an HTTP POST request using your API
 key with your measures. Please use “\#” and “|” separators to split data
-and measures.
+and measures.  
+
+Please remember that you will need to send as query parameters on the URL your {{apikey}} and your device identifier. 
 
 <p>
 <table cellpadding="10", border="1" >
@@ -73,7 +75,7 @@ and measures.
 
 Take into account that no device provisioning or data modeling is
 required in advance to send your device data. Anyway, we recommend to
-use short magnitude identifiers (like “t”, “p” on the sample) to reduce
+use short magnitude identifiers (like "t", "p" on the sample) to reduce
 the message length sent from the device.
 
 Your will simply receive an HTTP 200 OK response to confirm the data was
@@ -359,7 +361,7 @@ it is also feasible to set different timestamps, configure customized
 mappings between physical device and virtual entity, or provision
 measures via HTTP GET. Read the full detail at:
 
-[*https://drive.google.com/open?id=1TfpQdPcU\_tE\_hl79y-4r\_Znk8ZGYAZzQsmvZ4ZWu6yg*](https://drive.google.com/open?id=1TfpQdPcU_tE_hl79y-4r_Znk8ZGYAZzQsmvZ4ZWu6yg)
+[Device API guide](device_api.md)
 
 **Data API**
 
@@ -371,7 +373,7 @@ regular expression queries, geolocated entities search.
 
 Read the full reference at:
 
-[*https://forge.fiware.org/plugins/mediawiki/wiki/fiware/index.php/Publish/Subscribe\_Broker\_-\_Orion\_Context\_Broker\_-\_User\_and\_Programmers\_Guide*](https://forge.fiware.org/plugins/mediawiki/wiki/fiware/index.php/Publish/Subscribe_Broker_-_Orion_Context_Broker_-_User_and_Programmers_Guide)
+[Data API guide](data_api.md)
 
 **Historic Data API**
 
@@ -425,7 +427,7 @@ Historic data is accessible using the Short Term historic API.
 >> http://test.ttcloud.net:8666/notify).
 
 More info:
-[*https://github.com/telefonicaid/IoT-STH*](https://github.com/telefonicaid/IoT-STH)
+[Historic Data API](historicdata_api.md)
 
 ** New accounts and subservices **
 
@@ -433,7 +435,7 @@ You can create new users and credentials at the web portal. It is also
 possible to have different subservices in order to segment properly your
 data.
 
-[*https://drive.google.com/open?id=0BwLx3ffvQDehSktHdElKOTg3dWs*](https://drive.google.com/open?id=0BwLx3ffvQDehSktHdElKOTg3dWs)
+[Management API](management_api.md)
 
 **Data visualization tools**
 
