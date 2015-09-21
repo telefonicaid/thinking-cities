@@ -361,7 +361,7 @@ it is also feasible to set different timestamps, configure customized
 mappings between physical device and virtual entity, or provision
 measures via HTTP GET. Read the full detail at:
 
-[Device API guide](device_api.md)
+More info: [Device API guide](device_api.md)
 
 **Data API**
 
