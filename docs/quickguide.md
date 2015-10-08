@@ -103,91 +103,7 @@ After that, you will see your device data the Entities list:
 Now your know your data is stored in the Thinking Things Cloud, lets get
 it via API.
 
-First, you need to login in the API to get a valid token:
 
-<p>
-<table cellpadding="10", border="1" >
-  <tr>
-    <th>HTTP method</th>
-    <td>POST</td>
-  </tr>
-  <tr>
-    <th>URL</th>
-    <td>http://test.ttcloud.net:5001/v3/auth/tokens</td>
-  </tr>
-  <tr>
-    <th>HTTP Headers</th>
-    <td>Content-Type: application/json</td>
-  </tr>
-  <tr>
-    <th>HTTP Body</th>
-    <td>
-      {
-            "auth": {
-                     "identity": {
-                     "methods": [
-                     "password"
-                     ],
-                     "password": {
-                     "user": {
-                     "domain": {
-                     "name": "{{Fiware-Service}}"
-                     },
-                     "name": "{{user-name}}",
-                     "password": "{{user-pass}}"
-                     }
-                     }
-                     },
-                     "scope": {
-                     "domain": {
-                     "name": "{{Fiware-Service}}"
-                     }
-                     }
-                     }
-                     }
-    </td>
-  </tr>
-</table>
-</p>
-
-
-You will receive an HTTP 201 Created response with a header called
-X-Subject-Token, this is your {{user-token}} like this:
-
-<p>
-<table cellpadding="10", border="1" >
-  <tr>
-    <th>HTTP response code</th>
-    <td>201 Created</td>
-  </tr>
-  <tr>
-    <th>HTTP response headers</th>
-    <td>Content-Type: application/json ; Vary: X-Auth-Token ; X-Subject-Token: {{user-token}}</td>
-  </tr>
-  <tr>
-    <th>HTTP Headers</th>
-    <td>Content-Type: application/json</td>
-  </tr>
-  <tr>
-    <th>HTTP Body</th>
-    <td>
-    {
-       "token": {
-               "domain": {
-               "id": "67576fe70df44bc280da74916a58d0f1",
-               [...]
-               "issued\_at": "2015-07-03T07:43:42.517728Z"
-               }
-        }
-    }     
-    </td>
-  </tr>
-</table>
-</p>
-
-
-Please, be careful pasting your {{user-token}} properly on next steps.
-This is your API token and it will be valid for 3 years.
 
 Now you are ready to invoke the API to get your device data. Just do an
 HTTP GET request like this:
@@ -442,4 +358,91 @@ our set of data visualization tools connectors:
 
 [*https://github.com/telefonicaid/fiware-dataviz*](https://github.com/telefonicaid/fiware-dataviz)
 
+**Getting more API tokens**
 
+With your credentials we gave you a token, but you may need more.
+
+To do so, you can login in the Authentication API to get a new token:
+
+<p>
+<table cellpadding="10", border="1" >
+  <tr>
+    <th>HTTP method</th>
+    <td>POST</td>
+  </tr>
+  <tr>
+    <th>URL</th>
+    <td>http://test.ttcloud.net:5001/v3/auth/tokens</td>
+  </tr>
+  <tr>
+    <th>HTTP Headers</th>
+    <td>Content-Type: application/json</td>
+  </tr>
+  <tr>
+    <th>HTTP Body</th>
+    <td>
+      {
+            "auth": {
+                     "identity": {
+                     "methods": [
+                     "password"
+                     ],
+                     "password": {
+                     "user": {
+                     "domain": {
+                     "name": "{{Fiware-Service}}"
+                     },
+                     "name": "{{user-name}}",
+                     "password": "{{user-pass}}"
+                     }
+                     }
+                     },
+                     "scope": {
+                     "domain": {
+                     "name": "{{Fiware-Service}}"
+                     }
+                     }
+                     }
+                     }
+    </td>
+  </tr>
+</table>
+</p>
+
+
+You will receive an HTTP 201 Created response with a header called
+X-Subject-Token, this is your {{user-token}} like this:
+
+<p>
+<table cellpadding="10", border="1" >
+  <tr>
+    <th>HTTP response code</th>
+    <td>201 Created</td>
+  </tr>
+  <tr>
+    <th>HTTP response headers</th>
+    <td>Content-Type: application/json ; Vary: X-Auth-Token ; X-Subject-Token: {{user-token}}</td>
+  </tr>
+  <tr>
+    <th>HTTP Headers</th>
+    <td>Content-Type: application/json</td>
+  </tr>
+  <tr>
+    <th>HTTP Body</th>
+    <td>
+    {
+       "token": {
+               "domain": {
+               "id": "67576fe70df44bc280da74916a58d0f1",
+               [...]
+               "issued\_at": "2015-07-03T07:43:42.517728Z"
+               }
+        }
+    }     
+    </td>
+  </tr>
+</table>
+</p>
+
+Please, be careful pasting your {{user-token}} properly on next steps.
+This is your API token and it will be valid for 3 years.
