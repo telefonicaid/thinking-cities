@@ -13,6 +13,10 @@ Please, request your credentials. You will receive an email containing these fie
     <td>API Key used for devices to send data</td>
   </tr>
   <tr>
+    <td>{{user-token}}      </td>
+    <td>API Key used for applications to access data</td>
+  </tr>
+  <tr>
     <td>{{Fiware-Service}}      </td>
     <td>Service name</td>
   </tr>
