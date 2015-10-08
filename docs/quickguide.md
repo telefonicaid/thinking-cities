@@ -47,7 +47,7 @@ Please, remember to create a POSTMAN environment with your credentials for this 
 # Step 1 - Send data
 
 Before doing any coding, identify the sensors on your device and decide
-which data do you want to send to Thinking Things Cloud.
+which data do you want to send to the Cloud.
 
 Sending data is as simple as sending an HTTP POST request using your API
 key with your measures. Please use “\#” and “|” separators to split data
@@ -83,11 +83,11 @@ use short magnitude identifiers (like "t", "p" on the sample) to reduce
 the message length sent from the device.
 
 Your will simply receive an HTTP 200 OK response to confirm the data was
-properly received at Thinking Things Cloud.
+properly received at the Cloud.
 
 # Step 2 - See data
 
-Your device data is now stored in the Thinking Things Cloud, and your
+Your device data is now stored in the Cloud, and your
 can see it on the web portal. Please access the web portal with your
 Username, Password and Fiware-Service:
 
@@ -104,7 +104,7 @@ After that, you will see your device data the Entities list:
 
 ### Step 3 - Get data
 
-Now your know your data is stored in the Thinking Things Cloud, lets get
+Now your know your data is stored in the Cloud, lets get
 it via API.
 
 
@@ -173,9 +173,7 @@ Please, notice that you will see one attribute per sensor.
 
 ### Step 4 - Show in a dashboard
 
-JSON documents are fine, but dashboards are better for humans. If you
-want to create a responsive website to see your device data at Thinking
-Things Cloud don’t do it from the scratch, just sign up at:
+JSON documents are fine, but dashboards are better for humans. If you want to create a responsive website to see your device data at the Cloud don’t do it from the scratch, just sign up at:
 
 > [*https://freeboard.io/signup*](https://freeboard.io/signup)
 
@@ -188,7 +186,7 @@ per device.
 
 ![](media/image04.png)
 
-On the FIWARE Orion datasource configuration introduce there your credentials and your device type and ID as retrieved on Step 3 from the Thinking Things Cloud API.
+On the FIWARE Orion datasource configuration introduce there your credentials and your device type and ID as retrieved on Step 3 from the Cloud API.
 
 
 
@@ -285,7 +283,7 @@ More info: [Device API guide](device_api.md)
 
 **Data API**
 
-Thinking things data API is FIWARE NGSI compliant so it provides lots of
+Data API is FIWARE NGSI compliant so it provides lots of
 features: subscriptions, partial updates, bulk entities retrieval,
 regular expression queries, geolocated entities search.
 
