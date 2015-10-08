@@ -40,7 +40,7 @@ collection for [*POSTMAN extension for Google
 Chrome*](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop),
 all this guide samples and some additional operations are there.
 
-[*https://dl.dropboxusercontent.com/u/107902873/ttcloud/ttcloud-gettingstarted.zip*](https://dl.dropboxusercontent.com/u/107902873/ttcloud/ttcloud-gettingstarted.zip)
+[*https://dl.dropboxusercontent.com/u/107902873/ttcloud/FIWARE-IoTStack-GettingStarted.zip*](https://dl.dropboxusercontent.com/u/107902873/ttcloud/FIWARE-IoTStack-GettingStarted.zip)
 
 Please, remember to create a POSTMAN environment with your credentials for this POSTMAN collection.
 
