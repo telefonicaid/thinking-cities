@@ -119,6 +119,10 @@ HTTP GET request like this:
     <td>GET</td>
   </tr>
   <tr>
+    <th>URL</th>
+    <td>http://test.ttcloud.net:1026/v1/contextEntities/thing:mydevice</td>
+  </tr>
+  <tr>
     <th>HTTP headers</th>
     <td>Accept: application/json ; Fiware-Service: {{Fiware-Service}} ; Fiware-ServicePath: {{Fiware-ServicePath}} ;     X-Auth-Token: {{user-token}}</td>
   </tr>
