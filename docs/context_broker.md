@@ -18,7 +18,9 @@ One of the most important features of the Context Broker is that it allows to mo
 
 ## API Reference Documentation ##
 
-- [API V1](http://telefonicaid.github.io/fiware-orion/api/v1/)
-- [API V2](http://telefonicaid.github.io/fiware-orion/api/v2/cookbook/) ongoing, not yet suitable for production
+- [API V1 Walkthrough](http://fiware-orion.readthedocs.org/en/develop/user/walkthrough_apiv1/index.html)
+- API V2 - ongoing, not yet suitable for production
+  - [Cookbook](http://telefonicaid.github.io/fiware-orion/api/v2/cookbook/)
+  - [Full reference](http://telefonicaid.github.io/fiware-orion/api/v2/)
 
 
