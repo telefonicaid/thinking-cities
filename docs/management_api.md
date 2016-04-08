@@ -144,4 +144,4 @@ HTTP 204 NO CONTENT
 
 # In more detail ...
 
-You can get more information about the FIWARE component providing this functionalty, reference API documentation at [IoT Orchestrator apiary](http://docs.piotp.apiary.io/#orchestrator)
+You can get more information about the FIWARE component providing this functionalty, reference API documentation at [IoT Orchestrator apiary](http://docs.orchestrator2.apiary.io/)
