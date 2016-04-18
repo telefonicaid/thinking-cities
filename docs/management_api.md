@@ -85,7 +85,7 @@ This user is not associated to any service or subservice, so now you have asign 
 First, retrieve the roles created by default on your subservice:
 
 ```
-GET /orc/service/{{subservice-id}}/role HTTP/1.1
+GET /orc/service/{{service-id}}/role HTTP/1.1
 Host: test.ttcloud.net:8008
 X-Auth-Token: {{admin-token}}
 Content-Type: application/json
@@ -124,7 +124,7 @@ Please note that these roles id are specific per subservice, so you need to retr
 Now you know the roles ids for your subservice, you can assign one role to the user you created before:
 
 ```
-POST /orc/service/{{subservice-id}}/role_assignments HTTP/1.1
+POST /orc/service/{{service-id}}/role_assignments HTTP/1.1
 Host: test.ttcloud.net:8008
 X-Auth-Token: {{admin-token}}
 Content-Type: application/json
