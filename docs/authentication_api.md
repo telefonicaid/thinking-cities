@@ -78,9 +78,9 @@ X-Subject-Token : {{user-token}}
 Please, be careful pasting your {{user-token}} properly on next steps. This is your API token and it will be valid for 3 years.
 
 
-# Get token status
+# Get a new token from another given token
 
-Once you get a token you can check its validity anytime as follows:
+Once you get a token you can get another one with the same effect:
 
 ```
 POST /v3/auth/tokens HTTP/1.1
@@ -100,6 +100,19 @@ X-Auth-Token: {{user-token}}
         }
     }
 }
+```
+
+# Get token status
+
+Once you get a token you can check its validity anytime and get other info as follows:
+
+```
+GET /v3/auth/tokens HTTP/1.1
+Host: test.ttcloud.net:5001
+Content-Type: application/json
+X-Auth-Token: {{user-token}}
+X-Subject-Token: {{token-to-analize}}
+
 ```
 
 You can check when the token was issued and when it will expire on the response body:
@@ -127,6 +140,20 @@ You can check when the token was issued and when it will expire on the response 
 ```
 
 Token expiration date can not be extended, but you can request a new token anytime and the ones you got before will still be valid.
+
+# Check token is valid
+
+Once you get a token you can check its validity anytime as follows:
+
+```
+HEAD /v3/auth/tokens HTTP/1.1
+Host: test.ttcloud.net:5001
+Content-Type: application/json
+X-Auth-Token: {{user-token}}
+X-Subject-Token: {{token-to-analize}}
+
+```
+If the provided token in x-subject-token is valid then a 200 response will be returned.
 
 # In more detail ...
 
