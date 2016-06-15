@@ -41,5 +41,9 @@ FIWARE IoT Stack is based on the following [FIWARE components](walkthrough.md) i
 - Context Broker (Orion)
 - Short Term Historic (STH)
 - Connector Framework (Cygnus)
-- Complex Event Processing (Perseo)
 - Identity Management (IDM)
+
+In addition, the platform includes the following additional components. They are not part of FIWARE (although
+they are still open source) but integrate with the platform using FIWARE-based APIs (in particular, using NGSI): 
+
+- Complex Event Processing (Perseo)
