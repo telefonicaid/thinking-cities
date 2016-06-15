@@ -14,11 +14,11 @@ pages:
     - 'Authentication API': 'authentication_api.md'
     - 'Device API': 'device_api.md'
     - 'Data API': 'data_api.md'
-    - 'Historic Data API': 'historicdata_api.md'
+    - 'Historical Data API': 'historicdata_api.md'
     - 'Complex Event Processing API': 'cep_api.md'
     - 'Management API': 'management_api.md'
   - 'Management Portal': 'portal.md'
-  - 'Architecture': 
+  - 'Architecture':
     - 'FIWARE Components': 'walkthrough.md'
     - 'Device Backend Gateway (IDAS)': 'device_gateway.md'
     - 'Context Broker (Orion)': 'context_broker.md'
@@ -26,4 +26,3 @@ pages:
     - 'Connector Framework (Cygnus)': 'cygnus.md'
     - 'Complex Event Processing (Perseo)': 'cep.md'
     - 'Identity Management (IDM)': 'idm.md'
-
