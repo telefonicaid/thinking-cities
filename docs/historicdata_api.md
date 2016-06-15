@@ -30,7 +30,7 @@ X-Auth-Token: {{user-token}}
   "notifyConditions": [
     {
       "type": "ONCHANGE",
-      "condValues": ["TimeInstant" ]
+      "condValues": ["TimeInstant"]
     }
   ],
   "reference": "http://test.ttcloud.net:8666/notify",
