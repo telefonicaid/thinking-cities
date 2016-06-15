@@ -295,12 +295,11 @@ regular expression queries, geolocated entities search.
 
 More info: [Data API guide](data_api.md)
 
-**Historic Data API**
+**Historical Data API**
 
-Historic data is accessible using the Short Term historic API.
+Historical data is accessible using the Short Term historic API.
 
-
-**RAW data query example**
+***RAW data query example***
 
 <p>
 <table cellpadding="10", border="1" >
@@ -320,7 +319,7 @@ Historic data is accessible using the Short Term historic API.
 </p>
 
 
-**Aggregated data (sum, hourly) query example**
+***Aggregated data (sum, hourly) query example***
 
 <p>
 <table cellpadding="10", border="1" >
