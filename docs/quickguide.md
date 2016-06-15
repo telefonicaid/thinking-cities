@@ -53,7 +53,7 @@ Sending data is as simple as sending an HTTP POST request using your API
 key with your measures. Please use “\#” and “|” separators to split data
 and measures.  
 
-Please remember that you will need to send as query parameters on the URL your {{apikey}} and your device identifier. 
+Please remember that you will need to send as query parameters on the URL your {{apikey}} and your device identifier.
 
 <p>
 <table cellpadding="10", border="1" >
@@ -204,7 +204,7 @@ Anyway, you can always clone this sample freeboard and use it as a template for 
 
 [*https://freeboard.io/board/69lZ9V*](https://freeboard.io/board/69lZ9V)
 
-### Step 5 - Send commands 
+### Step 5 - Send commands
 
 You can send commands to the device in order to trigger any action like
 turning on a LED or a relay. In order to do so, you need to set your
@@ -300,7 +300,7 @@ More info: [Data API guide](data_api.md)
 Historic data is accessible using the Short Term historic API.
 
 
-** RAW data query example **
+**RAW data query example**
 
 <p>
 <table cellpadding="10", border="1" >
@@ -320,7 +320,7 @@ Historic data is accessible using the Short Term historic API.
 </p>
 
 
-**Aggregated data (sum/hourly) query example **
+**Aggregated data (sum, hourly) query example**
 
 <p>
 <table cellpadding="10", border="1" >
@@ -331,8 +331,7 @@ Historic data is accessible using the Short Term historic API.
   <tr>
     <th>URL</th>
     <td>
-    http://test.ttcloud.net:8666/STH/v1/contextEntities/type/device/id/device:mydevice/attributes/h?aggrMethod=sum&aggrPeriod=hour&dateFrom=2015-02-22T00:00:00.000Z&dateTo=2016-01-22T23:00:00.000Z
-    http://test.ttcloud.net:8666/STH/v1/contextEntities/type/device/id/device:mydevice/attributes/h?lastN=10</td>
+    http://test.ttcloud.net:8666/STH/v1/contextEntities/type/device/id/device:mydevice/attributes/h?aggrMethod=sum&aggrPeriod=hour&dateFrom=2015-02-22T00:00:00.000Z&dateTo=2016-01-22T23:00:00.000Z</td>
   </tr>
   <tr>
     <th>HTTP headers</th>
