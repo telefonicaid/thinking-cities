@@ -1,11 +1,18 @@
 
-Device API allows you to:
+In order to send information from the devices to the platform, you can use the IoT Agents. This components
+map South-Bound protocol requests coming from the device to NGSI requests to a Context Broker, that will help you
+mapping your device data to an NGSI Entity and attributes.
+
+The Device API allows you to:
 
 - Register your device to reduce the message footprint and use commands.
 - Send data from the device to the FIWARE IoT Stack
 - Send commands from your application to the device
 
-If you want to quickly connect or simulate virtual devices you may also check FIGWAY, a set of simple python scripts working as a client SDK for any desktop PC, laptop or gateway supporting a python2.7 environment. This way you may skip the steps described below and use the python commands as described in the README.md file available at this [Github repository](https://github.com/telefonicaid/fiware-figway).
+If you want to quickly connect or simulate virtual devices you may also check FIGWAY, a set of simple python scripts
+working as a client SDK for any desktop PC, laptop or gateway supporting a python2.7 environment. This way you may skip
+the steps described below and use the python commands as described in the README.md file available at this [Github
+repository](https://github.com/telefonicaid/fiware-figway).
 
 # Register your IoT device 
 
@@ -20,104 +27,148 @@ On this sample a device is registered to send temperature observations using UL2
 ```
 POST $HOST_IOTAGENT/iot/devices
 
-Headers: {'content-type': 'application/json’; 'X-Auth-Token' : [TOKEN]; "Fiware-Service: OpenIoT”; "Fiware-ServicePath: /"}
+Headers:
+{
+	"content-type": "application/json",
+	"X - Auth - Token": "[TOKEN]",
+	"Fiware - Service": "OpenIoT",
+	"Fiware-ServicePath: "/"
+}
 Payload:
-{"devices": [
-	{ "device_id": ”[DEV_ID]",
-  	"entity_name": ”[ENTITY_ID]",
-  	"entity_type": "thing",
- 	"protocol": "PDI-IoTA-UltraLight",
-  	"timezone": ”Europe/Madrid",
-	"endpoint": "http://[DEVICE_IP]:[PORT]",
-"attributes": [
-    	{ "object_id": "t",
-      	"name": "temperature",
-      	"type": "int"
-    	} ],
-"commands": [
-    	{ "name": "ping",
-      	"type": "command",
-      	"value": "[Dev_ID]@ping|%s"
-    	} ],
- "static_attributes": [
-    	{ "name": "att_name",
-      	"type": "string",
-      	"value": "value"
-    	}]}]}
+{
+	"devices": [{
+		"device_id": "[DEV_ID]",
+		"entity_name": "[ENTITY_ID]",
+		"entity_type": "thing",
+		"protocol": "IoTA-UL",
+		"timezone": "Europe/Madrid",
+		"endpoint": "http://[DEVICE_IP]:[PORT]",
+		"attributes": [{
+			"object_id": "t",
+			"name": "temperature",
+			"type": "int"
+		}],
+		"commands": [{
+			"name": "ping",
+			"type": "command",
+			"value": "[Dev_ID]@ping|%s"
+		}],
+		"static_attributes": [{
+			"name": "att_name",
+			"type": "string",
+			"value": "value"
+		}]
+	}]
+}
 ```
 
-The important parameters to be defined are:
+Description of the parameters (mandatory parameters are marked as such, the rest remain optional):
 
-- [DEV_ID] the device identifier.
-- [ENTITY_ID] the entity ID to be used at the ContextBroker
-- "attributes": Used to map UL2.0 alias to ContextBroker entities.
-- "commands": Used to indicate which commands the device supports. Depending on the "endpoint" configuration, commands will be considered as push or pull.
-- "static_attributes": Used to define static attributes (sent in every observation)
+- *device_id*: the device identifier (mandatory).
+- *entity_name*: the entity ID to be used at the ContextBroker.
+- *entity_type: type of the entity that will represent the device in the Context Broker.
+- *protocol*: South-Bound protocol the device will be using to communicate with the Platform (mandatory).
+- *timezone*: timezone for the device.
+- *endpoint*: for devices accepting HTTP commands, address of the device where the commands will be sent.
+- *attributes*: Used to map UL2.0 attributes to ContextBroker attributes in the entity representing the device.
+- *commands*: Used to indicate which commands the device supports. For HTTP attributes, the "endpoint" attribute will
+be required.
+- *static_attributes*: the contents of this attribute will be sent in every observation as attributes of the entity.
 
 **Registering for MQTT**
 
-In this case, it will be necessary to provision a device in the MQTT IoT Agent:
+The following example shows the same registration for an MQTT device instead of HTTP:
 
 ```
 POST $HOST_IOTAGENT/iot/devices
 
-Headers: {'content-type': 'application/json’; 'X-Auth-Token' : [TOKEN]; "Fiware-Service: OpenIoT”; "Fiware-ServicePath: /"}
+Headers:
+{
+	"content-type": "application/json",
+	"X-Auth-Token": "[TOKEN]",
+	"Fiware-Service": "OpenIoT",
+	"Fiware - ServicePath ": " / "
+}
 Payload:
-{"devices": [
-	{ "device_id": ”[DEV_ID]",
-  	"entity_name": ”[ENTITY_ID]",
-  	"entity_type": "thing",
- 	"protocol": "PDI-IoTA-MQTT-UltraLight",
-  	"timezone": ”Europe/Madrid",
-	"endpoint": "http://[DEVICE_IP]:[PORT]",
-"attributes": [
-    	{ "object_id": "t",
-      	"name": "temperature",
-      	"type": "int"
-    	} ],
-"commands": [
-    	{ "name": "ping",
-      	"type": "command",
-      	"value": "[Dev_ID]@ping|%s"
-    	} ],
- "static_attributes": [
-    	{ "name": "att_name",
-      	"type": "string",
-      	"value": "value"
-    	}]}]}
+{
+	"devices": [{
+		"device_id": "[DEV_ID]",
+		"entity_name": "[ENTITY_ID]",
+		"entity_type": "thing",
+		"protocol": "IoTA-UL",
+		"timezone": "Europe/Madrid",
+		"attributes": [{
+			"object_id": "t",
+			"name": "temperature",
+			"type": "int"
+		}],
+		"commands": [{
+			"name": "ping",
+			"type": "command",
+			"value": "[Dev_ID]@ping|%s"
+		}],
+		"static_attributes": [{
+			"name": "att_name",
+			"type": "string",
+			"value": "value"
+		}]
+	}]
+}
 ```
+
+The example shows that the only difference between both provisionings is the presence or absence of an "endpoint" attribute.
+For devices that won't be receiving commands, the later provisioning request will be valid for both transport protocols.
 
 # Send observations 
 
 **Sending using UL2.0**
 
-Ultralight2.0 (UL2.0) is a proposed simplification of the SensorML (SML) standard – and get those devices sending  their measurements (observations) to the ContextBroker. Ultralight2.0 is selected in this example because of its simplicity. 
+Ultralight2.0 (UL2.0) is a proposed simplification of the SensorML (SML) standard – and will be used to send device
+measurements (observations) to the ContextBroker. Ultralight2.0 is selected in this example because of its simplicity.
 
-Sending an observation from IoT devices is extremely efficient and simple with the following HTTP POST request:
+Sending an observation from IoT devices is simple with the following HTTP POST request:
 
 ```
-POST  $HOST_IOTAGENT/d?k= <apikey>&i= <device_ID>
-Headers: {'content-type': 'application/text’; 'X-Auth-Token' : [TOKEN]; "Fiware-Service: OpenIoT”; "Fiware-ServicePath: /"}
+POST  $HOST_IOTAGENT/d?k=<apikey>&i=<device_ID>
+Headers:
+{
+	"content-type": "text/plain"
+}
 Payload: ‘t|25‘
 ```
 
-The previous example sends an update of the Temperature attribute that is automatically sent by IDAS to the corresponding entity at the ContextBroker.
+The previous example sends an update of the Temperature attribute that is automatically sent by the IoT Agent to the
+corresponding entity at the ContextBroker.
+
+Multiple measures for a single observation can be sent, sepparating the values with pipes:
+```
+POST  $HOST_IOTAGENT/d?k=<apikey>&i=<device_ID>
+Headers:
+{
+	"content-type": "text/plain"
+}
+Payload: ‘t|25|h|42|l|1299‘
+```
+This request will generate a single update request to the Context Broker with three attributes, one corresponding to
+each measure.
 
 Sending multiple observations in the same message is also possible with the following payload:
-
 ```
-//“alias1|value1#alias2|value2#alias3|value3...”
-POST  $HOST_IOTAGENT/d?k= <apikey>&i= <device_ID>
-Headers: {'content-type': 'application/text’; 'X-Auth-Token' : [TOKEN]; "Fiware-Service: OpenIoT”; "Fiware-ServicePath: /"}
+POST  $HOST_IOTAGENT/d?k=<apikey>&i=<device_ID>
+Headers:
+{
+	"content-type": "text/plain"
+}
 Payload: ‘t|23#h|80#l|95#m|Quiet‘
 ```
+This request will generate four requests to the Context Broker, each one reporting a different value.
 
 Finally, after connecting your IoT devices this way you (or any other developer with the right access permissions) should be able to use the Data API to read the NGSI entity assigned to your device or see the data on the Management Portal.
 
 
 **Sending using MQTT**
 
-Devices (once provisioned under a service) can publish MQTT messages to the IoTAgent. Those messages contain one piece of information each. That means that one message will be translated into one single entity on the ContexBroker domain. The information can be typically sensors' measures.
+Devices (once provisioned under a service) can publish MQTT messages to the IoTAgent. Those messages contain one piece of information each. That means that one message will be translated into one single entity on the ContexBroker domain. The information can be typically sensors" measures.
 
 This is the topic hierarchy that has to be used by devices:
 
@@ -127,9 +178,9 @@ This is the topic hierarchy that has to be used by devices:
 
 Where:
 
--  ''api-key'': this is a unique value per service. It is provided through the provisioning API.
--  ''device-id'': this is typically a sensor id, it has to be unique per “api-key”.
-- ''type'': it is the actual phenomenon being measured, for example: temperature, pressure, etc… this is the name of the attribute being published on ContextBroker.
+-  ""api-key"": this is a unique value per service. It is provided through the provisioning API.
+-  ""device-id"": this is typically a sensor id, it has to be unique per “api-key”.
+- ""type"": it is the actual phenomenon being measured, for example: temperature, pressure, etc… this is the name of the attribute being published on ContextBroker.
 
 Example:
 
@@ -169,7 +220,7 @@ For a device working in the polling mode to receive commands, the full pending q
  
 ```
 GET  $HOST_IOTAGENT/d?k=<apikey>&i=<device_ID>
-Headers: {'content-type': 'application/text’; 'X-Auth-Token' : [TOKEN]; "Fiware-Service: OpenIoT”; "Fiware-ServicePath: /"}
+Headers: {"content-type": "application/text’; "X-Auth-Token" : [TOKEN]; "Fiware-Service: OpenIoT"; "Fiware-ServicePath: /"}
 http://130.206.80.40:5371/iot/d?k=[APIKEY]&i=[DEV_ID]
 
 ```
