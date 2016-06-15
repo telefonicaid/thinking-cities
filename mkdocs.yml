@@ -20,7 +20,7 @@ pages:
   - 'Management Portal': 'portal.md'
   - 'Architecture': 
     - 'FIWARE Components': 'walkthrough.md'
-    - 'Device Backend Gateway (IDAS)': 'device_gateway.md'
+    - 'IoT Agents (IoTA)': 'device_gateway.md'
     - 'Context Broker (Orion)': 'context_broker.md'
     - 'Short Term Historic (STH)': 'sth.md'
     - 'Connector Framework (Cygnus)': 'cygnus.md'
