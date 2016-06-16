@@ -1,6 +1,6 @@
 # Multitenancy
 
-The platform implements multitenancy based on the *Service* and *SubService* concepts. Service corresponds with the top-level grouping, typically associated to tenants. Within each service, a given tenant can set several subservices. For example, tentants may represent cities (e.g. Madrid, Paris, London, etc.) and subservices within a tenant the different vertical areas in that city (lightning, transport, health, etc.).
+The platform implements multitenancy based on the *Service* and *SubService* concepts. Service corresponds with the top-level grouping, typically associated to tenants. Within each service, a given tenant can set several subservices. For example, tenants may represent cities (e.g. Madrid, Paris, London, etc.) and subservices within a tenant the different vertical areas in that city (lightning, transport, health, etc.).
 
 Authentication and authorization is based on service and subservices. In other words, user/roles access are per service and subservice. For example, you can define that a given user has read permissions in all subservices of a given service, but only has modification permissions in a subset of such subservices.
 
