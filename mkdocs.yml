@@ -25,4 +25,4 @@ pages:
     - 'Short Term Historic (STH)': 'sth.md'
     - 'Connector Framework (Cygnus)': 'cygnus.md'
     - 'Complex Event Processing (Perseo)': 'cep.md'
-    - 'Identity Management (IDM)': 'idm.md'
+    - 'Security Components (IDM, PEP, AC)': 'security.md'

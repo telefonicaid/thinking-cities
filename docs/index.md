@@ -37,13 +37,15 @@ FIWARE IoT Stack provides also an [admin website](portal.md) for performing most
 
 FIWARE IoT Stack is based on the following [FIWARE components](walkthrough.md) in order to provide its functionality:
 
-- Device Backend Gateway (IDAS)
+- IoTAgents (IoTA)
 - Context Broker (Orion)
 - Short Term Historic (STH)
 - Connector Framework (Cygnus)
-- Identity Management (IDM)
+- Security Components: Identity Management (IDM), Policy Enforcement Point (PEP) and Access Control (AC). The platforms does not
+  use the FIWARE GEri for these components, but alternative GEi conforming with the same GE specifications (see 
+  [this clarification](https://ask.fiware.org/question/1/what-is-a-fiware-ge-and-a-gei/) about GE, GEi and GEri terms).
 
-In addition, the platform includes the following additional components. They are not part of FIWARE (although
-they are still open source) but integrate with the platform using FIWARE-based APIs (in particular, using NGSI): 
+In addition, the platform includes the following additional components, which are not part of FIWARE (but still open source):
 
-- Complex Event Processing (Perseo)
+- Complex Event Processing (Perseo). It is not part of FIWARE, but integrates with the platform using FIWARE-based APIs (in particular, using NGSI).
+- IoT Orchestrator
