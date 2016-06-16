@@ -42,7 +42,7 @@ Content-Type: application/json
 }
 ```
 
-or (more compact)
+or (more compact):
 
 ```
 PUT <cb_host>:<cb_port>/v2/entities/LeBistro/attrs/average_scoring/value?type=Restaurant
@@ -127,7 +127,7 @@ getting a JSON response such as the following one:
 }
 ```
 
-Finally, context Broker GE allows queries using filters. For example, in order to get all the restaurants which average scoring is greater than 4 the following operation can be used:
+Finally, the Context Broker GE allows queries using filters. For example, in order to get all the restaurants whose average scoring is greater than 4, the following operation can be used:
 
 ```
 GET /v2/entities?type=Restaurant&q=average_scoring>4
