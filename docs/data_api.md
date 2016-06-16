@@ -6,7 +6,7 @@ Data API allows you to access the information stored at the FIWARE IoT Stack fro
 
 All the communications between the various components of the FIWARE IoT Stack occur via the NGSI RESTful interface interfaces/protocols, which is described in a following sections. NGSI RESTful interface is inspired and based on the OMA NGSI specification. This is a standard interface allowing to handle any type of data, which may include meta-data. 
 
-Before continuing with the next section, it would be a good idea to have a look to the [NGSI and Orion Context Broker introductory presentation](http://bit.ly/fiware-orion) at SlideShare.
+Before continuing with the next section, it would be a good idea to have a look at the [NGSI and Orion Context Broker introductory presentation](http://bit.ly/fiware-orion) in SlideShare.
 
 # Update/Query data
 
