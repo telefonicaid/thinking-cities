@@ -48,7 +48,7 @@ or (more compact):
 PUT <cb_host>:<cb_port>/v2/entities/LeBistro/attrs/average_scoring/value?type=Restaurant
 Content-Type: text/plain
 
-4.2.
+4.2
 ```
 
 Finally, the user can get the information of a given Restaurant using the smartphone application. In that case the application works as Context Consumer, **querying** the Restaurant entity. For example, to get the average_scoring attribute, the client application could query for it in the following way:
