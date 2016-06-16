@@ -103,7 +103,7 @@ getting a JSON response such as the following one:
 }
 ```
 
-Note the postal_address attribute. NGSI attribute values are not limited to simple times as strings, numbers, etc. You can use JSON objects or arrays also as attribute values.
+Note the postal_address attribute. NGSI attribute values are not limited to simple types as strings, numbers, etc. You can use JSON objects or arrays also as attribute values.
 
 Alternatively, if you want to get a more compact response including **only attribute values**, you can use the *keyValues* format in the following way
 
