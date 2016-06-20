@@ -41,7 +41,7 @@ FIWARE IoT Stack is based on the following [FIWARE components](walkthrough.md) i
 - Context Broker (Orion)
 - Short Term Historic (STH)
 - Connector Framework (Cygnus)
-- Security Components: Identity Management (IDM), Policy Enforcement Point (PEP) and Access Control (AC). The platforms does not
+- Security Components: Identity Management (IDM), Policy Enforcement Point (PEP) and Access Control (AC). The platform does not
   use the FIWARE GEri for these components, but alternative GEi conforming with the same GE specifications (see 
   [this clarification](https://ask.fiware.org/question/1/what-is-a-fiware-ge-and-a-gei/) about GE, GEi and GEri terms).
 
