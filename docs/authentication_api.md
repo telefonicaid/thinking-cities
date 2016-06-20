@@ -157,4 +157,4 @@ If the provided token in x-subject-token is valid then a 200 response will be re
 
 # In more detail ...
 
-You can get more information about the FIWARE component providing this functionalty, reference API documentation and source code at [Identity Management (IDM)](idm.md)
+You can get more information about the FIWARE components providing this functionalty, reference API documentation and source code at [Security Components (IDM, PEP, AC)](security.md)
