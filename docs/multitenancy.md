@@ -15,5 +15,6 @@ The following syntax rules apply to service:
 The following syntax rules apply to subservice:
 
 * It must start with the `/` character.
+* Maximum length is 50 characters.
 * Only alphanumeric characters and underscores (`_`) are allowed (apart from the initial `/`).
 * It is interpreted in a case-sensitive way.
