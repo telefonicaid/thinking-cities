@@ -17,6 +17,7 @@ pages:
     - 'Historical Data API': 'historicdata_api.md'
     - 'Complex Event Processing API': 'cep_api.md'
     - 'Management API': 'management_api.md'
+  - 'Multitenancy: Service and Subservice': 'multitenancy.md'
   - 'Management Portal': 'portal.md'
   - 'Architecture':
     - 'FIWARE Components': 'walkthrough.md'
