@@ -4,7 +4,7 @@ Please, take into account that Device API does not require a token from Authenti
 
 # Login 
 
-You can login using your credentials (username and password) in order to get a token.
+You can login using your credentials (username and password) in order to get a token. Make sure a scope is indicate in order to tell what service (or service and subservice) should be used for. 
 
 ```
 POST /v3/auth/tokens HTTP/1.1
