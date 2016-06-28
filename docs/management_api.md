@@ -1,8 +1,8 @@
 Management API allow you to:
 
-- Create services and subservices
-- Create users
-- Assign roles to users in service
+- Create, list and remove services and subservices
+- Create, list, update and remove users
+- Assign and unassign roles to users in service
 
 Please, remember that most of these operations are available at the Admin Portal, unless you are integrating dynamic service and user creation with your application, you don't need to use Management API.
 
