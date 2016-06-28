@@ -75,7 +75,7 @@ X-Subject-Token : {{user-token}}
 }
 ```
 
-Please, be careful pasting your {{user-token}} properly on next steps. This is your API token and it will be valid for 3 years.
+Please, be careful pasting your {{user-token}} properly on next steps. This is your API token and it will be valid for a fix period of time (1 hour in most of the cases).
 
 
 # Get a new token from another given token
