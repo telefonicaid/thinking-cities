@@ -19,6 +19,8 @@ pages:
     - 'Management API': 'management_api.md'
   - 'Multitenancy: Service and Subservice': 'multitenancy.md'
   - 'Management Portal': 'portal.md'
+  - 'Data persistence':
+    - 'Naming conventions': 'naming_conventions.md'
   - 'Architecture':
     - 'FIWARE Components': 'walkthrough.md'
     - 'IoT Agents (IoTA)': 'device_gateway.md'

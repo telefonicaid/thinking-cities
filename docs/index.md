@@ -37,6 +37,15 @@ FIWARE IoT Stack provides also an [admin website](portal.md) for performing most
 - Send commands to devices
 - Set up simple notifications based on data.
 
+## Data persistence
+
+FIWARE IoT Data capabilities go far beyond querying the current context data or the short-term history. FIWARE IoT Stack provides means for storing hitorical data for the mid and long-term in third-party components; the following ones:
+
+- [HDFS](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html), the [Hadoop](http://hadoop.apache.org/) distributed file system.
+- [MySQL](https://www.mysql.com/), the well-know relational database manager.
+- [CKAN](http://ckan.org/), an Open Data platform.
+- [MongoDB](https://www.mongodb.org/), the NoSQL document-oriented database.
+
 ## FIWARE Components
 
 FIWARE IoT Stack is based on the following [FIWARE components](walkthrough.md) in order to provide its functionality:
