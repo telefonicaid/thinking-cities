@@ -29,3 +29,5 @@ pages:
     - 'Connector Framework (Cygnus)': 'cygnus.md'
     - 'Complex Event Processing (Perseo)': 'cep.md'
     - 'Security Components (IDM, PEP, AC)': 'security.md'
+  - 'Topics':
+    - 'Hadoop streaming with Hue': 'topics/hadoop_streaming_hue.md'
