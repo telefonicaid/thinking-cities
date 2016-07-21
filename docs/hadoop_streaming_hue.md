@@ -3,6 +3,8 @@ Big data within [Hadoop](http://hadoop.apache.org/) clusters is mainly analyzed 
 Following, two methods are shown for creating Python-based MapReduce jobs using [Hue](http://gethue.com/) (the Web interface for Hadoop) and specifically, the Job Designer and Oozie Editor tools. Previously, some setup steps must be done, such as creating and uploading the Python code for mappers and reducers, or uploading some testing data files.
 
 #Setup
+**IMPORTANT NOTE**: All the examples within this section have been implemented using an `admin` user, having access to all the Hadoop file system (HDFS). As an integrator, most probably you will be a non admin user having access only to your own HDFS space.
+
 ##Python code
 It is necessary to provide a couple of Python scripts, one implementing the mappers logic, and another implementing the reducers logic. These two files will be passed as arguments of the MapReduce later when it is executed. For demostration purposes the following [code](http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/) mimicking the Java-based WordCount application will be used:
 
@@ -72,7 +74,7 @@ if current_word == word:
     print '%s\t%s' % (current_word, current_count)
 ```
 
-The above two local files must be uploaded somewhere in the HDFS user space, using Hue's File Browser; for this document we'll assume the `admin` user and the `hdfs:///user/admin/demo-mr-python/python` folder:
+The above two local files must be uploaded somewhere in the HDFS user space, using Hue's File Browser:
 
 ![](./images/hue_upload_python_code.png)
 
@@ -95,7 +97,7 @@ Then, fill up the form specifying a name, a description and which are the Python
 
 ![](./images/hue_simple_fillup_streaming_form.png)
 
-As usual in Hadoop, the output directory must not exist previosly to the job execution.
+As usual in Hadoop, the output directory must not exist previously to the job execution.
 
 The new streaming action will be added to the list of actions, and can now be submitted. While executing, the Oozie Dashboard is opened showing the progress; the Job Browser can be used for tracking the progress as well:
 
