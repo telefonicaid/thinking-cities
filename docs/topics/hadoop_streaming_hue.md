@@ -1,12 +1,12 @@
-Big data within [Hadoop](http://hadoop.apache.org/) clusters is mainly analyzed by means of the [MapReduce](https://en.wikipedia.org/wiki/MapReduce) paradigm. Usually, specific Java jobs are created for this purpose, but sometimes different programming languages may want to be used, such as Python or even Shell scripting. In that cases, [Hadoop Streaming](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html) is the feature the IoT Platform integrators need.
+Big data within [Hadoop](http://hadoop.apache.org/) clusters is mainly analyzed by means of the [MapReduce](https://en.wikipedia.org/wiki/MapReduce) paradigm. Usually, specific Java jobs are created for this purpose, but sometimes different programming languages may want to be used, such as Python or even Shell scripting. In those cases, [Hadoop Streaming](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html) is the feature the IoT Platform integrators need.
 
-Following, two methods are shown for creating Python-based MapReduce jobs using [Hue](http://gethue.com/) (the Web interface for Hadoop) and specifically, the Job Designer and Oozie Editor tools. Previously, some setup steps must be done, such as creating and uploading the Python code for mappers and reducers, or uploading some testing data files.
+Following, two methods are shown for creating Python-based MapReduce jobs using [Hue](http://gethue.com/) (the Web interface for Hadoop) and, specifically, the Job Designer and Oozie Editor tools. Previously, some setup steps must be done, such as creating and uploading the Python code for mappers and reducers, or uploading some testing data files.
 
 #Setup
 **IMPORTANT NOTE**: All the examples within this section have been implemented using an `admin` user, having access to all the Hadoop file system (HDFS). As an integrator, most probably you will be a non admin user having access only to your own HDFS space.
 
 ##Python code
-It is necessary to provide a couple of Python scripts, one implementing the mappers logic, and another implementing the reducers logic. These two files will be passed as arguments of the MapReduce later when it is executed. For demostration purposes the following [code](http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/) mimicking the Java-based WordCount application will be used:
+It is necessary to provide a couple of Python scripts, one implementing the mappers logic, and another implementing the reducers logic. These two files will be passed as arguments of the MapReduce job when it is executed later. For demostration purposes the following [code](http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/) mimicking the Java-based WordCount application will be used:
 
 ```Python
 $ cat mapper.py
@@ -107,7 +107,7 @@ The new streaming action will be added to the list of actions, and can now be su
 
 Once successfully finished, the output directory, which has been created by the job, can be browsed. As well as the content of the `part-0000` file, i.e. the data file word counts:
 
-![](./images/hue_mr_result.png)
+![](./images/hue_simple_mr_result.png)
 
 #Hadoop Streaming in Oozie Editor
 This is an advanced way of creating a Python-based MapReduce job. By using the Oozie Editor you will be able to compose complex [Oozie](http://oozie.apache.org/) workflows of chained jobs, i.e. connecting the output of a job with the input of the next one in the workflow. Jobs can be MapReduce applications, of course, but Hive or Pig queries, Shell scripts or standard Java applications, and many other as well. Once defined the workflow, this can be submitted or scheduled for future execution.
@@ -128,6 +128,6 @@ As can be seen, the streaming node configuration is the same than the one used i
 
 ![](./images/hue_workflow_submit.png)
 
-After submission, the output directory and its `part-0000` file can be browsed:
+After submission, the output directory and its `part-0000` file can be browsed as usual:
 
 ![](./images/hue_workflow_mr_result.png)
