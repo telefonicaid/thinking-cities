@@ -3,7 +3,7 @@ Big data within [Hadoop](http://hadoop.apache.org/) clusters is mainly analyzed 
 Following, two methods are shown for creating Python-based MapReduce jobs using [Hue](http://gethue.com/) (the Web interface for Hadoop) and, specifically, the Job Designer and Oozie Editor tools. Previously, some setup steps must be done, such as creating and uploading the Python code for mappers and reducers, or uploading some testing data files.
 
 #Setup
-**IMPORTANT NOTE**: All the examples within this section have been implemented using an `admin` user, having access to all the Hadoop file system (HDFS). As an integrator, most probably you will be a non admin user having access only to your own HDFS space.
+**IMPORTANT NOTE**: As an integrator, remember replacing the `admin` user appearing in the tutorial by your own user.
 
 ##Python code
 It is necessary to provide a couple of Python scripts, one implementing the mappers logic, and another implementing the reducers logic. These two files will be passed as arguments of the MapReduce job when it is executed later. For demostration purposes the following [code](http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/) mimicking the Java-based WordCount application will be used:
