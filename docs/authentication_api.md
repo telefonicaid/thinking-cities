@@ -4,7 +4,7 @@ Please, take into account that Device API does not require a token from Authenti
 
 # Login 
 
-You can login using your credentials (username and password) in order to get a token.
+You can login using your credentials (username and password) in order to get a token. Make sure a scope is indicate in order to tell what service (or service and subservice) should be used for. 
 
 ```
 POST /v3/auth/tokens HTTP/1.1
@@ -75,7 +75,7 @@ X-Subject-Token : {{user-token}}
 }
 ```
 
-Please, be careful pasting your {{user-token}} properly on next steps. This is your API token and it will be valid for 3 years.
+Please, be careful pasting your {{user-token}} properly on next steps. This is your API token and it will be valid for a fix period of time (1 hour in most of the cases).
 
 
 # Get a new token from another given token

@@ -28,14 +28,13 @@ FIWARE IoT Stack multitenancy model is described [in this section](multitenancy.
 
 ## Management Portal
 
-FIWARE IoT Stack provides also an [admin website](portal.md) for performing most of the FIWARE IoT Stack management operations available on APIs. These are the most relevant actions you can perform:
-
-- Creating new services and subservices
-- Creating new users
-- Creating new devices
-- Visualize stored data
+It is recommended to build an admin website for performing comfortably most of the FIWARE IoT Stack management operations available on APIs. Most relevant administration actions could be: 
+- Creation of new services and subservices
+- Creation of new users
+- Creation of new devices
+- Visualization of stored data
 - Send commands to devices
-- Set up simple notifications based on data.
+- Set up simple notifications based on data
 
 ## Data persistence
 
