@@ -30,7 +30,7 @@ It is recommended to build an admin website for performing comfortably most of t
 - Creation of new devices
 - Visualization of stored data
 - Send commands to devices
-- Set up simple notifications based on data.
+- Set up simple notifications based on data
 
 ## FIWARE Components
 
