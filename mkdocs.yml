@@ -17,7 +17,10 @@ pages:
     - 'Historical Data API': 'historicdata_api.md'
     - 'Complex Event Processing API': 'cep_api.md'
     - 'Management API': 'management_api.md'
+  - 'Multitenancy: Service and Subservice': 'multitenancy.md'
   - 'Management Portal': 'portal.md'
+  - 'Data persistence':
+    - 'Naming conventions': 'naming_conventions.md'
   - 'Architecture':
     - 'FIWARE Components': 'walkthrough.md'
     - 'IoT Agents (IoTA)': 'device_gateway.md'
@@ -25,4 +28,6 @@ pages:
     - 'Short Term Historic (STH)': 'sth.md'
     - 'Connector Framework (Cygnus)': 'cygnus.md'
     - 'Complex Event Processing (Perseo)': 'cep.md'
-    - 'Identity Management (IDM)': 'idm.md'
+    - 'Security Components (IDM, PEP, AC)': 'security.md'
+  - 'Topics':
+    - 'Hadoop streaming with Hue': 'topics/hadoop_streaming_hue.md'
