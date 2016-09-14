@@ -35,23 +35,16 @@ Please, request your credentials. You will receive an email containing these fie
 </table>
 </p>
 
-In order test the API, we really recommend you use the following sample
-collection for [*POSTMAN extension for Google
-Chrome*](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop),
-all this guide samples and some additional operations are there.
-
-[*https://dl.dropboxusercontent.com/u/107902873/ttcloud/FIWARE-IoTStack-GettingStarted.zip*](https://dl.dropboxusercontent.com/u/107902873/ttcloud/FIWARE-IoTStack-GettingStarted.zip)
-
-Please, remember to create a POSTMAN environment with your credentials for this POSTMAN collection.
 
 # Step 1 - Send data
 
-Before doing any coding, identify the sensors on your device and decide
-which data do you want to send to the Cloud.
+You can use two different application level protocol in order to send data
+to the platform: UL and JSON
+You can also choose from two different transport protocol levels: HTTP and MQTT. 
 
 Sending data is as simple as sending an HTTP POST request using your API
-key with your measures. Please use “\#” and “|” separators to split data
-and measures.  
+key with your measures. You can use “\#” and “|” separators to split data
+and measures as per UL 2.0 protocol.  
 
 Please remember that you will need to send as query parameters on the URL your {{apikey}} and your device identifier.
 
@@ -63,7 +56,7 @@ Please remember that you will need to send as query parameters on the URL your {
   </tr>
   <tr>
     <th>URL</th>
-    <td>http://test.ttcloud.net:8082/iot/d?k={{apikey}}&i=mydevice</td>
+    <td>http://test.ttcloud.net:8085/iot/d?k={{apikey}}&i=mydevice</td>
   </tr>
   <tr>
     <th>HTTP Headers</th>
@@ -76,22 +69,22 @@ Please remember that you will need to send as query parameters on the URL your {
 </table>
 </p>
 
-
 Take into account that no device provisioning or data modeling is
 required in advance to send your device data. Anyway, we recommend to
 use short magnitude identifiers (like "t", "p" on the sample) to reduce
 the message length sent from the device.
 
 Your will simply receive an HTTP 200 OK response to confirm the data was
-properly received at the Cloud.
+properly received at the Platform.
+
 
 # Step 2 - See data
 
-Your device data is now stored in the Cloud, and your
+Your device data is now stored in the Platform, and your
 can see it on the web portal. Please access the web portal with your
 Username, Password and Fiware-Service:
 
-[*http://test.ttcloud.net:8008/\#/*](http://test.ttcloud.net:8008/#/)
+[*https://test.ttcloud.net:8008/\#/*](https://test.ttcloud.net:8008/#/)
 
 Now you have to switch to your subservice {{Fiware-ServicePath}} at
 right top switch:
@@ -102,12 +95,11 @@ After that, you will see your device data the Entities list:
 
 ![](media/image01.png)
 
+
 ### Step 3 - Get data
 
-Now your know your data is stored in the Cloud, lets get
+Now your know your data is stored in the Platform, lets get
 it via API.
-
-
 
 Now you are ready to invoke the API to get your device data. Just do an
 HTTP GET request like this:
@@ -120,7 +112,7 @@ HTTP GET request like this:
   </tr>
   <tr>
     <th>URL</th>
-    <td>http://test.ttcloud.net:1026/v1/contextEntities/thing:mydevice</td>
+    <td>https://test.ttcloud.net:10027/v1/contextEntities/thing:mydevice</td>
   </tr>
   <tr>
     <th>HTTP headers</th>
@@ -129,8 +121,6 @@ HTTP GET request like this:
 
 </table>
 </p>
-
-
 
 You will get you device data in a json document like this that is FIWARE
 NGSI compliant:
@@ -175,36 +165,7 @@ NGSI compliant:
 Please, notice that you will see one attribute per sensor.
 
 
-### Step 4 - Show in a dashboard
-
-JSON documents are fine, but dashboards are better for humans. If you want to create a responsive website to see your device data at the Cloud don’t do it from the scratch, just sign up at:
-
-> [*https://freeboard.io/signup*](https://freeboard.io/signup)
-
-After this, you will be able to create a dashboard:
-
-![](media/image02.png)
-
-Once your are at your new dashboard, create an Orion FIWARE datasource
-per device.
-
-![](media/image04.png)
-
-On the FIWARE Orion datasource configuration introduce there your credentials and your device type and ID as retrieved on Step 3 from the Cloud API.
-
-
-
-![](media/image07.png)
-
-Now it’s time to add widgets to your dashboard, representing your device
-data.
-
-Anyway, you can always clone this sample freeboard and use it as a template for yours:
-
-
-[*https://freeboard.io/board/69lZ9V*](https://freeboard.io/board/69lZ9V)
-
-### Step 5 - Send commands
+### Step 4 - Send commands
 
 You can send commands to the device in order to trigger any action like
 turning on a LED or a relay. In order to do so, you need to set your
@@ -248,7 +209,7 @@ commands can be pulled directly from the device:
   </tr>
   <tr>
     <th>URL</th>
-    <td>http://test.ttcloud.net:8082/iot/d?k={{apikey}}&i=mydevice</td>
+    <td>http://test.ttcloud.net:8085/iot/d?k={{apikey}}&i=mydevice</td>
   </tr>
   <tr>
     <th>HTTP headers</th>
@@ -256,7 +217,6 @@ commands can be pulled directly from the device:
   </tr>
 </table>
 </p>
-
 
 The command received will be as follows:
 
@@ -276,9 +236,9 @@ The command received will be as follows:
 
 # In more detail …
 
-**Sending data**
+**Device API**
 
-Devices can provide data using many other protocols like MQTT or COAP,
+Devices can provide data using many other protocols like JSON,
 it is also feasible to set different timestamps, configure customized
 mappings between physical device and virtual entity, or provision
 measures via HTTP GET. Read the full detail at:
@@ -309,7 +269,7 @@ Historical data is accessible using the Short Term historic API.
   </tr>
   <tr>
     <th>URL</th>
-    <td>http://test.ttcloud.net:8666/STH/v1/contextEntities/type/device/id/device:mydevice/attributes/h?lastN=10</td>
+    <td>https://test.ttcloud.net:18666/STH/v1/contextEntities/type/device/id/device:mydevice/attributes/h?lastN=10</td>
   </tr>
   <tr>
     <th>HTTP headers</th>
@@ -330,7 +290,7 @@ Historical data is accessible using the Short Term historic API.
   <tr>
     <th>URL</th>
     <td>
-    http://test.ttcloud.net:8666/STH/v1/contextEntities/type/device/id/device:mydevice/attributes/h?aggrMethod=sum&aggrPeriod=hour&dateFrom=2015-02-22T00:00:00.000Z&dateTo=2016-01-22T23:00:00.000Z</td>
+    https://test.ttcloud.net:18666/STH/v1/contextEntities/type/device/id/device:mydevice/attributes/h?aggrMethod=sum&aggrPeriod=hour&dateFrom=2015-02-22T00:00:00.000Z&dateTo=2016-01-22T23:00:00.000Z</td>
   </tr>
   <tr>
     <th>HTTP headers</th>
@@ -342,7 +302,7 @@ Historical data is accessible using the Short Term historic API.
 
 >> Remember that in order to collect historic data, it is necessary to
 >> configure the required subscription (endpoint:
->> http://test.ttcloud.net:8666/notify).
+>> http://10.0.0.2:5054/notify).
 
 More info: [Historic Data API](historicdata_api.md)
 
@@ -376,7 +336,7 @@ To do so, you can login in the Authentication API to get a new token:
   </tr>
   <tr>
     <th>URL</th>
-    <td>http://test.ttcloud.net:5001/v3/auth/tokens</td>
+    <td>https://test.ttcloud.net:5001/v3/auth/tokens</td>
   </tr>
   <tr>
     <th>HTTP Headers</th>
@@ -449,4 +409,4 @@ X-Subject-Token, this is your {{user-token}} like this:
 </p>
 
 Please, be careful pasting your {{user-token}} properly on next steps.
-This is your API token and it will be valid for 3 years.
+This is your API token and it will be valid for 1 hour.
