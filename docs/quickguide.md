@@ -185,9 +185,6 @@ After that, register a new command for the device taking into account:
 
 ![](media/image03.png)
 
-Remember that you can also setup your device via API, you will find an
-example on the POSTMAN collection.
-
 Once the command is configured, you can send commands to the device just
 updating the entity attribute associated to that command, or using the
 web interface.
