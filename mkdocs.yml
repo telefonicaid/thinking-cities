@@ -9,7 +9,6 @@ use_directory_urls: false
 theme: readthedocs
 pages:
   - 'Introduction': 'index.md'
-  - 'Getting Started': 'quickguide.md'
   - 'APIs':
     - 'Authentication API': 'authentication_api.md'
     - 'Device API': 'device_api.md'
@@ -18,7 +17,6 @@ pages:
     - 'Complex Event Processing API': 'cep_api.md'
     - 'Management API': 'management_api.md'
   - 'Multitenancy: Service and Subservice': 'multitenancy.md'
-  - 'Management Portal': 'portal.md'
   - 'Data persistence':
     - 'Naming conventions': 'naming_conventions.md'
   - 'Architecture':
