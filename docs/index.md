@@ -26,16 +26,6 @@ FIWARE IoT Stack provides the following APIs:
 
 FIWARE IoT Stack multitenancy model is described [in this section](multitenancy.md).
 
-## Management Portal
-
-It is recommended to build an admin website for performing comfortably most of the FIWARE IoT Stack management operations available on APIs. Most relevant administration actions could be: 
-- Creation of new services and subservices
-- Creation of new users
-- Creation of new devices
-- Visualization of stored data
-- Send commands to devices
-- Set up simple notifications based on data
-
 ## Data persistence
 
 FIWARE IoT Data capabilities go far beyond querying the current context data or the short-term history. FIWARE IoT Stack provides means for storing hitorical data for the mid and long-term in third-party components; the following ones:
