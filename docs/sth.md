@@ -5,4 +5,4 @@ All the communications between the STH and the Orion Context Broker as well as b
 
 ## Documentation and API
 
-Additional information and documentation about the Short Time Historic (STH) component can be obtained at the ReadTheDocs site of the component at http://fiware-sth-comet.readthedocs.io/en/latest/index.html as well as at its Github repository at https://github.com/telefonicaid/fiware-sth-comet.
+Additional information and documentation about the Short Time Historic (STH) component can be obtained at the ReadTheDocs site of the component at http://fiware-sth-comet.readthedocs.io/en/1.1.1/ as well as at its Github repository at https://github.com/telefonicaid/fiware-sth-comet/tree/1.1.1.
