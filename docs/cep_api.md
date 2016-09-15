@@ -11,8 +11,6 @@ This API allows you for example to define rules to trigger email notifications b
 
 These rules are expressed as an EPL sentence. [EPL](http://www.espertech.com/esper/index.php) is a domain language of Esper, the engine for processing events used. This EPL sentence matches an incoming event if satisfies the conditions and generates an "action-event" that will be sent back to FIWARE IoT Stack to execute the associated action. 
 
-Remember you can always use the [Management Portal](portal.md) to define basic rules, which are a perfect fit for most frequent use cases.
-
 
 # Activate rules
 
