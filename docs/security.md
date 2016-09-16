@@ -64,11 +64,11 @@ will return generic 403 errors to the offending user.
 
 ** Access Control: Keypass **
 
-[Access Control Github](https://github.com/telefonicaid/fiware-keypass)
+[Access Control Github](https://github.com/telefonicaid/fiware-keypass/tree/release/1.1.0)
 
 ** PEP Proxy: Steelskin **
 
-[PEP Proxy Github](https://github.com/telefonicaid/fiware-pep-steelskin)
+[PEP Proxy Github](https://github.com/telefonicaid/fiware-pep-steelskin/tree/release/1.1.0)
 
 
  

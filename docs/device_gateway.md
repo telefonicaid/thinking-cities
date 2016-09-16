@@ -27,8 +27,8 @@ If you are interested in more details about how to connect your devices and sens
 
 At present, the following IoT Agents and supported IoT protocols in the IoT Platform are:
 
-- [Ultralight 2.0](https://github.com/telefonicaid/iotagent-ul): SensorML based simple text protocol.
-- [JSON](https://github.com/telefonicaid/iotagent-json): a JSON based key-value pair protocol.
+- [Ultralight 2.0](https://github.com/telefonicaid/iotagent-ul/tree/release/1.1.0): SensorML based simple text protocol.
+- [JSON](https://github.com/telefonicaid/iotagent-json/tree/release/1.3.0): a JSON based key-value pair protocol.
 
 Both IOTAgents work with either HTTP or MQTT as the transport protocol.
 
@@ -44,7 +44,7 @@ If the device uses a different protocol from the provided, it will be necessary 
 device specific platform and the platform standard model (NGSI). For that, different IoT Agents development frameworks
 are provided:
 
-- [Node.js framework](https://github.com/telefonicaid/iotagent-node-lib)
+- [Node.js framework](https://github.com/telefonicaid/iotagent-node-lib/tree/release/2.1.0)
 - [IoT Agents C++ framework](https://github.com/telefonicaid/fiware-IoTAgent-Cplusplus) (deprecated)
 
 
