@@ -1,4 +1,4 @@
-The Historical Data API exposed by the [Short Time Historic (STH)](https://github.com/telefonicaid/fiware-sth-comet) component allows you to:
+The Historical Data API exposed by the [Short Time Historic (STH)](https://github.com/telefonicaid/fiware-sth-comet/tree/1.1.1) component allows you to:
 
 - Get historical context information registered into the platform by any device.
 - Get aggregated time series context information (maximum values, minimum values, average values, standard deviation of the values and number of occurrences) registered into the platform by any device.
