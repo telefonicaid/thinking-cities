@@ -11,7 +11,7 @@ When an incoming event fired a rule, the values selected by the EPL statement ar
 
 ## Documentation and API
 
-[CEP API](https://github.com/telefonicaid/perseo-core)
+[CEP API](https://github.com/telefonicaid/perseo-fe)
 
 [Esper Documentation](http://www.espertech.com/esper/documentation.php)
 
