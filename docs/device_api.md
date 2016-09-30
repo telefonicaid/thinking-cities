@@ -121,7 +121,11 @@ For devices that won't be receiving commands, the later provisioning request wil
 
 # Send observations 
 
-**Sending using UL2.0**
+There are two IoTAgents currently available in the platform, each listening for requests with a different protocol:
+Ultralight 2.0 and JSON. In both cases, payloads can be sent to the Agent using two different transport protocols: MQTT
+and HTTP. The following sections show some examples of each of the four possible approaches.
+
+**Send measures using UL2.0 HTTP**
 
 Ultralight2.0 (UL2.0) is a proposed simplification of the SensorML (SML) standard – and will be used to send device
 measurements (observations) to the ContextBroker. Ultralight2.0 is selected in this example because of its simplicity.
@@ -166,7 +170,7 @@ This request will generate four requests to the Context Broker, each one reporti
 Finally, after connecting your IoT devices this way you (or any other developer with the right access permissions) should be able to use the Data API to read the NGSI entity assigned to your device or see the data on the Management Portal.
 
 
-**Sending using MQTT**
+**Send measures using UL2.0 MQTT**
 
 Devices (once provisioned under a service) can publish MQTT messages to the IoTAgent. Those messages contain one piece
 of information each. That means that one message will be translated into one single entity on the ContexBroker domain.
@@ -187,8 +191,11 @@ the attribute being published on ContextBroker.
 Example:
 
 ```
-$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -t <api_key>/mydevicemqtt/t -m 44.4
+$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<api_key>/mydevicemqtt/t -m 44.4
 ```
+
+As it can be noticed in this example, the MQTT broker uses a set of credentials to authenticate users. Please, if you
+don't know your credentials, please ask the support team to provide you with a new set.
 
 Another scenario can happen when devices send more than one phenomena within the payload. That is to say, one single
 MQTT message carries all measures. When it comes to ContextBroker, there will be one entity publication (per device)
@@ -205,8 +212,63 @@ Topic:
 Example:
 
 ```
-$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -t <api_key>/mydevicemqtt/attrs -m "t|5.4#o|4.3#n|3.2#c|2.1"
+$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<api_key>/mydevicemqtt/attrs -m "t|5.4#o|4.3#n|3.2#c|2.1"
 ```
+
+**Send measures using JSON HTTP**
+
+The simple JSON protocol used by the JSON IoTAgent maps each measurement to an attribute in a JSON Object. The following
+example shows how to send a measurement of three different quantities:
+```
+POST  $HOST_IOTAGENT/iot/d?k=<apikey>&i=<device_ID>
+Headers:
+{
+	"content-type": "text/plain"
+}
+Payload:
+{
+    "t": 5.4,
+    "o": 4.3,
+    "n": 3.2,
+    "c": 2.1
+}
+```
+
+The HTTP transport for the JSON protocol does not allow a single measure syntax.
+
+**Send measures using JSON MQTT**
+
+The payload to use with the MQTT transport of the IoTAgent is exactly the same as the one used in the HTTP version. The
+main difference between both approaches is how to indicate the DeviceID of the device that is sending the measurement and
+the APIKey of the Service associated to the device. In the case of the MQTT transport, both pieces of information are
+specified in the MQTT topic, as we will see in the examples.
+
+There are two kind of measurment reportings available for the MQTT transport: single measurement reports and multiple
+measurement reports. Examples are shown as mosquitto_pub sentences.
+
+In the case of single measurements, just the value of the measurement is sent as the message payload, being the rest
+of information needed for the update confined to the MQTT topic, as illustrated in the following example:
+```
+$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<myapikey>/<mydevicemqtt>/attrs/<measurename> -m '5.4'
+```
+In this example we can see that the topic contains three pieces of data:
+- The API Key ('<myapikey>'): identifies the service or configuration associated to the device.
+- The Device ID ('<mydevicemqtt>'): that uniquely identifies a device in a service.
+- The Measure name ('<measurename>'): that indicates the name of the measure to update.
+
+The message payload contains the plain attribute value ('5.4').
+
+In the case of multiple measurements, the MQTT message will contain a JSON Object with multiple attributes, each one
+indicating the value of a single measurement, as illustrated in the following example:
+```
+$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<myapikey>/<mydevicemqtt>/attrs -m '{ "t": 5.4, "o": 4.3, "n": 3.2, "c": 2.1 }'
+```
+
+As it can be noticed in this example, the MQTT broker uses a set of credentials to authenticate users. Please, if you
+don't know your credentials, please ask the support team to provide you with a new set.
+
+The topic parts are the same as in the case of a single measure, excluding the measurement name. In this case, four
+measurements will be updated in the target entity.
 
 # Act upon devices 
 
