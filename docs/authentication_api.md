@@ -64,7 +64,7 @@ Content-Type: application/json
                 "domain": {
                    "name": "{{Fiware-Service}}"
                 },
-                "name": "/{{Fiware-SubService}}"
+                "name": "/{{Fiware-ServicePath}}"
             }
         }
     }
