@@ -35,8 +35,43 @@ Content-Type: application/json
     }
 }
 ```
+In case of your user has only a role in a subservice, you should ask for a token with subservice scope:
 
-You will receive an HTTP 201 Created response with a header called X-Subject-Token, this is your {{user-token}} like this:
+
+```
+POST /v3/auth/tokens HTTP/1.1
+Host: test.ttcloud.net:5001
+Content-Type: application/json
+
+{
+    "auth": {
+        "identity": {
+            "methods": [
+                "password"
+            ],
+            "password": {
+                "user": {
+                    "domain": {
+                        "name": "{{Fiware-Service}}"
+                    },
+                    "name": "{{user-name}}",
+                    "password": "{{user-pass}}"
+                }
+            }
+        },
+        "scope": {
+            "project": {
+                "domain": {
+                   "name": "{{Fiware-Service}}"
+                },
+                "name": "/{{Fiware-ServicePath}}"
+            }
+        }
+    }
+}
+```
+
+In both cases you will receive an HTTP 201 Created response with a header called X-Subject-Token, this is your {{user-token}} like this:
 
 ```
 HTTP 201 Created
