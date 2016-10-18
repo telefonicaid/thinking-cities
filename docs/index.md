@@ -19,7 +19,7 @@ FIWARE IoT Stack provides the following APIs:
 - [Device API](device_api.md): allows managing devices, sending data from the device to the cloud and receiving commands.
 - [Data API](data_api.md): allows querying and subscribing to data stored at the cloud.
 - [Historical Data API](historicdata_api.md): allows querying historic data series and statistics stored at the cloud.
-- [Data Processing API](dataprocessing_api.md): allows analyzing data stored at the cloud on real time and triggering actions.
+- [CEP API](cep_api.md): allows analyzing analyze data from your IoT device and trigger actions.
 - [Management API](management_api.md): allows creating new services and users to provide a multi-tenant environment.
 
 ## Multitenancy
