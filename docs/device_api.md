@@ -220,7 +220,7 @@ $ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<api_key>/m
 The simple JSON protocol used by the JSON IoTAgent maps each measurement to an attribute in a JSON Object. The following
 example shows how to send a measurement of three different quantities:
 ```
-POST  $HOST_IOTAGENT/iot/d?k=<apikey>&i=<device_ID>
+POST  $HOST_IOTAGENT/iot/json?k=<apikey>&i=<device_ID>
 Headers:
 {
 	"content-type": "text/plain"
