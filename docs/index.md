@@ -51,3 +51,7 @@ In addition, the platform includes the following additional components, which ar
 
 - Complex Event Processing (Perseo). It is not part of FIWARE, but integrates with the platform using FIWARE-based APIs (in particular, using NGSI).
 - IoT Orchestrator
+
+## FIWARE Datamodels
+
+A set of recommended data models to be used with FIWARE IoT Stack can be found [here](http://fiware-datamodels.readthedocs.io/en/latest/index.html).
