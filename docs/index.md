@@ -50,7 +50,6 @@ FIWARE IoT Stack is based on the following [FIWARE components](walkthrough.md) i
 In addition, the platform includes the following additional components, which are not part of FIWARE (but still open source):
 
 - Complex Event Processing (Perseo). It is not part of FIWARE, but integrates with the platform using FIWARE-based APIs (in particular, using NGSI).
-- IoT Orchestrator
 
 ## FIWARE Datamodels
 
