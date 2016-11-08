@@ -1,11 +1,21 @@
 # How notifications work
 
 The platform is able to send notifications, based in a subscription mechanism implemented by 
-[Context Broker](../context_broker.md).
+[Context Broker](../context_broker.md). Let's describe it step by step.
 
+## Device provisioning at IoT Agent
+
+Let's consider a fleet of several cars that are moving around a given city (Madrid, for example). Each car has an 
+onboard sensor, all them managed by platform [IoT Agents](../device_gateway.md), assuming network connectivity 
+between the sensor and the platform. First, the sensor has to be provision.... (Dani please complete this part and
+the "linking" with next section).
+
+## Subscriptions and notifications at Context Broker 
+
+Now that the car speed information is periodically send to Context Broker, let's see how to configure notifications. 
 The simplest notification trigger is based on entity attribute changes. For example, in order to get
 notifications each time the `speed` attribute changes in any entity with type `Car` the following
-subscription would be used:
+subscription would be used. Notifications will be send to the (sample) endpoint `http://example.com/receiver`.
 
     POST /v2/subscriptions
     Content-Type: application/json
@@ -45,7 +55,6 @@ as part of the `notification` field:
     }
     ...
 
-
 Moreover, you can include filters associated to the subscription. For example, in order to get notification not
 only each time that `speed` changes but also requiring that the speed is greater than 50 km/h and the Car 
 is located in the center of Madrid city (in particular, 15 km closer to the city center):
@@ -62,7 +71,6 @@ is located in the center of Madrid city (in particular, 15 km closer to the city
     }
     ...
          
-
 By default, notifications received by `http://example.com/receiver` used a "fixed" format, in the following way:
 
     POST http://example.com/receiver
@@ -118,30 +126,17 @@ This is just a brief introduction to the overall subscriptions/notifications fun
 the full details and more examples at the [Context Broker documentation](https://fiware-orion.readthedocs.io/en/master/user/walkthrough_apiv2/index.html#subscriptions) and the "Subscriptions" section at the
 [NGSIv2 specification](http://telefonicaid.github.io/fiware-orion/api/v2/stable/).
 
-## How to send notifications when the attribute value doesn't actually change
+## The `TimeInstant` metadata
 
 As in IoT Platform version v4.1, the default behavior for Context Broker is to send notifications only
 when the attribute has actually changed. Thus, if the Car `speed` is 67 and Context Broker receives
 an update with the value 67 then it *doesn't* send a notification.
 
 For those use cases that needs notifying each update (no matter if it results on actual value change or not), the
-recommendation is to include a metadata designed to change for each new update. This way, you ensure that from a logical
-point of view the attribute always change, as a change in any metadata is considered a change in the attribute. 
+IoTAgent implements a clever mechanism based on adding a `TimeInstant` metadata with the timestamp of the update. 
+This way, it is ensured that from a logical point of view the attribute always changes, as a change in any metadata 
+is considered a change in the attribute. Look for the `TimeInstant` element documentation in the [IoT Agent documentation](https://github.com/telefonicaid/iotagent-node-lib#the-timeinstant-element).
 
-This can be typically achieved with a metadata with a timestamp of the instant in which the update took place, as precise as you need (e.g. if your system is able to notify several times per second, then the timestamp resolution should be higher than one second). For example:
-
-    PUT /v2/entities/BCZ6754/attrs/speed
-    Content-Type: application/json
-
-    {
-      "value": 57,
-      "metadata": {
-        "TimeInstant": {
-          "value": "2017-06-17T07:21:24.238Z",
-          "type": "DateTime"
-        }
-      }
-    }
-
-In fact, the [IoT Agents](../device_gateway.md) may include this `TimeInstant` metadata as a builtin feature.
-Look for the `TimeInstant` element documentation in the [IoT Agent documentation](https://github.com/telefonicaid/iotagent-node-lib#the-timeinstant-element).
+In the case of client-provided entities (i.e. entities not managed by IoTAgent but by your application) you may need a 
+similar mechanism. In this case, ensure that the `TimeInstant` metadata resolution is higher enough, e.g. if your system 
+is able to notify several times per second, then the timestamp resolution should be higher than one second.
