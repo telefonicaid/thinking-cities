@@ -34,5 +34,6 @@ pages:
     - 'Geolocalized entities': 'topics/geolocalized_entities.md'
     - 'Subscriptions and registrations': 'topics/subcriptions_and_registrations.md'
     - 'Performance considerations': 'topics/performance_considerations.md'
+    - 'Modelling considerations': 'topics/modelling_considerations.md'
 
     
