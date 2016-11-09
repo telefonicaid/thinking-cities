@@ -36,5 +36,5 @@ pages:
     - 'Performance considerations': 'topics/performance_considerations.md'
     - 'Modelling considerations': 'topics/modelling_considerations.md'
     - 'How to connect my device to the platform': 'topics/device_connection.md'
-
+    - 'What is the best way to calculate a value based on Context changes': 'topics/data_calculation.md'
     
