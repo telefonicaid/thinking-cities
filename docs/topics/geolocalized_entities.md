@@ -21,9 +21,59 @@ on Earth:
     }
 
 
-With regards with entities corresponding to devices connected to the platform and managed by [IoT Agents](../device_gateway.md), you can achieve
-they get geo-located as `geo:point` using the model transformation functionality. Let's assume... (Dani: complete this part, based on the fleet of cars 
-use case used also en how_notifications_work.md).
+With regards with entities corresponding to devices connected to the platform and managed by [IoT Agents](../device_gateway.md), you can
+geo-locate them as `geo:point` using the model transformation functionality. Let's assume the same scenario shown in the [notifications scenario](how_notifications_work.md).
+Sensor information can be reported either directly in the `latitude, longitude` format, or separately, by using expressions to combine the information
+into a geo point. To do so, the car provisioning should be changed to reflect this new information. If the sensor information is sent using :
+
+    POST /iot/services
+    Content-Type: application/json
+    Fiware-service: smartown
+    Fiware-servicepath: /roads
+
+    {
+      "services": [
+        {
+          "protocol": [
+                  "IoTA-UL"
+                ],
+          "apikey": "801230BJKL23Y9090DSFL123HJK09H324HV8732",
+          "entity_type": "Car",
+          "attributes": [
+            {
+              "object_id": "s",
+              "name": "speed",
+              "type": "Boolean"
+            },
+            {
+              "object_id": "la",
+              "name": "latitude",
+              "type": "Integer"
+            },
+            {
+              "object_id": "lo",
+              "name": "longitude",
+              "type": "Integer"
+            },
+            {
+              "name":"location",
+              "type":"geo:point",
+              "expression": "${latitude}, ${longitude}"
+            }
+          ]
+        }
+      ]
+    }
+
+With this configuration, information from the car can be reported with the following request:
+
+    POST /iot/d?k=801230BJKL23Y9090DSFL123HJK09H324HV8732&i=BCZ6754
+    Content-Type: text/plain
+
+    s|55|la|28|lo|-16
+
+This will generate an update request to the context broker, setting the value of the attribute `location` to the value
+`28, -16`, as defined by the expression.
 
 Once the entities location is correctly configured, it can be exploited at different platform points. In particular:
 
