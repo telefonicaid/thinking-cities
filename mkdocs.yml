@@ -35,5 +35,6 @@ pages:
     - 'Subscriptions and registrations': 'topics/subcriptions_and_registrations.md'
     - 'Performance considerations': 'topics/performance_considerations.md'
     - 'Modelling considerations': 'topics/modelling_considerations.md'
+    - 'How to connect my device to the platform': 'topics/device_connection.md'
 
     
