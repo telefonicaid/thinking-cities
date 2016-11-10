@@ -179,19 +179,19 @@ or the same entity in NGSIv2 format:
          "temperature": {
              "type": "degrees",
              "value": "22"
-           },
-           "humidity": {
+         },
+         "humidity": {
              "type": "percentage",
              "value": "78"
-           },
-           "location": {
+         },
+         "location": {
              "type": "geo:point",
              "value": "40.392, -3.759"
-           },
-           "reference": {
+         },
+         "reference": {
              "type": "string",
              "value": "917834508965243"
-           }
+         }
       }
 
 ### Sending a command
@@ -293,27 +293,27 @@ or the same entity in NGSIv2 format:
          "temperature": {
              "type": "degrees",
              "value": "22"
-           },
-           "humidity": {
+         },
+         "humidity": {
              "type": "percentage",
              "value": "78"
-           },
-           "location": {
+         },
+         "location": {
              "type": "geo:point",
              "value": "40.392, -3.759"
-           },
-           "reference": {
+         },
+         "reference": {
              "type": "string",
              "value": "917834508965243"
-           },
-           "configuration_status": {
+         },
+         "configuration_status": {
              "type": "commandStatus",
              "value": "PENDING"
-           },
-           "configuration_info": {
+         },
+         "configuration_info": {
              "type": "commandResult",
              "value": " "
-           }
+         }
       }
 
 The additional attributes have the same name as the original command with a `_status` suffix (for the stauts attribute)

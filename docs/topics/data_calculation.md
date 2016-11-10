@@ -94,19 +94,19 @@ or the same entity in NGSIv2 format:
          "level": {
              "type": "meter",
              "value": "1"
-           },
-           "weight": {
+         },
+         "weight": {
              "type": "kilogram",
              "value": "24"
-           },
-           "density": {
+         },
+         "density": {
              "type": "kilogram/meter^3",
              "value": "3"
-           },
-           "reference": {
+         },
+         "reference": {
              "type": "string",
              "value": "917834508965243"
-           }
+         }
       }
 
 To see the complete set of operations and features available for the Expression Language, refer to
