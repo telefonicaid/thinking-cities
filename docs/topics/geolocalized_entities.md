@@ -56,9 +56,9 @@ into a geo point. To do so, the car provisioning should be changed to reflect th
               "type": "Integer"
             },
             {
-              "name" : "location",
-              "type" : "geo:point",
-              "expression" : "${latitude}, ${longitude}"
+              "name": "location",
+              "type": "geo:point",
+              "expression": "${latitude}, ${longitude}"
             }
           ]
         }

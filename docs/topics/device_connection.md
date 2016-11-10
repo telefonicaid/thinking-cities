@@ -105,7 +105,7 @@ To provision the device in the platfor we issue the following request to the IoT
       ]
     }
 
-This will provision our `ws1` workstation in the system, making it ready to receive measures.
+This will provision our `ws1956672` workstation in the system, making it ready to receive measures.
 
 ### Sending the measure
 
@@ -204,8 +204,7 @@ Commands are also defined in the device provisioning. It can be seen in the `com
 in the provisioning section above.
 
 Information for the command execution is sent using NGSI queries to the Context Broker, as if we were going to update
-directly the Context Entity that represents the device. As an example, we will send the `
-: false` configuration
+directly the Context Entity that represents the device. As an example, we will send the `openUmbrella: false` configuration
 order with the following request:
 
     PUT /v2/entities
