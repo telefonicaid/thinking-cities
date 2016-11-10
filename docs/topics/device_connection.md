@@ -204,7 +204,8 @@ Commands are also defined in the device provisioning. It can be seen in the `com
 in the provisioning section above.
 
 Information for the command execution is sent using NGSI queries to the Context Broker, as if we were going to update
-directly the Context Entity that represents the device. As an example, we will send the `openUmbrella=false` configuration
+directly the Context Entity that represents the device. As an example, we will send the `
+: false` configuration
 order with the following request:
 
     PUT /v2/entities
@@ -221,7 +222,7 @@ order with the following request:
       }
     }
 
-This request will store the command `configuration` with value `openUmbrella=false` waiting for the device to retrieve it.
+This request will store the command `configuration` with value `openUmbrella: false` waiting for the device to retrieve it.
 
 A device can use the query parameter `getCmd=1` to retrieve all the pending commands from the system whenever it is sending
 a new measure, as in the following example:
@@ -236,7 +237,7 @@ the pending commands, as in the following result:
 
     200 OK
 
-    ws1956672@configuration|openUmbrella=false
+    ws1956672@configuration|openUmbrella: false
 
 Here we can see the configuration value we sent to the Context Broker in the first place. As you can see, the values
 include the Device ID provisioned before, for verification purposes.
