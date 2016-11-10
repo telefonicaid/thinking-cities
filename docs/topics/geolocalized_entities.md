@@ -108,10 +108,9 @@ Once the entities location is correctly configured, it can be exploited at diffe
 		} 
 
 - Persistence backends:
-  - CKAN (column mode): attributes named `geojson` in case-insensitive way which value is
-    a valid GeoJSON are correctly shown at CKAN visualization component. See [Cygnus documentation](http://fiware-cygnus.readthedocs.io/en/master/cygnus-ngsi/xxxx) for more detail. Note this is
-    not the standard way of mark entity location in the Data API (see aforementioned "Geospacial properties of entities" section) and probably would be aligned in the
-    future to work in a similar way to CartoDB persistence.
+  - CKAN (column mode): there are two ways of providing location, either using two columns (one for latitude
+    another for longitude) or joining both in a single colum. See [Cygnus documentation](https://fiware-cygnus.readthedocs.io/en/latest/cygnus-ngsi/flume_extensions_catalogue/ngsi_ckan_sink/index.html#section2.3.4) for more detail. Note this is not the standard way of mark entity location in the Data API (see aforementioned "Geospacial properties of entities" section) and probably would be aligned in the
+    future to work in a similar way to the [CartoDB experimental persistence sink](http://fiware-cygnus.readthedocs.io/en/master/cygnus-ngsi/flume_extensions_catalogue/ngsi_cartodb_sink/index.html#section2.3.6).
 
 (Paco: an snapshot showing Cars around Madrid in the CKAN GUI should be included here)
 
