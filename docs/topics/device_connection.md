@@ -10,7 +10,7 @@ The current version of the platform supports two protocols: Ultralight 2.0 and J
 connect a single device to the platform to send a piece of data, and to receive some data from the platform.
 
 Connecting a device to the Platform will make a single Context Entity with all the information about the device available
-in the Context Broker. Interactions with the devices are always channeld through operations over this entity.
+in the [Context Broker](../context_broker.md). Interactions with the devices are always channeled through operations over this entity.
 
 More informacion about the device APIs can be found in the [Device API section](../device_api.md). You can find links
 to each particular protocol specification and more usefule information in the [Device Gateway section](../device_gateway.md).
@@ -105,7 +105,7 @@ To provision the device in the platfor we issue the following request to the IoT
       ]
     }
 
-This will provision our ws1 workstation in the system, making it ready to receive measures.
+This will provision our `ws1` workstation in the system, making it ready to receive measures.
 
 ### Sending the measure
 
@@ -116,7 +116,7 @@ In order to send measures to the platform, the device has to fulfill the followi
 
 Being the most common, we will assume that your constraint device have an HTTP client, that can send requests to the
 platform. This interaction with the Platform can be implemented with whichever programming language your device supports.
-No SDKs are provided for south bound interactions.
+At the present moment, no SDKs are provided for south bound interactions.
 
 In this case, a typical measure report from our Weather Station will consist on a request like the following
 one:
@@ -139,7 +139,7 @@ measure are the ones defined in the `object_id` attributes of the device provisi
 
 * The `Content-Type` header is mandatory and **must** have the value `text/plain`.
 
-If everything is OK, the system will answer with a 200 OK code, and an empty answer.
+If everything is OK, the system will answer with a 200 OK code, and an empty response.
 
 This measure will give rise to a Context Entity like the following one in the Context Broker:
 
@@ -161,7 +161,7 @@ This measure will give rise to a Context Entity like the following one in the Co
            {
              "name": "location",
              "type": "geo:point",
-             "value": "22.1, -17"
+             "value": "40.392, -3.759"
            },
            {
              "name": "reference",

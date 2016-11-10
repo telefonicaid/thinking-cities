@@ -6,7 +6,7 @@ calculating data based on its origin and on the nature of the calculation.
 
 ## Calculations based on data coming from the devices
 
-For those pieces of data coming from measurement reports from the Devices, the IoTAgents offer mechanisms to make calculations
+For those pieces of data coming from measurement reports from the Devices, the [IoTAgents](../device_gateway.md) offer mechanisms to make calculations
 based on the reported data, through the Expression Language. When a Device is provisioned in the platform, along with the
 definition of the values that are going to be directly reported to the system, expressions can be defined combining those
 values sent by the device.
@@ -92,14 +92,14 @@ the [specification](https://github.com/telefonicaid/iotagent-node-lib/blob/maste
 ## Calculations based on data in Context Entities
 
 For those data values that doesn't come from devices, but from external systems, and for those cases when the sources of
-context information to calculate those values are multiple, the CEP can be used to make some of those calculations.
+context information to calculate those values are multiple, the [CEP](../cep.md) can be used to make some of those calculations.
 
 // @CARLOS: I GUESS THIS IS CORRECT, BUT I'M NOT COMPLETELY SURE. IF IT IS, SOME EXAMPLES WOULD BE APPRECIATED
 
 ## Statistical calculations based on historic values
 
 For those cases when the data values that want to be calculated are statistical information based on historic values,
-the Short Term Historic can be used. This component stores historical information of Context Entities and can be used
+the [Short Term Historic](../sth.md) can be used. This component stores historical information of Context Entities and can be used
 to retrieve statistical calculations over the stored data.
 
 // @GERMAN: SOME INFORMATION ABOUT HOW TO GET STATISTICS CALCULATED BY THE STH WOULD BE NEEDED

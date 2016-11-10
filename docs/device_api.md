@@ -19,11 +19,11 @@ repository](https://github.com/telefonicaid/fiware-figway).
 In order for the South Bound protocols (i.e.: the protocols used to communicate physical devices with the Platform)
 to work for your services, you must provision the information about your devices, either by provisioning the device itself,
 by provisioning a Configuration Group (for each subservice) or both. Configuration Groups (also called Services; do not
-mistake them for the multitenancy Service objects), define some default values for the South Bound protocol to NGSI mapping,
+mistake them for the multitenancy Service concept), define some default values for the South Bound protocol to NGSI mapping,
 that will be applied to every device associated to the group. Devices will be associated to groups based on the API Key
 provided by the Device in the communications.
 
-Configuration Groups can be provisioned through the API, or through the Provision Portal. If you are not the administrator
+Configuration Groups can be provisioned through the API. If you are not the administrator
 of your subservices, you may have been given an API Key. If that's the case, there is no need to configure the
 South Bound protocol again. Use the provided data for future interactions.
 
@@ -67,7 +67,7 @@ to the `/iot/services` path in an HTTP POST:
   ]
 }
 ```
-This request shows the provisioning of an Ultralight 2.0 Configuration group, indicating the API Key, the entity_type
+This request shows the provisioning of an Ultralight 2.0 Configuration group, indicating the API Key, the `entity_type`
 that will be associated with all the devices in the group and common attributes all devices in the group will share,
 along with the information for its mapping to the NGSI entity.
 
