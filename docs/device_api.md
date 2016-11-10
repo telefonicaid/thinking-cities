@@ -27,46 +27,50 @@ Configuration Groups can be provisioned through the API. If you are not the admi
 of your subservices, you may have been given an API Key. If that's the case, there is no need to configure the
 South Bound protocol again. Use the provided data for future interactions.
 
-The following excerpt shows you how to provision a Configuration Group directly to the API. This request must be sent
-to the `/iot/services` path in an HTTP POST:
-```
-{
-  "services": [
+The following excerpt shows you how to provision a Configuration Group directly to the API:
+
+    POST /iot/services
+    Content-Type: application/json
+    Fiware-service: OpenIoT
+    Fiware-servicepath: /
+
     {
-      "protocol": [
-              "IoTA-UL"
-            ],
-      "apikey": "801230BJKL23Y9090DSFL123HJK09H324HV8732",
-      "entity_type": "SensorMachine",
-      "commands": [
+      "services": [
         {
-          "name": "wheel1",
-          "type": "Wheel"
-        }
-      ],
-      "lazy": [
-        {
-          "name": "luminescence",
-          "type": "Lumens"
-        }
-      ],
-      "attributes": [
-        {
-          "name": "status",
-          "type": "Boolean"
-        }
-      ],
-      "static_attributes": [
-        {
-          "name": "bootstrapServer",
-          "type": "Address",
-          "value": "127.0.0.1"
+          "protocol": [
+                  "IoTA-UL"
+                ],
+          "apikey": "801230BJKL23Y9090DSFL123HJK09H324HV8732",
+          "entity_type": "SensorMachine",
+          "commands": [
+            {
+              "name": "wheel1",
+              "type": "Wheel"
+            }
+          ],
+          "lazy": [
+            {
+              "name": "luminescence",
+              "type": "Lumens"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "status",
+              "type": "Boolean"
+            }
+          ],
+          "static_attributes": [
+            {
+              "name": "bootstrapServer",
+              "type": "Address",
+              "value": "127.0.0.1"
+            }
+          ]
         }
       ]
     }
-  ]
-}
-```
+
 This request shows the provisioning of an Ultralight 2.0 Configuration group, indicating the API Key, the `entity_type`
 that will be associated with all the devices in the group and common attributes all devices in the group will share,
 along with the information for its mapping to the NGSI entity.
