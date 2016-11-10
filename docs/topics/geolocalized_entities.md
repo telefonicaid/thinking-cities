@@ -70,10 +70,12 @@ With this configuration, information from the car can be reported with the follo
     POST /iot/d?k=801230BJKL23Y9090DSFL123HJK09H324HV8732&i=BCZ6754
     Content-Type: text/plain
 
-    s|55|la|28|lo|-16
+    s|55|la|40.392|lo|-3.759
+
+
 
 This will generate an update request to the context broker, setting the value of the attribute `location` to the value
-`28, -16`, as defined by the expression.
+`40.392, -3.759`, as defined by the expression.
 
 Once the entities location is correctly configured, it can be exploited at different platform points. In particular:
 

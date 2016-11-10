@@ -93,7 +93,7 @@ To provision the device in the platfor we issue the following request to the IoT
             {
               "name": "location",
               "type": "geo:point",
-              "value": "22.1, -17"
+              "value": "40.392, -3.759"
             },
             {
               "name": "reference",
