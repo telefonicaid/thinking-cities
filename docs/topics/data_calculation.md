@@ -26,7 +26,7 @@ the density of the liquid waste currently stored.
         {
           "device_id": "t5867934",
           "protocol": "IoTA-UL",
-          "entity_name": "Waste Tank 8",
+          "entity_name": "WasteTank8",
           "entity_type": "Device",
           "attributes": [
             {
@@ -51,7 +51,7 @@ the density of the liquid waste currently stored.
 
 A measure report coming from the container like the following:
 
-    POST /iot/d?k=801230BJKL23Y9090DSFL123HJK09H324HV8732&i=ws1956672
+    POST /iot/d?k=801230BJKL23Y9090DSFL123HJK09H324HV8732&i=t5867934
     Content-Type: text/plain
 
     l|22|w|78
@@ -61,7 +61,7 @@ will give raise to the following Context Broker entity (NGSIv1)
       {
          "type": "Device",
          "isPattern": "false",
-         "id": "WeatherStation1",
+         "id": "WasteTank8",
          "attributes": [
            {
              "name": "level",
@@ -90,7 +90,7 @@ or the same entity in NGSIv2 format:
 
       {
          "type": "Device",
-         "id": "WeatherStation1",
+         "id": "WasteTank8",
          "level": {
              "type": "meter",
              "value": "1"
