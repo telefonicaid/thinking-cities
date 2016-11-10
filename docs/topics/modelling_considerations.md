@@ -1,11 +1,11 @@
-# Modelling considerations
+# Tips on how to model your project entities with the IoT Platform
 
 There are some considerations to make when designing how to model a project in the platform. This document will give you
 some hints to avoid most common mistakes (use them as hints to guide your modelling, not as strict rules).
 
 ## The IoT Platform is centered in context
 
-The central piece of Telefonica's IoT Platform is the Context Broker: a component that lets you store and query information
+The central piece of the IoT Platform is the Context Broker: a component that lets you store and query information
 about context entities. But, what is a Context Entity? Context Entities are logical abstractions that represent the elements
 of your system. Some examples are:
 
@@ -14,8 +14,9 @@ of your system. Some examples are:
 * When designing a Smart Parking you will have entities like: Car, User, Floor...
 
 What does it mean that those objects are Context Entities (instead of classes, objects, tables, or documents). The
-difference lays in how it is treated around the platform: modifications of the CEs can be observed by subscriptions, the
-history of those changes stored, rules can be defined to modify the global Context based on CEs changes.
+difference lays in how it is treated around the platform: modifications of the CEs can be observed by subscriptions,
+the history of those changes stored at [persistence backends](../cygnus.md) (HDFS, CKAN, MySQL) and [STH](../sth.md),
+rules can be defined to modify the global Context based on CEs changes with [CEP](../cep.md)...
 
 All the given examples have several things in common:
 
@@ -24,7 +25,7 @@ to their changes, etc. This behavior does not fit well with processes (and thing
 
 * All those entities are expected to have a long life in the system. Entities are not supposed to model
 transient information (e.g.: support tickets, mails, log files). This doesn't mean short-lived entities can't be modelled
-in the system, but having those kind of entities in your project will heavily impact the performance
+in the system, but having those kind of entities in your project will cause several operational issues in the platform.
 
 ## The Platform is not a ticketing system
 
@@ -70,8 +71,9 @@ directly code it in the seat, as in the following example:
       }
 
 With this modelling, the Context Broker will be storing the actual picture of the Theater: which seats have been sold and
-which seats haven't. The history of each seat could also be made available (by means of the STH), giving information of
-past plays. And all that, following the performance and modelling recommendations.
+which seats haven't. The history of each seat could also be made available (by means of the STH and other history
+persistence backend), giving information of past plays. And all that, following the performance and modelling
+recommendations.
 
 This approach has some caveats, though:
 
@@ -152,6 +154,9 @@ subscriptions).
 
 * It is also a problem due to performance factors. The performance of some operations depend on the number of attributes
 of the involved CEs. Making CEs with ever-growing number of attributes may end up damaging the performance of your project.
+
+* It is also worth mentioning that there are physical limits to the size of entities in the Context Broker, so
+evergrowing entities may not be possible to model, depending on their size.
 
 Another scenario where we could find the same modelling problem would be the aforementioned Theater scenario. In that
 scenario we could have thought that a nice model could be having a Theater Context Entity like the following:

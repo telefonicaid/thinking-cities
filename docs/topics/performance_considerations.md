@@ -14,4 +14,4 @@ There are several considerations to take into account when using the platform, a
   buildings, cars, people, etc.) but they shouldn't be used to model *transient* states (such as alarms, 
   notifications, tickets, etc.). Although the Context Broker API supports this kind of usage, it may involve 
   several operational issues in the platform (if user doesn't manage her transient entities properly). More 
-  information on this topic is discussed in [this document](proper_entities_usage.md). 
+  information on this topic is discussed in [this document](modelling_considerations.md).

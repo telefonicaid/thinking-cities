@@ -186,13 +186,15 @@ order with the following request:
 
     PUT /v2/entities
     Content-Type: application/json
+    Fiware-service: smartown
+    Fiware-servicepath: /gardens
 
     {
       "id": "WeatherStation1",
       "type": "Device",
       "configuration": {
         "type" : "command",
-        "value" : "openUmbrella=false"
+        "value" : "openUmbrella: false"
       }
     }
 
