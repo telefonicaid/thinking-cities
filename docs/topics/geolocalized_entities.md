@@ -56,9 +56,9 @@ into a geo point. To do so, the car provisioning should be changed to reflect th
               "type": "Integer"
             },
             {
-              "name":"location",
-              "type":"geo:point",
-              "expression": "${latitude}, ${longitude}"
+              "name" : "location",
+              "type" : "geo:point",
+              "expression" : "${latitude}, ${longitude}"
             }
           ]
         }
@@ -84,6 +84,8 @@ Once the entities location is correctly configured, it can be exploited at diffe
   following query could be used.
 
         GET /v2/entities?type=Car&georel=near;maxDistance:15000&geometry=point&coords=40.418889,-3.691944 
+        Fiware-service: smartown
+        Fiware-servicepath: /roads
 
 - At the [CEP API](../cep_api.md). CEP is able to process entity point locations
   (other shapes as line, polygon, etc. not yet supported) so its latitude and

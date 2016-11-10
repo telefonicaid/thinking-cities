@@ -111,7 +111,7 @@ This will provision our `ws1` workstation in the system, making it ready to rece
 
 In order to send measures to the platform, the device has to fulfill the following requirements:
 
-* Connectivity to the South Bound of the platform.
+* Connectivity to the South Bound of the platform (i.e.: the ports used to communicate physical devices with the Platform).
 * Either an MQTT or an HTTP client (as those are the transport protocols currently supported).
 
 Being the most common, we will assume that your constraint device have an HTTP client, that can send requests to the
@@ -217,7 +217,8 @@ Here we can see the configuration value we sent to the Context Broker in the fir
 include the Device ID provisioned before, for verification purposes.
 
 Take into account that polling commands (as the ones depicted in this document) have an expiration time, and so, if the
-device don't retrieve the available commands in a reasonable amount of time, they will be discarded.
+device don't retrieve the available commands in a reasonable amount of time, they will be discarded. Expiration time of
+the commands is defined Platform-wide (and currently set to 1 day).
 
 To keep track of the state of commands sent to a device, the IoTAgents create a set of additional attributes in the device
 entity that let the user check the current status of the command, and the result of the command if there is any. The
@@ -241,7 +242,7 @@ Context Entity with the additional attributes will be like the following:
            {
              "name": "location",
              "type": "geo:point",
-             "value": "22.1, -17"
+             "value": "40.392, -3.759"
            },
            {
              "name": "reference",

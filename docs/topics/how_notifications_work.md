@@ -31,7 +31,7 @@ for its devices. This can be achieved with the following query:
             {
               "object_id": "s",
               "name": "speed",
-              "type": "Boolean"
+              "type": "Number"
             }
           ]
         }
