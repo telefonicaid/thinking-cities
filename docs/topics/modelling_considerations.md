@@ -42,7 +42,7 @@ old information.
 Objects like tickets, even being nouns, model interactions between entities in your system instead of modelling contextual
 elements: a ticket is a temporal association between a user (that may go once and again to the same theater) and the seat
 (where he will be seated in a particular play). A more convenient way to model this kind of information would be to
-directly code it in the seat, as in the following example:
+directly code it in the seat, as in the following example (NGSIv1):
 
       {
          "type": "Seat",
@@ -65,8 +65,29 @@ directly code it in the seat, as in the following example:
              "value": {
                 "name": "Bob Smith"
              }
-           },
+           }
          ]
+      }
+
+or the same entity in NGSIv2 format:
+
+      {
+         "type": "Seat",
+         "id": "Row12SeatB",
+         "status": {
+             "type": "String",
+             "value": "occupied"
+         },
+         "play": {
+             "type": "String",
+             "value": "Richard III"
+         },
+         "audience": {
+             "type": "Person",
+             "value": {
+                "name": "Bob Smith"
+           }
+         }
       }
 
 With this modelling, the Context Broker will be storing the actual picture of the Theater: which seats have been sold and
@@ -90,7 +111,7 @@ using specialized tools for particular processes (like support or purchases).
 ## Attributes are not collections
 
 A commmon mistake when a beginner is modelling a problem in the Platform is: to see the structure of a Context Entity
-(i.e.: objects with an identity that have collections of other objects, the attributes, that have names and values)
+(i.e.: objects with an identity that have collections of other objects, the attributes, that have names and values) (NGSIv1):
 
       {
          "type": "SensorMachine",
@@ -108,11 +129,30 @@ A commmon mistake when a beginner is modelling a problem in the Platform is: to 
              "value": "val2"
            },
            {
-             "name": "attr2",
+             "name": "attr3",
+             "type": "String",
+             "value": "val3"
+           }
+         ]
+      }
+
+or the same entity in NGSIv2 format:
+
+      {
+         "type": "SensorMachine",
+         "id": "machine1",
+         "attr1": {
+             "type": "String",
+             "value": "val1"
+         },
+         "attr2": {
              "type": "String",
              "value": "val2"
-           },
-         ]
+         },
+         "attr3": {
+             "type": "String",
+             "value": "val3"
+         }
       }
 
 and think that it will fit any model that has an object containing a list of things, like the following one:
@@ -143,6 +183,29 @@ and think that it will fit any model that has an object containing a list of thi
          ]
       }
 
+or the same entity in NGSIv2 format:
+
+      {
+         "type": "DepartmentWorkers",
+         "id": "RRHH",
+         "Bob": {
+             "type": "User",
+             "value": {
+                "name": "Bob",
+                "surname": "Smith",
+                "ID": "3456"
+             }
+         },
+         "Alice": {
+             "type": "User",
+             "value": {
+                "name": "Alice",
+                "surname": "Johnson",
+                "ID": "8744"
+             }
+         }
+      }
+
 This is a wrong model for this problem for several reasons:
 
 * First of all, the querying and subscription features of the Context Broker are based on the hypothesis that each of your
@@ -154,12 +217,12 @@ subscriptions).
 of the involved CEs. Making CEs with ever-growing number of attributes may end up damaging the performance of your project.
 
 Another scenario where we could find the same modelling problem would be the aforementioned Theater scenario. In that
-scenario we could have thought that a nice model could be having a Theater Context Entity like the following:
+scenario we could have thought that a nice model could be having a Theater Context Entity like the following (NGSIv1):
 
       {
          "type": "Theater",
          "isPattern": "false",
-         "id": "London Shakespeare Theater",
+         "id": "LondonShakespeareTheater",
          "attributes": [
            {
              "name": "1-A",
@@ -188,6 +251,36 @@ scenario we could have thought that a nice model could be having a Theater Conte
            [...]
          ]
       }
+
+or the same entity in NGSIv2 format:
+
+      {
+         "type": "Theater",
+         "id": "LondonShakespeareTheater",
+         "1-A": {
+             "type": "Seat",
+             "value": {
+                "status": "Occupied",
+                "name": "Bob Smith"
+             }
+         },
+         "1-B": {
+             "type": "Seat",
+             "value": {
+                "status": "Free"
+             }
+         },
+         "1-C": {
+             "type": "Seat",
+             "value": {
+                "status": "Occupied",
+                "name": "Alice Johnson"
+             }
+           },
+
+         [...]
+      }
+
 
 This scenario has the same problems as the department worker scenario above. It would be best to model each of the Seats
 as a Context Entity by itself, and model de Theater, either as a subservice holding all the information about the seats,

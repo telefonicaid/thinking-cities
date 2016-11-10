@@ -141,7 +141,7 @@ measure are the ones defined in the `object_id` attributes of the device provisi
 
 If everything is OK, the system will answer with a 200 OK code, and an empty response.
 
-This measure will give rise to a Context Entity like the following one in the Context Broker:
+This measure will give rise to a Context Entity like the following one in the Context Broker (NGSIv1):
 
       {
          "type": "Device",
@@ -169,6 +169,29 @@ This measure will give rise to a Context Entity like the following one in the Co
              "value": "917834508965243"
            }
          ]
+      }
+
+or the same entity in NGSIv2 format:
+
+      {
+         "type": "Device",
+         "id": "WeatherStation1",
+         "temperature": {
+             "type": "degrees",
+             "value": "22"
+           },
+           "humidity": {
+             "type": "percentage",
+             "value": "78"
+           },
+           "location": {
+             "type": "geo:point",
+             "value": "40.392, -3.759"
+           },
+           "reference": {
+             "type": "string",
+             "value": "917834508965243"
+           }
       }
 
 ### Sending a command
@@ -222,7 +245,7 @@ the commands is defined Platform-wide (and currently set to 1 day).
 
 To keep track of the state of commands sent to a device, the IoTAgents create a set of additional attributes in the device
 entity that let the user check the current status of the command, and the result of the command if there is any. The
-Context Entity with the additional attributes will be like the following:
+Context Entity with the additional attributes will be like the following (NGSIv1):
 
       {
          "type": "Device",
@@ -260,6 +283,37 @@ Context Entity with the additional attributes will be like the following:
              "value": " "
            }
          ]
+      }
+
+or the same entity in NGSIv2 format:
+
+      {
+         "type": "Device",
+         "id": "WeatherStation1",
+         "temperature": {
+             "type": "degrees",
+             "value": "22"
+           },
+           "humidity": {
+             "type": "percentage",
+             "value": "78"
+           },
+           "location": {
+             "type": "geo:point",
+             "value": "40.392, -3.759"
+           },
+           "reference": {
+             "type": "string",
+             "value": "917834508965243"
+           },
+           "configuration_status": {
+             "type": "commandStatus",
+             "value": "PENDING"
+           },
+           "configuration_info": {
+             "type": "commandResult",
+             "value": " "
+           }
       }
 
 The additional attributes have the same name as the original command with a `_status` suffix (for the stauts attribute)
