@@ -77,11 +77,6 @@ will give raise to the following Context Broker entity (NGSIv1)
              "name": "density",
              "type": "kilogram/meter^3",
              "value": "3"
-           },
-           {
-             "name": "reference",
-             "type": "string",
-             "value": "917834508965243"
            }
          ]
       }
@@ -102,10 +97,6 @@ or the same entity in NGSIv2 format:
          "density": {
              "type": "kilogram/meter^3",
              "value": "3"
-         },
-         "reference": {
-             "type": "string",
-             "value": "917834508965243"
          }
       }
 
