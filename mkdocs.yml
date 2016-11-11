@@ -35,6 +35,6 @@ pages:
     - 'Subscriptions and registrations': 'topics/subcriptions_and_registrations.md'
     - 'Performance considerations': 'topics/performance_considerations.md'
     - 'Tips on how to model project entities': 'topics/modelling_considerations.md'
-    - 'How to connect my device to the platform': 'topics/device_connection.md'
+    - 'Quick start on device connection to the platform (with Ultralight 2.0)': 'topics/device_connection.md'
     - 'What is the best way to calculate a value based on Context changes': 'topics/data_calculation.md'
     

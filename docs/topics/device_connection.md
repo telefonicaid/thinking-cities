@@ -1,4 +1,4 @@
-# How to connect my device to the platform
+# Quick start on device connection to the platform (with Ultralight 2.0)
 
 ## Overview
 
