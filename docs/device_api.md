@@ -14,9 +14,74 @@ working as a client SDK for any desktop PC, laptop or gateway supporting a pytho
 the steps described below and use the python commands as described in the README.md file available at this [Github
 repository](https://github.com/telefonicaid/fiware-figway).
 
+# Configure the South Bound protocol
+
+In order for the South Bound protocols (i.e.: the protocols used to communicate physical devices with the Platform)
+to work for your service, you must provision the information about your devices, either by provisioning the device itself,
+by provisioning a Configuration Group (for each subservice) or both. Configuration Groups (also called Services; do not
+mistake them for the multitenancy Service concept), define some default values for the South Bound protocol to NGSI mapping,
+that will be applied to every device associated to the group. Devices will be associated to groups based on the API Key
+provided by the Device in the communications.
+
+Configuration Groups can be provisioned through the API. If you are not the administrator
+of your subservices, you may have been given an API Key. If that's the case, there is no need to configure the
+South Bound protocol again. Use the provided data for future interactions.
+
+The following excerpt shows you how to provision a Configuration Group directly to the API:
+
+    POST /iot/services
+    Content-Type: application/json
+    Fiware-service: OpenIoT
+    Fiware-servicepath: /
+
+    {
+      "services": [
+        {
+          "protocol": [
+                  "IoTA-UL"
+                ],
+          "apikey": "801230BJKL23Y9090DSFL123HJK09H324HV8732",
+          "entity_type": "SensorMachine",
+          "commands": [
+            {
+              "name": "wheel1",
+              "type": "Wheel"
+            }
+          ],
+          "lazy": [
+            {
+              "name": "luminescence",
+              "type": "Lumens"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "status",
+              "type": "Boolean"
+            }
+          ],
+          "static_attributes": [
+            {
+              "name": "bootstrapServer",
+              "type": "Address",
+              "value": "127.0.0.1"
+            }
+          ]
+        }
+      ]
+    }
+
+This request shows the provisioning of an Ultralight 2.0 Configuration group, indicating the API Key, the `entity_type`
+that will be associated with all the devices in the group and common attributes all devices in the group will share,
+along with the information for its mapping to the NGSI entity.
+
+Currently, the IoT Platform only allows for the existence of a configuration group per subservice for each protocol.
+
 # Register your IoT device 
 
-Remember this step is optional, it is only required if you want to use commands in order to act upon devices or want to define a mapping to reduce the attributes identifier when you send observations to reduce the message size. 
+Remember this step is optional, it is only required if you want to use commands in order to act upon devices or want to
+define a mapping to reduce the attributes identifier when you send observations to reduce the message size. But, in case
+the device is not provisioned, the Configuration Group **must** be configured.
 
 If you simply want to send observations you can skip this and just go to the "Send observations" section.
 

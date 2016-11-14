@@ -29,3 +29,12 @@ pages:
     - 'Security Components (IDM, PEP, AC)': 'security.md'
   - 'Topics':
     - 'Hadoop streaming with Hue': 'topics/hadoop_streaming_hue.md'
+    - 'Character set limitations': 'topics/character_set_limitations.md'
+    - 'How to send notifications': 'topics/how_notifications_work.md'
+    - 'Geolocalized entities': 'topics/geolocalized_entities.md'
+    - 'Subscriptions and registrations': 'topics/subcriptions_and_registrations.md'
+    - 'Performance considerations': 'topics/performance_considerations.md'
+    - 'Tips on how to model project entities': 'topics/modelling_considerations.md'
+    - 'Quick start on device connection to the platform (with Ultralight 2.0)': 'topics/device_connection.md'
+    - 'What is the best way to calculate a value based on Context changes': 'topics/data_calculation.md'
+    
