@@ -3,6 +3,7 @@ The Complex Event Processing API allows you to analyze data from your IoT device
 The following action types are available:
 
 - update: update an entity's attribute
+- sms: send a SMS
 - email: send an email
 - post: make an HTTP POST
 - twitter: send a tweet
