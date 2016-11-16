@@ -5,7 +5,7 @@
 
 
 In IoTP there are defined Services and SubServices. SubServices exists into Services.
-Tipicaly a Service represents a smartcity and all of the SubServices represents the verticals of that smartcity.
+Tipically a Service represents a smartcity and all of the SubServices represents the verticals of that smartcity.
 
 Users are created into Services. The same user name could be used across different Services to represent different Users.
 i.e. adm1 could exists in "SmartCity" Service and adm1 could be another user for "SmartGondor" Service
@@ -29,9 +29,9 @@ In deep details, each Role in a Service is defined by a Policy for each IoTP com
 
 
 ## Can I modify permissions for a given user?
-The common way to modify permission for a given user is to assign or unassign roles.
+The common way to modify permissions for a given user is to assign or unassign Roles.
 User can be assgined to admin, ServiceCustomer, SubServiceAdmin and SubServiceCustomer roles in a given Service or SubService
-This can be do it using portal and orchestrator.
+This can be do it using IoT Portal and [IoT Orchestrator](http://docs.orchestrator2.apiary.io).
 [assign a Role to a User using Orchestrator] (http://docs.orchestrator2.apiary.io/#reference/orchestrator/roles-in-service/create-a-role)
 
 
@@ -39,13 +39,13 @@ This can be do it using portal and orchestrator.
 Create new user.
 [Orchestrator how to create a new user] (http://docs.orchestrator2.apiary.io/#reference/orchestrator/users-in-service/create-users)
 
-Create a new Role
+Create a new Role.
 [Orchestrator how to create a new role ] (http://docs.orchestrator2.apiary.io/#reference/orchestrator/roles-in-service/create-a-role)
 
 Define a new custom XACML Policy, like one of [these](https://github.com/telefonicaid/orchestrator/tree/master/src/orchestrator/core/policies)
 
-Assign a XACMLpolicy for that role and each IoTP component that you need
+Assign a XACMLpolicy for that role and each IoTP component that you need.
 [Set a XACML policy to a Role](http://docs.orchestrator2.apiary.io/#reference/orchestrator/role-in-service/set-xacml-policy-role)
 
-Assign Role to User
+Assign Role to User.
 [Orchestrator assign a Role to a User](http://docs.orchestrator2.apiary.io/#reference/orchestrator/role-assigment/assign-role-to-user)
