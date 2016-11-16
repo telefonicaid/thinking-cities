@@ -25,8 +25,7 @@ of do some actions or not.
 In deep details, each Role in a Service is defined by a Policy for each IoTP component.
 
 [IoTP Policies](https://github.com/telefonicaid/orchestrator/tree/master/src/orchestrator/core/policies)
-[Orion actions](https://github.com/telefonicaid/fiware-pep-steelskin#-rules-to-determine-the-context-broker-action-from-the-request)
-
+[Orion component actions](https://github.com/telefonicaid/fiware-pep-steelskin#-rules-to-determine-the-context-broker-action-from-the-request)
 
 
 ## Can I modify permissions for a given user?
@@ -35,12 +34,18 @@ User can be assgined to admin, ServiceCustomer, SubServiceAdmin and SubServiceCu
 This can be do it using portal and orchestrator.
 [assign a Role to a User using Orchestrator] (http://docs.orchestrator2.apiary.io/#reference/orchestrator/roles-in-service/create-a-role)
 
+
 ## How can I create a user with special permissions?
 Create new user.
-[Orchestrator how to create a user] (http://docs.orchestrator2.apiary.io/#reference/orchestrator/users-in-service/create-users)
+[Orchestrator how to create a new user] (http://docs.orchestrator2.apiary.io/#reference/orchestrator/users-in-service/create-users)
 
-Create new policy for a component
-[orc link about create policy]
+Create a new Role
+[Orchestrator how to create a new role ] (http://docs.orchestrator2.apiary.io/#reference/orchestrator/roles-in-service/create-a-role)
 
-assign policy to user
-[orc link about assing policy]
+Define a new custom XACML Policy, like one of [these](https://github.com/telefonicaid/orchestrator/tree/master/src/orchestrator/core/policies)
+
+Assign a XACMLpolicy for that role and each IoTP component that you need
+[Set a XACML policy to a Role](http://docs.orchestrator2.apiary.io/#reference/orchestrator/role-in-service/set-xacml-policy-role)
+
+Assign Role to User
+[Orchestrator assign a Role to a User](http://docs.orchestrator2.apiary.io/#reference/orchestrator/role-assigment/assign-role-to-user)
