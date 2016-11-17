@@ -37,4 +37,4 @@ pages:
     - 'Tips on how to model project entities': 'topics/modelling_considerations.md'
     - 'Quick start on device connection to the platform (with Ultralight 2.0)': 'topics/device_connection.md'
     - 'What is the best way to calculate a value based on Context changes': 'topics/data_calculation.md'
-    
+    - 'Users and Permissions': 'topics/user_permissions.md'
