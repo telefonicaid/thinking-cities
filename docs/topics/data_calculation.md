@@ -116,4 +116,17 @@ For those cases when the data values that want to be calculated are statistical 
 the [Short Term Historic](../sth.md) can be used. This component stores historical information of Context Entities and can be used
 to retrieve statistical calculations over the stored data.
 
-// @GERMAN: SOME INFORMATION ABOUT HOW TO GET STATISTICS CALCULATED BY THE STH WOULD BE NEEDED
+As thoroughly detailed in the [STH documentation at ReadTheDocs](http://fiware-sth-comet.readthedocs.io/en/latest/index.html), the STH is able to calculate statistics about the evolution in time of certain entity attributes. To do it, there are 2 ways to notify this evolution in time to the component:
+
+1. Via the [Cygnus](https://github.com/telefonicaid/fiware-cygnus) component and subscribing it to the Context Broker instance.
+2. Via the [STH](https://github.com/telefonicaid/fiware-sth-comet) component itself and directly subscribing it to the Context Broker instance.
+
+Once the STH receives the notifications of entity attribute value changes, it is able to calculate and provide information about the mean, standard deviation, variance, maximum and minimum values (for numerical values) as well as the number of ocurrences (for textual values) for distinct resolutions or time frames (such as months, days, hours, minutes and seconds).
+
+Regarding the previous example, the STH is able to provide statistical information such as:
+
+1. Which has been the maximum `weight` (attribute) values of the `WasteTank8` (entity) last year with a resolution of months?
+2. Which has been the mean `level` (attribute) values of the `WasteTank8` (entity) last week with a resolution of hours?
+3. Which has been the standard deviation of the `density` (attribute) values of the `WasteTank8` the last 3 days with a resolution of hours or even minutes?
+
+As already mentioned, for futher information, please visit the [STH documentation at ReadTheDocs](http://fiware-sth-comet.readthedocs.io/en/latest/index.html).
