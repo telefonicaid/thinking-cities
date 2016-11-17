@@ -10,7 +10,7 @@ Tipically a Service represents a smartcity and all of the SubServices represents
 Users are created into Services. The same user name could be used across different Services to represent different Users.
 i.e. adm1 could exists in "SmartCity" Service and adm1 could be another user for "SmartGondor" Service
 
-Roles are created into Services. By default all Services created into IoT platform are created with the following Roles:
+Roles are created into Services. By default all Services created into IoT Platform are created with the following Roles:
 - ServiceCustomer: Role for a normal user of the Service, with standard capabilities.
 - SubServiceCustomer: Role for a normal user in a SubService, with standard capabilities.
 - SubServiceAdmin: Role for an administrator user in a SubService, with full capabilities.
@@ -26,7 +26,9 @@ In deep details, each Role in a Service is defined by a Policy for each IoTP com
 
 [IoTP Policies](https://github.com/telefonicaid/orchestrator/tree/master/src/orchestrator/core/policies)
 [Orion component actions](https://github.com/telefonicaid/fiware-pep-steelskin#-rules-to-determine-the-context-broker-action-from-the-request)
-
+[Perseo component actions](https://github.com/telefonicaid/fiware-pep-steelskin#-rules-to-determine-the-perseo-cep-action-from-the-request)
+[Keypass component actions](https://github.com/telefonicaid/fiware-pep-steelskin#rulesKeypass)
+[Rest components (STH, IOTA)) actions](https://github.com/telefonicaid/fiware-pep-steelskin#generic-rest-middleware)
 
 ## Can I modify permissions for a given user?
 The common way to modify permissions for a given user is to assign or unassign Roles.
