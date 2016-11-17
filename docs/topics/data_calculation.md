@@ -142,8 +142,19 @@ All this, for distinct resolutions or time frames, such as:
 
 Regarding the previous example, the STH is able to provide statistical information such as:
 
-1. Which has been the maximum `weight` (attribute) values of the `WasteTank8` (entity) last year with a resolution of months?, sending a GET request to the STH component such as the next one: `http://<sth-component>:<sth-port>/STH/v1/contextEntities/type/Entity/id/WasteTank8/attributes/weight?aggrMethod=max&aggrPeriod=month&dateFrom=2015-01-01T00:00:00&dateTo=2015-12-31T23:59:59`
-2. Which has been the mean `level` (attribute) values of the `WasteTank8` (entity) last week with a resolution of hours?, sending a GET request to the STH component such as the next one: `http://<sth-component>:<sth-port>/STH/v1/contextEntities/type/Entity/id/WasteTank8/attributes/level?aggrMethod=sum&aggrPeriod=hour&dateFrom=2016-11-07T00:00:00&dateTo=2016-11-13T23:59:59`
-3. Which has been the standard deviation of the `density` (attribute) values of the `WasteTank8` the last 3 days with a resolution of hours or even minutes?, sending a GET request to the STH component such as the next one: `http://<sth-component>:<sth-port>/STH/v1/contextEntities/type/Entity/id/WasteTank8/attributes/density?aggrMethod=sum2&aggrPeriod=minute&dateFrom=2016-11-14T00:00:00&dateTo=2016-11-16T23:59:59`
+1. Which has been the maximum `weight` (attribute) values of the `WasteTank8` (entity) last year with a resolution of months?, sending a GET request to the STH component such as the next one:
+```
+http://<sth-component>:<sth-port>/STH/v1/contextEntities/type/Entity/id/WasteTank8/attributes/weight?aggrMethod=max&aggrPeriod=month&dateFrom=2015-01-01T00:00:00&dateTo=2015-12-31T23:59:59
+```
+
+2. Which has been the mean `level` (attribute) values of the `WasteTank8` (entity) last week with a resolution of hours?, sending a GET request to the STH component such as the next one:
+```
+http://<sth-component>:<sth-port>/STH/v1/contextEntities/type/Entity/id/WasteTank8/attributes/level?aggrMethod=sum&aggrPeriod=hour&dateFrom=2016-11-07T00:00:00&dateTo=2016-11-13T23:59:59
+```
+
+3. Which has been the standard deviation of the `density` (attribute) values of the `WasteTank8` the last 3 days with a resolution of hours or even minutes?, sending a GET request to the STH component such as the next one:
+```
+http://<sth-component>:<sth-port>/STH/v1/contextEntities/type/Entity/id/WasteTank8/attributes/density?aggrMethod=sum2&aggrPeriod=minute&dateFrom=2016-11-14T00:00:00&dateTo=2016-11-16T23:59:59
+```
 
 For futher information about the STH component and all the capabilities it provides, please visit the [STH documentation at ReadTheDocs](http://fiware-sth-comet.readthedocs.io/en/latest/index.html).
