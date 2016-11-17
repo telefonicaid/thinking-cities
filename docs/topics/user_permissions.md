@@ -8,7 +8,7 @@ In IoTP there are defined Services and SubServices. SubServices exists into Serv
 Tipically a Service represents a smartcity and all of the SubServices represents the verticals of that smartcity.
 
 Users are created into Services. The same user name could be used across different Services to represent different Users.
-i.e. adm1 could exists in "SmartCity" Service and adm1 could be another user for "SmartGondor" Service
+i.e. adm1 could exists in "smartcity" Service and adm1 could be another user for "smartgondor" Service
 
 Roles are created into Services. By default all Services created into IoT Platform are created with the following Roles:
 - ServiceCustomer: Role for a normal user of the Service, with standard capabilities.
@@ -21,6 +21,20 @@ There is one and unique role common for all Services:
 Users receive roles assignments into Services (or Subservices). The permissions are determinated by the Role
 which a user has in a service (or subservice). Depending on the IoTP component, user permission implies the ability
 of do some actions or not.
+
+```
+-------------------------------------------------------
+| User   | Role               | Service\<SubService>  |
+-------------------------------------------------------
+| adm1   | admin              | smartcity             |
+|        | SubServiceAdmin    | smartcity\*           |
+-------------------------------------------------------
+| Alice  | SubServiceAdmin    | smartgondor\palaces   |
+-------------------------------------------------------
+| bob    | SubServiceCustomer | smartcity\electricity |
+|        | SubServiceAdmin    | smartcity\gardens     |
+-------------------------------------------------------
+```
 
 In deep details, each Role in a Service is defined by a Policy for each IoTP component.
 
