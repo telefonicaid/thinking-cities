@@ -121,7 +121,24 @@ As thoroughly detailed in the [STH documentation at ReadTheDocs](http://fiware-s
 1. Via the [Cygnus](https://github.com/telefonicaid/fiware-cygnus) component and subscribing it to the Context Broker instance.
 2. Via the [STH](https://github.com/telefonicaid/fiware-sth-comet) component itself and directly subscribing it to the Context Broker instance.
 
-Once the STH receives the notifications of entity attribute value changes, it is able to calculate and provide information about the mean, standard deviation, variance, maximum and minimum values (for numerical values) as well as the number of ocurrences (for textual values) for distinct resolutions or time frames (such as months, days, hours, minutes and seconds).
+Once the STH receives the notifications of entity attribute value changes, it is able to calculate and provide information about:
+
+* Numeric attribute values:
+    * Mean
+    * Standard deviation
+    * Variance
+    * Maximum
+    * Minimum
+* Textual attribute values:
+    * Number of occurrences
+
+All this, for distinct resolutions or time frames, such as:
+
+* Months
+* Days
+* Hours
+* Minutes
+* Seconds
 
 Regarding the previous example, the STH is able to provide statistical information such as:
 
