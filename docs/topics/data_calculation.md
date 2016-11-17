@@ -116,7 +116,7 @@ For those cases when the data values that want to be calculated are statistical 
 the [Short Term Historic](../sth.md) can be used. This component stores historical information of Context Entities and can be used
 to retrieve statistical calculations over the stored data.
 
-As thoroughly detailed in the [STH documentation at ReadTheDocs](http://fiware-sth-comet.readthedocs.io/en/latest/index.html), the STH is able to calculate statistics about the evolution in time of certain entity attributes. To do it, there are 2 ways to notify this evolution in time to the component:
+The STH component is able to calculate statistics about the evolution in time of certain entity attributes. To do it, there are 2 ways to notify this evolution in time to the component:
 
 1. Via the [Cygnus](https://github.com/telefonicaid/fiware-cygnus) component and subscribing it to the Context Broker instance.
 2. Via the [STH](https://github.com/telefonicaid/fiware-sth-comet) component itself and directly subscribing it to the Context Broker instance.
