@@ -38,3 +38,4 @@ pages:
     - 'Quick start on device connection to the platform (with Ultralight 2.0)': 'topics/device_connection.md'
     - 'What is the best way to calculate a value based on Context changes': 'topics/data_calculation.md'
     - 'Which historical backend must I use?': 'topics/which_historical_backend.md' 
+    - 'How to add new actions to CEP': 'topics/cep_new_actions.md'
