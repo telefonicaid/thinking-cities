@@ -22,9 +22,9 @@ This is the best choice if you don't want to care about the amount of data, sinc
 
 Nevertheless, HDFS is just a file system in charge of managing folders and (very large) files. So, don't expect for analysis or visualization tools. This is something that other tools in the Hadoop ecosystem must provide; in the case of the IoT Platofom, we can find the following ones:
 
-* **MapReduce**.
-* **Querying tools: Apache Hive and Apache Pig**.
-* **Apache Hue**.
+* **MapReduce**. The native analysis paradigm in Hadoop. Based on splting the original problem into many smaller problems (map pahse) and then aggregating all the partial results (reduce phase).
+* **Querying tools: Apache Hive and Apache Pig**. Querying tools specifically addressed for structured data (CSV or Json, for instance) within HDFS.
+* **Apache Hue**. A web-based user interface where to run MapReduce jobs, query for data using Hive or Pig, or even displaying the raw data within HDFS using the FileBrowser.
 
 With regards to privacy, HDFS is a user-oriented tool, where data is protected based on Unix-like permissions. This means the data is at least only available to the user, while members in the same group than the user could have restricted the access, the same than the rest of the world. This is the case of the IoT Platform.
 
