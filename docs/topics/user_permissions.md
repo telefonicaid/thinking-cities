@@ -22,13 +22,13 @@ which a user has in a service (or subservice). Depending on the IoTP component, 
 of do some actions or not.
 
 
-| User   | Role               | Service\<SubService>  |
-| -------|--------------------|-----------------------|
-| adm1   | admin              | smartcity             |
-| adm1   | SubServiceAdmin    | smartcity\*           |
-| Alice  | SubServiceAdmin    | smartgondor\palaces   |
-| bob    | SubServiceCustomer | smartcity\electricity |
-| bob    | SubServiceAdmin    | smartcity\gardens     |
+| User   | Role               | Service\\<SubService>  |
+| -------|--------------------|------------------------|
+| adm1   | admin              | smartcity              |
+| adm1   | SubServiceAdmin    | smartcity\\*           |
+| Alice  | SubServiceAdmin    | smartgondor\\palaces   |
+| bob    | SubServiceCustomer | smartcity\\electricity |
+| bob    | SubServiceAdmin    | smartcity\\gardens     |
 
 
 In deep details, each Role in a Service is defined by a Policy for each IoTP component:
