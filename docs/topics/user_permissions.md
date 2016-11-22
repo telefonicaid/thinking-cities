@@ -3,7 +3,6 @@
 
 ## What user permissions are defined in IoTP?
 
-
 In IoTP there are defined Services and SubServices. SubServices exists into Services.
 Tipically a Service represents a smartcity and all of the SubServices represents the verticals of that smartcity.
 
@@ -44,7 +43,9 @@ In deep details, each Role in a Service is defined by a Policy for each IoTP com
 - [Keypass component actions](https://github.com/telefonicaid/fiware-pep-steelskin#rulesKeypass)
 - [Rest components (STH, IOTA) actions](https://github.com/telefonicaid/fiware-pep-steelskin#generic-rest-middleware)
 
+
 ## Can I modify permissions for a given user?
+
 The common way to modify permissions for a given user is to assign or unassign Roles.
 User can be assgined to admin, ServiceCustomer, SubServiceAdmin and SubServiceCustomer roles in a given Service or SubService.
 This can be do it using IoT Portal and [IoT Orchestrator](http://docs.orchestrator2.apiary.io).
@@ -52,6 +53,7 @@ This can be do it using IoT Portal and [IoT Orchestrator](http://docs.orchestrat
 
 
 ## How can I create a user with special permissions?
+
 To create a new user with special permission you should do the following steps:
 - Create new user.
 [Orchestrator how to create a new user] (http://docs.orchestrator2.apiary.io/#reference/orchestrator/users-in-service/create-users)
