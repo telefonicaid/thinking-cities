@@ -11,7 +11,7 @@ Please, remember that most of these operations are available at the Admin Portal
 First, you have to create your service.  Please, take into accout that you will need the IoT Stack admin token (mentioned as {{admin-token}} in the examples) to do so:
 
 ```
-POST /orc/service/{{service-id}}/service HTTP/1.1
+POST /orc/service/ HTTP/1.1
 Host: test.ttcloud.net:8008
 X-Auth-Token: {{admin-token}}
 Content-Type: application/json
@@ -67,7 +67,7 @@ Content-Type: application/json
 Once the service is created, you can create a user as follows:
 
 ```
-POST /orc/service/669b1e1a3e6c41ee9a1cbe5ab5165f6e/user HTTP/1.1
+POST /orc/service/{{service-id}}/user HTTP/1.1
 Host: test.ttcloud.net:8008
 X-Auth-Token: {{admin-token}}
 Content-Type: application/json
