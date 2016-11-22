@@ -21,19 +21,15 @@ Users receive roles assignments into Services (or Subservices). The permissions 
 which a user has in a service (or subservice). Depending on the IoTP component, user permission implies the ability
 of do some actions or not.
 
-```
--------------------------------------------------------
+
 | User   | Role               | Service\<SubService>  |
--------------------------------------------------------
+| -------|--------------------|-----------------------|
 | adm1   | admin              | smartcity             |
 |        | SubServiceAdmin    | smartcity\*           |
--------------------------------------------------------
 | Alice  | SubServiceAdmin    | smartgondor\palaces   |
--------------------------------------------------------
 | bob    | SubServiceCustomer | smartcity\electricity |
 |        | SubServiceAdmin    | smartcity\gardens     |
--------------------------------------------------------
-```
+
 
 In deep details, each Role in a Service is defined by a Policy for each IoTP component:
 
