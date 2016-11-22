@@ -4,7 +4,7 @@
 ## What user permissions are defined in IoTP?
 
 In IoTP there are defined Services and SubServices. SubServices exists into Services.
-Tipically a Service represents a smartcity and all of the SubServices represents the verticals of that smartcity.
+Tipically a Service represents a smartcity and all of the SubServices represents the verticals of that smartcity. For more details read [multitenancy](../multitenancy.md)
 
 Users are created into Services. The same user name could be used across different Services to represent different Users.
 i.e. adm1 could exists in "smartcity" Service and adm1 could be another user for "smartgondor" Service
