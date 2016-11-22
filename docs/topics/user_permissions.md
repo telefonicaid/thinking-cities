@@ -25,10 +25,10 @@ of do some actions or not.
 | User   | Role               | Service\<SubService>  |
 | -------|--------------------|-----------------------|
 | adm1   | admin              | smartcity             |
-|        | SubServiceAdmin    | smartcity\*           |
+| adm1   | SubServiceAdmin    | smartcity\*           |
 | Alice  | SubServiceAdmin    | smartgondor\palaces   |
 | bob    | SubServiceCustomer | smartcity\electricity |
-|        | SubServiceAdmin    | smartcity\gardens     |
+| bob    | SubServiceAdmin    | smartcity\gardens     |
 
 
 In deep details, each Role in a Service is defined by a Policy for each IoTP component:
