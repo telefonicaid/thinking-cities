@@ -54,7 +54,6 @@ This can be do it using IoT Portal and [IoT Orchestrator](http://docs.orchestrat
 ## How can I create a user with special permissions?
 To create a new user with special permission you should do the following steps:
 - Create new user.
-
 [Orchestrator how to create a new user] (http://docs.orchestrator2.apiary.io/#reference/orchestrator/users-in-service/create-users)
 
 - Create a new Role.
