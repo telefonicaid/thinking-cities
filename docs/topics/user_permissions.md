@@ -7,7 +7,7 @@ In IoTP there are defined Services and SubServices. SubServices exists into Serv
 Tipically a Service represents a smartcity and all of the SubServices represents the verticals of that smartcity. For more details read [multitenancy](../multitenancy.md)
 
 Users are created into Services. The same user name could be used across different Services to represent different Users.
-i.e. adm1 could exists in "smartcity" Service and adm1 could be another user for "smartgondor" Service
+i.e. "adm1" could exists in "smartcity" Service and "adm1" could be another user for "smartgondor" Service
 
 Roles are created into Services. By default all Services created into IoT Platform are created with the following Roles:
 - ServiceCustomer: Role for a normal user of the Service, with standard capabilities.
