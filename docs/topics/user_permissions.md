@@ -22,7 +22,7 @@ which a user has in a service (or subservice). Depending on the IoTP component, 
 of do some actions or not.
 
 
-| User   | Role               | Service\\<SubService>  |
+| User   | Role               | Service\\```<SubService>```|
 | -------|--------------------|------------------------|
 | adm1   | admin              | smartcity              |
 | adm1   | SubServiceAdmin    | smartcity\\*           |
