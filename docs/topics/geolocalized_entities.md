@@ -43,7 +43,7 @@ into a geo point. To do so, the car provisioning should be changed to reflect th
             {
               "object_id": "s",
               "name": "speed",
-              "type": "Boolean"
+              "type": "Number"
             },
             {
               "object_id": "la",
