@@ -108,9 +108,9 @@ Once the entities location is correctly configured, it can be exploited at diffe
 		} 
 
 - Persistence backends:
-  - CKAN (column mode): there are two ways of providing location, either using two columns (one for latitude
+    - CKAN (column mode): there are two ways of providing location, either using two columns (one for latitude
     another for longitude) or joining both in a single colum. See [Cygnus documentation](https://fiware-cygnus.readthedocs.io/en/latest/cygnus-ngsi/flume_extensions_catalogue/ngsi_ckan_sink/index.html#section2.3.4) for more detail. Note this is not the standard way of mark entity location in the Data API (see aforementioned "Geospacial properties of entities" section) and probably would be aligned in the
-    future to work in a similar way to the [CartoDB experimental persistence sink](http://fiware-cygnus.readthedocs.io/en/master/cygnus-ngsi/flume_extensions_catalogue/ngsi_cartodb_sink/index.html#section2.3.6).
+    future to work in a similar way to the [Carto experimental persistence sink](http://fiware-cygnus.readthedocs.io/en/master/cygnus-ngsi/flume_extensions_catalogue/ngsi_cartodb_sink/index.html#section2.3.6).
 
     ![CKAN grid view](images/ckan_grid_geolocation_example.png)
 
@@ -118,8 +118,8 @@ Once the entities location is correctly configured, it can be exploited at diffe
 
 
 <!--
-To include in the Persisente backends section, once CartoDB sink would be ready for production usage:
+To include in the Persisente backends section, once Carto sink would be ready for production usage:
 
-  - CartoDB. Both point and arbitrary GeoJSON location are supported and correctly persisted
-    at CartoDB. See [Cygnus documentation](http://fiware-cygnus.readthedocs.io/en/master/cygnus-ngsi/flume_extensions_catalogue/ngsi_cartodb_sink/index.html#section2.3.6) for more detail.
+  - Carto. Both point and arbitrary GeoJSON location are supported and correctly persisted
+    at Carto. See [Cygnus documentation](http://fiware-cygnus.readthedocs.io/en/master/cygnus-ngsi/flume_extensions_catalogue/ngsi_cartodb_sink/index.html#section2.3.6) for more detail.
 --> 
