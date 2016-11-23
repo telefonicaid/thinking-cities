@@ -37,7 +37,7 @@ In deep details, each Role in a Service is defined by a Policy for each IoTP com
 - [Orion component actions](https://github.com/telefonicaid/fiware-pep-steelskin#-rules-to-determine-the-context-broker-action-from-the-request)
 - [Perseo component actions](https://github.com/telefonicaid/fiware-pep-steelskin#-rules-to-determine-the-perseo-cep-action-from-the-request)
 - [Keypass component actions](https://github.com/telefonicaid/fiware-pep-steelskin#rulesKeypass)
-- [Rest components (STH, IOTA) actions](https://github.com/telefonicaid/fiware-pep-steelskin#generic-rest-middleware)
+- [Rest API based components (STH, IOTA) actions](https://github.com/telefonicaid/fiware-pep-steelskin#generic-rest-middleware)
 
 
 ## Can I modify permissions for a given user?
