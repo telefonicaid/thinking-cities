@@ -19,7 +19,7 @@ There is one and unique role common for all Services:
 
 Users receive roles assignments into Services (or Subservices). The permissions are determinated by the Role
 which a user has in a service (or subservice). Depending on the IoTP component, user permission implies the ability
-of do some actions or not.
+to do some actions or not.
 
 
 | User   | Role               | Service\\```<SubService>```|
