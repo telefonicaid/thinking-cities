@@ -10,12 +10,12 @@ Users are created into Services. The same user name could be used across differe
 i.e. "adm1" user could exists in "smartcity" Service and "adm1" could be another user for "smartgondor" Service.
 
 Roles are created into Services. By default all Services created into IoT Platform are created with the following Roles:
-- ServiceCustomer: Role for a normal user of the Service, with standard capabilities.
-- SubServiceCustomer: Role for a normal user in a SubService, with standard capabilities.
-- SubServiceAdmin: Role for an administrator user in a SubService, with full capabilities.
+- ServiceCustomer: Role for a normal user of the Service, with standard read/write permissions over all the objects in the Service, but not in SubService
+- SubServiceCustomer: Role for a normal user in a SubService, with standard read/write permissions over all the objects in the SubService, but not in Service.
+- SubServiceAdmin: Role for an administrator user in a SubService, with full capabilities in SubService, but not in Service.
 
 There is one and unique role common for all Services:
-- Admin: administrator with full capabilities of the Service
+- Admin: administrator with full capabilities of the Service, but not in SubService.
 
 Users receive roles assignments into Services (or Subservices). The permissions are determinated by the Role
 which a user has in a service (or subservice). Depending on the IoTP component, user permission implies the ability
