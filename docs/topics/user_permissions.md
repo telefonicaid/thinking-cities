@@ -39,6 +39,17 @@ In deep details, each Role in a Service is defined by a Policy for each IoTP com
 - [Keypass component actions](https://github.com/telefonicaid/fiware-pep-steelskin#rulesKeypass)
 - [Rest API based components (STH, IOTA) actions](https://github.com/telefonicaid/fiware-pep-steelskin#generic-rest-middleware)
 
+Since [Identity Management](../authentication_api.md) of IoT Platform is based on [OpenStack Keystone](http://docs.openstack.org/developer/keystone) the following represents the relations between the involved concepts:
+
+
+| IoT Platform | Keystone    |
+------------------------------
+| Service      |  Domain     |
+| SubService   |  Project    |
+| User         |  User       |
+| Role         |  Role       |
+
+
 
 ## Can I modify permissions for a given user?
 
