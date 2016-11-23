@@ -84,10 +84,10 @@ No other data different than the one stored by the platform in MongoDB can be qu
 ##Summary
 |Backend|Capacity|Privacy|Analytics|Visualization|Static upload|
 |---|---|---|---|---|---|
-|HDFS|Scalable (1)|Per Unix user and group (2)|Apache MapReduce (3)<br>Apache Hive (3)<br>Apache Pig (3)|Apache Hue's FileBrowser (3)|Yes|
-|MicroStrategy|?|Per database (4)|Many algorithms|Many dashboards|No|
-|CKAN|?|Per dataset (5)|-|CKAN text view<br>CKAN image view<br>CKAN recline view|Yes|
-|STH Comet|?|Per FIWARE service and FIWARE service path|Raw and aggregated querying API|Grafana (6)|No|
+|HDFS|High (1)|Per Unix user and group (2)|Apache MapReduce (3)<br>Apache Hive (3)<br>Apache Pig (3)|Apache Hue's FileBrowser (3)|Yes|
+|MicroStrategy|Medium|Per database (4)|Many algorithms|Many dashboards|No|
+|CKAN|Medium|Per dataset (5)|-|CKAN text view<br>CKAN image view<br>CKAN recline view|Yes|
+|STH Comet|Medium|Per FIWARE service and FIWARE service path|Raw and aggregated querying API|Grafana (6)|No|
 
 (1) Having an initial capacity, our commitment is to scale upon client needs.
 <br>
