@@ -54,7 +54,7 @@ Since [Identity Management](../authentication_api.md) of IoT Platform is based o
 ## Can I modify permissions for a given user?
 
 The common way to modify permissions for a given user is to assign or unassign Roles.
-User can be assgined to admin, ServiceCustomer, SubServiceAdmin and SubServiceCustomer roles in a given Service or SubService.
+User can be assigned to admin, ServiceCustomer, SubServiceAdmin and SubServiceCustomer roles in a given Service or SubService.
 This can be do it using IoT Portal and [IoT Orchestrator](http://docs.orchestrator2.apiary.io).
 - [assign a Role to a User using Orchestrator] (http://docs.orchestrator2.apiary.io/#reference/orchestrator/roles-in-service/create-a-role)
 
