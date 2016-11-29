@@ -70,11 +70,30 @@ described above. Taking that into account, you could model in the following for 
          ]
       }
 
+As a general guideline, you should use identifiers with the following properties:
+
+* They must be unique: It's better to have globally unique IDs if that's possible, but, for the cases 
+  where they aren't, they should be at least unique at the service level. It's also important to design 
+  the process of ID assignment so that the probability of generating an ID collision is as lower as 
+  possible (i.e.: it's better to have a 16 bytes hexadecimal UUID than an 8bit integer).
+
+* They should never change (or do it under extraordinary circumstances): the ID uniquely identifies 
+  your entities, and not only the Context Broker, but potentially multiple other systems may use it 
+  to identify objects associated to it. That turns any change in the ID into a potential migration 
+  of data in multiple systems, with it associated (usually very large) costs.
+
+* Shouldn't be tied to the data: as that bound would make it easier to brake any of the two first 
+  rules. Even if you are completely sure that identifying your users with their Driver Licenses 
+  is unique and immutable, chances are that the Government choose to change it; use a UUID instead. 
+  That will ensure uniqueness and, since the UUID only belongs to the system, you will be the one 
+  who decides when and how it may change (if it is allowed to do it at all). However, note that we 
+  are not using UUID in this documentation for didactic reasons but in real usage use case 
+  you should consider this recommendation.
+
 The above consideration applies to entity ids and attribute names but also to other pieces of context 
 information which take the role of an ID, in particular to entity types, attribute types, metadata names and 
 metadata types. 
 
- 
 ## The IoT Platform is centered in context
 
 The central piece of the IoT Platform is the Context Broker: a component that lets you store and query information
