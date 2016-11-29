@@ -3,6 +3,78 @@
 There are some considerations to make when designing how to model a project in the platform. This document will give you
 some hints to avoid most common mistakes (use them as hints to guide your modelling, not as strict rules).
 
+## Modeling your IDs in the right way
+
+Entity ids and attribute names should be like *real* IDs. In other words, using whitespaces, accents or
+any other funny weird character in ID strings is a really bad idea. In fact, although that is allowed in the NGSIv1
+API (due to legacy reasons), it is forbidden in the NGSIv2 version of the API (check the "Field syntax restrictions"
+section in the [NGSIv2 specification document](http://telefonicaid.github.io/fiware-orion/api/v2/stable) for details).
+
+Why this is a bad idea? There are several reasons:
+
+* Take into account that the IoT Platform would use that identifiers (or strings derived from that identifiers) in
+  places where such characters are not allowed. For example, some persistence backends are based in databases which 
+  doesn't accept whitespaces or non-ASCII characters in table databases.
+* IDs may appear as part of URLs (e.g. the URL identifying an entity at [Context Broker](../context_broker.md) and
+  using non-ASCII characters in that places makes these URL more complex.
+
+Sometimes you may think you need to use ids with whitespaces and non-ASCII characters to render that information
+correctly, e.g. in a graphic-user interface. For instance, you have an entity that you want to show as
+"Row 12/Seat B" with an attribute "Occupation status" in your application and you may think that 
+modeling in the following way is a good idea:
+
+
+      {
+         "type": "Seat",
+         "isPattern": "false",
+         "id": "Row 12/Seat B",
+         "attributes": [
+           {
+             "name": "Occupation status",
+             "type": "String",
+             "value": "occupied"
+           },
+           ...
+           }
+         ]
+      }
+ 
+However, it is not a good idea. If you need descriptive texts for entities or attributes, then use specific 
+attributes and metadata for them respectively, which values are not ids and doesn't have any of the problems 
+described above. Taking that into account, you could model in the following for the example above:
+
+      {
+         "type": "Seat",
+         "isPattern": "false",
+         "id": "Row12SeatB",
+         "attributes": [
+           {
+             "name": "description",
+             "type": "String",
+             "value": "Row 12/Seat B"
+           },
+           {
+             "name": "status",
+             "type": "String",
+             "value": "occupied",
+             "metadata": [
+               {
+                 "name": "description",
+                 "type": "String",
+                 "value": "Occupation status"
+               }
+             ]
+           },
+           ...
+           }
+         ]
+      }
+
+The above consideration applies to entity ids and attribute names but also to other pieces of context 
+information which take the role of an ID, in particular to entity types, attribute types, metadata names and 
+metadata types. 
+
+ 
 ## The IoT Platform is centered in context
 
 The central piece of the IoT Platform is the Context Broker: a component that lets you store and query information
