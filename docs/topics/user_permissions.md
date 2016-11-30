@@ -10,11 +10,14 @@ Users are created into Services. The same user name could be used across differe
 i.e. "adm1" user could exists in "smartcity" Service and "adm1" could be another user for "smartgondor" Service.
 
 Roles are created into Services. By default all Services created into IoT Platform are created with the following Roles:
+
 - ServiceCustomer: Role for a normal user of the Service, with standard read/write permissions over all the objects in the Service, but not in SubService
 - SubServiceCustomer: Role for a normal user in a SubService, with standard read/write permissions over all the objects in the SubService, but not in Service.
 - SubServiceAdmin: Role for an administrator user in a SubService, with full capabilities in SubService, but not in Service.
 
+
 There is one and unique role common for all Services:
+
 - Admin: administrator with full capabilities of the Service, but not in SubService.
 
 Users receive roles assignments into Services (or Subservices). The permissions are determinated by the Role
@@ -22,7 +25,7 @@ which a user has in a service (or subservice). Depending on the IoTP component, 
 to do some actions or not.
 
 
-| User   | Role               | Service\\```<SubService>```|
+| User   | Role               | Service\\SubService    |
 | -------|--------------------|------------------------|
 | adm1   | admin              | smartcity              |
 | adm1   | SubServiceAdmin    | smartcity\\*           |
@@ -43,7 +46,7 @@ Since [Identity Management](../authentication_api.md) of IoT Platform is based o
 
 
 | IoT Platform | Keystone    |
-------------------------------
+|--------------|-------------|
 | Service      |  Domain     |
 | SubService   |  Project    |
 | User         |  User       |
@@ -56,17 +59,19 @@ Since [Identity Management](../authentication_api.md) of IoT Platform is based o
 The common way to modify permissions for a given user is to assign or unassign Roles.
 User can be assigned to admin, ServiceCustomer, SubServiceAdmin and SubServiceCustomer roles in a given Service or SubService.
 This can be done using IoT Portal and [IoT Orchestrator](http://docs.orchestrator2.apiary.io).
-- [assign a Role to a User using Orchestrator] (http://docs.orchestrator2.apiary.io/#reference/orchestrator/roles-in-service/create-a-role)
+
+- [Assign a Role to a User using Orchestrator](http://docs.orchestrator2.apiary.io/#reference/orchestrator/roles-in-service/create-a-role)
 
 
 ## How can I create a user with special permissions?
 
 To create a new user with special permission you should do the following steps:
+
 - Create new user.
-[Orchestrator how to create a new user] (http://docs.orchestrator2.apiary.io/#reference/orchestrator/users-in-service/create-users)
+[Orchestrator how to create a new user](http://docs.orchestrator2.apiary.io/#reference/orchestrator/users-in-service/create-users)
 
 - Create a new Role.
-[Orchestrator how to create a new role ] (http://docs.orchestrator2.apiary.io/#reference/orchestrator/roles-in-service/create-a-role)
+[Orchestrator how to create a new role](http://docs.orchestrator2.apiary.io/#reference/orchestrator/roles-in-service/create-a-role)
 
 - Define a new custom XACML Policy, like one of [these](https://github.com/telefonicaid/orchestrator/tree/master/src/orchestrator/core/policies)
 
