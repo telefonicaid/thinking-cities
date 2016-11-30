@@ -108,7 +108,109 @@ the [specification](https://github.com/telefonicaid/iotagent-node-lib/blob/maste
 For those data values that doesn't come from devices, but from external systems, and for those cases when the sources of
 context information to calculate those values are multiple, the [CEP](../cep.md) can be used to make some of those calculations.
 
-// @CARLOS: I GUESS THIS IS CORRECT, BUT I'M NOT COMPLETELY SURE. IF IT IS, SOME EXAMPLES WOULD BE APPRECIATED
+The CEP gets a notification cointaining a configurable set of attributes (as set in the subscription) and that allows using more fields than the ones sent by device. The notification mechanism allows to send the previous value of an attribute as metadata `previousValue` (see [metadata in notifications](http://fiware-orion.readthedocs.io/en/master/user/metadata/index.html#metadata-in-notifications)). So, as an example, we can think of an entity that periodically sends its coordinates and the time of the measure. We could calculate its average velocity by means of a rule that updates its field `velocity`.
+
+For simplicity, the previous values are taken as values in the incomming notification, but they could be taken as `ev.x__metadata__previousValue` instead of `x0`, and the same for `y0` and `t0` (see [Metadata and object values](https://github.com/telefonicaid/perseo-fe/blob/master/documentation/plain_rules.md#metadata-and-object-values))
+
+The rule could be 
+```
+{
+    "name": "rule_velocity",
+    "text": "select *, \"rule_velocity\" as ruleName, Math.hypot(cast(cast(ev.x1?,String),float)-cast(cast(ev.x0?,String),float),cast(cast(ev.y1?,String),float)-cast(cast(ev.y0?,String),float))/(cast(cast(ev.t1?, String), float)-cast(cast(ev.t0?,String), float)) as velocity  from pattern [every ev=iotEvent()]",
+    "action": {
+        "type": "update",
+        "parameters": {
+            "attributes": [
+                {
+                    "name": "velocity",
+                    "value": "${velocity}",
+                    "type": "Number"
+                }
+            ]
+        }
+    }
+}
+```
+
+And a notification like
+```
+{
+    "subscriptionId": "51c04a21d714fb3b37d7d5a7",
+    "originator": "localhost",
+    "contextResponses": [
+        {
+            "contextElement": {
+                "attributes": [
+                    {
+                        "name": "x1",
+                        "type": "number",
+                        "value": "10"
+                    },
+                    {
+                        "name": "y1",
+                        "type": "number",
+                        "value": "0"
+                    },
+                    {
+                        "name": "x0",
+                        "type": "number",
+                        "value": "0"
+                    },
+                    {
+                        "name": "y0",
+                        "type": "number",
+                        "value": "0"
+                    },
+                    {
+                        "name": "t1",
+                        "type": "number",
+                        "value": "5"
+                    },
+                    {
+                        "name": "t0",
+                        "type": "number",
+                        "value": "0"
+                    }
+                ],
+                "type": "BloodMeter",
+                "isPattern": "false",
+                "id": "bloodm1"
+            },
+            "statusCode": {
+                "code": "200",
+                "reasonPhrase": "OK"
+            }
+        }
+    ]
+}
+```
+
+would generate an update action
+
+```
+{  
+   "contextElements": [  
+      {  
+         "isPattern": "false",
+         "id": "bloodm1",
+         "attributes": [  
+            {  
+               "name": "velocity",
+               "value": "2",
+               "type": "Number"
+            }
+         ],
+         "type": "BloodMeter"
+      }
+   ],
+   "updateAction": "APPEND"
+}
+```
+
+that woud set the field `velocity` to `2` (10/5) in whatever magnitudes we were using
+
+All the functions in [java.lang.Math](https://docs.oracle.com/javase/7/docs/api/java/lang/Math.html) can be used in the EPL expression.
+
 
 ## Statistical calculations based on historic values
 
