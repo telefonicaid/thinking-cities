@@ -72,27 +72,42 @@ described above. Taking that into account, you could model in the following for 
 
 As a general guideline, you should use identifiers with the following properties:
 
-* They must be unique: It's better to have globally unique IDs if that's possible, but, for the cases 
+* They **must** be unique: It's better to have globally unique IDs if that's possible, but, for the cases 
   where they aren't, they should be at least unique at the service level. It's also important to design 
   the process of ID assignment so that the probability of generating an ID collision is as lower as 
   possible (i.e.: it's better to have a 16 bytes hexadecimal UUID than an 8bit integer).
 
-* They should never change (or do it under extraordinary circumstances): the ID uniquely identifies 
+* They **should** never change (or do it under extraordinary circumstances): the ID uniquely identifies 
   your entities, and not only the Context Broker, but potentially multiple other systems may use it 
-  to identify objects associated to it. That turns any change in the ID into a potential migration 
-  of data in multiple systems, with it associated (usually very large) costs.
+  to identify objects associated to it (e.g. this specially affects the persistence backends). That
+  turns any change in the ID into a potential migration of data in multiple systems, with it associated
+  (usually very large) costs.
 
-* Shouldn't be tied to the data: as that bound would make it easier to brake any of the two first 
-  rules. Even if you are completely sure that identifying your users with their Driver Licenses 
+* They **should not** be tied to the data: as that bound would make it easier to brake any of the
+  two first rules. Even if you are completely sure that identifying your users with their Driver Licenses 
   is unique and immutable, chances are that the Government choose to change it; use a UUID instead. 
   That will ensure uniqueness and, since the UUID only belongs to the system, you will be the one 
   who decides when and how it may change (if it is allowed to do it at all). However, note that we 
   are not using UUID in this documentation for didactic reasons but in real usage use case 
   you should consider this recommendation.
+  
+* (*) They **should not** use the underscore (`_`) character: although accepted by context broker, it is a
+  bad idea using it as part of your IDs since the persistence backends use the underscore too for special
+  purposes. On the one hand, it is used as concatenator character. On the other hand, it is used as
+  replacement character when a character within the ID is not accepted by the persistence backends.
+  
+* (*) They **should** avoid using uppercase letters when using PostgreSQL-based persistence backends, e.g.
+  CKAN (or Carto in the future): they usually convert uppercase letters into lowercase. This means IDs
+  such as `Car` and `car` will be different at context broker level, but the same at persistence backend
+  level. Of course, if you are not considering using PostgreSQL-based persistence backends, ignore this
+  advice.
 
 The above consideration applies to entity ids and attribute names but also to other pieces of context 
 information which take the role of an ID, in particular to entity types, attribute types, metadata names and 
-metadata types. 
+metadata types.
+
+(*) This guideline won't make sense once the new encoding is enabled in the IoT Platform. Such a new
+encoding uses a concatenator different than underscore and not accepted characters (including uppercase letters) are encoded following Unicode format.
 
 ## The IoT Platform is centered in context
 
