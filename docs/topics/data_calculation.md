@@ -135,50 +135,50 @@ The rule could be
 And a notification like
 ```
 {
-    "subscriptionId" : "51c04a21d714fb3b37d7d5a7",
-    "originator" : "localhost",
-    "contextResponses" : [
+    "subscriptionId": "51c04a21d714fb3b37d7d5a7",
+    "originator": "localhost",
+    "contextResponses": [
         {
-            "contextElement" : {
-                "attributes" : [
+            "contextElement": {
+                "attributes": [
                     {
-                        "name" : "x1",
-                        "type" : "number",
-                        "value" : "10"
+                        "name": "x1",
+                        "type": "number",
+                        "value": "10"
                     },
                     {
-                        "name" : "y1",
-                        "type" : "number",
-                        "value" : "0"
+                        "name": "y1",
+                        "type": "number",
+                        "value": "0"
                     },
                     {
-                        "name" : "x0",
-                        "type" : "number",
-                        "value" : "0"
+                        "name": "x0",
+                        "type": "number",
+                        "value": "0"
                     },
                     {
-                        "name" : "y0",
-                        "type" : "number",
-                        "value" : "0"
+                        "name": "y0",
+                        "type": "number",
+                        "value": "0"
                     },
                     {
-                        "name" : "t1",
-                        "type" : "number",
-                        "value" : "5"
+                        "name": "t1",
+                        "type": "number",
+                        "value": "5"
                     },
                     {
-                        "name" : "t0",
-                        "type" : "number",
-                        "value" : "0"
+                        "name": "t0",
+                        "type": "number",
+                        "value": "0"
                     }
                 ],
-                "type" : "BloodMeter",
-                "isPattern" : "false",
-                "id" : "bloodm1"
+                "type": "BloodMeter",
+                "isPattern": "false",
+                "id": "bloodm1"
             },
-            "statusCode" : {
-                "code" : "200",
-                "reasonPhrase" : "OK"
+            "statusCode": {
+                "code": "200",
+                "reasonPhrase": "OK"
             }
         }
     ]
@@ -189,21 +189,21 @@ would generate an update action
 
 ```
 {  
-   "contextElements":[  
+   "contextElements": [  
       {  
-         "isPattern":"false",
-         "id":"bloodm1",
-         "attributes":[  
+         "isPattern": "false",
+         "id": "bloodm1",
+         "attributes": [  
             {  
-               "name":"velocity",
-               "value":"2",
-               "type":"Number"
+               "name": "velocity",
+               "value": "2",
+               "type": "Number"
             }
          ],
-         "type":"BloodMeter"
+         "type": "BloodMeter"
       }
    ],
-   "updateAction":"APPEND"
+   "updateAction": "APPEND"
 }
 ```
 
