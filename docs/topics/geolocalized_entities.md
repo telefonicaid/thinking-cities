@@ -87,7 +87,7 @@ Once the entities location is correctly configured, it can be exploited at diffe
 
 - At the [CEP API](../cep_api.md). CEP is able to process entity point locations
   (other shapes as line, polygon, etc. not yet supported) so its latitude and
-  longitude can be easily used in EPL conditions. See [CEP documentation](https://github.com/telefonicaid/perseo-fe/blob/master/documentation/plain_rules.md#location-fields) for more detail. For example, the following rule will send an email when the entity with attribute `location` is 
+  longitude can be easily used in EPL conditions. See [CEP documentation](https://github.com/telefonicaid/perseo-fe/blob/1.3.0/documentation/plain_rules.md#location-fields) for more detail. For example, the following rule will send an email when the entity with attribute `location` is 
   less than 5 km far away from Cuenca. It uses the circle equation, `(x - a)^2 + (y - b)^2 = d^2`, being (a, b) 618618.8286057833 and 
   9764160.736945232 the UTMC coordinates of Cuenca and d the distance of 5000 m.
 
