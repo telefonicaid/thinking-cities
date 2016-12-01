@@ -20,12 +20,12 @@ On the one hand, subscriptions:
 On the other hand, registrations:
 
 - Are used to configure context sources (also known as *context providers*). Details can be found in 
-  [the Context Broker documentation](http://fiware-orion.readthedocs.io/en/master/user/context_providers/index.html).
+  [the Context Broker documentation](http://fiware-orion.readthedocs.io/en/1.4.0/user/context_providers/index.html).
 - The URL associated to a registration is used to forward queries or updates to context providers covered by the 
   registration.
 - In the case of query forwarding, the context provider will send the query result to Context Broker
   as part of the query response. Thus, there is an information flow from context providers to Context Broker.
 - By the time being at IoT platform v4.1, registrations management is not yet part of the NGSIv2, so the old 
   NGSIv1 API has to be used. However, the query/udpates forwarded as result of the registrations can use 
-  NGSIv2 without problems. More details about this coexistence [here](http://fiware-orion.readthedocs.io/en/master/user/v1_v2_coexistence/index.html#ngsiv2-query-update-forwarding-to-context-providers).
+  NGSIv2 without problems. More details about this coexistence [here](http://fiware-orion.readthedocs.io/en/1.4.0/user/v1_v2_coexistence/index.html#ngsiv2-query-update-forwarding-to-context-providers).
  

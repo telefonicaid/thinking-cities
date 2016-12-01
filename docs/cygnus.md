@@ -11,7 +11,7 @@ Current stable release is able to persist the following sources of data in the f
     * [MySQL](https://www.mysql.com/), the well-know relational database manager.
     * [CKAN](http://ckan.org/), an Open Data platform.
     * [MongoDB](https://www.mongodb.org/), the NoSQL document-oriented database.
-    * [FIWARE Comet (STH)](https://github.com/telefonicaid/IoT-STH), a Short-Term Historic database built on top of MongoDB.
+    * [FIWARE Comet (STH)](https://github.com/telefonicaid/fiware-sth-comet), a Short-Term Historic database built on top of MongoDB.
 
 ## Documentation and API
 

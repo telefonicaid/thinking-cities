@@ -72,8 +72,6 @@ With this configuration, information from the car can be reported with the follo
 
     s|55|la|40.392|lo|-3.759
 
-
-
 This will generate an update request to the context broker, setting the value of the attribute `location` to the value
 `40.392, -3.759`, as defined by the expression.
 
@@ -109,8 +107,8 @@ Once the entities location is correctly configured, it can be exploited at diffe
 
 - Persistence backends:
     - CKAN (column mode): there are two ways of providing location, either using two columns (one for latitude
-    another for longitude) or joining both in a single colum. See [Cygnus documentation](https://fiware-cygnus.readthedocs.io/en/latest/cygnus-ngsi/flume_extensions_catalogue/ngsi_ckan_sink/index.html#section2.3.4) for more detail. Note this is not the standard way of mark entity location in the Data API (see aforementioned "Geospacial properties of entities" section) and probably would be aligned in the
-    future to work in a similar way to the [Carto experimental persistence sink](http://fiware-cygnus.readthedocs.io/en/master/cygnus-ngsi/flume_extensions_catalogue/ngsi_cartodb_sink/index.html#section2.3.6).
+    another for longitude) or joining both in a single colum. See [Cygnus documentation](https://fiware-cygnus.readthedocs.io/en/1.5.0/cygnus-ngsi/flume_extensions_catalogue/ngsi_ckan_sink/index.html#section2.3.4) for more detail. Note this is not the standard way of mark entity location in the Data API (see aforementioned "Geospacial properties of entities" section) and probably would be aligned in the
+    future to work in a similar way to the [Carto experimental persistence sink](http://fiware-cygnus.readthedocs.io/en/1.5.0/cygnus-ngsi/flume_extensions_catalogue/ngsi_cartodb_sink/index.html#section2.3.6).
 
     ![CKAN grid view](images/ckan_grid_geolocation_example.png)
 

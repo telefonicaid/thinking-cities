@@ -169,7 +169,7 @@ resulting in notifications like this one:
     Car BCZ6754 speed is 57 km/h. Be careful you could be fined!
 
 This is just a brief introduction to the overall subscriptions/notifications functionality. You can find
-the full details and more examples at the [Context Broker documentation](https://fiware-orion.readthedocs.io/en/master/user/walkthrough_apiv2/index.html#subscriptions) and the "Subscriptions" section at the
+the full details and more examples at the [Context Broker documentation](https://fiware-orion.readthedocs.io/en/1.4.0/user/walkthrough_apiv2/index.html#subscriptions) and the "Subscriptions" section at the
 [NGSIv2 specification](http://telefonicaid.github.io/fiware-orion/api/v2/stable/).
 
 ## The `TimeInstant` metadata

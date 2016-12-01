@@ -7,7 +7,7 @@ However, it may happen that at a given moment of time, the current actions set i
 and you need new actions. In that case you have basically two options:
 
 * Develop a software module encapsulating your action and connect it with the 
-  [generic HTTP POST action](https://github.com/telefonicaid/perseo-fe/blob/master/documentation/plain_rules.md#http-request-action). 
+  [generic HTTP POST action](https://github.com/telefonicaid/perseo-fe/blob/release/1.3.0/documentation/plain_rules.md#http-request-action). 
   That is basically, a module exposing a REST API that CEP can invoke by the means of HTTP 
   POST requests. When your module receives the POST call from CEP then the actual action is executed. Note that HTTP POST
   requests can be parametrized using information from the events triggering the rule, so this alternative can be pretty
