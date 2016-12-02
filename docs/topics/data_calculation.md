@@ -101,7 +101,7 @@ or the same entity in NGSIv2 format:
       }
 
 To see the complete set of operations and features available for the Expression Language, refer to
-the [specification](https://github.com/telefonicaid/iotagent-node-lib/blob/master/doc/expressionLanguage.md).
+the [specification](https://github.com/telefonicaid/iotagent-node-lib/blob/2.4.0/doc/expressionLanguage.md).
 
 ## Calculations based on data in Context Entities
 

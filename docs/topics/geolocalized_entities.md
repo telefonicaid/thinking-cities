@@ -119,5 +119,5 @@ Once the entities location is correctly configured, it can be exploited at diffe
 To include in the Persisente backends section, once Carto sink would be ready for production usage:
 
   - Carto. Both point and arbitrary GeoJSON location are supported and correctly persisted
-    at Carto. See [Cygnus documentation](http://fiware-cygnus.readthedocs.io/en/master/cygnus-ngsi/flume_extensions_catalogue/ngsi_cartodb_sink/index.html#section2.3.6) for more detail.
+    at Carto. See [Cygnus documentation](http://fiware-cygnus.readthedocs.io/en/1.5.0/cygnus-ngsi/flume_extensions_catalogue/ngsi_cartodb_sink/index.html#section2.3.6) for more detail.
 --> 
