@@ -169,7 +169,7 @@ resulting in notifications like this one:
     Car BCZ6754 speed is 57 km/h. Be careful you could be fined!
 
 This is just a brief introduction to the overall subscriptions/notifications functionality. You can find
-the full details and more examples at the [Context Broker documentation](https://fiware-orion.readthedocs.io/en/master/user/walkthrough_apiv2/index.html#subscriptions) and the "Subscriptions" section at the
+the full details and more examples at the [Context Broker documentation](https://fiware-orion.readthedocs.io/en/1.4.0/user/walkthrough_apiv2/index.html#subscriptions) and the "Subscriptions" section at the
 [NGSIv2 specification](http://telefonicaid.github.io/fiware-orion/api/v2/stable/).
 
 ## The `TimeInstant` metadata
@@ -181,7 +181,7 @@ an update with the value 67 then it *doesn't* send a notification.
 For those use cases that needs notifying each update (no matter if it results on actual value change or not), the
 IoTAgent implements a clever mechanism based on adding a `TimeInstant` metadata with the timestamp of the update. 
 This way, it is ensured that from a logical point of view the attribute always changes, as a change in any metadata 
-is considered a change in the attribute. Look for the `TimeInstant` element documentation in the [IoT Agent documentation](https://github.com/telefonicaid/iotagent-node-lib#the-timeinstant-element).
+is considered a change in the attribute. Look for the `TimeInstant` element documentation in the [IoT Agent documentation](https://github.com/telefonicaid/iotagent-node-lib/tree/release/2.4.0#the-timeinstant-element).
 
 In the case of client-provided entities (i.e. entities not managed by IoTAgent but by your application) you may need a 
 similar mechanism. In this case, ensure that the `TimeInstant` metadata resolution is high enough, e.g. if your system

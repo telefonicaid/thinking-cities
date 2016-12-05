@@ -36,11 +36,11 @@ to do some actions or not.
 
 In deep details, each Role in a Service is defined by a Policy for each IoTP component:
 
-- [IoTP Policies](https://github.com/telefonicaid/orchestrator/tree/master/src/orchestrator/core/policies)
-- [Orion component actions](https://github.com/telefonicaid/fiware-pep-steelskin#-rules-to-determine-the-context-broker-action-from-the-request)
-- [Perseo component actions](https://github.com/telefonicaid/fiware-pep-steelskin#-rules-to-determine-the-perseo-cep-action-from-the-request)
-- [Keypass component actions](https://github.com/telefonicaid/fiware-pep-steelskin#rulesKeypass)
-- [Rest API based components (STH, IOTA) actions](https://github.com/telefonicaid/fiware-pep-steelskin#generic-rest-middleware)
+- [IoTP Policies](https://github.com/telefonicaid/orchestrator/tree/1.4.0/src/orchestrator/core/policies)
+- [Orion component actions](https://github.com/telefonicaid/fiware-pep-steelskin/tree/release/1.2.0#-rules-to-determine-the-context-broker-action-from-the-request)
+- [Perseo component actions](https://github.com/telefonicaid/fiware-pep-steelskin/tree/release/1.2.0#-rules-to-determine-the-perseo-cep-action-from-the-request)
+- [Keypass component actions](https://github.com/telefonicaid/fiware-pep-steelskin/tree/release/1.2.0#-rules-to-determine-the-keypass-access-control-action-from-the-request)
+- [Rest API based components (STH, IOTA) actions](https://github.com/telefonicaid/fiware-pep-steelskin/tree/release/1.2.0#generic-rest-middleware)
 
 Since [Identity Management](../authentication_api.md) of IoT Platform is based on [OpenStack Keystone](http://docs.openstack.org/developer/keystone) the following table represents relations between involved concepts:
 
@@ -73,7 +73,7 @@ To create a new user with special permission you should do the following steps:
 - Create a new Role.
 [Orchestrator how to create a new role](http://docs.orchestrator2.apiary.io/#reference/orchestrator/roles-in-service/create-a-role)
 
-- Define a new custom XACML Policy, like one of [these](https://github.com/telefonicaid/orchestrator/tree/master/src/orchestrator/core/policies)
+- Define a new custom XACML Policy, like one of [these](https://github.com/telefonicaid/orchestrator/tree/1.4.0/src/orchestrator/core/policies)
 
 - Assign a XACMLpolicy for that role and each IoTP component that you need.
 [Set a XACML policy to a Role](http://docs.orchestrator2.apiary.io/#reference/orchestrator/role-in-service/set-xacml-policy-role)
