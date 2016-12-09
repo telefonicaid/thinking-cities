@@ -112,7 +112,8 @@ The CEP gets a notification cointaining a configurable set of attributes (as set
 
 For simplicity, the previous values are taken as values in the incomming notification, but they could be taken as `ev.x__metadata__previousValue` instead of `x0`, and the same for `y0` and `t0` (see [Metadata and object values](https://github.com/telefonicaid/perseo-fe/blob/master/documentation/plain_rules.md#metadata-and-object-values))
 
-The rule could be 
+The rule could be:
+
 ```
 {
     "name": "rule_velocity",
@@ -132,7 +133,8 @@ The rule could be
 }
 ```
 
-And a notification like
+And a notification like:
+
 ```
 {
     "subscriptionId": "51c04a21d714fb3b37d7d5a7",
@@ -185,7 +187,7 @@ And a notification like
 }
 ```
 
-would generate an update action
+would generate an update action:
 
 ```
 {  
@@ -207,7 +209,7 @@ would generate an update action
 }
 ```
 
-that woud set the field `velocity` to `2` (10/5) in whatever magnitudes we were using
+that woud set the field `velocity` to `2` (10/5) in whatever magnitudes we were using.
 
 All the functions in [java.lang.Math](https://docs.oracle.com/javase/7/docs/api/java/lang/Math.html) can be used in the EPL expression.
 
@@ -259,4 +261,4 @@ http://<sth-component>:<sth-port>/STH/v1/contextEntities/type/Entity/id/WasteTan
 http://<sth-component>:<sth-port>/STH/v1/contextEntities/type/Entity/id/WasteTank8/attributes/density?aggrMethod=sum2&aggrPeriod=minute&dateFrom=2016-11-14T00:00:00&dateTo=2016-11-16T23:59:59
 ```
 
-For futher information about the STH component and all the capabilities it provides, please visit the [STH documentation at ReadTheDocs](http://fiware-sth-comet.readthedocs.io/en/latest/index.html).
+For futher information about the STH component and all the capabilities it provides, please visit the [STH documentation at ReadTheDocs](http://fiware-sth-comet.readthedocs.io/en/master/index.html).

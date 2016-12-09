@@ -20,7 +20,7 @@ You have to choose which data from your IoT device is relevant to be evaluated b
 In order to do so, you have to select the Data API entity attributes. On the following example, the temperature attribute will be selected:
 
 ```
-POST /NGSI10/subscribeContext HTTP/1.1
+POST /v1/subscribeContext HTTP/1.1
 Host: test.ttcloud.net:1026
 Accept: application/json
 Content-Type: application/json
