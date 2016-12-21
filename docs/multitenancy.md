@@ -4,7 +4,21 @@ The platform implements multitenancy based on the concepts *Service* and *SubSer
 
 Authentication and authorization is based on service and subservices. In other words, user/roles access are per service and subservice. For example, you can define that a given user has read permissions in all subservices of a given service, but only modification permissions in a subset of such subservices.
 
-Service and subservice are supported in platform APIs. In particular, service and subservice are specified by the `Fiware-Service` and `Fiware-ServicePath` HTTP header respectively. Using these headers, a given request (e.g. an entity creation request using the [Data API](data_api.md)) can be scoped in a particular service and subservice.
+Service and subservice are supported in platform APIs. In particular, service and subservice are specified by the `Fiware-Service` and `Fiware-ServicePath` HTTP header respectively. Using these headers, a given request (e.g. an entity creation request using the [Data API](data_api.md)) can be scoped in a particular service and subservice, e.g:
+
+    POST /v2/entities
+    Content-Type: application/json
+    Fiware-service: smartown
+    Fiware-servicepath: /roads
+
+    {
+      "id": "BCZ6754",
+      "type": "Car",
+      "speed": {
+         "value": 54,
+         "type": "Number"
+      }
+    }
 
 The following syntax rules apply to service:
 

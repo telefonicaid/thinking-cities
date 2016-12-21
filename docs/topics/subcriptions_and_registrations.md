@@ -7,6 +7,31 @@ pretty different and address different purposes.
 
 On the one hand, subscriptions:
 
+    POST /v2/subscriptions
+    Content-Type: application/json
+    Fiware-service: smartown
+    Fiware-servicepath: /roads
+
+    {
+      "subject": {
+        "entities": [
+          {
+            "idPattern": ".*",
+            "type": "Car"
+          }
+        ],
+        "condition": {
+            "attrs": [ "speed" ]
+        }
+      },
+      "notification": {
+        "http": {
+            "url": "http://example.com/receiver"
+        }
+      }
+    }
+
+
 - Are used to configure notifications to be triggered when some conditions occur. See 
   [this document](how_notifications_work.md) for an introduction on this functionality.
 - The URL associated to a subscription identifies a notification receiver, to which notifications covered
@@ -18,6 +43,34 @@ On the one hand, subscriptions:
   [NGSIv2 specification](http://telefonicaid.github.io/fiware-orion/api/v2/stable/).
 
 On the other hand, registrations:
+
+    POST /v1/registry/registerContext
+    Content-Type: application/json
+    Fiware-service: smartown
+    Fiware-servicepath: /roads
+
+    {
+      "contextRegistrations": [
+        {
+          "entities": [
+            {
+              "type": "Car",
+              "isPattern": "false",
+              "id": "FBH4452"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "speed",
+              "type": "Number",
+              "isDomain": "false"
+            }
+          ],
+          "providingApplication": "http://myproviders.com/Cars"
+        }
+      ],
+      "duration": "P1M"
+    }
 
 - Are used to configure context sources (also known as *context providers*). Details can be found in 
   [the Context Broker documentation](http://fiware-orion.readthedocs.io/en/master/user/context_providers/index.html).
