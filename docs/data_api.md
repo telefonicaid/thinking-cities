@@ -12,13 +12,20 @@ Before continuing with the next section, it would be a good idea to have a look 
 
 Processes running as part of your application architecture that update context information using REST operations that the Context Broker GE exports, are said to play a **Context Producer** role.  As an example, let’s consider an application for rating restaurants (let’s call it NiceEating). The client part of that application running on the smartphone of users would play the role of Context Producer, enabling them to rate restaurants.
 
+From a multitenancy point of view, let's consider that the service and subservice corresponding to the application are
+"smartown" and "NiceEating" respectively. All the requests shown in the examples below will include the `Fiware-service` 
+and `Fiware-servicepath` headers corresponding to that. From the point of view of the platform, these headers are
+mandatory. More information on multitency in [this specific section in the documentation](multitenancy.md).
+
 On the other hand, processes running as part of your application architecture that query context information using REST operations that the Context Broker GE exports are said to play a **Context Consumer** role.  Continuing with our NiceEating app, the mobile application running on the smartphone of users and enabling them to query for the rating of restaurants would play the role of Context Consumer.  Note that a given part of your application may play both the Context Producer and Context Consumer roles.  This would be the case of the mobile client of the NiceEating app enabling end users to rate, and query about rates of, restaurants.
 
-Entities that would be relevant to the NiceEating application are of type Restaurant, Client and Rating. For example, when a given user scores a restaurant (e.g. in a scale from 0 to 5, “Client1234” scores “4” for the “LeBistro” restaurant) the smartphone application plays the Context Producer role **creating** a Rating entity by issuing the following HTTP request :
+Entities that would be relevant to the NiceEating application are of type Restaurant, Client and Rating. For example, when a given user scores a restaurant (e.g. in a scale from 0 to 5, “Client1234” scores “4” for the “LeBistro” restaurant) the smartphone application plays the Context Producer role **creating** a Rating entity by issuing the following HTTP request:
 
 ```
 POST <cb_host>:<cb_port>/v2/entities
 Content-Type: application/json
+Fiware-service: smartown
+Fiware-servicepath: /NiceEating
 
 {
   "id": "LeBistro::Client1234",
@@ -35,6 +42,8 @@ Each time a new Rating entity is created, the average rating for the correspondi
 ```
 PUT <cb_host>:<cb_port>/v2/entities/LeBistro/attrs/average_scoring?type=Restaurant
 Content-Type: application/json
+Fiware-service: smartown
+Fiware-servicepath: /NiceEating
 
 {
   "type": "Float",
@@ -47,6 +56,8 @@ or (more compact):
 ```
 PUT <cb_host>:<cb_port>/v2/entities/LeBistro/attrs/average_scoring/value?type=Restaurant
 Content-Type: text/plain
+Fiware-service: smartown
+Fiware-servicepath: /NiceEating
 
 4.2
 ```
@@ -55,6 +66,8 @@ Finally, the user can get the information of a given Restaurant using the smartp
 
 ```
 GET <cb_host>:<cb_port>/v2/entities/LeBistro/attrs/average_scoring?type=Restaurant
+Fiware-service: smartown
+Fiware-servicepath: /NiceEating
 ```
 
 getting a JSON response such as the following one:
@@ -70,6 +83,8 @@ You can also obtain the values of all attributes of the "LeBistro" restaurant in
 
 ```
 GET <cb_host>:<cb_port>/v2/entities/LeBistro/attrs?type=Restaurant
+Fiware-service: smartown
+Fiware-servicepath: /NiceEating
 ```
 
 getting a JSON response such as the following one:
@@ -109,6 +124,8 @@ Alternatively, if you want to get a more compact response including **only attri
 
 ```
 GET <cb_host>:<cb_port>/v2/entities/LeBistro?type=Restaurant&options=keyValues
+Fiware-service: smartown
+Fiware-servicepath: /NiceEating
 ```
 
 getting a JSON response such as the following one:
@@ -131,6 +148,8 @@ Finally, the Context Broker GE allows queries using filters. For example, in ord
 
 ```
 GET /v2/entities?type=Restaurant&q=average_scoring>4
+Fiware-service: smartown
+Fiware-servicepath: /NiceEating
 ```
 
 
@@ -142,7 +161,9 @@ In the case of NiceEating, the application backend could use a subscription so e
 
 ```
 POST <cb_host>:<cb_port>/v2/subscriptions
-Content-Type: application/json 
+Content-Type: application/json
+Fiware-service: smartown
+Fiware-servicepath: /NiceEating
 
 {
   "description": "New ratings subscription",
@@ -171,6 +192,8 @@ Another case would be an application that subscribes to changes in average ratin
 ```
 POST <cb_host>:<cb_port>/v2/subscriptions
 Content-Type: application/json
+Fiware-service: smartown
+Fiware-servicepath: /NiceEating
 
 {
   "description": "Average ratings changes subscription",
@@ -202,6 +225,8 @@ For example, to query for all the restaurants within 13 km of the Madrid city ce
 
 ```
 GET /v2/entities?type=Restaurant&georel=near;maxDistance:1000&geometry=point&coords=40.418889,-3.691944
+Fiware-service: smartown
+Fiware-servicepath: /NiceEating
 ```
 
 # In more detail ...
