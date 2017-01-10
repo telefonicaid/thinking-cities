@@ -15,7 +15,9 @@ Processes running as part of your application architecture that update context i
 From a multitenancy point of view, let's consider that the service and subservice corresponding to the application are
 "smartown" and "NiceEating" respectively. All the requests shown in the examples below will include the `Fiware-service` 
 and `Fiware-servicepath` headers corresponding to that. From the point of view of the platform, these headers are
-mandatory. More information on multitency in [this specific section in the documentation](multitenancy.md).
+mandatory. More information on multitency in [this specific section in the documentation](multitenancy.md). The examples
+also include the `X-Auth-Token` header, which is required to authenticate the requests (see 
+[the section about security](security.md) for details).
 
 On the other hand, processes running as part of your application architecture that query context information using REST operations that the Context Broker GE exports are said to play a **Context Consumer** role.  Continuing with our NiceEating app, the mobile application running on the smartphone of users and enabling them to query for the rating of restaurants would play the role of Context Consumer.  Note that a given part of your application may play both the Context Producer and Context Consumer roles.  This would be the case of the mobile client of the NiceEating app enabling end users to rate, and query about rates of, restaurants.
 
@@ -26,6 +28,7 @@ POST <cb_host>:<cb_port>/v2/entities
 Content-Type: application/json
 Fiware-service: smartown
 Fiware-servicepath: /NiceEating
+X-Auth-Token: D3wiv5j7y6oiwo9w4ds5u20Y0bb6pL
 
 {
   "id": "LeBistro::Client1234",
@@ -44,6 +47,7 @@ PUT <cb_host>:<cb_port>/v2/entities/LeBistro/attrs/average_scoring?type=Restaura
 Content-Type: application/json
 Fiware-service: smartown
 Fiware-servicepath: /NiceEating
+X-Auth-Token: D3wiv5j7y6oiwo9w4ds5u20Y0bb6pL
 
 {
   "type": "Float",
@@ -58,6 +62,7 @@ PUT <cb_host>:<cb_port>/v2/entities/LeBistro/attrs/average_scoring/value?type=Re
 Content-Type: text/plain
 Fiware-service: smartown
 Fiware-servicepath: /NiceEating
+X-Auth-Token: D3wiv5j7y6oiwo9w4ds5u20Y0bb6pL
 
 4.2
 ```
@@ -68,6 +73,7 @@ Finally, the user can get the information of a given Restaurant using the smartp
 GET <cb_host>:<cb_port>/v2/entities/LeBistro/attrs/average_scoring?type=Restaurant
 Fiware-service: smartown
 Fiware-servicepath: /NiceEating
+X-Auth-Token: D3wiv5j7y6oiwo9w4ds5u20Y0bb6pL
 ```
 
 getting a JSON response such as the following one:
@@ -85,6 +91,7 @@ You can also obtain the values of all attributes of the "LeBistro" restaurant in
 GET <cb_host>:<cb_port>/v2/entities/LeBistro/attrs?type=Restaurant
 Fiware-service: smartown
 Fiware-servicepath: /NiceEating
+X-Auth-Token: D3wiv5j7y6oiwo9w4ds5u20Y0bb6pL
 ```
 
 getting a JSON response such as the following one:
@@ -126,6 +133,7 @@ Alternatively, if you want to get a more compact response including **only attri
 GET <cb_host>:<cb_port>/v2/entities/LeBistro?type=Restaurant&options=keyValues
 Fiware-service: smartown
 Fiware-servicepath: /NiceEating
+X-Auth-Token: D3wiv5j7y6oiwo9w4ds5u20Y0bb6pL
 ```
 
 getting a JSON response such as the following one:
@@ -150,6 +158,7 @@ Finally, the Context Broker GE allows queries using filters. For example, in ord
 GET /v2/entities?type=Restaurant&q=average_scoring>4
 Fiware-service: smartown
 Fiware-servicepath: /NiceEating
+X-Auth-Token: D3wiv5j7y6oiwo9w4ds5u20Y0bb6pL
 ```
 
 
@@ -164,6 +173,7 @@ POST <cb_host>:<cb_port>/v2/subscriptions
 Content-Type: application/json
 Fiware-service: smartown
 Fiware-servicepath: /NiceEating
+X-Auth-Token: D3wiv5j7y6oiwo9w4ds5u20Y0bb6pL
 
 {
   "description": "New ratings subscription",
@@ -194,6 +204,7 @@ POST <cb_host>:<cb_port>/v2/subscriptions
 Content-Type: application/json
 Fiware-service: smartown
 Fiware-servicepath: /NiceEating
+X-Auth-Token: D3wiv5j7y6oiwo9w4ds5u20Y0bb6pL
 
 {
   "description": "Average ratings changes subscription",
@@ -227,6 +238,7 @@ For example, to query for all the restaurants within 13 km of the Madrid city ce
 GET /v2/entities?type=Restaurant&georel=near;maxDistance:1000&geometry=point&coords=40.418889,-3.691944
 Fiware-service: smartown
 Fiware-servicepath: /NiceEating
+X-Auth-Token: D3wiv5j7y6oiwo9w4ds5u20Y0bb6pL
 ```
 
 # In more detail ...
