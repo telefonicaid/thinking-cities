@@ -42,3 +42,18 @@ git push origin release/v4.2
 
 * Check at http://fiware-iot-stack.readthedocs.io/en/master/ that the new release is there (otherwise review the
   RTD configuration)
+
+## Configuration file syntax
+
+The configuration file (`iotpv4.2.conf` in the example above) uses the following syntax:
+
+```
+[branches]
+repo-name1=release/1.1.0
+repo-name2=release/1.2.0
+repo-name3=release/1.3.0
+...
+repo-nameN=release/1.4.0
+```
+
+The 1.1.0, 1.2.0, etc. above are just example; use actual version number in a real case.
