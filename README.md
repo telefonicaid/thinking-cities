@@ -3,6 +3,15 @@ Repository to store and manage end user documentation related to the IoT Stack F
 
 ## How to generate documentation for a specific release
 
+Requirements:
+
+* Python 2.7 (it may work with other versions but I haven't tested)
+* Required Python modules: requests and configparser, that can ben installed typically using:
+
+```
+sudo pip install requests configparser
+```
+
 Assuming you are in master branch with everything ready to release (v4.2 is a fictional example):
 
 * Create the release branch:
