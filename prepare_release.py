@@ -77,7 +77,7 @@ def usage():
     print 'Parameters:'
     print '  -d <directory>: directory to process, all .md files in it (including subdirectories in recursive way) are'
     print '     processed'
-    print '  -c <conf_file>: file which the per-component version corresponding to the IoTP release'
+    print '  -c <conf_file>: file with the per-component version corresponding to the IoTP release'
     print '  -r: dry-run mode, i.e. files are not actually modified'
     print '  -v: verbose mode'
     print '  -u: print this usage message'
@@ -259,7 +259,7 @@ if iotalib_version_ul != iotalib_version_json:
           % (iot_lib_version_ul, iotalib_version_json)
     exit(1)
 
-# .replace() needed as in some cases library version apperas as '2.4.x' in packages.json
+# .replace() needed as in some cases library version appears as '2.4.x' in packages.json
 versions['iotagent-node-lib'] = iotalib_version_json.replace('x', '0')
 msg('* version for iotagent-node-lib is %s' % iotalib_version_json)
 
