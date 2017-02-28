@@ -9,11 +9,6 @@ The Device API allows you to:
 - Send data from the device to the FIWARE IoT Stack
 - Send commands from your application to the device
 
-If you want to quickly connect or simulate virtual devices you may also check FIGWAY, a set of simple python scripts
-working as a client SDK for any desktop PC, laptop or gateway supporting a python2.7 environment. This way you may skip
-the steps described below and use the python commands as described in the README.md file available at this [Github
-repository](https://github.com/telefonicaid/fiware-figway).
-
 # Configure the South Bound protocol
 
 In order for the South Bound protocols (i.e.: the protocols used to communicate physical devices with the Platform)
