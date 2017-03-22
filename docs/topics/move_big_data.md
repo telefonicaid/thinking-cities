@@ -66,11 +66,13 @@ Accessing Hue requires certain user credentials (user and password) that must be
 [Top](#top)
 
 ###<a name="section3"></a>Using a ETL process
-ETL stands for extract, transform and load. It is a term applied to processes in charge of moving data with some optional transformation in between.
+ETL stands for Extract, Transform and Load. It is a term applied to processes in charge of moving data with some optional transformation in between.
 
 The IoT Platform exposes a server intended for ETL purposes related to HDFS. It is a machine where an **integrator** may upload a Java program and schedule its execution through the Crontab.
 
 Such ETL processes are allowed to obtain the original data from external sources, e.g. databases, and from private networks connected to clients.
+
+Connection to HDFS is done by means Hadoop API for Java, i.e. executing Remote Procedure Calls (RPC) which execute through the TCP/8020 port.
 
 Please ask the IoT Platform team for further details.
 
