@@ -1,4 +1,4 @@
-#<a name="top"></a>How to massively move data from/to the Platform (Big Data)
+# <a name="top"></a>How to massively move data from/to the Platform (Big Data)
 Moving massive data from or to the IoT Platform means interacting with [Hadoop](http://hadoop.apache.org/)'s HDFS.
 
 HDFS stands for Hadoop Distributed File System. It is, in fact, a file system, since the data is organized as large data files following a Unix file system design. And it is distributed, since the large data files are not hosted by a single server but by a cluster of servers, having the files split into many pieces (blocks) all along the cluster.
@@ -9,48 +9,8 @@ Doing I/O with HDFS is as <i>easy</i> as talking with the NameNode and asking fo
 
 There are several ways of interacting with a HDFS's Namenode. Let's see the ones supported by IoT Platform.
 
-##<a name="section1"></a>Methods
-###<a name="section1.1"></a>Using the FileSystem Shell
-This method is mainly oriented to **administrator** users. It is documented for completeness purposes, since it is not enabled for an integrator user.
-
-Despite the FileSystem Shell is a human being-oriented interface, its usage could be **automated** by an application as well since it is based on running ssh commands. A normal user (i.e. a client) should never have enabled this approach.
-
-The idea behing FileSystem Shell is running a set of commands interacting with HDFS. FileSystem Shell is plenty of commands emulating a Unix-like shell for file and directory creation, deletion and management, file reading and writting and much more. Please check the official [documentation](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html) for further details.
-
-We will focus on a subset of commands enabling data uploading and downloading to/from HDFS from/to local file system, respectively. This means the file aimed to be uploaded must exist in the local file system, and viceversa, the file aimed to be downloaded must be copied to the local file system. And which is the local file system? This is just the Unix file system an administrator founds when starts a ssh session in any of the machines within the HDFS cluster; usually, this machine is the Namenode.
-
-Thus, the steps for uploading a file to HDFS are:
-
-1. Upload the data file from an external machine of your own to the Namenode's local file system, by means of ssh.
-2. Start a ssh session in the NameNode.
-3. Upload the data file from the NameNode's local file system to HDFS, by means of FileSystem Shell commands (see below).
-
-And the steps for downloading a file from HDFS are:
-
-1. Start a ssh session in the NameNode.
-2. Download the data file from HDFS to the NameNode's local file system, by means of FileSystem Shell commands (see below).
-3. Download the data file from the NameNode's local file system to an external machine of your own, by means of ssh.
-
-The subset of commands from the FileSystem Shell enabling data I/O in HDFS are:
-
-* [`copyFromLocal`](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#copyFromLocal)
-* [`copyToLocal`](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#copyToLocal)
-
-They are used as following:
-
-```
-$ hadoop fs -copyFromLocal <local_file> <hdfs_folder>
-```
-
-```
-$ hadoop fs -copyToLocal <hdfs_file> <local_folder>
-```
-
-`hdfs dfs` will also work instead of `hadoop fs`.
-
-[Top](#top)
-
-###<a name="section2"></a>Using Hue
+## Methods
+### Using Hue
 This method is mainly oriented to **non automated integrators** (i.e. human beings) since [Hue](http://gethue.com/) is a web-based UI for Hadoop. 
 
 Hue exposes a dashboard where several plugins are available for different purposes. These plugins are just an interface wrapping both conventional Hadoop APIs and authentication mechanisms.
@@ -65,7 +25,7 @@ Accessing Hue requires certain user credentials (user and password) that must be
 
 [Top](#top)
 
-###<a name="section3"></a>Using a ETL process
+### Using a ETL process
 ETL stands for Extract, Transform and Load. It is a term applied to processes in charge of moving data with some optional transformation in between.
 
 The IoT Platform exposes a server intended for ETL purposes related to HDFS. It is a machine where an **integrator** may upload a Java program and schedule its execution through the Crontab.
