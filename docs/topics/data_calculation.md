@@ -108,7 +108,111 @@ the [specification](https://github.com/telefonicaid/iotagent-node-lib/blob/maste
 For those data values that doesn't come from devices, but from external systems, and for those cases when the sources of
 context information to calculate those values are multiple, the [CEP](../cep.md) can be used to make some of those calculations.
 
-// @CARLOS: I GUESS THIS IS CORRECT, BUT I'M NOT COMPLETELY SURE. IF IT IS, SOME EXAMPLES WOULD BE APPRECIATED
+The CEP gets a notification cointaining a configurable set of attributes (as set in the subscription) and that allows using more fields than the ones sent by device. The notification mechanism allows to send the previous value of an attribute as metadata `previousValue` (see [metadata in notifications](http://fiware-orion.readthedocs.io/en/master/user/metadata/index.html#metadata-in-notifications)). So, as an example, we can think of an entity that periodically sends its coordinates and the time of the measure. We could calculate its average velocity by means of a rule that updates its field `velocity`.
+
+For simplicity, the previous values are taken as values in the incomming notification, but they could be taken as `ev.x__metadata__previousValue` instead of `x0`, and the same for `y0` and `t0` (see [Metadata and object values](https://github.com/telefonicaid/perseo-fe/blob/master/documentation/plain_rules.md#metadata-and-object-values))
+
+The rule could be:
+
+```
+{
+    "name": "rule_velocity",
+    "text": "select *, \"rule_velocity\" as ruleName, Math.hypot(cast(cast(ev.x1?,String),float)-cast(cast(ev.x0?,String),float),cast(cast(ev.y1?,String),float)-cast(cast(ev.y0?,String),float))/(cast(cast(ev.t1?, String), float)-cast(cast(ev.t0?,String), float)) as velocity  from pattern [every ev=iotEvent()]",
+    "action": {
+        "type": "update",
+        "parameters": {
+            "attributes": [
+                {
+                    "name": "velocity",
+                    "value": "${velocity}",
+                    "type": "Number"
+                }
+            ]
+        }
+    }
+}
+```
+
+And a notification like:
+
+```
+{
+    "subscriptionId": "51c04a21d714fb3b37d7d5a7",
+    "originator": "localhost",
+    "contextResponses": [
+        {
+            "contextElement": {
+                "attributes": [
+                    {
+                        "name": "x1",
+                        "type": "number",
+                        "value": "10"
+                    },
+                    {
+                        "name": "y1",
+                        "type": "number",
+                        "value": "0"
+                    },
+                    {
+                        "name": "x0",
+                        "type": "number",
+                        "value": "0"
+                    },
+                    {
+                        "name": "y0",
+                        "type": "number",
+                        "value": "0"
+                    },
+                    {
+                        "name": "t1",
+                        "type": "number",
+                        "value": "5"
+                    },
+                    {
+                        "name": "t0",
+                        "type": "number",
+                        "value": "0"
+                    }
+                ],
+                "type": "BloodMeter",
+                "isPattern": "false",
+                "id": "bloodm1"
+            },
+            "statusCode": {
+                "code": "200",
+                "reasonPhrase": "OK"
+            }
+        }
+    ]
+}
+```
+
+would generate an update action:
+
+```
+{  
+   "contextElements": [  
+      {  
+         "isPattern": "false",
+         "id": "bloodm1",
+         "attributes": [  
+            {  
+               "name": "velocity",
+               "value": "2",
+               "type": "Number"
+            }
+         ],
+         "type": "BloodMeter"
+      }
+   ],
+   "updateAction": "APPEND"
+}
+```
+
+that woud set the field `velocity` to `2` (10/5) in whatever magnitudes we were using.
+
+All the functions in [java.lang.Math](https://docs.oracle.com/javase/7/docs/api/java/lang/Math.html) can be used in the EPL expression.
+
 
 ## Statistical calculations based on historic values
 
@@ -116,4 +220,45 @@ For those cases when the data values that want to be calculated are statistical 
 the [Short Term Historic](../sth.md) can be used. This component stores historical information of Context Entities and can be used
 to retrieve statistical calculations over the stored data.
 
-// @GERMAN: SOME INFORMATION ABOUT HOW TO GET STATISTICS CALCULATED BY THE STH WOULD BE NEEDED
+The STH component is able to calculate statistics about the evolution in time of certain entity attributes. To do it, there are 2 ways to notify this evolution in time to the component:
+
+1. Via the [Cygnus](https://github.com/telefonicaid/fiware-cygnus) component and subscribing it to the Context Broker instance.
+2. Via the [STH](https://github.com/telefonicaid/fiware-sth-comet) component itself and directly subscribing it to the Context Broker instance.
+
+Once the STH receives the notifications of entity attribute value changes, it is able to calculate and provide information about:
+
+* Numeric attribute values:
+    * Mean
+    * Standard deviation
+    * Variance
+    * Maximum
+    * Minimum
+* Textual attribute values:
+    * Number of occurrences
+
+All this, for distinct resolutions or time frames, such as:
+
+* Months
+* Days
+* Hours
+* Minutes
+* Seconds
+
+Regarding the previous example, the STH is able to provide statistical information such as:
+
+1. Which has been the maximum `weight` (attribute) values of the `WasteTank8` (entity) last year with a resolution of months?, sending a GET request to the STH component such as the next one:
+```
+http://<sth-component>:<sth-port>/STH/v1/contextEntities/type/Entity/id/WasteTank8/attributes/weight?aggrMethod=max&aggrPeriod=month&dateFrom=2015-01-01T00:00:00&dateTo=2015-12-31T23:59:59
+```
+
+2. Which has been the mean `level` (attribute) values of the `WasteTank8` (entity) last week with a resolution of hours?, sending a GET request to the STH component such as the next one:
+```
+http://<sth-component>:<sth-port>/STH/v1/contextEntities/type/Entity/id/WasteTank8/attributes/level?aggrMethod=sum&aggrPeriod=hour&dateFrom=2016-11-07T00:00:00&dateTo=2016-11-13T23:59:59
+```
+
+3. Which has been the standard deviation of the `density` (attribute) values of the `WasteTank8` the last 3 days with a resolution of hours or even minutes?, sending a GET request to the STH component such as the next one:
+```
+http://<sth-component>:<sth-port>/STH/v1/contextEntities/type/Entity/id/WasteTank8/attributes/density?aggrMethod=sum2&aggrPeriod=minute&dateFrom=2016-11-14T00:00:00&dateTo=2016-11-16T23:59:59
+```
+
+For futher information about the STH component and all the capabilities it provides, please visit the [STH documentation at ReadTheDocs](http://fiware-sth-comet.readthedocs.io/en/master/index.html).

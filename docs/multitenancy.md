@@ -4,17 +4,33 @@ The platform implements multitenancy based on the concepts *Service* and *SubSer
 
 Authentication and authorization is based on service and subservices. In other words, user/roles access are per service and subservice. For example, you can define that a given user has read permissions in all subservices of a given service, but only modification permissions in a subset of such subservices.
 
-Service and subservice are supported in platform APIs. In particular, service and subservice are specified by the `Fiware-Service` and `Fiware-ServicePath` HTTP header respectively. Using these headers, a given request (e.g. an entity creation request using the [Data API](data_api.md)) can be scoped in a particular service and subservice.
+Service and subservice are supported in platform APIs. In particular, service and subservice are specified by the `Fiware-Service` and `Fiware-ServicePath` HTTP header respectively. Using these headers, a given request (e.g. an entity creation request using the [Data API](data_api.md)) can be scoped in a particular service and subservice, e.g:
+
+    POST /v2/entities
+    Content-Type: application/json
+    Fiware-service: smartown
+    Fiware-servicepath: /roads
+
+    {
+      "id": "BCZ6754",
+      "type": "Car",
+      "speed": {
+         "value": 54,
+         "type": "Number"
+      }
+    }
 
 The following syntax rules apply to service:
 
 * Only alphanumeric characters and underscores (`_`) are allowed.
 * Maximum length is 50 characters.
+* Minimum length is 1 character.
 * If uppercase characters are used, they are converted to lowercase.
 
 The following syntax rules apply to subservice:
 
 * It must start with the `/` character.
 * Maximum length is 50 characters.
+* Minimum length is 1 character.
 * Only alphanumeric characters and underscores (`_`) are allowed (apart from the initial `/`).
 * It is interpreted in a case-sensitive way.

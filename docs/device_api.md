@@ -9,10 +9,9 @@ The Device API allows you to:
 - Send data from the device to the FIWARE IoT Stack
 - Send commands from your application to the device
 
-If you want to quickly connect or simulate virtual devices you may also check FIGWAY, a set of simple python scripts
-working as a client SDK for any desktop PC, laptop or gateway supporting a python2.7 environment. This way you may skip
-the steps described below and use the python commands as described in the README.md file available at this [Github
-repository](https://github.com/telefonicaid/fiware-figway).
+The following documents show how to manage device connectivity through the IoTAgent Manager of the IoT Platform. These
+APIs have some differences with the standard IoTAgent Device Provisioning APIs as defined in the [IoTAgent Library](https://github.com/telefonicaid/iotagent-node-lib)
+but it should be transparent for the users of the Platform.
 
 # Configure the South Bound protocol
 
@@ -29,7 +28,7 @@ South Bound protocol again. Use the provided data for future interactions.
 
 The following excerpt shows you how to provision a Configuration Group directly to the API:
 
-    POST /iot/services
+    POST /iot/services?protocol=IoTA-UL
     Content-Type: application/json
     Fiware-service: OpenIoT
     Fiware-servicepath: /
@@ -37,9 +36,6 @@ The following excerpt shows you how to provision a Configuration Group directly 
     {
       "services": [
         {
-          "protocol": [
-                  "IoTA-UL"
-                ],
           "apikey": "801230BJKL23Y9090DSFL123HJK09H324HV8732",
           "entity_type": "SensorMachine",
           "commands": [
@@ -90,7 +86,7 @@ If you simply want to send observations you can skip this and just go to the "Se
 On this sample a device is registered to send temperature observations using UL2.0 protocol and a PING command:
 
 ```
-POST $HOST_IOTAGENT/iot/devices
+POST $HOST_IOTAGENT/iot/devices?protocol=IoTA-UL
 
 Headers:
 {
@@ -105,7 +101,6 @@ Payload:
 		"device_id": "[DEV_ID]",
 		"entity_name": "[ENTITY_ID]",
 		"entity_type": "thing",
-		"protocol": "IoTA-UL",
 		"timezone": "Europe/Madrid",
 		"endpoint": "http://[DEVICE_IP]:[PORT]",
 		"attributes": [{
@@ -145,7 +140,7 @@ be required.
 The following example shows the same registration for an MQTT device instead of HTTP:
 
 ```
-POST $HOST_IOTAGENT/iot/devices
+POST $HOST_IOTAGENT/iot/devices?protocol=IoTA-UL
 
 Headers:
 {
@@ -160,7 +155,6 @@ Payload:
 		"device_id": "[DEV_ID]",
 		"entity_name": "[ENTITY_ID]",
 		"entity_type": "thing",
-		"protocol": "IoTA-UL",
 		"timezone": "Europe/Madrid",
 		"attributes": [{
 			"object_id": "t",
@@ -189,6 +183,8 @@ For devices that won't be receiving commands, the later provisioning request wil
 There are two IoTAgents currently available in the platform, each listening for requests with a different protocol:
 Ultralight 2.0 and JSON. In both cases, payloads can be sent to the Agent using two different transport protocols: MQTT
 and HTTP. The following sections show some examples of each of the four possible approaches.
+
+In order to select the appropriate IoTAgent, change the declared protocol in the query parameters: IoTA-UL or IoTA-JSON.
 
 **Send measures using UL2.0 HTTP**
 

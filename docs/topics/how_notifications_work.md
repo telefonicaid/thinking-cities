@@ -181,8 +181,25 @@ an update with the value 67 then it *doesn't* send a notification.
 For those use cases that needs notifying each update (no matter if it results on actual value change or not), the
 IoTAgent implements a clever mechanism based on adding a `TimeInstant` metadata with the timestamp of the update. 
 This way, it is ensured that from a logical point of view the attribute always changes, as a change in any metadata 
-is considered a change in the attribute. Look for the `TimeInstant` element documentation in the [IoT Agent documentation](https://github.com/telefonicaid/iotagent-node-lib#the-timeinstant-element).
+is considered a change in the attribute. Look for the `TimeInstant` element documentation in the [IoT Agent documentation](https://github.com/telefonicaid/iotagent-node-lib/tree/master#the-timeinstant-element).
 
-In the case of client-provided entities (i.e. entities not managed by IoTAgent but by your application) you may need a 
-similar mechanism. In this case, ensure that the `TimeInstant` metadata resolution is high enough, e.g. if your system
-is able to notify several times per second, then the timestamp resolution should be higher than one second.
+In the case of client-provided entities (i.e. entities not managed by IoTAgent but by your application as the `DGM2765` entity
+shown below) you may need a similar mechanism. In this case, ensure that the `TimeInstant` metadata resolution is high enough,
+e.g. if your system is able to notify several times per second, then the timestamp resolution should be higher than one second.
+
+    PUT /v2/entities/DGM2765/attrs/speed
+    Content-Type: application/json
+    Fiware-service: smartown
+    Fiware-servicepath: /roads
+
+    {
+      "value": 57,
+      "type": "Number",
+      "metadata": {
+        "TimeInstant": {
+          "value": "2017-06-17T07:21:24.238Z",
+          "type": "DateTime"
+        }
+      }
+    }
+
