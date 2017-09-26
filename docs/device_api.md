@@ -268,7 +268,7 @@ The simple JSON protocol used by the JSON IoTAgent maps each measurement to an a
 example shows how to send a measurement of three different quantities:
 ```
 POST  /iot/json?k=<apikey>&i=<device_ID>
-Content-type: text/plain
+Content-type: application/json
 
 {
     "t": 5.4,
