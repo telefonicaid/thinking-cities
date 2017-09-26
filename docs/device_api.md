@@ -86,16 +86,12 @@ If you simply want to send observations you can skip this and just go to the "Se
 On this sample a device is registered to send temperature observations using UL2.0 protocol and a PING command:
 
 ```
-POST $HOST_IOTAGENT/iot/devices?protocol=IoTA-UL
+POST /iot/devices?protocol=IoTA-UL
+Content-Type: application/json
+X-Auth-Token: [TOKEN]
+Fiware-Service: OpenIoT
+Fiware-ServicePath: /
 
-Headers:
-{
-	"content-type": "application/json",
-	"X - Auth - Token": "[TOKEN]",
-	"Fiware - Service": "OpenIoT",
-	"Fiware-ServicePath: "/"
-}
-Payload:
 {
 	"devices": [{
 		"device_id": "[DEV_ID]",
@@ -140,16 +136,12 @@ be required.
 The following example shows the same registration for an MQTT device instead of HTTP:
 
 ```
-POST $HOST_IOTAGENT/iot/devices?protocol=IoTA-UL
+POST /iot/devices?protocol=IoTA-UL
+Content-Type: application/json
+X-Auth-Token: [TOKEN]
+Fiware-Service: OpenIoT
+Fiware-ServicePath: /
 
-Headers:
-{
-	"content-type": "application/json",
-	"X-Auth-Token": "[TOKEN]",
-	"Fiware-Service": "OpenIoT",
-	"Fiware - ServicePath ": " / "
-}
-Payload:
 {
 	"devices": [{
 		"device_id": "[DEV_ID]",
@@ -194,12 +186,10 @@ measurements (observations) to the ContextBroker. Ultralight2.0 is selected in t
 Sending an observation from IoT devices is simple with the following HTTP POST request:
 
 ```
-POST  $HOST_IOTAGENT/iot/d?k=<apikey>&i=<device_ID>
-Headers:
-{
-	"content-type": "text/plain"
-}
-Payload: ‘t|25‘
+POST /iot/d?k=<apikey>&i=<device_ID>
+Content-Type: text/plain
+
+t|25
 ```
 
 The previous example sends an update of the Temperature attribute that is automatically sent by the IoT Agent to the
@@ -207,24 +197,20 @@ corresponding entity at the ContextBroker.
 
 Multiple measures for a single observation can be sent, sepparating the values with pipes:
 ```
-POST  $HOST_IOTAGENT/iot/d?k=<apikey>&i=<device_ID>
-Headers:
-{
-	"content-type": "text/plain"
-}
-Payload: ‘t|25|h|42|l|1299‘
+POST /iot/d?k=<apikey>&i=<device_ID>
+Content-Type: text/plain
+
+t|25|h|42|l|1299
 ```
 This request will generate a single update request to the Context Broker with three attributes, one corresponding to
 each measure.
 
 Sending multiple observations in the same message is also possible with the following payload:
 ```
-POST  $HOST_IOTAGENT/iot/d?k=<apikey>&i=<device_ID>
-Headers:
-{
-	"content-type": "text/plain"
-}
-Payload: ‘t|23#h|80#l|95#m|Quiet‘
+POST /iot/d?k=<apikey>&i=<device_ID>
+Content-Type: text/plain
+
+t|23#h|80#l|95#m|Quiet
 ```
 This request will generate four requests to the Context Broker, each one reporting a different value.
 
@@ -281,12 +267,9 @@ $ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<api_key>/m
 The simple JSON protocol used by the JSON IoTAgent maps each measurement to an attribute in a JSON Object. The following
 example shows how to send a measurement of three different quantities:
 ```
-POST  $HOST_IOTAGENT/iot/json?k=<apikey>&i=<device_ID>
-Headers:
-{
-	"content-type": "text/plain"
-}
-Payload:
+POST  /iot/json?k=<apikey>&i=<device_ID>
+Content-type: application/json
+
 {
     "t": 5.4,
     "o": 4.3,
@@ -359,16 +342,23 @@ the following topic:
 ```
 
 ## Command payloads
+
 Concerning the payload, the command information will have the same information for both transport protocols.
 ```
-<device name>@<command name>|<param name>=<value>|....
+<device name>@<command name>|<command value>
 ```
-This indicates that the device (named 'device_name' in the Context Broker) has to execute the command 'command_name',
-with the given parameters. E.g.:
+This indicates that the device (named 'device_name' in the Context Broker) has to execute the command 'command_name', with
+the given value. E.g.:
 ```
-weatherStation167@ping|param1=1|param2=2
+Robot1@turn|left
 ```
-This example will tell the Weather Station 167 to reply to a ping message with the provided params.
+This example will tell the Robot 1 to turn to left.
+
+In the case of complex commands requiring parameters, the `command_value` could be used to implement parameter passing. E.g:
+```
+weatherStation167@ping|param1:1|param2:2
+```
+This example will tell the Weather Station 167 to reply to a ping message with the provided params. Note that `=` cannot be used instead of `:` given that `=` is [a forbidden character for Context Broker](https://fiware-orion.readthedocs.io/en/master/user/forbidden_characters/index.html), so the update at CB triggering the command would be never progressed.
 
 Once the command has finished its execution in the device, the reply to the server must adhere to the following format:
 ```
@@ -380,7 +370,6 @@ final result of the command. E.g.:
 weatherStation167@ping|Ping ok
 ```
 In this case, the Weather station replies with a String value indicating everything has worked fine.
-
 
 # In more detail ...
 
