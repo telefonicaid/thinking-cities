@@ -86,16 +86,12 @@ If you simply want to send observations you can skip this and just go to the "Se
 On this sample a device is registered to send temperature observations using UL2.0 protocol and a PING command:
 
 ```
-POST $HOST_IOTAGENT/iot/devices?protocol=IoTA-UL
+POST /iot/devices?protocol=IoTA-UL
+Content-Type: application/json
+X-Auth-Token: [TOKEN]
+Fiware-Service: OpenIoT
+Fiware-ServicePath: /
 
-Headers:
-{
-	"content-type": "application/json",
-	"X - Auth - Token": "[TOKEN]",
-	"Fiware - Service": "OpenIoT",
-	"Fiware-ServicePath: "/"
-}
-Payload:
 {
 	"devices": [{
 		"device_id": "[DEV_ID]",
@@ -140,16 +136,12 @@ be required.
 The following example shows the same registration for an MQTT device instead of HTTP:
 
 ```
-POST $HOST_IOTAGENT/iot/devices?protocol=IoTA-UL
+POST /iot/devices?protocol=IoTA-UL
+Content-Type: application/json
+X-Auth-Token: [TOKEN]
+Fiware-Service: OpenIoT
+Fiware-ServicePath: /
 
-Headers:
-{
-	"content-type": "application/json",
-	"X-Auth-Token": "[TOKEN]",
-	"Fiware-Service": "OpenIoT",
-	"Fiware - ServicePath ": " / "
-}
-Payload:
 {
 	"devices": [{
 		"device_id": "[DEV_ID]",
@@ -194,12 +186,10 @@ measurements (observations) to the ContextBroker. Ultralight2.0 is selected in t
 Sending an observation from IoT devices is simple with the following HTTP POST request:
 
 ```
-POST  $HOST_IOTAGENT/iot/d?k=<apikey>&i=<device_ID>
-Headers:
-{
-	"content-type": "text/plain"
-}
-Payload: ‘t|25‘
+POST /iot/d?k=<apikey>&i=<device_ID>
+Content-Type: text/plain
+
+t|25
 ```
 
 The previous example sends an update of the Temperature attribute that is automatically sent by the IoT Agent to the
@@ -207,24 +197,20 @@ corresponding entity at the ContextBroker.
 
 Multiple measures for a single observation can be sent, sepparating the values with pipes:
 ```
-POST  $HOST_IOTAGENT/iot/d?k=<apikey>&i=<device_ID>
-Headers:
-{
-	"content-type": "text/plain"
-}
-Payload: ‘t|25|h|42|l|1299‘
+POST /iot/d?k=<apikey>&i=<device_ID>
+Content-Type: text/plain
+
+t|25|h|42|l|1299
 ```
 This request will generate a single update request to the Context Broker with three attributes, one corresponding to
 each measure.
 
 Sending multiple observations in the same message is also possible with the following payload:
 ```
-POST  $HOST_IOTAGENT/iot/d?k=<apikey>&i=<device_ID>
-Headers:
-{
-	"content-type": "text/plain"
-}
-Payload: ‘t|23#h|80#l|95#m|Quiet‘
+POST /iot/d?k=<apikey>&i=<device_ID>
+Content-Type: text/plain
+
+t|23#h|80#l|95#m|Quiet
 ```
 This request will generate four requests to the Context Broker, each one reporting a different value.
 
@@ -281,12 +267,9 @@ $ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<api_key>/m
 The simple JSON protocol used by the JSON IoTAgent maps each measurement to an attribute in a JSON Object. The following
 example shows how to send a measurement of three different quantities:
 ```
-POST  $HOST_IOTAGENT/iot/json?k=<apikey>&i=<device_ID>
-Headers:
-{
-	"content-type": "text/plain"
-}
-Payload:
+POST  /iot/json?k=<apikey>&i=<device_ID>
+Content-type: text/plain
+
 {
     "t": 5.4,
     "o": 4.3,
