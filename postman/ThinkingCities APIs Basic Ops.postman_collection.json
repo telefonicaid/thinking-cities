@@ -1,0 +1,940 @@
+{
+	"variables": [],
+	"info": {
+		"name": "ThinkingCities APIs Basic Ops",
+		"_postman_id": "41846a65-fead-ac66-8a2c-4da563f90174",
+		"description": "A set with the basic API operations used by ThikingCities platform, covering:\n\n* IDM & Auth\n* Orion Context Broker\n* STH\n* Perseo CEP\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "IDM & Auth",
+			"description": "",
+			"item": [
+				{
+					"name": "Get auth token",
+					"request": {
+						"url": "https://{{host}}:15001/v3/auth/tokens",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"auth\": {\r\n        \"identity\": {\r\n            \"methods\": [\r\n                \"password\"\r\n            ],\r\n            \"password\": {\r\n                \"user\": {\r\n                    \"domain\": {\r\n                        \"name\": \"{{service}}\"\r\n                    },\r\n                    \"name\": \"{{user}}\",\r\n                    \"password\": \"{{password}}\"\r\n                }\r\n            }\r\n        },\r\n        \"scope\": {\r\n            \"project\": {\r\n                \"domain\": {\r\n                    \"name\": \"{{service}}\"\r\n                },\r\n                \"name\": \"{{subservice}}\"\r\n            }\r\n        }\r\n    }\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orion Context Broker",
+			"description": "",
+			"item": [
+				{
+					"name": "Get all types",
+					"request": {
+						"url": "https://{{host}}:10027/v2/types",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get a single type",
+					"request": {
+						"url": "https://{{host}}:10027/v2/types/Vehicle",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get all entities",
+					"request": {
+						"url": "https://{{host}}:10027/v2/entities/myEntity",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create entity",
+					"request": {
+						"url": "https://{{host}}:10027/v2/entities",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"myEntity\",\n\t\"type\": \"myType\",\n\t\"description\": {\n\t\t\"value\": \"My happy entity\",\n\t\t\"type\": \"Text\"\n\t},\n\t\"online\": {\n\t\t\"value\": true,\n\t\t\"type\": \"Boolean\"\n\t},\n\t\"temperature\": {\n\t\t\"value\": 42.3,\n\t\t\"type\": \"Number\"\n\t}\n}\n\t\t"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get a single entity",
+					"request": {
+						"url": "https://{{host}}:10027/v2/entities/myEntity",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update entity attributes (append & update)",
+					"request": {
+						"url": "https://{{host}}:10027/v2/entities/myEntity/attrs",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"online\": {\n\t\t\"value\": false,\n\t\t\"type\": \"Boolean\"\n\t}\n}\n\t\t"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update entity attributes (strict update)",
+					"request": {
+						"url": "https://{{host}}:10027/v2/entities/myEntity/attrs",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"online\": {\n\t\t\"value\": false,\n\t\t\"type\": \"Boolean\"\n\t}\n}\n\t\t"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update entity attributes (replace)",
+					"request": {
+						"url": "https://{{host}}:10027/v2/entities/myEntity/attrs",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"description\": {\n\t\t\"value\": \"My even more happy entity\",\n\t\t\"type\": \"Text\"\n\t},\n\t\"status\": {\n\t\t\"value\": \"active\",\n\t\t\"type\": \"Text\"\n\t},\n\t\"humidity\": {\n\t\t\"value\": 61.23,\n\t\t\"type\": \"Number\"\n\t}\n}\t\t"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a single entity",
+					"request": {
+						"url": "https://{{host}}:10027/v2/entities/myEntity",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get attribute",
+					"request": {
+						"url": "https://{{host}}:10027/v2/entities/myEntity/attrs/temperature",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update attribute",
+					"request": {
+						"url": "https://{{host}}:10027/v2/entities/myEntity/attrs/temperature",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"Number\",\n    \"value\": -10.2\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete attribute",
+					"request": {
+						"url": "https://{{host}}:10027/v2/entities/myEntity/attrs/temperature",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get attribute value as text",
+					"request": {
+						"url": "https://{{host}}:10027/v2/entities/myEntity/attrs/description/value",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Set attribute value as text",
+					"request": {
+						"url": "https://{{host}}:10027/v2/entities/myEntity/attrs/description/value",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "text/plain",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\"New description\""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get all subscriptions",
+					"request": {
+						"url": "https://{{host}}:10027/v2/subscriptions",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create subscription",
+					"request": {
+						"url": "https://{{host}}:10027/v2/subscriptions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"description\": \"A subscription to get info about myEntity\",\r\n  \"subject\": {\r\n    \"entities\": [\r\n      {\r\n        \"id\": \"myEntity\",\r\n        \"type\": \"myType\"\r\n      }\r\n    ],\r\n    \"condition\": {\r\n      \"attrs\": [ ]\r\n    }\r\n  },\r\n  \"notification\": {\r\n    \"http\": {\r\n      \"url\": \"http://putsreq.com/aGSZ2hnoTXRaO4JHZNY1\"\r\n    },\r\n    \"attrs\": [\r\n      \"temperature\"\r\n    ]\r\n  }\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get a single subscription",
+					"request": {
+						"url": "https://{{host}}:10027/v2/subscriptions/59e8c603779d7a40b18c714d",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update subscription",
+					"request": {
+						"url": "https://{{host}}:10027/v2/subscriptions/59e8c603779d7a40b18c714d",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"status\": \"inactive\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a single subscription",
+					"request": {
+						"url": "https://{{host}}:10027/v2/subscriptions/59e8c603779d7a40b18c714d",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "STH",
+			"description": "",
+			"item": [
+				{
+					"name": "Get attribute history",
+					"request": {
+						"url": {
+							"raw": "https://{{host}}:18666/STH/v1/contextEntities/type/myType/id/myEntity/attributes/temperature?hLimit=3&hOffset=0&dateFrom=2017-10-16T00:00:00.000Z&dateTo=2017-10-26T23:59:59.999Z",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"port": "18666",
+							"path": [
+								"STH",
+								"v1",
+								"contextEntities",
+								"type",
+								"myType",
+								"id",
+								"myEntity",
+								"attributes",
+								"temperature"
+							],
+							"query": [
+								{
+									"key": "hLimit",
+									"value": "3",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "hOffset",
+									"value": "0",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "dateFrom",
+									"value": "2017-10-16T00:00:00.000Z",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "dateTo",
+									"value": "2017-10-26T23:59:59.999Z\n",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get attribute aggregation",
+					"request": {
+						"url": {
+							"raw": "https://{{host}}:18666/STH/v1/contextEntities/type/myType/id/myEntity/attributes/temperature?aggrMethod=sum&aggrPeriod=hour&dateFrom=2017-10-16T00:00:00.000Z&dateTo=2017-10-26T23:59:59.999Z",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"port": "18666",
+							"path": [
+								"STH",
+								"v1",
+								"contextEntities",
+								"type",
+								"myType",
+								"id",
+								"myEntity",
+								"attributes",
+								"temperature"
+							],
+							"query": [
+								{
+									"key": "aggrMethod",
+									"value": "sum",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "aggrPeriod",
+									"value": "hour",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "dateFrom",
+									"value": "2017-10-16T00:00:00.000Z",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "dateTo",
+									"value": "2017-10-26T23:59:59.999Z\n",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Perseo CEP",
+			"description": "",
+			"item": [
+				{
+					"name": "Get rules",
+					"request": {
+						"url": "https://{{host}}:18090/rules",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create rule",
+					"request": {
+						"url": "https://{{host}}:18090/rules",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"LowTemperature\",\r\n    \"text\": \"select *,\\\"LowTemperature\\\" as ruleName from pattern [every ev=iotEvent((cast(`id`?, String)  regexp  \\\"myEntity\\\") AND (cast(`type`?, String)  =  \\\"myType\\\") AND (cast(cast(`temperature`?, String), float)  <  10))]\",\r\n\t\"action\": {\r\n        \"type\": \"email\",\r\n        \"template\": \"Entity ${id} temperature is ${temperature}\",\r\n        \"parameters\": {\r\n            \"to\": \"john_doe@fakedomain.com\",\r\n            \"from\": \"no-reply@iotplatform.telefonica.com\",\r\n            \"subject\": \"Low temperature\"\r\n        }\r\n    }\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete rule",
+					"request": {
+						"url": "https://{{host}}:18090/rules/LowTemperature",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get a rules",
+					"request": {
+						"url": "https://{{host}}:18090/rules/LowTemperature",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}",
+								"description": ""
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}",
+								"description": ""
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
