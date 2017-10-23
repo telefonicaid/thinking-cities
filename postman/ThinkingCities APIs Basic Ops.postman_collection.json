@@ -100,7 +100,7 @@
 				{
 					"name": "Get all entities",
 					"request": {
-						"url": "https://{{host}}:10027/v2/entities/myEntity",
+						"url": "https://{{host}}:10027/v2/entities",
 						"method": "GET",
 						"header": [
 							{
