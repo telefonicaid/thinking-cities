@@ -358,7 +358,7 @@ In the case of complex commands requiring parameters, the `command_value` could 
 ```
 weatherStation167@ping|param1:1|param2:2
 ```
-This example will tell the Weather Station 167 to reply to a ping message with the provided params. Note that `=` cannot be used instead of `:` given that `=` is [a forbidden character for Context Broker](https://fiware-orion.readthedocs.io/en/master/user/forbidden_characters/index.html), so the update at CB triggering the command would be never progressed.
+This example will tell the Weather Station 167 to reply to a ping message with the provided params. Note that `=` cannot be used instead of `:` given that `=` is [a forbidden character for Context Broker](https://fiware-orion.readthedocs.io/en/1.9.0/user/forbidden_characters/index.html), so the update at CB triggering the command would be never progressed.
 
 Once the command has finished its execution in the device, the reply to the server must adhere to the following format:
 ```
