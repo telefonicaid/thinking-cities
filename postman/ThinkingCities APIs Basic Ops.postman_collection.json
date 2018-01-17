@@ -26,25 +26,6 @@
 						"url": "https://{{host}}:15001/v3/auth/tokens"
 					},
 					"response": []
-				},
-				{
-					"name": "Get service auth token",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"auth\": {\r\n        \"identity\": {\r\n            \"methods\": [\r\n                \"password\"\r\n            ],\r\n            \"password\": {\r\n                \"user\": {\r\n                    \"domain\": {\r\n                        \"name\": \"{{service}}\"\r\n                    },\r\n                    \"name\": \"{{user}}\",\r\n                    \"password\": \"{{password}}\"\r\n                }\r\n            }\r\n        },\r\n        \"scope\": {\r\n            \"project\": {\r\n                \"domain\": {\r\n                    \"name\": \"{{service}}\"\r\n                },\r\n                \"name\": \"{{subservice}}\"\r\n            }\r\n        }\r\n    }\r\n}"
-						},
-						"url": "https://{{host}}:15001/v3/auth/tokens",
-						"description": ""
-					},
-					"response": []
 				}
 			]
 		},
