@@ -1,13 +1,14 @@
 {
 	"info": {
+		"_postman_id": "890ba899-1e1b-45a5-8758-1153499b2e77",
 		"name": "ThinkingCities APIs Basic Ops",
-		"_postman_id": "31d22e5f-d58f-afcc-da1b-09f917621809",
 		"description": "A set with the basic API operations used by ThikingCities platform, covering:\n\n* IDM & Auth\n* Orion Context Broker\n* STH\n* Perseo CEP\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "IDM & Auth",
+			"description": null,
 			"item": [
 				{
 					"name": "Get auth token",
@@ -31,6 +32,7 @@
 		},
 		{
 			"name": "Orion Context Broker",
+			"description": null,
 			"item": [
 				{
 					"name": "Get all types",
@@ -591,7 +593,554 @@
 			]
 		},
 		{
+			"name": "IOTA",
+			"description": null,
+			"item": [
+				{
+					"name": "Create service (JSON)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"services\": [\r\n    {\r\n      \"apikey\": \"555000BJKL23Y9090DSFL123HJK09H324HV8732\",\r\n      \"entity_type\": \"device\",\r\n      \"attributes\": [\r\n        { \"object_id\": \"t\", \"name\": \"temperature\", \"type\": \"float\" },\r\n        { \"object_id\": \"h\", \"name\": \"humidity\", \"type\": \"float\" }\r\n      ],\r\n      \"static_attributes\": [\r\n        { \"name\": \"deviceFamily\", \"type\": \"integer\", \"value\": \"02598347\" }\r\n      ],      \r\n      \"lazy\": [\r\n        { \"object_id\": \"l\", \"name\": \"luminosity\", \"type\": \"percentage\" }\r\n      ],\r\n      \"commands\": [\r\n      \t{ \"object_id\": \"u\", \"name\": \"turn\", \"type\": \"string\" }\r\n      ],\r\n      \"protocol\": [ \"IoTA-JSON\" ]\r\n    }\r\n  ]\r\n}"
+						},
+						"url": "https://{{hostIota}}:8088/iot/services"
+					},
+					"response": []
+				},
+				{
+					"name": "Create service (UL)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"services\": [\r\n    {\r\n      \"apikey\": \"666000BJKL23Y9090DSFL123HJK09H324HV8732\",\r\n      \"entity_type\": \"device\",\r\n      \"attributes\": [\r\n        { \"object_id\": \"t\", \"name\": \"temperature\", \"type\": \"float\" },\r\n        { \"object_id\": \"h\", \"name\": \"humidity\", \"type\": \"float\" }\r\n      ],\r\n      \"static_attributes\": [\r\n        { \"name\": \"deviceFamily\", \"type\": \"integer\", \"value\": \"02598347\" }\r\n      ],\r\n      \"commands\": [\r\n      \t{ \"object_id\": \"u\", \"name\": \"turn\", \"type\": \"string\" }\r\n      ],\r\n      \"lazy\": [\r\n        { \"object_id\": \"l\", \"name\": \"luminosity\", \"type\": \"percentage\" }\r\n      ],\r\n      \"protocol\": [ \"IoTA-UL\" ]\r\n    }\r\n  ]\r\n}"
+						},
+						"url": "https://{{hostIota}}:8088/iot/services"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all services",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "https://{{hostIota}}:8088/iot/services"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all devices",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "https://{{hostIota}}:8088/iot/devices"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all devices (JSON)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{hostIota}}:8088/iot/devices?protocol=IoTA-JSON",
+							"protocol": "https",
+							"host": [
+								"{{hostIota}}"
+							],
+							"port": "8088",
+							"path": [
+								"iot",
+								"devices"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "IoTA-JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all devices (UL)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{hostIota}}:8088/iot/devices?protocol=IoTA-UL",
+							"protocol": "https",
+							"host": [
+								"{{hostIota}}"
+							],
+							"port": "8088",
+							"path": [
+								"iot",
+								"devices"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "IoTA-UL"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a device by id (JSON)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{hostIota}}:8088/iot/devices/dev1json?protocol=IoTA-JSON",
+							"protocol": "https",
+							"host": [
+								"{{hostIota}}"
+							],
+							"port": "8088",
+							"path": [
+								"iot",
+								"devices",
+								"dev1json"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "IoTA-JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a device by id (UL)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{hostIota}}:8088/iot/devices/dev1ul?protocol=IoTA-UL",
+							"protocol": "https",
+							"host": [
+								"{{hostIota}}"
+							],
+							"port": "8088",
+							"path": [
+								"iot",
+								"devices",
+								"dev1ul"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "IoTA-UL"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create device (JSON)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"devices\": [\r\n    {\r\n      \"device_id\": \"dev1json\", \r\n      \"entity_name\": \"entity1json\", \r\n      \"entity_type\": \"devicejson\",\r\n      \"attributes\": [\r\n        { \"object_id\": \"w\", \"name\": \"power\", \"type\": \"float\" },\r\n        { \"object_id\": \"e\", \"name\": \"electricPotential\", \"type\": \"float\" }\r\n      ],\r\n      \"static_attributes\": [\r\n        { \"name\": \"serialNumber\", \"type\": \"Integer\", \"value\": \"2136721\" }\r\n      ],\r\n      \"lazy\": [\r\n        { \"object_id\": \"p\", \"name\": \"pressure\", \"type\": \"percentage\" }\r\n      ],\r\n      \"commands\": [\r\n      \t{ \"object_id\": \"r\", \"name\": \"reset\", \"type\": \"string\" }\r\n      ],\r\n      \"endpoint\": \"http://foo.bar:999\",\r\n      \"protocol\": \"IoTA-JSON\"\r\n    }\r\n  ]\r\n}"
+						},
+						"url": "https://{{hostIota}}:8088/iot/devices"
+					},
+					"response": []
+				},
+				{
+					"name": "Create device (UL)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"devices\": [\r\n    {\r\n      \"device_id\": \"dev1ul\", \r\n      \"entity_name\": \"entity1ul\", \r\n      \"entity_type\": \"deviceul\",\r\n      \"attributes\": [\r\n        { \"object_id\": \"w\", \"name\": \"power\", \"type\": \"float\" },\r\n        { \"object_id\": \"e\", \"name\": \"electricPotential\", \"type\": \"float\" }\r\n      ],\r\n      \"static_attributes\": [\r\n        { \"name\": \"serialNumber\", \"type\": \"Integer\", \"value\": \"2136721\" }\r\n      ],\r\n      \"lazy\": [\r\n        { \"object_id\": \"p\", \"name\": \"pressure\", \"type\": \"percentage\" }\r\n      ],\r\n      \"commands\": [\r\n      \t{ \"object_id\": \"r\", \"name\": \"reset\", \"type\": \"string\" }\r\n      ],\r\n      \"endpoint\": \"http://foo.bar:999\",\r\n      \"protocol\": \"IoTA-UL\"\r\n    }\r\n  ]\r\n}"
+						},
+						"url": "https://{{hostIota}}:8088/iot/devices"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a device by id (JSON)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{hostIota}}:8088/iot/devices/dev1json?protocol=IoTA-JSON",
+							"protocol": "https",
+							"host": [
+								"{{hostIota}}"
+							],
+							"port": "8088",
+							"path": [
+								"iot",
+								"devices",
+								"dev1json"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "IoTA-JSON"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a device by id (UL)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{hostIota}}:8088/iot/devices/dev1ul?protocol=IoTA-UL",
+							"protocol": "https",
+							"host": [
+								"{{hostIota}}"
+							],
+							"port": "8088",
+							"path": [
+								"iot",
+								"devices",
+								"dev1ul"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "IoTA-UL"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send measure (JSON)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"w\": \"36\",\r\n  \"e\": \"23\"\r\n}"
+						},
+						"url": {
+							"raw": "http://{{hostIota}}:8185/iot/json?i=dev1json&k=555000BJKL23Y9090DSFL123HJK09H324HV8732",
+							"protocol": "http",
+							"host": [
+								"{{hostIota}}"
+							],
+							"port": "8185",
+							"path": [
+								"iot",
+								"json"
+							],
+							"query": [
+								{
+									"key": "i",
+									"value": "dev1json"
+								},
+								{
+									"key": "k",
+									"value": "555000BJKL23Y9090DSFL123HJK09H324HV8732"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send measure (UL)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{hostIota}}:8085/iot/d?i=dev1ul&k=666000BJKL23Y9090DSFL123HJK09H324HV8732&d=w|42|e|24",
+							"protocol": "http",
+							"host": [
+								"{{hostIota}}"
+							],
+							"port": "8085",
+							"path": [
+								"iot",
+								"d"
+							],
+							"query": [
+								{
+									"key": "i",
+									"value": "dev1ul"
+								},
+								{
+									"key": "k",
+									"value": "666000BJKL23Y9090DSFL123HJK09H324HV8732"
+								},
+								{
+									"key": "d",
+									"value": "w|42|e|24"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "STH",
+			"description": null,
 			"item": [
 				{
 					"name": "Get attribute history",
@@ -636,23 +1185,19 @@
 							"query": [
 								{
 									"key": "hLimit",
-									"value": "3",
-									"equals": true
+									"value": "3"
 								},
 								{
 									"key": "hOffset",
-									"value": "0",
-									"equals": true
+									"value": "0"
 								},
 								{
 									"key": "dateFrom",
-									"value": "2017-10-16T00:00:00.000Z",
-									"equals": true
+									"value": "2017-10-16T00:00:00.000Z"
 								},
 								{
 									"key": "dateTo",
-									"value": "2017-10-26T23:59:59.999Z\n",
-									"equals": true
+									"value": "2017-10-26T23:59:59.999Z\n"
 								}
 							]
 						}
@@ -702,23 +1247,19 @@
 							"query": [
 								{
 									"key": "aggrMethod",
-									"value": "sum",
-									"equals": true
+									"value": "sum"
 								},
 								{
 									"key": "aggrPeriod",
-									"value": "hour",
-									"equals": true
+									"value": "hour"
 								},
 								{
 									"key": "dateFrom",
-									"value": "2017-10-16T00:00:00.000Z",
-									"equals": true
+									"value": "2017-10-16T00:00:00.000Z"
 								},
 								{
 									"key": "dateTo",
-									"value": "2017-10-26T23:59:59.999Z\n",
-									"equals": true
+									"value": "2017-10-26T23:59:59.999Z\n"
 								}
 							]
 						}
@@ -729,6 +1270,7 @@
 		},
 		{
 			"name": "Perseo CEP",
+			"description": null,
 			"item": [
 				{
 					"name": "Get rules",
