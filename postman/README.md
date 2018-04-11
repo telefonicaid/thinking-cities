@@ -2,7 +2,8 @@ You can get Postman here: https://www.getpostman.com/
 
 In order to use the Postman collection indcluded in this directory, you need to define the following variables in your environment:
 
-* **host**: the host for all the APIs
+* **host**: the host for all the APIs (except IOTA Manager API)
+* **hostIota**: the host IOTA Manager API
 * **service**: service to use in `Fiware-Service` header
 * **subservice**: subservice to use in the `Fiware-ServicePath` header
 * **user**: user (used by the "Get auth token" operation)
