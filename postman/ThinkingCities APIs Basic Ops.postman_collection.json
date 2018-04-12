@@ -27,6 +27,24 @@
 						"url": "https://{{host}}:15001/v3/auth/tokens"
 					},
 					"response": []
+				},
+				{
+					"name": "Renew token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"auth\": {\r\n        \"identity\": {\r\n             \"methods\": [\r\n                 \"token\"\r\n             ],\r\n            \"token\": {\r\n                \"id\": \"{{token}}\"\r\n            }\r\n        }\r\n    }\r\n}"
+						},
+						"url": "https://{{host}}:15001/v3/auth/tokens"
+					},
+					"response": []
 				}
 			]
 		},
@@ -1036,18 +1054,6 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "Fiware-Service",
-								"value": "{{service}}"
-							},
-							{
-								"key": "Fiware-ServicePath",
-								"value": "{{subservice}}"
-							},
-							{
-								"key": "X-Auth-Token",
-								"value": "{{token}}"
-							},
-							{
 								"key": "Content-Type",
 								"value": "application/json"
 							}
@@ -1085,24 +1091,7 @@
 					"name": "Send measure (UL)",
 					"request": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "Fiware-Service",
-								"value": "{{service}}"
-							},
-							{
-								"key": "Fiware-ServicePath",
-								"value": "{{subservice}}"
-							},
-							{
-								"key": "X-Auth-Token",
-								"value": "{{token}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": ""
