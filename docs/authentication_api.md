@@ -8,7 +8,7 @@ You can login using your credentials (username and password) in order to get a t
 
 ```
 POST /v3/auth/tokens HTTP/1.1
-Host: test.ttcloud.net:5001
+Host: <idm_host>:<idm_port>
 Content-Type: application/json
 
 {
@@ -40,7 +40,7 @@ In case of your user has only a role in a subservice, you should ask for a token
 
 ```
 POST /v3/auth/tokens HTTP/1.1
-Host: test.ttcloud.net:5001
+Host: <idm_host>:<idm_port>
 Content-Type: application/json
 
 {
@@ -119,7 +119,7 @@ Once you get a token you can get another one with the same effect:
 
 ```
 POST /v3/auth/tokens HTTP/1.1
-Host: test.ttcloud.net:5001
+Host: <idm_host>:<idm_port>
 Content-Type: application/json
 X-Auth-Token: {{user-token}}
 
@@ -143,7 +143,7 @@ Once you get a token you can check its validity anytime and get other info as fo
 
 ```
 GET /v3/auth/tokens HTTP/1.1
-Host: test.ttcloud.net:5001
+Host: <idm_host>:<idm_port>
 Content-Type: application/json
 X-Auth-Token: {{user-token}}
 X-Subject-Token: {{token-to-analize}}
@@ -182,7 +182,7 @@ Once you get a token you can check its validity anytime as follows:
 
 ```
 HEAD /v3/auth/tokens HTTP/1.1
-Host: test.ttcloud.net:5001
+Host: <idm_host>:<idm_port>
 Content-Type: application/json
 X-Auth-Token: {{user-token}}
 X-Subject-Token: {{token-to-analize}}

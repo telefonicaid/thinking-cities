@@ -21,7 +21,7 @@ In order to do so, you have to select the Data API entity attributes. On the fol
 
 ```
 POST /v1/subscribeContext HTTP/1.1
-Host: test.ttcloud.net:1026
+Host: <cb_host>:<cb_port>
 Accept: application/json
 Content-Type: application/json
 Fiware-Service: {{Fiware-Service}} 
@@ -35,7 +35,7 @@ X-Auth-Token: {{user-token}}
         "id": "mydevice"
         }
     ],
-    "reference": "http://test.ttcloud.net:9090/notices", 
+    "reference": "http://<cep_host>:<cep_port>/notices",
     "duration": "P1Y",
     "notifyConditions": [
            {
@@ -53,7 +53,7 @@ Once you have activated the processing for your data, you can create a rule to t
 
 ```
 POST /rules HTTP/1.1
-Host: test.ttcloud.net:9090
+Host: <cep_host>:<cep_port>
 Accept: application/json
 Content-Type: application/json
 Fiware-Service: {{Fiware-Service}} 
@@ -83,7 +83,7 @@ You can also trigger an HTTP POST to an URL specified sending a body built from 
 
 ```
 POST /rules HTTP/1.1
-Host: test.ttcloud.net:9090
+Host: <cep_host>:<cep_port>
 Accept: application/json
 Content-Type: application/json
 Fiware-Service: {{Fiware-Service}} 
@@ -110,7 +110,7 @@ Remember you must create your Twitter app and get its OAuth credentials.
 
 ```
 POST /rules HTTP/1.1
-Host: test.ttcloud.net:9090
+Host: <cep_host>:<cep_port>
 Accept: application/json
 Content-Type: application/json
 Fiware-Service: {{Fiware-Service}} 

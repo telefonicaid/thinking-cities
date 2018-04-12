@@ -12,7 +12,7 @@ First, you have to create your service.  Please, take into accout that you will 
 
 ```
 POST /orc/service/ HTTP/1.1
-Host: test.ttcloud.net:8008
+Host: <portal_host>:<portal_port>
 X-Auth-Token: {{admin-token}}
 Content-Type: application/json
 
@@ -39,7 +39,7 @@ Once you have one service, you can segment the data on it creating new subservic
 
 ```
 POST /orc/service/{{service-id}}/subservice HTTP/1.1
-Host: test.ttcloud.net:8008
+Host: <portal_host>:<portal_port>
 X-Auth-Token: {{admin-token}}
 Content-Type: application/json
 
@@ -68,7 +68,7 @@ Once the service is created, you can create a user as follows:
 
 ```
 POST /orc/service/{{service-id}}/user HTTP/1.1
-Host: test.ttcloud.net:8008
+Host: <portal_host>:<portal_port>
 X-Auth-Token: {{admin-token}}
 Content-Type: application/json
 
@@ -86,7 +86,7 @@ First, retrieve the roles created by default on your subservice:
 
 ```
 GET /orc/service/{{service-id}}/role HTTP/1.1
-Host: test.ttcloud.net:8008
+Host: <portal_host>:<portal_port>
 X-Auth-Token: {{admin-token}}
 Content-Type: application/json
 ```
@@ -125,7 +125,7 @@ Now you know the roles ids for your subservice, you can assign one role to the u
 
 ```
 POST /orc/service/{{service-id}}/role_assignments HTTP/1.1
-Host: test.ttcloud.net:8008
+Host: <portal_host>:<portal_port>
 X-Auth-Token: {{admin-token}}
 Content-Type: application/json
 
