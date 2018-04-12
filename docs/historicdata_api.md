@@ -13,7 +13,7 @@ An example of such a subscription is included next. The concrete template values
 
 ```
 POST /v1/subscribeContext HTTP/1.1
-Host: test.ttcloud.net:1026
+Host: <cb_host>:<cb_port>
 Accept: application/json
 Content-Type: application/json
 Fiware-Service: {{Fiware-Service}}
@@ -34,7 +34,7 @@ X-Auth-Token: {{user-token}}
       "condValues": ["TimeInstant"]
     }
   ],
-  "reference": "http://test.ttcloud.net:8666/notify",
+  "reference": "http://<sth_host>:<sth_port>/notify",
   "duration": "P1Y",
   "throttling": "PT1S"
 }
@@ -50,7 +50,7 @@ For example, to get the last 10 values of the  `temperature` attribute registere
 
 ```
 GET /STH/v1/contextEntities/type/device/id/mydevice/attributes/temperature?lastN=10 HTTP/1.1
-Host: test.ttcloud.net:8666
+Host: <sth_host>:<sth_port>
 Accept: application/json
 Content-Type: application/json
 Fiware-Service: {{Fiware-Service}}
@@ -64,7 +64,7 @@ The Historical Data API also supports pagination by means of the `hLimit`and `hO
 
 ```
 GET /STH/v1/contextEntities/type/device/id/mydevice/attributes/temperature?hLimit=3&hOffset=0&dateFrom=2014-02-14T00:00:00.00
-Host: test.ttcloud.net:8666
+Host: <sth_host>:<sth_port>
 Accept: application/json
 Content-Type: application/json
 Fiware-Service: {{Fiware-Service}}
@@ -125,7 +125,7 @@ This aggregated time series context information makes it possible, for example, 
 
 ```
 GET /STH/v1/contextEntities/type/device/id/mydevice/attributes/temperature?aggrMethod=sum&aggrPeriod=second&dateFrom=2015-02-22T00:00:00.000Z&dateTo=2015-02-22T23:00:00.000Z
-Host: test.ttcloud.net:8666
+Host: <sth_host>:<sth_port>
 Accept: application/json
 Content-Type: application/json
 Fiware-Service: {{Fiware-Service}}
