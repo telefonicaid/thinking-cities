@@ -277,6 +277,36 @@
 					"response": []
 				},
 				{
+					"name": "Bath creation/update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{service}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{subservice}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"actionType\": \"APPEND\",\n\t\"entities\": [\n\t\t{\n\t\t\t\"id\": \"myEntity1\",\n\t\t\t\"type\": \"myType\",\n\t\t\t\"description\": {\n\t\t\t\t\"value\": \"My happy entity\",\n\t\t\t\t\"type\": \"Text\"\n\t\t\t},\n\t\t\t\"online\": {\n\t\t\t\t\"value\": true,\n\t\t\t\t\"type\": \"Boolean\"\n\t\t\t},\n\t\t\t\"temperature\": {\n\t\t\t\t\"value\": 42.3,\n\t\t\t\t\"type\": \"Number\"\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\": \"myEntity2\",\n\t\t\t\"type\": \"myType\",\n\t\t\t\"description\": {\n\t\t\t\t\"value\": \"My second happy entity\",\n\t\t\t\t\"type\": \"Text\"\n\t\t\t},\n\t\t\t\"online\": {\n\t\t\t\t\"value\": false,\n\t\t\t\t\"type\": \"Boolean\"\n\t\t\t},\n\t\t\t\"temperature\": {\n\t\t\t\t\"value\": -12,\n\t\t\t\t\"type\": \"Number\"\n\t\t\t}\n\t\t}\n\t]\n}"
+						},
+						"url": "https://{{host}}:10027/v2/op/update"
+					},
+					"response": []
+				},
+				{
 					"name": "Delete a single entity",
 					"request": {
 						"method": "DELETE",
