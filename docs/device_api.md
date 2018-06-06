@@ -71,7 +71,9 @@ This request shows the provisioning of an Ultralight 2.0 Configuration group, in
 that will be associated with all the devices in the group and common attributes all devices in the group will share,
 along with the information for its mapping to the NGSI entity.
 
-Currently, the IoT Platform only allows for the existence of a configuration group per subservice for each protocol.
+Provisioning of JSON Configuration group is exactly the same just replacing `?protocol=IoTA-UL` by `?protocol=IoTA-JSON`. 
+
+Currently, the IoT Platform only allows for the existence of a configuration group per subservice for each protocol, i.e one for "IoTA-UL" and other for "IoTA-JSON".
 
 # Register your IoT device 
 
@@ -79,11 +81,14 @@ Remember this step is optional, it is only required if you want to use commands 
 define a mapping to reduce the attributes identifier when you send observations to reduce the message size. But, in case
 the device is not provisioned, the Configuration Group **must** be configured.
 
-If you simply want to send observations you can skip this and just go to the "Send observations" section.
+If you simply want to send observations you can skip this and just go to the "Send observations" section.ç
 
-**Registering for UL2.0**
+Examples below are provided only for IoTA-UL cases for the sake of briefness, but IOTA-JSON examples are
+exactly the same just changing `?protocol=IoTA-UL` by `?protocol=IoTA-JSON`. 
 
-On this sample a device is registered to send temperature observations using UL2.0 protocol and a PING command:
+**Registering for HTTP commands**
+
+On this sample a device is registered to use HTTP binding for a PING command:
 
 ```
 POST /iot/devices?protocol=IoTA-UL
@@ -106,8 +111,7 @@ Fiware-ServicePath: /
 		}],
 		"commands": [{
 			"name": "ping",
-			"type": "command",
-			"value": "[Dev_ID]@ping|%s"
+			"type": "command"
 		}],
 		"static_attributes": [{
 			"name": "att_name",
@@ -131,7 +135,7 @@ Description of the parameters (mandatory parameters are marked as such, the rest
 be required.
 - *static_attributes*: the contents of this attribute will be sent in every observation as attributes of the entity.
 
-**Registering for MQTT**
+**Registering for MQTT commands**
 
 The following example shows the same registration for an MQTT device instead of HTTP:
 
@@ -147,6 +151,7 @@ Fiware-ServicePath: /
 		"device_id": "[DEV_ID]",
 		"entity_name": "[ENTITY_ID]",
 		"entity_type": "thing",
+		"transport": "MQTT",
 		"timezone": "Europe/Madrid",
 		"attributes": [{
 			"object_id": "t",
@@ -155,8 +160,7 @@ Fiware-ServicePath: /
 		}],
 		"commands": [{
 			"name": "ping",
-			"type": "command",
-			"value": "[Dev_ID]@ping|%s"
+			"type": "command"
 		}],
 		"static_attributes": [{
 			"name": "att_name",
@@ -167,8 +171,14 @@ Fiware-ServicePath: /
 }
 ```
 
-The example shows that the only difference between both provisionings is the presence or absence of an "endpoint" attribute.
-For devices that won't be receiving commands, the later provisioning request will be valid for both transport protocols.
+The example shows there are two differences comparing with provisioning for HTTP:
+
+* The absence of an "endpoint" field
+* The presence of "transport" field, which value has to be "MQTT".
+
+**Registering without endpoint or transport commands**
+
+For devices that won't be receiving commands, you don't need to specify neither "endpoint" nor "tranport" fields.
 
 # Send observations 
 
@@ -341,35 +351,92 @@ the following topic:
 <apiKey>/<deviceId>/cmdexe
 ```
 
-## Command payloads
+## Command payloads for UL
 
-Concerning the payload, the command information will have the same information for both transport protocols.
+Concerning the payload for UL, the command information will have the same information for both transport protocols (HTTP or MQTT).
+
 ```
-<device name>@<command name>|<command value>
+<deviceId>@<commandName>|<commandValue>
 ```
-This indicates that the device (named 'device_name' in the Context Broker) has to execute the command 'command_name', with
-the given value. E.g.:
+
+This indicates that the device (which ID is `deviceId`) has to execute the command `commandName`, with the given `commandValue`. E.g.:
+
 ```
 Robot1@turn|left
 ```
+
 This example will tell the Robot 1 to turn to left.
 
-In the case of complex commands requiring parameters, the `command_value` could be used to implement parameter passing. E.g:
+In the case of complex commands requiring parameters, the `commandValue` could be used to implement parameter passing. E.g:
+
 ```
 weatherStation167@ping|param1:1|param2:2
 ```
+
 This example will tell the Weather Station 167 to reply to a ping message with the provided params. Note that `=` cannot be used instead of `:` given that `=` is [a forbidden character for Context Broker](https://fiware-orion.readthedocs.io/en/master/user/forbidden_characters/index.html), so the update at CB triggering the command would be never progressed.
 
-Once the command has finished its execution in the device, the reply to the server must adhere to the following format:
+Once the command has finished its execution in the device, the reply to the IOTA must adhere to the following format:
+
 ```
-<device name>@<command name>|result
+<deviceId>@<commandName>|<result>
 ```
-Where `device_name` and `command_name` must be the same ones used in the command execution, and the result is the
-final result of the command. E.g.:
+
+Where `deviceId` and `commandName` must be the same ones used in the command execution, and `result` is the final result of the command. E.g.:
+
 ```
 weatherStation167@ping|Ping ok
 ```
-In this case, the Weather station replies with a String value indicating everything has worked fine.
+
+In this case, the Weather station replies with a string value indicating everything has worked fine.
+
+## Command payloads for JSON
+
+Concerning the payload for JSON, the command information will have the same information for both transport protocols (HTTP or MQTT).
+
+```
+{
+  "<commandName>": "<commandValue>
+}
+```
+
+This indicates that the device has to execute the command `commandName`, with the given `commandValue`. E.g.:
+
+```
+{
+  "turn": "left"
+}
+```
+
+This example will tell the device to turn to left. Note that different from UL the device id is not included in the payload.
+
+In the case of complex commands requiring parameters, the `commandValue` could be used to implement parameter passing. E.g:
+
+```
+{
+  "ping": "param1:1|param2:2"
+}
+```
+
+This example will tell the device to reply to a ping message with the provided params. Note that `=` cannot be used instead of `:` given that `=` is [a forbidden character for Context Broker](https://fiware-orion.readthedocs.io/en/master/user/forbidden_characters/index.html), so the update at CB triggering the command would be never progressed.
+
+Once the command has finished its execution in the device, the reply to the IOTA must adhere to the following format:
+
+```
+{
+  "<commandName>": "<result>
+}
+```
+
+Where `commandName` must be the same ones used in the command execution, and `result` is the final result of the command. E.g.:
+
+```
+{
+  "ping": "ping ok"
+}
+```
+
+In this case, the device replies with a String value indicating everything has worked fine.
+
 
 # In more detail ...
 
