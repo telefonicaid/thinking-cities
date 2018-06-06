@@ -81,7 +81,7 @@ Remember this step is optional, it is only required if you want to use commands 
 define a mapping to reduce the attributes identifier when you send observations to reduce the message size. But, in case
 the device is not provisioned, the Configuration Group **must** be configured.
 
-If you simply want to send observations you can skip this and just go to the "Send observations" section.ç
+If you simply want to send observations you can skip this and just go to the "Send observations" section.
 
 Examples below are provided only for IoTA-UL cases for the sake of briefness, but IOTA-JSON examples are
 exactly the same just changing `?protocol=IoTA-UL` by `?protocol=IoTA-JSON`. 
