@@ -126,7 +126,7 @@ Description of the parameters (mandatory parameters are marked as such, the rest
 
 - *device_id*: the device identifier (mandatory).
 - *entity_name*: the entity ID to be used at the ContextBroker.
-- *entity_type: type of the entity that will represent the device in the Context Broker.
+- *entity_type*: type of the entity that will represent the device in the Context Broker.
 - *protocol*: South-Bound protocol the device will be using to communicate with the Platform (mandatory).
 - *timezone*: timezone for the device.
 - *endpoint*: for devices accepting HTTP commands, address of the device where the commands will be sent.
@@ -407,7 +407,7 @@ This indicates that the device has to execute the command `commandName`, with th
 }
 ```
 
-This example will tell the device to turn to left. Note that different from UL the device id is not included in the payload.
+This example will tell the device to turn to left.
 
 In the case of complex commands requiring parameters, the `commandValue` could be used to implement parameter passing. E.g:
 
