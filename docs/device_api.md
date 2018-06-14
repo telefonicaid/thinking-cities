@@ -333,6 +333,21 @@ device" section).
 
 If you take a look to the previous device example, you can find that a "ping" command was defined.
 Any update on this attribute “Ping” at the NGSI entity in the ContextBroker will send a command to your device.
+For instance, to send the "Ping" command with value "Ping request" you could use the following operation in the
+ContextBroker API:
+
+```
+PUT /v2/entities/[ENTITY_ID]/attrs/ping
+
+{
+  "value": "Ping request",
+  "type": "command"
+}
+
+```
+
+ContextBroker API is quite flexible and allows to update an attribute in several ways. Please have a look to
+the [NGSIv2 specification](http://telefonicaid.github.io/fiware-orion/api/v2/stable) for details.
 
 For HTTP devices, whose "endpoint": "http://[DEVICE_IP]:[PORT]" is declared, then your device is supposed to be
 listening for commands at that URL in a synchronous way.
