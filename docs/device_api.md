@@ -349,6 +349,15 @@ PUT /v2/entities/[ENTITY_ID]/attrs/ping
 ContextBroker API is quite flexible and allows to update an attribute in several ways. Please have a look to
 the [NGSIv2 specification](http://telefonicaid.github.io/fiware-orion/api/v2/stable) for details.
 
+**Important note**: don't use operations in the NGSI API with creation semantics. Otherwise, the entity/attribute
+will be created locally to ContextBroker and the command will not progress to the device (and you will need to delete
+the created entity/attribute if you want to make it to work again). Thus, the following operations *must not* be used:
+
+* `POST /v2/entities`
+* `PUT /v2/entities`
+* `POST /v2/op/entites` with `actionType` `append`, `appendStrict` or `replace`
+* `POST /v1/updateContext` with `actionType` `APPEND`, `APPEND_STRICT` or `REPLACE`
+
 For HTTP devices, whose "endpoint": "http://[DEVICE_IP]:[PORT]" is declared, then your device is supposed to be
 listening for commands at that URL in a synchronous way.
 
