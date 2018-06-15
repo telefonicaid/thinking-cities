@@ -342,7 +342,7 @@ MQTT topic:
 ```
 <apiKey>/<deviceId>/cmd
 ```
-where it will receive the command information.
+where it will receive the command information. Please note that the device should subscribe to the broker using the disabled clean session mode (enabled using `--disable-clean-session` option CLI parameter in mosquitto_sub). This option means that all of the subscriptions for the device will be maintained after it disconnects, along with subsequent QoS 1 and QoS 2 commands that arrive. When the device reconnects, it will receive all of the queued commands.
 
 Once the command is completed, the device should return the result of the command to the IoTAgent. For HTTP devices,
 the payload should be returned as the answer to the HTTP request. For MQTT devices, the result should be returned to
