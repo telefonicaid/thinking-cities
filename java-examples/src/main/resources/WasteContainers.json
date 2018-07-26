@@ -1,0 +1,62 @@
+[
+  {
+    "id": "CONTAINER01",
+    "type": "WasteContainer",
+    "category": {
+      "type": "Text",
+      "value": "ground"
+    },
+    "fillingLevel": {
+      "type": "Number",
+      "value": 23.24
+    },
+    "location": {
+      "type": "geo:point",
+      "value": "42.236762,-8.715371"
+    },
+    "storeWasteKind": {
+      "type": "Text",
+      "value": "plastic"
+    }
+  },
+  {
+    "id": "CONTAINER02",
+    "type": "WasteContainer",
+    "category": {
+      "type": "Text",
+      "value": "ground"
+    },
+    "fillingLevel": {
+      "type": "Number",
+      "value": 42.51
+    },
+    "location": {
+      "type": "geo:point",
+      "value": "42.234103,-8.721457"
+    },
+    "storeWasteKind": {
+      "type": "Text",
+      "value": "glass"
+    }
+  },
+  {
+    "id": "CONTAINER03",
+    "type": "WasteContainer",
+    "category": {
+      "type": "Text",
+      "value": "underground"
+    },
+    "fillingLevel": {
+      "type": "Number",
+      "value": 79.84
+    },
+    "location": {
+      "type": "geo:point",
+      "value": "42.234746,-8.719665"
+    },
+    "storeWasteKind": {
+      "type": "Text",
+      "value": "organic"
+    }
+  }
+]
