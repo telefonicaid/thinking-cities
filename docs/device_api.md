@@ -91,7 +91,7 @@ exactly the same just changing `?protocol=IoTA-UL` by `?protocol=IoTA-JSON`.
 On this sample a device is registered to use HTTP binding for a PING command:
 
 ```
-POST /iot/devices?protocol=IoTA-UL
+POST /iot/devices
 Content-Type: application/json
 X-Auth-Token: [TOKEN]
 Fiware-Service: OpenIoT
@@ -103,6 +103,7 @@ Fiware-ServicePath: /
 		"entity_name": "[ENTITY_ID]",
 		"entity_type": "thing",
 		"timezone": "Europe/Madrid",
+		"protocol": "IoTA-UL",
 		"endpoint": "http://[DEVICE_IP]:[PORT]",
 		"attributes": [{
 			"object_id": "t",
@@ -140,7 +141,7 @@ be required.
 The following example shows the same registration for an MQTT device instead of HTTP:
 
 ```
-POST /iot/devices?protocol=IoTA-UL
+POST /iot/devices
 Content-Type: application/json
 X-Auth-Token: [TOKEN]
 Fiware-Service: OpenIoT
@@ -152,6 +153,7 @@ Fiware-ServicePath: /
 		"entity_name": "[ENTITY_ID]",
 		"entity_type": "thing",
 		"transport": "MQTT",
+		"protocol": "IoTA-UL",
 		"timezone": "Europe/Madrid",
 		"attributes": [{
 			"object_id": "t",
