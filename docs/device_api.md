@@ -202,7 +202,7 @@ Ultralight2.0 (UL2.0 or just UL for the shake of simplicity) is a proposed simpl
 Sending an observation from IoT devices is simple with the following HTTP POST request:
 
 ```
-POST /iot/d?k=<apikey>&i=<device_ID>
+POST /iot/d?k=<apikey>&i=<deviceId>
 Content-Type: text/plain
 
 t|25
@@ -214,7 +214,7 @@ corresponding entity at the ContextBroker.
 Multiple measures for a single observation can be sent, sepparating the values with pipes:
 
 ```
-POST /iot/d?k=<apikey>&i=<device_ID>
+POST /iot/d?k=<apikey>&i=<deviceId>
 Content-Type: text/plain
 
 t|25|h|42|l|1299
@@ -226,7 +226,7 @@ each measure.
 Sending multiple observations in the same message is also possible with the following payload:
 
 ```
-POST /iot/d?k=<apikey>&i=<device_id>
+POST /iot/d?k=<apikey>&i=<deviceId>
 Content-Type: text/plain
 
 t|23#h|80#l|95#m|Quiet
@@ -246,13 +246,13 @@ The information can be typically sensors measures.
 This is the topic hierarchy that has to be used by devices:
 
 ```
-/<apikey>/<device_id>/attrs/<attrName>
+/<apikey>/<deviceId>/attrs/<attrName>
 ```
 
 Where:
 
 - "apikey": this is a unique value per service. It is provided through the provisioning API.
-- "device_id": this is typically a sensor id, it has to be unique per “apikey”.
+- "deviceId": this is typically a sensor id, it has to be unique per “apikey”.
 - "attrName": name of the magnitude being measured, for example: temperature, pressure, etc… this is the name of
 the attribute being published on ContextBroker.
 
@@ -274,7 +274,7 @@ same Ultralight 2.0 format as in the HTTP case.
 Topic:
 
 ```
-/<apikey>/<device_id>/attrs
+/<apikey>/<deviceId>/attrs
 ```
 
 Example:
@@ -289,7 +289,7 @@ The simple JSON protocol used by the JSON IoTAgent maps each measurement to an a
 example shows how to send a measurement of three different quantities:
 ```
 
-POST  /iot/json?k=<apikey>&i=<device_id>
+POST  /iot/json?k=<apikey>&i=<deviceId>
 Content-type: application/json
 
 {
@@ -368,40 +368,40 @@ ContextBroker API is quite flexible and allows to update an attribute in several
 
 ## Push commands
 
-Push commands are those that are sent to the device once the IoT Agent receives the request from the Context Broker. In order to send push commands it is needed to set the "endpoint": "http://[DEVICE_IP]:[PORT]" in the device provision. The device is supposed to be listening for commands at that URL in a synchronous way. Make sure the device endpoint isreachable by the IoT Agent.
+Push commands are those that are sent to the device once the IoT Agent receives the request from the Context Broker. In order to send push commands it is needed to set the "endpoint": "http://[DEVICE_IP]:[PORT]" in the device provision. The device is supposed to be listening for commands at that URL in a synchronous way. Make sure the device endpoint is reachable by the IoT Agent.
 
-Once the command is delivered, the device should return the result of the command to the IoTAgent as the answer to the 
+Once the command is delivered, the device should return the result of the command to the IoT Agent as the answer to the 
 HTTP request. This result will be progressed to the Context Broker where it will be stored in the "command_info" attribute. The status of the command will be stored in the "command_status" attribute (`OK` if everithing goes right). 
 
 Push commands are only valid for HTTP devices. For MQTT devices it is not needed to set the "endpoint" paramater. 
 
 ## Pull commnads
 
-Pull commands are those that are stored int he IoT Agent waiting to be retrieved by the devices. This kind of commands are tipically used for devices that doesn't have a public IP or the IP can not be accesed remotely. The device connects to the IoT Agent perodically to retrieve commands. In order to send pull commands you just need to ignore the "endpoint" parameter in the device provision.
+Pull commands are those that are stored in the IoT Agent waiting to be retrieved by the devices. This kind of commands are tipically used for devices that doesn't have a public IP or the IP can not be reached. The device connects to the IoT Agent perodically to retrieve commands. In order to send pull commands you just need to ignore the "endpoint" parameter in the device provision.
 
-Once the command requests is issued to the IoT aggent, the command is stored waiting to be retrieved by a device. In that moment, the status of the command is "command_info": "PENDING". Once the command is retrieved by the device the status is updated to "command_info": "DELIVERED". Finally, once the device makes the response request with the result of the command the status is updated to "command_info": "OK".
+Once the command request is issued to the IoT agent, the command is stored waiting to be retrieved by the device. In that moment, the status of the command is "command_info": "PENDING". Once the command is retrieved by the device the status is updated to "command_info": "DELIVERED". Eventually, once the device makes the response request with the result of the command the status is updated to "command_info": "OK".
 
 **HTTP devices**
 
-For HTTP devices, in order to retrieve a pull command from  UL IoT Agent the device should make the following requets
+For HTTP devices, in order to retrieve a pull command from IoT-UL Agent the device should make the following requets:
 
 ```
-GET /iot/d?k=<apikey_ul>&i=<device_ID>&getCmd=1
+GET /iot/d?k=<apikey>&i=<deviceId>&getCmd=1
 Accept: application/json
 ```
 
-For JSON IoT Agent is exactly the same just changing in the request the `/iot/d` by `/iot/json` and setting the correct apikey and device_id.
+For IoT-JSON Agent is exactly the same just changing in the request the `/iot/d` by `/iot/json` and setting the correct apikey and deviceId.
 
-It can be also possible for a device to retrieve the commands from the IoT Agent when it sends and observation. It just be needed to include the `&getCmd` parameter in the observation request. In the following example a device sends an UL observation and retrieve the commands from the IoT Agent.
+It can be also possible for a device to retrieve the commands from the IoT Agent when it sends and observation. It just be needed to include the `&getCmd=1` parameter in the observation request. In the following example a device sends an UL observation and retrieves the commands from the IoT-UL Agent.
 
 ```
-POST /iot/d?k=<apikey>&i=<device_ID>&getCmd=1
+POST /iot/d?k=<apikey>&i=<deviceId>&getCmd=1
 Content-Type: text/plain
 
 t|25|h|42|l|1299
 ```
 
-This is also possible for JSON IoT Agent changing in the request the `/iot/d` by `/iot/json`and setting the correct apikey and device_id.
+This is also possible for IoT-JSON Agent changing in the request the `/iot/d` by `/iot/json`and setting the correct apikey and deviceId.
 
 **MQTT devices**
 
@@ -413,7 +413,7 @@ For MQTT devices, it is not needed to declare and enpoint. The devices is suppos
 
 where it will receive the command information. Please note that the device should subscribe to the broker using the disabled clean session mode (enabled using `--disable-clean-session` option CLI parameter in mosquitto_sub). This option means that all of the subscriptions for the device will be maintained after it disconnects, along with subsequent QoS 1 and QoS 2 commands that arrive. When the device reconnects, it will receive all of the queued commands.
 
-Once the command is completed, the device should return the result of the command to the IoTAgent. For HTTP devices, the payload should be returned as the answer to the HTTP request. For MQTT devices, the result should be returned to the following topic:
+Once the command is completed, the device should return the result of the command to the IoTAgent to the following topic:
 
 ```
 /<apiKey>/<deviceId>/cmdexe
