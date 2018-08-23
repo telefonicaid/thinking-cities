@@ -226,7 +226,7 @@ each measure.
 Sending multiple observations in the same message is also possible with the following payload:
 
 ```
-POST /iot/d?k=<apikey>&i=<device_ID>
+POST /iot/d?k=<apikey>&i=<device_id>
 Content-Type: text/plain
 
 t|23#h|80#l|95#m|Quiet
@@ -246,20 +246,20 @@ The information can be typically sensors measures.
 This is the topic hierarchy that has to be used by devices:
 
 ```
-/<api-key>/<device-id>/attrs/<attrName>
+/<apikey>/<device_id>/attrs/<attrName>
 ```
 
 Where:
 
-- "api-key": this is a unique value per service. It is provided through the provisioning API.
-- "device-id": this is typically a sensor id, it has to be unique per “api-key”.
+- "apikey": this is a unique value per service. It is provided through the provisioning API.
+- "device_id": this is typically a sensor id, it has to be unique per “apikey”.
 - "attrName": name of the magnitude being measured, for example: temperature, pressure, etc… this is the name of
 the attribute being published on ContextBroker.
 
 Example:
 
 ```
-$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<api_key>/mydevicemqtt/t -m 44.4
+$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<apikey>/mydevicemqtt/t -m 44.4
 ```
 
 As it can be noticed in this example, the MQTT broker uses a set of credentials to authenticate users. Please, if you
@@ -274,13 +274,13 @@ same Ultralight 2.0 format as in the HTTP case.
 Topic:
 
 ```
-<api-key>/<device-id>/attrs
+/<apikey>/<device_id>/attrs
 ```
 
 Example:
 
 ```
-$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<api_key>/mydevicemqtt/attrs -m "t|5.4#o|4.3#n|3.2#c|2.1"
+$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<apikey>/mydevicemqtt/attrs -m "t|5.4#o|4.3#n|3.2#c|2.1"
 ```
 
 **Send measures using JSON HTTP**
@@ -289,7 +289,7 @@ The simple JSON protocol used by the JSON IoTAgent maps each measurement to an a
 example shows how to send a measurement of three different quantities:
 ```
 
-POST  /iot/json?k=<apikey>&i=<device_ID>
+POST  /iot/json?k=<apikey>&i=<device_id>
 Content-type: application/json
 
 {
@@ -348,7 +348,7 @@ In order to send commands to devices, you need to know which attributes correspo
 If you take a look to the previous device example, you can find that a "ping" command was defined. Any update on this attribute “ping” at the NGSI entity in the ContextBroker will send a command to your device. For instance, to send the "ping" command with value "Ping request" you could use the following operation in the ContextBroker API:
 
 ```
-PUT /v2/entities/[ENTITY_ID]/attrs/ping?type=[ENTITY_TYPE]
+PUT /v2/entities/<entity_id>/attrs/ping?type=<entity_type>
 
 {
   "value": "Ping request",
