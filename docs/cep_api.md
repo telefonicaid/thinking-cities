@@ -135,6 +135,39 @@ X-Auth-Token: {{user-token}}
 
 ```
 
+# Create rule to issue a command to a device
+
+It is possible to send a command to a device using FIWARE CEP by updating the relevant Context Broker attribute. First of all, you have to register you IoT device setting the command you want to issue as stated in [Register your IoT device](https://fiware-iot-stack.readthedocs.io/en/latest/device_api/index.html#register-your-iot-device). The rule will update the command attribute in the Context Broker and then the Context Broker acts in the same way as in a manually issued command.
+
+```
+POST /rules HTTP/1.1
+Host: <cep_host>:<cep_port>
+Accept: application/json
+Content-Type: application/json
+Fiware-Service: {{Fiware-Service}} 
+Fiware-ServicePath: {{Fiware-ServicePath}} 
+X-Auth-Token: {{user-token}}
+
+{
+    "name": "electrovalve_on",
+    "text": "select *,\"electrovalve_on\" as ruleName from pattern [every ev=iotEvent((cast(cast(`humidity`?,String),float))<25 and type=\"humiditySensor\")]",
+    "action": {
+        "type": "post",
+        "template": "{\"type\":\"command\",\"value\":1}",
+        "parameters": {
+            "url": "[CB_ENDPOINT]/v2/entities/${electrovalveId}/attrs/activate?type=electrovalve",
+            "method": "PUT",
+            "headers": {
+                "Content-type": "application/json",
+                "fiware-service": "${service}",
+                "fiware-servicepath": "${subservice}"
+            }
+        }
+    }
+}
+
+```
+
 # In more detail ...
 
 You can get more information about the FIWARE component providing this functionalty, reference API documentation and source code at [CEP](cep.md).
