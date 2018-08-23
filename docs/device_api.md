@@ -375,7 +375,7 @@ HTTP request. This result will be progressed to the Context Broker where it will
 
 Push commands are only valid for HTTP devices. For MQTT devices it is not needed to set the "endpoint" paramater. 
 
-## Pull commnads
+## Pull commands
 
 Pull commands are those that are stored in the IoT Agent waiting to be retrieved by the devices. This kind of commands are tipically used for devices that doesn't have a public IP or the IP can not be reached. The device connects to the IoT Agent perodically to retrieve commands. In order to send pull commands you just need to ignore the "endpoint" parameter in the device provision.
 
