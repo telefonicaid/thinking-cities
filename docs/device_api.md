@@ -197,7 +197,7 @@ The following sections show some examples of each of the four possible approache
 
 **Send measures using UL2.0 HTTP**
 
-Ultralight2.0 (UL2.0 or just UL for the shake of simplicity) is a proposed simplification of the SensorML (SML) standard – and will be used to send device measurements (observations) to the ContextBroker. Ultralight2.0 is selected in this example because of its simplicity.
+Ultralight2.0 (UL2.0 or just UL for the sake of simplicity) is a proposed simplification of the SensorML (SML) standard – and will be used to send device measurements (observations) to the ContextBroker. Ultralight2.0 is selected in this example because of its simplicity.
 
 Sending an observation from IoT devices is simple with the following HTTP POST request:
 
@@ -383,16 +383,16 @@ Once the command request is issued to the IoT agent, the command is stored waiti
 
 **HTTP devices**
 
-For HTTP devices, in order to retrieve a pull command from IoT-UL Agent the device should make the following requets:
+For HTTP devices, in order to retrieve a pull command from IoTA-UL Agent the device should make the following requets:
 
 ```
 GET /iot/d?k=<apikey>&i=<deviceId>&getCmd=1
 Accept: application/json
 ```
 
-For IoT-JSON Agent is exactly the same just changing in the request the `/iot/d` by `/iot/json` and setting the correct apikey and deviceId.
+For IoTA-JSON Agent it is exactly the same just changing in the request the `/iot/d` by `/iot/json` and setting the correct apikey and deviceId.
 
-It can be also possible for a device to retrieve the commands from the IoT Agent when it sends and observation. It just be needed to include the `&getCmd=1` parameter in the observation request. In the following example a device sends an UL observation and retrieves the commands from the IoT-UL Agent.
+It can be also possible for a device to retrieve the commands from the IoT Agent when it sends and observation. It just be needed to include the `&getCmd=1` parameter in the observation request. In the following example a device sends an UL observation and retrieves the commands from the IoTA-UL Agent.
 
 ```
 POST /iot/d?k=<apikey>&i=<deviceId>&getCmd=1
@@ -401,7 +401,7 @@ Content-Type: text/plain
 t|25|h|42|l|1299
 ```
 
-This is also possible for IoT-JSON Agent changing in the request the `/iot/d` by `/iot/json`and setting the correct apikey and deviceId.
+This is also possible for IoTA-JSON Agent changing in the request the `/iot/d` by `/iot/json`and setting the correct apikey and deviceId.
 
 **MQTT devices**
 
