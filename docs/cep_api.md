@@ -100,6 +100,7 @@ X-Auth-Token: {{user-token}}
             "url": "http://yourcustomer.com"
         }
     }
+}
 ```
 
 # Create rule to send a Tweet
