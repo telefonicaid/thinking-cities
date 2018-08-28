@@ -357,6 +357,8 @@ PUT /v2/entities/<entity_id>/attrs/ping?type=<entity_type>
 
 ```
 
+It is important to note that parameter type, with the entity_type must be included.
+
 ContextBroker API is quite flexible and allows to update an attribute in several ways. Please have a look to the [NGSIv2 specification](http://telefonicaid.github.io/fiware-orion/api/v2/stable) for details.
 
 **Important note**: don't use operations in the NGSI API with creation semantics. Otherwise, the entity/attribute will be created locally to ContextBroker and the command will not progress to the device (and you will need to delete the created entity/attribute if you want to make it to work again). Thus, the following operations *must not* be used:
