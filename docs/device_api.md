@@ -1,5 +1,5 @@
 
-In order to send information from the devices to the platform, you can use the IoT Agents. This components
+In order to send information from the devices to the platform, you can use the IoT Agents. These components
 map South-Bound protocol requests coming from the device to NGSI requests to a Context Broker, that will help you
 mapping your device data to an NGSI Entity and attributes.
 
@@ -9,8 +9,8 @@ The Device API allows you to:
 - Send data from the device to the FIWARE IoT Stack
 - Send commands from your application to the device
 
-The following documents show how to manage device connectivity through the IoTAgent Manager of the IoT Platform. These
-APIs have some differences with the standard IoTAgent Device Provisioning APIs as defined in the [IoTAgent Library](https://github.com/telefonicaid/iotagent-node-lib)
+The following documents show how to manage device connectivity through the IoT Agent Manager of the IoT Platform. These
+APIs have some differences with the standard IoT Agent Device Provisioning APIs as defined in the [IoT Agent Library](https://github.com/telefonicaid/iotagent-node-lib)
 but it should be transparent for the users of the Platform.
 
 # Configure the South Bound protocol
@@ -73,7 +73,7 @@ along with the information for its mapping to the NGSI entity.
 
 Provisioning of JSON Configuration group is exactly the same just replacing `?protocol=IoTA-UL` by `?protocol=IoTA-JSON`. 
 
-Currently, the IoT Platform only allows for the existence of a configuration group per subservice for each protocol, i.e one for "IoTA-UL" and other for "IoTA-JSON".
+Currently, the IoT Platform only allows for the existence of a configuration group per subservice for each protocol, i.e. one for "IoTA-UL" and other for "IoTA-JSON".
 
 # Register your IoT device 
 
@@ -126,12 +126,12 @@ Fiware-ServicePath: /
 Description of the parameters (mandatory parameters are marked as such, the rest remain optional):
 
 - *device_id*: the device identifier (mandatory).
-- *entity_name*: the entity ID to be used at the ContextBroker.
+- *entity_name*: the entity ID to be used at the Context Broker.
 - *entity_type*: type of the entity that will represent the device in the Context Broker.
 - *protocol*: South-Bound protocol the device will be using to communicate with the Platform (mandatory).
 - *timezone*: timezone for the device.
 - *endpoint*: for devices accepting HTTP commands, address of the device where the commands will be sent.
-- *attributes*: Used to map UL2.0 attributes to ContextBroker attributes in the entity representing the device.
+- *attributes*: Used to map UL2.0 attributes to Context Broker attributes in the entity representing the device.
 - *commands*: Used to indicate which commands the device supports. For HTTP attributes, the "endpoint" attribute will
 be required.
 - *static_attributes*: the contents of this attribute will be sent in every observation as attributes of the entity.
@@ -180,24 +180,24 @@ The example shows there are two differences comparing with provisioning for HTTP
 
 **Registering without endpoint commands**
 
-For devices that won't be receiving commands, you don't need to specify "endpoint" field. In this case, the command will be stored int the IoT Agent waiting for the device to retrieve the commmand. These kind of commnads are called pull commands.
+For devices that won't be using commands, you don't need to specify "endpoint" field. This is also the case of devices using commands but in pull mode, in which case the command will be stored int the IoT Agent waiting for the device to retrieve the command. This kind of commands are called pull commands.
 
 # Send observations 
 
-There are two IoTAgents currently available in the platform, each listening for requests with a different protocol:
+There are two IoT Agents currently available in the platform, each listening for requests with a different protocol:
 * Ultralight 2.0
 * JSON
 
-In both cases, payloads can be sent to the Agent using two different transport protocols: 
+In both cases, payloads can be sent to the IoT Agent using two different transport protocols: 
 * MQTT
 * HTTP
 
-In order to select the appropriate IoTAgent, change the declared protocol in the query parameters: IoTA-UL or IoTA-JSON.
+In order to select the appropriate IoT Agent, change the declared protocol in the query parameters: IoTA-UL or IoTA-JSON.
 The following sections show some examples of each of the four possible approaches.
 
 **Send measures using UL2.0 HTTP**
 
-Ultralight2.0 (UL2.0 or just UL for the sake of simplicity) is a proposed simplification of the SensorML (SML) standard – and will be used to send device measurements (observations) to the ContextBroker. Ultralight2.0 is selected in this example because of its simplicity.
+Ultralight2.0 (UL2.0 or just UL for the sake of simplicity) is a proposed simplification of the SensorML (SML) standard – and will be used to send device measurements (observations) to the Context Broker. Ultralight2.0 is selected in this example because of its simplicity.
 
 Sending an observation from IoT devices is simple with the following HTTP POST request:
 
@@ -208,10 +208,10 @@ Content-Type: text/plain
 t|25
 ```
 
-The previous example sends an update of the Temperature attribute that is automatically sent by the IoT Agent to the
-corresponding entity at the ContextBroker.
+The previous example sends an update of the `temperature` attribute that is automatically sent by the IoT Agent to the
+corresponding entity at the Context Broker.
 
-Multiple measures for a single observation can be sent, sepparating the values with pipes:
+Multiple measures for a single observation can be sent, separating the values with pipes:
 
 ```
 POST /iot/d?k=<apikey>&i=<deviceId>
@@ -239,8 +239,8 @@ Finally, after connecting your IoT devices this way you (or any other developer 
 
 **Send measures using UL2.0 MQTT**
 
-Devices (once provisioned under a service) can publish MQTT messages to the IoTAgent. Those messages contain one piece
-of information each. That means that one message will be translated into one single entity on the ContexBroker domain.
+Devices (once provisioned under a service) can publish MQTT messages to the IoT Agent. Those messages contain one piece
+of information each. That means that one message will be translated into one single entity on the Context Broker domain.
 The information can be typically sensors measures.
 
 This is the topic hierarchy that has to be used by devices:
@@ -254,7 +254,7 @@ Where:
 - "apikey": this is a unique value per service. It is provided through the provisioning API.
 - "deviceId": this is typically a sensor id, it has to be unique per “apikey”.
 - "attrName": name of the magnitude being measured, for example: temperature, pressure, etc… this is the name of
-the attribute being published on ContextBroker.
+the attribute being published on Context Broker.
 
 Example:
 
@@ -266,9 +266,9 @@ As it can be noticed in this example, the MQTT broker uses a set of credentials 
 don't know your credentials, please ask the support team to provide you with a new set.
 
 Another scenario can happen when devices send more than one phenomena within the payload. That is to say, one single
-MQTT message carries all measures. When it comes to ContextBroker, there will be one entity publication (per device)
+MQTT message carries all measures. When it comes to Context Broker, there will be one entity publication (per device)
 but containing all different attributes as per measures included in the mqtt message (each phenomenon or measure will
-be a separate attribute). In order to be able to parse the information on the IoTAgent, devices should follow the
+be a separate attribute). In order to be able to parse the information on the IoT Agent, devices should follow the
 same Ultralight 2.0 format as in the HTTP case.
 
 Topic:
@@ -285,7 +285,7 @@ $ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<apikey>/my
 
 **Send measures using JSON HTTP**
 
-The simple JSON protocol used by the JSON IoTAgent maps each measurement to an attribute in a JSON Object. The following
+The simple JSON protocol used by the JSON IoT Agent maps each measurement to an attribute in a JSON Object. The following
 example shows how to send a measurement of three different quantities:
 ```
 
@@ -304,12 +304,12 @@ The HTTP transport for the JSON protocol does not allow a single measure syntax.
 
 **Send measures using JSON MQTT**
 
-The payload to use with the MQTT transport of the IoTAgent is exactly the same as the one used in the HTTP version. The
+The payload to use with the MQTT transport of the IoT Agent is exactly the same as the one used in the HTTP version. The
 main difference between both approaches is how to indicate the DeviceID of the device that is sending the measurement and
 the APIKey of the Service associated to the device. In the case of the MQTT transport, both pieces of information are
 specified in the MQTT topic, as we will see in the examples.
 
-There are two kind of measurment reportings available for the MQTT transport: single measurement reports and multiple
+There are two kind of measurement reports available for the MQTT transport: single measurement reports and multiple
 measurement reports. Examples are shown as mosquitto_pub sentences.
 
 In the case of single measurements, just the value of the measurement is sent as the message payload, being the rest
@@ -343,9 +343,9 @@ measurements will be updated in the target entity.
 
 ## Send commands
 
-In order to send commands to devices, you need to know which attributes correspond to commands and update them. You can declare the command related attributes at the registry process (as shown in the previous "Register your IoT device" section). Also, you can declare the protocol you want the commnads to be sent (HTTP/MQTT) with the "transport" parameter at the registry process.
+In order to send commands to devices, you need to know which attributes correspond to commands and update them. You can declare the command related attributes at the registry process (as shown in the previous "Register your IoT device" section). Also, you can declare the protocol you want the commands to be sent (HTTP/MQTT) with the "transport" parameter at the registry process.
 
-If you take a look to the previous device example, you can find that a "ping" command was defined. Any update on this attribute “ping” at the NGSI entity in the ContextBroker will send a command to your device. For instance, to send the "ping" command with value "Ping request" you could use the following operation in the ContextBroker API:
+If you take a look to the previous device example, you can find that a "ping" command was defined. Any update on this attribute “ping” at the NGSI entity in the Context Broker will send a command to your device. For instance, to send the "ping" command with value "Ping request" you could use the following operation in the Context Broker API:
 
 ```
 PUT /v2/entities/<entity_id>/attrs/ping?type=<entity_type>
@@ -359,33 +359,18 @@ PUT /v2/entities/<entity_id>/attrs/ping?type=<entity_type>
 
 It is important to note that parameter type, with the entity_type must be included.
 
-ContextBroker API is quite flexible and allows to update an attribute in several ways. Please have a look to the [NGSIv2 specification](http://telefonicaid.github.io/fiware-orion/api/v2/stable) for details.
+Context Broker API is quite flexible and allows to update an attribute in several ways. Please have a look to the [NGSIv2 specification](http://telefonicaid.github.io/fiware-orion/api/v2/stable) for details.
 
-**Important note**: don't use operations in the NGSI API with creation semantics. Otherwise, the entity/attribute will be created locally to ContextBroker and the command will not progress to the device (and you will need to delete the created entity/attribute if you want to make it to work again). Thus, the following operations *must not* be used:
+**Important note**: don't use operations in the NGSI API with creation semantics. Otherwise, the entity/attribute will be created locally to Context Broker and the command will not progress to the device (and you will need to delete the created entity/attribute if you want to make it to work again). Thus, the following operations *must not* be used:
 
 * `POST /v2/entities`
 * `PUT /v2/entities`
 * `POST /v2/op/entites` with `actionType` `append`, `appendStrict` or `replace`
 * `POST /v1/updateContext` with `actionType` `APPEND`, `APPEND_STRICT` or `REPLACE`
 
-## Push commands
+## HTTP devices
 
-Push commands are those that are sent to the device once the IoT Agent receives the request from the Context Broker. In order to send push commands it is needed to set the "endpoint": "http://[DEVICE_IP]:[PORT]" in the device provision. The device is supposed to be listening for commands at that URL in a synchronous way. Make sure the device endpoint is reachable by the IoT Agent.
-
-Once the command is delivered, the device should return the result of the command to the IoT Agent as the answer to the 
-HTTP request. This result will be progressed to the Context Broker where it will be stored in the "command_info" attribute. The status of the command will be stored in the "command_status" attribute (`OK` if everithing goes right). 
-
-Push commands are only valid for HTTP devices. For MQTT devices it is not needed to set the "endpoint" paramater. 
-
-## Pull commands
-
-Pull commands are those that are stored in the IoT Agent waiting to be retrieved by the devices. This kind of commands are tipically used for devices that doesn't have a public IP or the IP can not be reached. The device connects to the IoT Agent perodically to retrieve commands. In order to send pull commands you just need to ignore the "endpoint" parameter in the device provision.
-
-Once the command request is issued to the IoT agent, the command is stored waiting to be retrieved by the device. In that moment, the status of the command is "command_info": "PENDING". Once the command is retrieved by the device the status is updated to "command_info": "DELIVERED". Eventually, once the device makes the response request with the result of the command the status is updated to "command_info": "OK".
-
-**HTTP devices**
-
-For HTTP devices, in order to retrieve a pull command from IoTA-UL Agent the device should make the following requets:
+For HTTP devices, in order to retrieve a pull command from IoTA-UL Agent the device should make the following request:
 
 ```
 GET /iot/d?k=<apikey>&i=<deviceId>&getCmd=1
@@ -403,11 +388,26 @@ Content-Type: text/plain
 t|25|h|42|l|1299
 ```
 
-This is also possible for IoTA-JSON Agent changing in the request the `/iot/d` by `/iot/json`and setting the correct apikey and deviceId.
+This is also possible for IoTA-JSON Agent changing in the request the `/iot/d` by `/iot/json` and setting the correct apikey and deviceId.
 
-**MQTT devices**
+**Push commands**
 
-For MQTT devices, it is not needed to declare and enpoint. The devices is supposed to be subscribed to the following MQTT topic:
+Push commands are those that are sent to the device once the IoT Agent receives the request from the Context Broker. In order to send push commands it is needed to set the "endpoint": "http://[DEVICE_IP]:[PORT]" in the device provision. The device is supposed to be listening for commands at that URL in a synchronous way. Make sure the device endpoint is reachable by the IoT Agent.
+
+Once the command is delivered, the device should return the result of the command to the IoT Agent as the answer to the 
+HTTP request. This result will be progressed to the Context Broker where it will be stored in the "command_info" attribute. The status of the command will be stored in the "command_status" attribute (`OK` if everything goes right). 
+
+Push commands are only valid for HTTP devices. For MQTT devices it is not needed to set the "endpoint" parameter. 
+
+**Pull commands**
+
+Pull commands are those that are stored in the IoT Agent waiting to be retrieved by the devices. This kind of commands are typically used for devices that doesn't have a public IP or the IP cannot be reached. The device connects to the IoT Agent periodically to retrieve commands. In order to send pull commands you just need to ignore the "endpoint" parameter in the device provision.
+
+Once the command request is issued to the IoT agent, the command is stored waiting to be retrieved by the device. In that moment, the status of the command is "command_status": "PENDING". Once the command is retrieved by the device the status is updated to "command_status": "DELIVERED". Eventually, once the device makes the response request with the result of the command the status is updated to "command_status": "OK". Also the result of the command delivered by the device is stored in the "command_info" attribute.
+
+## MQTT devices
+
+For MQTT devices, it is not needed to declare and endpoint. The device is supposed to be subscribed to the following MQTT topic:
 
 ```
 /<apiKey>/<deviceId>/cmd
@@ -415,11 +415,13 @@ For MQTT devices, it is not needed to declare and enpoint. The devices is suppos
 
 where it will receive the command information. Please note that the device should subscribe to the broker using the disabled clean session mode (enabled using `--disable-clean-session` option CLI parameter in mosquitto_sub). This option means that all of the subscriptions for the device will be maintained after it disconnects, along with subsequent QoS 1 and QoS 2 commands that arrive. When the device reconnects, it will receive all of the queued commands.
 
-Once the command is completed, the device should return the result of the command to the IoTAgent to the following topic:
+Once the command is completed, the device should return the result of the command to the IoT Agent to the following topic:
 
 ```
 /<apiKey>/<deviceId>/cmdexe
 ```
+
+This result will be progressed to the Context Broker where it will be stored in the "command_info" attribute. The status of the command will be stored in the "command_status" attribute (`OK` if everything goes right). 
 
 ## Command payloads
 
@@ -445,7 +447,7 @@ In the case of complex commands requiring parameters, the `commandValue` could b
 weatherStation167@ping|param1:1|param2:2
 ```
 
-This example will tell the Weather Station 167 to reply to a ping message with the provided params. Note that `=` cannot be used instead of `:` given that `=` is [a forbidden character for Context Broker] (https://fiware-orion.readthedocs.io/en/master/user/forbidden_characters/index.html), so the update at CB triggering the command would be never progressed.
+This example will tell the Weather Station 167 to reply to a ping message with the provided params. Note that `=` cannot be used instead of `:` given that `=` is [a forbidden character for Context Broker](https://fiware-orion.readthedocs.io/en/master/user/forbidden_characters/index.html), so the update at CB triggering the command would be never progressed.
 
 Once the command has finished its execution in the device, the reply to the IOTA must adhere to the following format:
 
@@ -489,7 +491,7 @@ In the case of complex commands requiring parameters, the `commandValue` could b
 }
 ```
 
-This example will tell the device to reply to a ping message with the provided params. Note that `=` cannot be used instead of `:` given that `=` is [a forbidden character for Context Broker] (https://fiware-orion.readthedocs.io/en/master/user/forbidden_characters/index.html), so the update at CB triggering the command would be never progressed.
+This example will tell the device to reply to a ping message with the provided params. Note that `=` cannot be used instead of `:` given that `=` is [a forbidden character for Context Broker](https://fiware-orion.readthedocs.io/en/master/user/forbidden_characters/index.html), so the update at CB triggering the command would be never progressed.
 
 Once the command has finished its execution in the device, the reply to the IOTA must adhere to the following format:
 
@@ -513,5 +515,5 @@ In this case, the device replies with a String value indicating everything has w
 
 # In more detail ...
 
-You can get more information about the FIWARE component providing this functionalty, reference API documentation and source code at the [IoT Agent](device_gateway.md)
+You can get more information about the FIWARE component providing this functionality, reference API documentation and source code at the [IoT Agent](device_gateway.md)
 
