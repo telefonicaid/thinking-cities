@@ -427,7 +427,21 @@ This result will be progressed to the Context Broker where it will be stored in 
 
 **Command payloads for UL**
 
-Concerning the payload for UL, the command information will have the same information for both transport protocols (HTTP or MQTT).
+Commands are sent when the proper update is done in the ContextBroker on the attribute representing the command. We can distinguish between two cases: commands with parameter is a single value and commands that use several paramters.
+
+For commands with a single value as parameter the attibute will be updated at CB using a JSON like this:
+
+```
+{ "type": "command", "value": "<commandValue>"}
+```
+
+For commands with a single value as parameter the attibute will be updated at CB using a JSON like this:
+
+```
+{ "type": "command", "value": { "param1": "val1", "param2": "val2" }
+```
+
+Concerning the payload for UL, the command information will have the same information for both transport protocols (HTTP or MQTT). For single-parameter commands:
 
 ```
 <deviceId>@<commandName>|<commandValue>
@@ -444,10 +458,12 @@ This example will tell the Robot 1 to turn to left.
 In the case of complex commands requiring parameters, the `commandValue` could be used to implement parameter passing. E.g:
 
 ```
-weatherStation167@ping|param1=1|param2=2
+weatherStation167@ping|param1=val1|param2=val2
 ```
 
-This example will tell the Weather Station 167 to reply to a ping message with the provided params. Regarding with param value format of a commandValue note that `=` cannot be used instead of `:` given that `=` is [a forbidden character for Context Broker](https://fiware-orion.readthedocs.io/en/master/user/forbidden_characters/index.html), so the update at CB triggering the command would be never progressed.
+This example will tell the Weather Station 167 to reply to a ping message with the provided params. 
+
+Note that you cannot use [forbidden character for Context Broker](https://fiware-orion.readthedocs.io/en/master/user/forbidden_characters/index.html) as part of command parameters, because that would result in a 400 Bad Request error and at CB and the triggering of the command would be never progressed.
 
 Once the command has finished its execution in the device, the reply to the IOTA must adhere to the following format:
 
@@ -465,7 +481,21 @@ In this case, the Weather station replies with a string value indicating everyth
 
 **Command payloads for JSON**
 
-Concerning the payload for JSON, the command information will have the same information for both transport protocols (HTTP or MQTT).
+Commands are sent when the proper update is done in the ContextBroker on the attribute representing the command. We can distinguish between two cases: commands with parameter is a single value and commands that use several paramters.
+
+For commands with a single value as parameter the attibute will be updated at CB using a JSON like this:
+
+```
+{ "type": "command", "value": "<commandValue>"}
+```
+
+For commands with a single value as parameter the attibute will be updated at CB using a JSON like this:
+
+```
+{ "type": "command", "value": { "param1": "val1", "param2": "val2" }
+```
+
+Concerning the payload for JSON, the command information will have the same information for both transport protocols (HTTP or MQTT). For single-parameter commands:
 
 ```
 {
@@ -487,11 +517,13 @@ In the case of complex commands requiring parameters, the `commandValue` could b
 
 ```
 {
-  "ping": "param1:1|param2:2"
+  "ping": { "param1": "val1", "param2": "val2" }
 }
 ```
 
-This example will tell the device to reply to a ping message with the provided params. Note that `=` cannot be used instead of `:` given that `=` is [a forbidden character for Context Broker](https://fiware-orion.readthedocs.io/en/master/user/forbidden_characters/index.html), so the update at CB triggering the command would be never progressed.
+This example will tell the device to reply to a ping message with the provided params. 
+
+Note that you cannot use [forbidden character for Context Broker](https://fiware-orion.readthedocs.io/en/master/user/forbidden_characters/index.html) as part of command parameters, because that would result in a 400 Bad Request error and at CB and the triggering of the command would be never progressed.
 
 Once the command has finished its execution in the device, the reply to the IOTA must adhere to the following format:
 
