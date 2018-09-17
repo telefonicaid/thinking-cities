@@ -18,7 +18,7 @@ Content-Type: application/json
 
 {
     "NEW_SERVICE_NAME":"{{Fiware-Service}}",
-    "NEW_SERVICE_DESCRIPTION":"new subservice"
+    "NEW_SERVICE_DESCRIPTION":"new service description"
 }
 ```
 
@@ -45,8 +45,8 @@ Content-Type: application/json
 
 {
     "SERVICE_NAME":"{{Fiware-Service}}",
-    "NEW_SUBSERVICE_NAME":"{{Fiware-ServicePath}}",
-    "NEW_SUBSERVICE_DESCRIPTION":"new subservice"
+    "NEW_SUBSERVICE_NAME":"newSubServiceName",
+    "NEW_SUBSERVICE_DESCRIPTION":"new subservice description"
 }
 ```
 
