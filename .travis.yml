@@ -30,8 +30,6 @@ branches:
 
 script:
   - cd java-examples
+  - mvn clean
   - mvn package
-
-#before_script:
-#  - cd java-examples
-#  - mvn clean
+  
