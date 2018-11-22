@@ -29,7 +29,7 @@ branches:
       - /.*/
 
 install:
-  - mvn package
+  - cd java-examples && mvn package
 
 before_install:
-  - mvn clean
+  - cd java-examples && mvn clean
