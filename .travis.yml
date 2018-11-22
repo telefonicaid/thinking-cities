@@ -33,6 +33,3 @@ install:
 
 before_install:
   - mvn clean
-  
-before_script:
-  - cd java-examples
