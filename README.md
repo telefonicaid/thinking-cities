@@ -65,4 +65,4 @@ repo-name3=release/1.3.0
 repo-nameN=release/1.4.0
 ```
 
-The 1.1.0, 1.2.0, etc. above are just example; use actual version number in a real case. 
+The 1.1.0, 1.2.0, etc. above are just example; use actual version number in a real case.  
