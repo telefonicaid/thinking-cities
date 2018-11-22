@@ -33,4 +33,5 @@ script:
   - mvn package
 
 before_script:
+  - cd java-examples
   - mvn clean
