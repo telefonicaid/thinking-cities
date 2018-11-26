@@ -13,14 +13,14 @@ This API allows you for example to define rules to trigger email notifications b
 These rules are expressed as an EPL sentence. [EPL](http://www.espertech.com/esper/index.php) is a domain language of Esper, the engine for processing events used. This EPL sentence matches an incoming event if satisfies the conditions and generates an "action-event" that will be sent back to FIWARE IoT Stack to execute the associated action. 
 
 
-# Activate rules
+# Send Context to CEP to Activate Rules
 
-You have to choose which data from your IoT device is relevant to be evaluated by your rules at the FIWARE IoT Stack.
+In order CEP to assess events and execute rules it is needed to send to CEP the notifications from Context Broker with the context data. In order to send notifications to CEP it is needed to create the relevant subscripcions. It can be done using the [Context Broker API](https://fiware-iot-stack.readthedocs.io/en/latest/data_api/index.html#subscribe-to-data-updates)
 
-In order to do so, you have to select the Data API entity attributes. On the following example, the temperature attribute will be selected:
+Find below an example of subscription creation, where the attribute temperature is sent to CEP.
 
 ```
-POST /v1/subscribeContext HTTP/1.1
+POST /v2/subscriptions HTTP/1.1
 Host: <cb_host>:<cb_port>
 Accept: application/json
 Content-Type: application/json
@@ -29,23 +29,39 @@ Fiware-ServicePath: {{Fiware-ServicePath}}
 X-Auth-Token: {{user-token}}
 
 {
+  "description": "Subscription to CEP",
+  "subject": {
     "entities": [
-        {"type": "device",
-        "isPattern": "false",
-        "id": "mydevice"
-        }
+      {
+        "idPattern": ".*",
+        "type": "device"
+      }
     ],
-    "reference": "http://<cep_host>:<cep_port>/notices",
-    "duration": "P1Y",
-    "notifyConditions": [
-           {
-                "type": "ONCHANGE", 
-                "condValues": ["TimeInstant" ]
-} ],
-"throttling": "PT1S" }
+    "condition": {
+      "attrs": [
+        "TimeInstant"
+      ]
+    }
+  },
+  "notification": {
+    "http": {
+      "url": "http://10.0.0.2:9090/notices"
+    },
+    "attrsFormat": "legacy",
+    "attrs": [
+      "temperature"
+    ]
+  },
+  "expires": "2026-04-05T14:00:00.00Z"
+}
 ```
 
-If you are familiar with FIWARE components, on this request you are using the Data API subscription operation to notify new data from your device to the FIWARE CEP component providing the Complex Event Processing API.
+**NOTE**: at the present moment `"attrsFormat": "legacy"` is required, as CEP only supports NGSIv1 notification
+format. This will change in the future 
+(a [pull request with NGSIv2 support for Perseo CEP](https://github.com/telefonicaid/perseo-fe/pull/305) is on the way).
+
+Once the context data is modified in Context Broker and the subscription is unleashed, the context will be sent to the CEP, where the event will be assessed and rules will be executed if they are fullfilled.
+
 
 # Create rule to send emails
 
@@ -165,7 +181,6 @@ X-Auth-Token: {{user-token}}
         }
     }
 }
-
 ```
 
 # In more detail ...
