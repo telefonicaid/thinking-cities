@@ -181,7 +181,6 @@ X-Auth-Token: {{user-token}}
         }
     }
 }
-
 ```
 
 # In more detail ...
