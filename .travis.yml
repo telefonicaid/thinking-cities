@@ -17,7 +17,13 @@
 #
 
 language: java
- 
+
+install:
+  # We need to install explicitely JDK 8 due to hive-jdbc 2.3.4 depends on in (even in the case of
+  # built the code with Java >8... weird but true, see for instance https://stackoverflow.com/questions/11118070/buiding-hadoop-with-eclipse-maven-missing-artifact-jdk-toolsjdk-toolsjar1)
+  - sudo apt-get update
+  - DEBIAN_FRONTEND=noninteractive sudo apt-get install -y openjdk-8-jdk
+
 jdk:
   - openjdk8
   - oraclejdk8
@@ -28,8 +34,8 @@ branches:
     only:
       - /.*/
 
-install:
-  - mvn package
-
-before_install:
+script:
+  - cd java-examples
   - mvn clean
+  - mvn package
+  
