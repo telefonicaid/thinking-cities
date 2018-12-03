@@ -35,15 +35,14 @@
             <artifactId>hadoop-common</artifactId>
             <version>2.7.1</version>
         </dependency>
-
         <dependency>
-          <systemPath>/usr/lib/jvm/java-1.7.0-openjdk-x86_64/jre/lib/tools.jar</systemPath>
+          <groupId>jdk.tools</groupId>
+          <artifactId>jdk.tools</artifactId>
+          <version>1.7.0</version>
+          <scope>system</scope>
+          <systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
         </dependency>
     </dependencies>
-    <profiles>
-      <systemPath>/usr/lib/jvm/java-1.7.0-openjdk-x86_64/jre/lib/tools.jar</systemPath>
-    </profiles>
-
     <build>
         <plugins>
             <plugin>
