@@ -12,7 +12,7 @@ To do it, a subscription from the Short Time Historic (STH) to the Context Broke
 An example of such a subscription is included next. The concrete template values between `{{`and `}}` should be substituted by the real counterparts:
 
 ```
-POST /v1/subscribeContext HTTP/1.1
+POST /v2/subscriptions HTTP/1.1
 Host: <cb_host>:<cb_port>
 Accept: application/json
 Content-Type: application/json
@@ -21,26 +21,25 @@ Fiware-ServicePath: {{Fiware-ServicePath}}
 X-Auth-Token: {{user-token}}
 
 {
-  "entities": [
-    {
-      "type": "device",
-      "isPattern": "false",
-      "id": "mydevice"
-    }
-  ],
-  "notifyConditions": [
-    {
-      "type": "ONCHANGE",
-      "condValues": ["TimeInstant"]
-    }
-  ],
-  "reference": "http://<sth_host>:<sth_port>/notify",
-  "duration": "P1Y",
-  "throttling": "PT1S"
+  "subject": {
+    "entities": [
+      {
+        "id": "mydevice",
+        "type": "device"
+      }
+    ]
+  },
+  "notification": {
+    "http": {
+      "url": "http://<sth_host>:<sth_port>/notify"
+    },
+    "attrs": ["TimeInstant"],
+    "attrsFormat": "legacy"
+  }  
 }
 ```
 
-Notice that as a result of the previous subscription the platform will generate historical and aggregated time series context information about the `mydevice` entity of type `device` for each new attribute value notified by that device to the platform for the next year as set in the `duration` property.
+Notice that as a result of the previous subscription the platform will generate historical and aggregated time series context information about the `mydevice` entity of type `device` for each new attribute value notified by that device to the platform.
 
 # Historical context information retrieval
 
