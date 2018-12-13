@@ -15,5 +15,5 @@ Current stable release is able to persist the following sources of data in the f
 
 ## Documentation and API
 
-FIWRE Cygnus at [Github](https://github.com/telefonicaid/fiware-cygnus).
+FIWARE Cygnus at [ReadTheDocs](https://fiware-cygnus.readthedocs.io).
 
