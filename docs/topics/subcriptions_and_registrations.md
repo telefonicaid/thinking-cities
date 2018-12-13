@@ -44,32 +44,29 @@ On the one hand, subscriptions:
 
 On the other hand, registrations:
 
-    POST /v1/registry/registerContext
+    POST /v2/registrations
     Content-Type: application/json
     Fiware-service: smartown
     Fiware-servicepath: /roads
 
-    {
-      "contextRegistrations": [
-        {
-          "entities": [
-            {
-              "type": "Car",
-              "isPattern": "false",
-              "id": "FBH4452"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "speed",
-              "type": "Number",
-              "isDomain": "false"
-            }
-          ],
-          "providingApplication": "http://myproviders.com/Cars"
-        }
-      ],
-      "duration": "P1M"
+    {    
+      "dataProvided": {
+        "entities": [
+          {
+            "id": "FBH4452",
+            "type": "Car"
+          }
+        ],
+        "attrs": [
+          "speed"       
+        ]
+      },
+      "provider": {
+        "http": {
+          "url": "http://myproviders.com/Cars"
+        },
+        "legacyForwarding": true
+      }
     }
 
 - Are used to configure context sources (also known as *context providers*). Details can be found in 
@@ -78,7 +75,4 @@ On the other hand, registrations:
   registration.
 - In the case of query forwarding, the context provider will send the query result to Context Broker
   as part of the query response. Thus, there is an information flow from context providers to Context Broker.
-- By the time being at IoT platform v4.1, registrations management is not yet part of the NGSIv2, so the old 
-  NGSIv1 API has to be used. However, the query/udpates forwarded as result of the registrations can use 
-  NGSIv2 without problems. More details about this coexistence [here](http://fiware-orion.readthedocs.io/en/master/user/v1_v2_coexistence/index.html#ngsiv2-query-update-forwarding-to-context-providers).
  
