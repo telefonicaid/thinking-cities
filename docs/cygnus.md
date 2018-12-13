@@ -5,7 +5,7 @@ Internally, Cygnus is based on [Apache Flume](http://flume.apache.org/), a techn
 Cygnus is designed to run a specific Flume agent per source of data.
 
 Current stable release is able to persist the following sources of data in the following third-party storages:
-    
+
 * NGSI-like context data in:
     * [HDFS](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html), the [Hadoop](http://hadoop.apache.org/) distributed file system.
     * [MySQL](https://www.mysql.com/), the well-known relational database manager.
