@@ -10,12 +10,12 @@ The following action types are available:
 
 This API allows you for example to define rules to trigger email notifications based on the data value thresholds or the the lack of updates from a certain device.
 
-These rules are expressed as an EPL sentence. [EPL](http://www.espertech.com/esper/index.php) is a domain language of Esper, the engine for processing events used. This EPL sentence matches an incoming event if satisfies the conditions and generates an "action-event" that will be sent back to FIWARE IoT Stack to execute the associated action. 
+These rules are expressed as an EPL sentence. [EPL](http://www.espertech.com/esper/index.php) is a domain language of Esper, the engine for processing events used. This EPL sentence matches an incoming event if satisfies the conditions and generates an "action-event" that will be sent back to Thinking Cities to execute the associated action.
 
 
 # Send Context to CEP to Activate Rules
 
-In order CEP to assess events and execute rules it is needed to send to CEP the notifications from Context Broker with the context data. In order to send notifications to CEP it is needed to create the relevant subscripcions. It can be done using the [Context Broker API](https://fiware-iot-stack.readthedocs.io/en/latest/data_api/index.html#subscribe-to-data-updates)
+In order CEP to assess events and execute rules it is needed to send to CEP the notifications from Context Broker with the context data. In order to send notifications to CEP it is needed to create the relevant subscripcions. It can be done using the [Context Broker API](https://thinking-cities.readthedocs.io/en/latest/data_api/index.html#subscribe-to-data-updates)
 
 Find below an example of subscription creation, where the attribute temperature is sent to CEP.
 
@@ -153,7 +153,7 @@ X-Auth-Token: {{user-token}}
 
 # Create rule to issue a command to a device
 
-It is possible to send a command to a device using FIWARE CEP by updating the relevant Context Broker attribute. First of all, you have to register you IoT device setting the command you want to issue as stated in [Register your IoT device](https://fiware-iot-stack.readthedocs.io/en/latest/device_api/index.html#register-your-iot-device). The rule will update the command attribute in the Context Broker and then the Context Broker acts in the same way as in a manually issued command.
+It is possible to send a command to a device using FIWARE CEP by updating the relevant Context Broker attribute. First of all, you have to register you IoT device setting the command you want to issue as stated in [Register your IoT device](https://thinking-cities.readthedocs.io/en/latest/device_api/index.html#register-your-iot-device). The rule will update the command attribute in the Context Broker and then the Context Broker acts in the same way as in a manually issued command.
 
 ```
 POST /rules HTTP/1.1

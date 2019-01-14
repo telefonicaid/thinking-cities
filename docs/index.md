@@ -1,9 +1,11 @@
-FIWARE IoT Stack allows you to connect devices and receive data, integrating all
-device protocols and connectivity methods, understanding and interpreting relevant information.
-It isolates data processing and application service layers from the device and network complexity,
+The Thinking Cities is a [powered by FIWARE platform](http://marketplace.fiware.org/pages/solutions/c5940dbbdfbcf694f6cdf6ec)
+which allows you to connect devices and receive data, integrating all device protocols
+and connectivity methods, understanding and interpreting relevant information.
+It combines Telefónica components with FIWARE Generic Enablers and isolates data
+processing and application service layers from the device and network complexity,
 in terms of access, security and network protocols.
 
-These are the main benefits of solutions 'powered by the FIWARE IoT Stack':
+These are the main benefits of Thinking Cities platform:
 
 - Simple sensor data integration
 - Device-independent APIs for quick app development & lock-in prevention
@@ -13,7 +15,7 @@ These are the main benefits of solutions 'powered by the FIWARE IoT Stack':
 
 ## APIs available
 
-FIWARE IoT Stack provides the following APIs:
+Thinking Cities provides the following APIs:
 
 - [Authentication API](authentication_api.md): manages tokens for APIs usage.
 - [Device API](device_api.md): allows managing devices, sending data from the device to the cloud and receiving commands.
@@ -24,11 +26,11 @@ FIWARE IoT Stack provides the following APIs:
 
 ## Multitenancy
 
-FIWARE IoT Stack multitenancy model is described [in this section](multitenancy.md).
+Thinking Cities multitenancy model is described [in this section](multitenancy.md).
 
 ## Data persistence
 
-FIWARE IoT Data capabilities go far beyond querying the current context data or the short-term history. FIWARE IoT Stack provides means for storing hitorical data for the mid and long-term in third-party components; the following ones:
+FIWARE IoT Data capabilities go far beyond querying the current context data or the short-term history. Thinking Cities provides means for storing hitorical data for the mid and long-term in third-party components; the following ones:
 
 - [HDFS](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html), the [Hadoop](http://hadoop.apache.org/) distributed file system.
 - [MySQL](https://www.mysql.com/), the well-know relational database manager.
@@ -37,7 +39,7 @@ FIWARE IoT Data capabilities go far beyond querying the current context data or 
 
 ## FIWARE Components
 
-FIWARE IoT Stack is based on the following [FIWARE components](walkthrough.md) in order to provide its functionality:
+Thinking Cities is based on the following [FIWARE components](walkthrough.md) in order to provide its functionality:
 
 - IoTAgents (IoTA)
 - Context Broker (Orion)
@@ -54,4 +56,4 @@ In addition, the platform includes the following additional components, which ar
 
 ## FIWARE Datamodels
 
-A set of recommended data models to be used with FIWARE IoT Stack can be found [here](http://fiware-datamodels.readthedocs.io/en/latest/index.html).
+A set of recommended data models to be used with Thinking Cities can be found [here](http://fiware-datamodels.readthedocs.io/en/latest/index.html).
