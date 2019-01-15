@@ -6,7 +6,7 @@ mapping your device data to an NGSI Entity and attributes.
 The Device API allows you to:
 
 - Register your device to reduce the message footprint and use commands.
-- Send data from the device to the FIWARE IoT Stack
+- Send data from the device to Thinking Cities
 - Send commands from your application to the device
 
 The following documents show how to manage device connectivity through the IoT Agent Manager of the IoT Platform. These

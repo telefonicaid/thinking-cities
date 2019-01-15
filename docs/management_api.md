@@ -116,8 +116,8 @@ Content-Type: application/json
 
 These are the roles permissions:
 
-- SubServiceCustomer: can query data stored at FIWARE IoT Stack
-- SubServiceAdmin: can query and update data at FIWARE IoT Stack
+- SubServiceCustomer: can query data stored at Thinking Cities
+- SubServiceAdmin: can query and update data at Thinking Cities
 
 Please note that these roles id are specific per subservice, so you need to retrieve them.
 
