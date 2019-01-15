@@ -41,18 +41,21 @@ FIWARE IoT Data capabilities go far beyond querying the current context data or 
 
 Thinking Cities is based on the following [FIWARE components](walkthrough.md) in order to provide its functionality:
 
+The following components used by Thinking Cities have been contributed as open source to FIWARE and can be found within the [FIWARE Catalogue](https://github.com/Fiware/catalogue/):
+
 - IoTAgents (IoTA)
 - Context Broker (Orion)
 - Short Term Historic (STH)
 - Connector Framework (Cygnus)
-- Security Components: Identity Management (IDM), Policy Enforcement Point (PEP) and Access Control (AC). The platform does not
-  use the FIWARE GEri for these components, but alternative GEi conforming with the same GE specifications (see 
-  [this clarification](https://ask.fiware.org/question/1/what-is-a-fiware-ge-and-a-gei/) about GE, GEi and GEri terms).
+- Complex Event Processing (Perseo)
 
-In addition, the platform includes the following additional components, which are not part of FIWARE (but still open source):
+The platform also includes the following additional component, which is not part of FIWARE (but still remains open source):
 
-- Complex Event Processing (Perseo). It is not part of FIWARE, but integrates with the platform using FIWARE-based APIs (in particular, using NGSI).
 - IoT Orchestrator
+
+The Thinking Cities platform does not use the Identity Management (IDM), Policy Enforcement Point (PEP) and 
+Access Control (AC) from the FIWARE Catalogue. The platform contains its own bespoke security components conforming 
+with the same GE specifications (see [this clarification](https://ask.fiware.org/question/1/what-is-a-fiware-ge-and-a-gei/) about GE, GEi and GEri terms).
 
 ## FIWARE Datamodels
 
