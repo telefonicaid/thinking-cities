@@ -59,4 +59,5 @@ with the same GE specifications (see [this clarification](https://ask.fiware.org
 
 ## FIWARE Datamodels
 
-A set of recommended data models to be used with Thinking Cities can be found [here](http://fiware-datamodels.readthedocs.io/en/latest/index.html).
+Thinking Cities recommends the use of the standard
+FIWARE data models which can be found [here](http://fiware-datamodels.readthedocs.io/en/latest/index.html).
