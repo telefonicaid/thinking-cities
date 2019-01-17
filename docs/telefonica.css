@@ -1,0 +1,205 @@
+/*
+
+Uncomment this block is CORS is disabled.
+
+@font-face {
+    font-family: TelefonicaCAP;
+    src: url("https://www.telefonica.com/es/home/telefonica-theme/css/custom/theme/fonts/TelefonicaCAP/otf/TelefonicaCAP.otf"),url("/telefonica-theme/css/custom/theme/fonts/TelefonicaCAP/woff/TelefonicaCAP.woff") format("woff");
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: TelefonicaHeadline-Light;
+    src: url("https://www.telefonica.com/es/home/telefonica-theme/css/custom/theme/fonts/TelefonicaHeadline/otf/TelefonicaHeadline-Light.otf"),url("/telefonica-theme/css/custom/theme/fonts/TelefonicaHeadline/woff/TelefonicaHeadline-Light.woff") format("woff");
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: TelefonicaText;
+    src: url("https://www.telefonica.com/es/home/telefonica-theme/css/custom/theme/fonts/TelefonicaText/woff/TelefonicaText.woff") format("woff");
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: TelefonicaText-Italic;
+    src: url("https://www.telefonica.com/es/home/telefonica-theme/css/custom/theme/fonts/TelefonicaText/woff/TelefonicaText-Italic.woff") format("woff");
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: TelefonicaText-Bold;
+    src: url("https://www.telefonica.com/es/home/telefonica-theme/css/custom/theme/fonts/TelefonicaText/woff/TelefonicaText-Bold.woff") format("woff");
+    font-weight: normal;
+    font-style: normal
+}
+*/
+
+
+
+.wy-nav-content {max-width: none !important}
+
+
+body{font-family: 'TelefonicaText',Arial,Helvetica,sans-serif;font-weight: 500; line-height: 1.42857143 !important; color: #4c4c4c }
+
+h1, h2, h3, h4 {
+    font-family: 'TelefonicaHeadline-Light',Arial,Helvetica,sans-serif !important;
+    line-height: 1em;
+    font-weight: normal;
+    color: #008ad0 !important;
+}
+
+
+code{padding:0px; border-width: 0px; background-color: transparent;font-size: 16px; color:#ff7059 !important}
+pre code{color:#ffffff !important}
+td {
+    border-color:#4c4c4c !important;
+}
+th {
+    background-color:#5dc0cf;
+    color: #fff;
+    border-color:#4c4c4c !important;
+}
+hr {
+  width: 200%;
+  margin-left: -50%;
+   padding-bottom : 6px;
+   box-shadow: 0px 3px 0px 0px #5dc0cf;
+   border-top : none;
+}
+div[role="navigation"] hr {
+    box-shadow: none;
+    border-top: 1px solid #e1e4e5;
+}
+
+
+a{color:#00c6d7 !important}
+a:hover{color:#00c6d7 !important}
+a.icon-home{color:#fff !important;
+white-space : pre-line !important;
+font-family: 'TelefonicaText',Arial,Helvetica,sans-serif !important; font-weight:normal !important;color:#000 !important;  margin:0 0 0 0 !important}
+.fa-home:before, .icon-home:before{content:None !important}
+.wy-menu-vertical {color: #4c4c4c; background-color:#bec3cc}
+.wy-menu-vertical .current {color: #4c4c4c; background-color:#fefefe;
+border-right: #efefef solid 1px; }
+
+
+
+
+.wy-menu-vertical .current > a  {background:#1c6c8b !important; color : #ffffff  !important}
+.wy-menu-vertical .current > a  {background:#1c6c8b !important; color : #ffffff  !important}
+.wy-menu-vertical li.current a {border-right: none}
+.wy-menu-vertical li.current a:hover{background-color: #1c6c8b; color:#ffffff !important}
+.wy-menu-vertical li.current > a:hover{background-color:#1c6c8b !important;border-right:0 !important}
+.wy-menu-vertical a:hover{background-color: #1c6c8b; color:#ffffff !important}
+
+
+/*	 !important; border-right: #efefef solid 1px;}*/
+.wy-side-nav-search a{background-color:transparent !important; }
+.wy-menu-vertical span{font-weight: 600 !important; color:#555555 !important;}
+nav > div.wy-menu.wy-menu-vertical > ul > li > a{font-weight:600 !important; color:#555555 !important}
+nav > div.wy-menu.wy-menu-vertical > ul > li.current > a{font-weight:600 !important; color:#ffffff !important}
+
+.wy-side-nav-search{margin-bottom:0 !important; text-align:left !important}
+nav > div.wy-menu.wy-menu-vertical > ul > li > a:hover{color:#ffffff !important}
+.btn-neutral{background-color:#00c6d7 !important color:#4c4c4c !important}
+.btn-neutral:hover{background-color:#00c6d7 !important; color:#ffffff !important}
+.btn-neutral:visited{color:#00c6d7 !important}
+.btn-neutral:visited:hover{color:#ffffff !important}
+
+.rst-versions{background:#1c6c8b none !important;border-top:0 !important;font-family:Verdana !important}
+.rst-versions .rst-current-version{background-color:#1c6c8b !important}
+.rst-versions a{color:#fff !important; text-decoration:underline !important}
+.rst-versions a:hover{color:#FFF !important}
+.fa-book,.fa{font-family:verdana !important}
+.rst-versions .rst-other-versions{color:#fff !important}
+.rst-versions .rst-other-versions hr{border-color:#fff !important}
+.fa-home:before, .icon-home:after{content:}
+a.icon-home {color:#ffffff !important;
+ font-family: 'TelefonicaText',Arial,Helvetica,sans-serif !important; 
+ font-size: x-large !important;
+}
+
+
+.wy-side-nav-search{
+ clear:both !important; 
+ padding:55px 10px 16px 10px;
+ background: #1c6c8b;
+ background-image: url('https://www.telefonica.com/image/company_logo?img_id=4585436&t=1546841944155') !important;
+ background-size: 213px 50px !important;
+ background-repeat: no-repeat !important;
+ background-position: 10px 8px !important; 
+ border-bottom-color : #000000;
+ border-bottom-width: 1px;
+ border-style: solid;
+}
+
+
+.rst-versions .rst-other-versions dt{font-weight:bold !important}
+.wy-body-for-nav{background-image:none !important}
+.wy-nav-side{background-color:transparent !important}
+
+
+/* Custom width read the docs */
+.wy-nav-content {max-width: none !important; background-color: #ffffff}
+/* to avoid display version when generated from rst */
+.wy-side-nav-search .version {display:none;}
+/* Allow multiline project names in side navigation bar */
+.wy-side-nav-search a.icon-home {white-space: pre-wrap;}
+.wy-side-nav-search input[type=text]{
+    margin-top : 4px;
+    border-radius: unset;
+    background-color: #f5f5f5;
+    border-color:#000000;
+}
+
+.wy-breadcrumbs {
+    color : #000000;
+    font-size: medium;
+}
+
+.wy-nav-top { background-color:#1c6c8b;}
+.wy-nav-top > a:hover {color: #ffffff  !important}
+.wy-nav-top > a{ color: #ffffff  !important; font-size: x-large}
+
+.rst-content img,blockquote {max-width: 94%; background-color: #f5f5f5; border-style: solid;  border-color : #4c4c4c; border-width : 1px; margin-left: 3%;}
+.rst-content a img {background-color: transparent; border-style: none;  margin-left: 0%; margin-right: 0%}
+.rst-content blockquote {padding: 15px;}
+.rst-content pre {border-style: solid;  border-color : #000000; border-width : 1px; margin-left: 3%; margin-right: 3%;}
+.rst-content pre code { background-color: #000000; margin: 1px}
+
+.rst-content table.docutils:not(.field-list) tr:nth-child(2n-1) td {
+    background-color: #f5f5f5;
+}
+.rst-content table.docutils:not(.field-list) tr:nth-child(2n-1) td img {
+    background-color: transparent; border-style: none; 
+}
+
+td {
+    border-color:#4c4c4c !important;
+}
+th {
+    background-color:#1c6c8b;
+    color: #fff;
+    border-color:#4c4c4c !important;
+}
+
+th code {
+    color: #fff !important;
+}
+
+hr {
+  width: 108%;
+  margin-left: -4%;
+   padding-bottom : 6px;
+    box-shadow: 0px 3px 0px 0px #23d3d3;
+}
+
+div[role="main"]{
+  margin-left:3%; 
+  margin-right:3%;
+}
+
