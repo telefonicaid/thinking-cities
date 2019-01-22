@@ -73,7 +73,7 @@ along with the information for its mapping to the NGSI entity.
 
 Provisioning of JSON Configuration group is exactly the same just replacing `?protocol=IoTA-UL` by `?protocol=IoTA-JSON`. 
 
-Currently, the IoT Platform only allows for the existence of a configuration group per subservice for each protocol, i.e. one for "IoTA-UL" and other for "IoTA-JSON".
+Currently, the IoT Platform only allows for the existence of a configuration group per subservice for each protocol and apikey, i.e. one for "IoTA-UL" with apikey "XXYYZZ", "IoTA-UL", other with apikey "AABBBCC" and other for "IoTA-JSON".
 
 # Register your IoT device 
 
