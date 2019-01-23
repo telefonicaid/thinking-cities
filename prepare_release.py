@@ -25,6 +25,7 @@ from getopt import getopt, GetoptError
 from requests import get
 
 import os
+import shutil
 import sys
 import re
 import tempfile
@@ -179,7 +180,10 @@ def process_file(file_name, versions, dry_run):
 
         # Remove old file, replacing by the edited one
         os.remove(file_name)
-        os.rename(file_temp.name, file_name)
+        # os.rename() raises "[Errno 18] Invalid cross-device link" error is temp file is in a different
+        # filesystem so it is safer to copy & remove
+        shutil.copy(file_temp.name, file_name)
+        os.remove(file_temp.name)
     except Exception as err:
         print ('* error processing file %s: %s' % (file_name, str(err)))
 
