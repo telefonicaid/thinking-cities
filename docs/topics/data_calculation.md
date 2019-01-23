@@ -101,16 +101,16 @@ or the same entity in NGSIv2 format:
       }
 
 To see the complete set of operations and features available for the Expression Language, refer to
-the [specification](https://github.com/telefonicaid/iotagent-node-lib/blob/master/doc/expressionLanguage.md).
+the [specification](https://github.com/telefonicaid/iotagent-node-lib/blob/2.7.0/doc/expressionLanguage.md).
 
 ## Calculations based on data in Context Entities
 
 For those data values that doesn't come from devices, but from external systems, and for those cases when the sources of
 context information to calculate those values are multiple, the [CEP](../cep.md) can be used to make some of those calculations.
 
-The CEP gets a notification cointaining a configurable set of attributes (as set in the subscription) and that allows using more fields than the ones sent by device. The notification mechanism allows to send the previous value of an attribute as metadata `previousValue` (see [metadata in notifications](http://fiware-orion.readthedocs.io/en/master/user/metadata/index.html#metadata-in-notifications)). So, as an example, we can think of an entity that periodically sends its coordinates and the time of the measure. We could calculate its average velocity by means of a rule that updates its field `velocity`.
+The CEP gets a notification cointaining a configurable set of attributes (as set in the subscription) and that allows using more fields than the ones sent by device. The notification mechanism allows to send the previous value of an attribute as metadata `previousValue` (see [metadata in notifications](http://fiware-orion.readthedocs.io/en/2.0.0/user/metadata/index.html#metadata-in-notifications)). So, as an example, we can think of an entity that periodically sends its coordinates and the time of the measure. We could calculate its average velocity by means of a rule that updates its field `velocity`.
 
-For simplicity, the previous values are taken as values in the incomming notification, but they could be taken as `ev.x__metadata__previousValue` instead of `x0`, and the same for `y0` and `t0` (see [Metadata and object values](https://github.com/telefonicaid/perseo-fe/blob/master/documentation/plain_rules.md#metadata-and-object-values))
+For simplicity, the previous values are taken as values in the incomming notification, but they could be taken as `ev.x__metadata__previousValue` instead of `x0`, and the same for `y0` and `t0` (see [Metadata and object values](https://github.com/telefonicaid/perseo-fe/blob/1.7.0/documentation/plain_rules.md#metadata-and-object-values))
 
 The rule could be:
 
@@ -261,4 +261,4 @@ http://<sth-component>:<sth-port>/STH/v1/contextEntities/type/Entity/id/WasteTan
 http://<sth-component>:<sth-port>/STH/v1/contextEntities/type/Entity/id/WasteTank8/attributes/density?aggrMethod=sum2&aggrPeriod=minute&dateFrom=2016-11-14T00:00:00&dateTo=2016-11-16T23:59:59
 ```
 
-For futher information about the STH component and all the capabilities it provides, please visit the [STH documentation at ReadTheDocs](http://fiware-sth-comet.readthedocs.io/en/master/index.html).
+For futher information about the STH component and all the capabilities it provides, please visit the [STH documentation at ReadTheDocs](http://fiware-sth-comet.readthedocs.io/en/2.4.0/index.html).

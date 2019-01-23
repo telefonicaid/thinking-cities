@@ -70,7 +70,7 @@ On the other hand, registrations:
     }
 
 - Are used to configure context sources (also known as *context providers*). Details can be found in 
-  [the Context Broker documentation](http://fiware-orion.readthedocs.io/en/master/user/context_providers/index.html).
+  [the Context Broker documentation](http://fiware-orion.readthedocs.io/en/2.0.0/user/context_providers/index.html).
 - The URL associated to a registration is used to forward queries or updates to context providers covered by the 
   registration.
 - In the case of query forwarding, the context provider will send the query result to Context Broker
