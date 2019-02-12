@@ -1,6 +1,6 @@
 You can get Postman here: https://www.getpostman.com/
 
-In order to use the Postman collection indcluded in this directory, you need to define the following variables in your environment:
+In order to use the Postman collection included in this directory (https://github.com/telefonicaid/thinking-cities/blob/master/postman/ThinkingCities%20APIs%20Basic%20Ops.postman_collection.json), you need to define the following variables in your environment:
 
 * **host**: the host for all the APIs (except IOTA Manager API)
 * **hostIota**: the host IOTA Manager API
