@@ -47,7 +47,6 @@ X-Auth-Token: {{user-token}}
     "http": {
       "url": "http://10.0.0.2:9090/notices"
     },
-    "attrsFormat": "legacy",
     "attrs": [
       "temperature"
     ]
@@ -56,9 +55,8 @@ X-Auth-Token: {{user-token}}
 }
 ```
 
-**NOTE**: at the present moment `"attrsFormat": "legacy"` is required, as CEP only supports NGSIv1 notification
-format. This will change in the future 
-(a [pull request with NGSIv2 support for Perseo CEP](https://github.com/telefonicaid/perseo-fe/pull/305) is on the way).
+**NOTE**: in order to use NGSIv1 notifications you need to add `"attrsFormat": "legacy"` in `"notification"` object.
+Currently CEP supports both NGSIv1 (deprecated) and NGSIv2 notifications.
 
 Once the context data is modified in Context Broker and the subscription is unleashed, the context will be sent to the CEP, where the event will be assessed and rules will be executed if they are fullfilled.
 
