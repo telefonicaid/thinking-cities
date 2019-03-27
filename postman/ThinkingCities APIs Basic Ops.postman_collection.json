@@ -984,7 +984,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"services\": [\r\n    {\r\n      \"apikey\": \"555000BJKL23Y9090DSFL123HJK09H324HV8732\",\r\n      \"entity_type\": \"device\",\r\n      \"attributes\": [\r\n        { \"object_id\": \"t\", \"name\": \"temperature\", \"type\": \"float\" },\r\n        { \"object_id\": \"h\", \"name\": \"humidity\", \"type\": \"float\" }\r\n      ],\r\n      \"static_attributes\": [\r\n        { \"name\": \"deviceFamily\", \"type\": \"integer\", \"value\": \"02598347\" }\r\n      ],      \r\n      \"lazy\": [\r\n        { \"object_id\": \"l\", \"name\": \"luminosity\", \"type\": \"percentage\" }\r\n      ],\r\n      \"commands\": [\r\n      \t{ \"object_id\": \"u\", \"name\": \"turn\", \"type\": \"string\" }\r\n      ],\r\n      \"protocol\": [ \"IoTA-JSON\" ]\r\n    }\r\n  ]\r\n}"
+							"raw": "{\r\n  \"services\": [\r\n    {\r\n      \"apikey\": \"{{JSON_APIKEY}}\",\r\n      \"entity_type\": \"device\",\r\n      \"attributes\": [\r\n        { \"object_id\": \"t\", \"name\": \"temperature\", \"type\": \"float\" },\r\n        { \"object_id\": \"h\", \"name\": \"humidity\", \"type\": \"float\" }\r\n      ],\r\n      \"static_attributes\": [\r\n        { \"name\": \"deviceFamily\", \"type\": \"integer\", \"value\": \"02598347\" }\r\n      ],      \r\n      \"lazy\": [\r\n        { \"object_id\": \"l\", \"name\": \"luminosity\", \"type\": \"percentage\" }\r\n      ],\r\n      \"commands\": [\r\n      \t{ \"object_id\": \"u\", \"name\": \"turn\", \"type\": \"string\" }\r\n      ],\r\n      \"protocol\": [ \"IoTA-JSON\" ]\r\n    }\r\n  ]\r\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
@@ -1024,7 +1024,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"services\": [\r\n    {\r\n      \"apikey\": \"666000BJKL23Y9090DSFL123HJK09H324HV8732\",\r\n      \"entity_type\": \"device\",\r\n      \"attributes\": [\r\n        { \"object_id\": \"t\", \"name\": \"temperature\", \"type\": \"float\" },\r\n        { \"object_id\": \"h\", \"name\": \"humidity\", \"type\": \"float\" }\r\n      ],\r\n      \"static_attributes\": [\r\n        { \"name\": \"deviceFamily\", \"type\": \"integer\", \"value\": \"02598347\" }\r\n      ],\r\n      \"commands\": [\r\n      \t{ \"object_id\": \"u\", \"name\": \"turn\", \"type\": \"string\" }\r\n      ],\r\n      \"lazy\": [\r\n        { \"object_id\": \"l\", \"name\": \"luminosity\", \"type\": \"percentage\" }\r\n      ],\r\n      \"protocol\": [ \"IoTA-UL\" ]\r\n    }\r\n  ]\r\n}"
+							"raw": "{\r\n  \"services\": [\r\n    {\r\n      \"apikey\": \"{{UL_APIKEY}}\",\r\n      \"entity_type\": \"device\",\r\n      \"attributes\": [\r\n        { \"object_id\": \"t\", \"name\": \"temperature\", \"type\": \"float\" },\r\n        { \"object_id\": \"h\", \"name\": \"humidity\", \"type\": \"float\" }\r\n      ],\r\n      \"static_attributes\": [\r\n        { \"name\": \"deviceFamily\", \"type\": \"integer\", \"value\": \"02598347\" }\r\n      ],\r\n      \"commands\": [\r\n      \t{ \"object_id\": \"u\", \"name\": \"turn\", \"type\": \"string\" }\r\n      ],\r\n      \"lazy\": [\r\n        { \"object_id\": \"l\", \"name\": \"luminosity\", \"type\": \"percentage\" }\r\n      ],\r\n      \"protocol\": [ \"IoTA-UL\" ]\r\n    }\r\n  ]\r\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
@@ -1067,7 +1067,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services?protocol=IoTA-JSON&apikey=5h67kggu83tekwmlotij2dnte",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services?protocol=IoTA-JSON&apikey={{JSON_APIKEY}}",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
@@ -1083,7 +1083,7 @@
 								},
 								{
 									"key": "apikey",
-									"value": "5h67kggu83tekwmlotij2dnte"
+									"value": "{{JSON_APIKEY}}"
 								}
 							]
 						}
@@ -1117,7 +1117,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services?protocol=IoTA-UL&apikey=ul2ia3wuhrlune2drj937002c",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services?protocol=IoTA-UL&apikey={{UL_APIKEY}}",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
@@ -1133,7 +1133,7 @@
 								},
 								{
 									"key": "apikey",
-									"value": "ul2ia3wuhrlune2drj937002c"
+									"value": "{{UL_APIKEY}}"
 								}
 							]
 						}
@@ -1607,7 +1607,7 @@
 							"raw": "{\r\n  \"w\": \"36\",\r\n  \"e\": \"23\"\r\n}"
 						},
 						"url": {
-							"raw": "http://{{ENDPOINT_IOTA_JSON_HTTP}}/iot/json?i=dev1json&k=555000BJKL23Y9090DSFL123HJK09H324HV8732",
+							"raw": "http://{{ENDPOINT_IOTA_JSON_HTTP}}/iot/json?i=dev1json&k={{JSON_APIKEY}}",
 							"protocol": "http",
 							"host": [
 								"{{ENDPOINT_IOTA_JSON_HTTP}}"
@@ -1623,7 +1623,7 @@
 								},
 								{
 									"key": "k",
-									"value": "555000BJKL23Y9090DSFL123HJK09H324HV8732"
+									"value": "{{JSON_APIKEY}}"
 								}
 							]
 						}
@@ -1640,7 +1640,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{ENDPOINT_IOTA_UL_HTTP}}/iot/d?i=dev1ul&k=666000BJKL23Y9090DSFL123HJK09H324HV8732&d=w|42|e|24",
+							"raw": "http://{{ENDPOINT_IOTA_UL_HTTP}}/iot/d?i=dev1ul&k={{UL_APIKEY}}&d=w|42|e|24",
 							"protocol": "http",
 							"host": [
 								"{{ENDPOINT_IOTA_UL_HTTP}}"
@@ -1656,7 +1656,7 @@
 								},
 								{
 									"key": "k",
-									"value": "666000BJKL23Y9090DSFL123HJK09H324HV8732"
+									"value": "{{UL_APIKEY}}"
 								},
 								{
 									"key": "d",

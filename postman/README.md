@@ -17,5 +17,7 @@ In order to use the Postman collection included in this directory (https://githu
 * **USER**: user (used by the "Get auth token" operation)
 * **PASSWORD**: password (used by the "Get auth token" operation)
 * **TOKEN**: token to use in `X-Auth-Token` header. Use "Get auth token (service)" and "Get auth token (subservice)" operation and take the `x-subject-token` header in the response to set this variable
+* **JSON_APIKEY**: API key used for IOTA JSON requests
+* **UL_APIKEY**: API key used for IOTA JSON requests
 
 It is to be noted that token variable is automatically added to your environment once you execute the "Get auth token" request or "Get auth token (subservice)" request.
