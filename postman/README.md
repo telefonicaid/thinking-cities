@@ -12,10 +12,10 @@ In order to use the Postman collection included in this directory (https://githu
 * **ENDPOINT_CEP**: the host:port for CEP requests
 * **ENDPOINT_CKAN**: the host:port for CKAN requests
 * **CKAN_APIKEY**: apikey used for CKAN authetication
-* **service**: service to use in `Fiware-Service` header
-* **subservice**: subservice to use in the `Fiware-ServicePath` header
-* **user**: user (used by the "Get auth token" operation)
-* **password**: password (used by the "Get auth token" operation)
-* **token**: token to use in `X-Auth-Token` header. Use "Get auth token" operation and take the `x-subject-token` header in the response to set this variable
+* **SERVICE**: service to use in `Fiware-Service` header
+* **SUBSERVICE**: subservice to use in the `Fiware-ServicePath` header
+* **USER**: user (used by the "Get auth token" operation)
+* **PASSWORD**: password (used by the "Get auth token" operation)
+* **TOKEN**: token to use in `X-Auth-Token` header. Use "Get auth token (service)" and "Get auth token (subservice)" operation and take the `x-subject-token` header in the response to set this variable
 
 It is to be noted that token variable is automatically added to your environment once you execute the "Get auth token" request or "Get auth token (subservice)" request.
