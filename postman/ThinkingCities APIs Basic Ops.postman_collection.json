@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1366b8e4-c9a5-4447-9a74-3129fda4a27c",
+		"_postman_id": "7bc52ef7-e1a7-4c99-907f-c86347302637",
 		"name": "ThinkingCities APIs Basic Ops",
 		"description": "A set with the basic API operations used by ThikingCities platform, covering:\n\n* IDM & Auth\n* Orion Context Broker\n* STH\n* Perseo CEP\n* CKAN\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -1971,7 +1971,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_STH}}/STH/v1/contextEntities/type/myType/id/myEntity/attributes/temperature?hLimit=3&hOffset=0&dateFrom=2017-10-16T00:00:00.000Z&dateTo=2017-10-26T23:59:59.999Z\n",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_STH}}/STH/v1/contextEntities/type/myType/id/myEntity/attributes/temperature?hLimit=3&hOffset=0&dateFrom=2017-10-16T00:00:00.000Z&dateTo=2017-10-26T23:59:59.999Z",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_STH}}"
@@ -2032,7 +2032,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_STH}}/STH/v1/contextEntities/type/myType/id/myEntity/attributes/temperature?aggrMethod=sum&aggrPeriod=hour&dateFrom=2017-10-16T00:00:00.000Z&dateTo=2017-10-26T23:59:59.999Z\n",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_STH}}/STH/v1/contextEntities/type/myType/id/myEntity/attributes/temperature?aggrMethod=sum&aggrPeriod=hour&dateFrom=2017-10-16T00:00:00.000Z&dateTo=2017-10-26T23:59:59.999Z",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_STH}}"
@@ -2302,6 +2302,47 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"name\":\"streetlight_column_alarm_with_mail\",\n\t\"text\":\"select ev.illuminanceLevel? as ilumLevel, ev.id? as id, ev.status? as laststatus, ev.powerState? as powerState, ev.areaServed? as areaServed, ev.dateLastLampChange__iso? as lastchange, ev.address__streetAddress? as streetAddress, ev.address__addressLocality? as addressLocality, ev.address__addressCountry? as addressCountry, ev.address__postalCode? as postalCode, \\\"streetlight_column_alarm_with_mail\\\" as ruleName from pattern [every ev=iotEvent(type='Streetlight' and ev.status? = 'columnIssue')]\",\n\t\"action\": [{\n\t\t\"type\":\"update\",\n\t\t\"parameters\":{\n\t\t\t\"id\":\"${id}_column_alarm_${ruleName}\",\n\t\t\t\"type\":\"StreetlightAlarm\",\n\t\t\t\"version\": \"2\",\n\t\t\t\"attributes\": [\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"refEntity\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${id}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"illuminanceLevel\",\n\t\t\t\t\t\"type\": \"Number\",\n\t\t\t\t\t\"value\": \"${ilumLevel}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"lastchange\",\n\t\t\t\t\t\"type\": \"DateTime\",\n\t\t\t\t\t\"value\": \"${lastchange}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"district\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${areaServed}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"status\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${laststatus}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"address\",\n\t\t\t\t\t\"type\": \"Address\",\n\t\t\t\t\t\"value\": \"${streetAddress} ${postalCode}, ${addressLocality}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"powerState\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${powerState}\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t},\n\t{\n\t\t\"type\":\"email\",\n\t\t\"template\": \"The following StreetLight has a column issue.\\n\\n    ID: ${id}\\n    Address: ${streetAddress} ${postalCode}, ${addressLocality} (${addressCountry}) \\n    PowerState: ${powerState} \\n\\n!Please send the firefighters as soon as possible!\",\n\t\t\"parameters\": {\n\t\t\t\"to\": \"macs@tid.es\",\n\t\t\t\"from\": \"manuel.carracedosanchez@telefonica.com\",\n\t\t\t\"subject\": \"Alert ${id}\"\n\t\t}\n\t}]\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_CEP}}"
+							],
+							"path": [
+								"rules"
+							]
+						},
+						"description": "Adds a rule to CEP"
+					},
+					"response": []
+				},
+				{
+					"name": "Create rule Lamp Alarm HTTP POST",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"streetlight_column_alarm_with_mail\",\n    \"text\": \"select ev.illuminanceLevel? as ilumLevel, ev.id? as id, ev.status? as laststatus, ev.powerState? as powerState, ev.areaServed? as areaServed, ev.dateLastLampChange__iso? as lastchange, ev.address__streetAddress? as streetAddress, ev.address__addressLocality? as addressLocality, ev.address__addressCountry? as addressCountry, ev.address__postalCode? as postalCode, \\\"streetlight_column_alarm_with_mail\\\" as ruleName from pattern [every ev=iotEvent(type='Streetlight' and ev.status? = 'columnIssue')]\",\n    \"action\": [\n        {\n            \"action\": {\n                \"type\": \"post\",\n                \"template\": \"{\\\"type\\\":\\\"command\\\",\\\"value\\\":1}\",\n                \"parameters\": {\n                    \"url\": \"http://10.0.0.2:1026/v2/entities/${electrovalveId}/attrs/activate?type=electrovalve\",\n                    \"method\": \"PUT\",\n                    \"headers\": {\n                        \"Content-type\": \"application/json\",\n                        \"fiware-service\": \"${service}\",\n                        \"fiware-servicepath\": \"${subservice}\"\n                    }\n                }\n            }\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
