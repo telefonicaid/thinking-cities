@@ -26,7 +26,7 @@ geo-locate them as `geo:point` using the model transformation functionality. Let
 Sensor information can be reported either directly in the `latitude, longitude` format, or separately, by using expressions to combine the information
 into a geo point. To do so, the car provisioning should be changed to reflect this new information. If the sensor information is sent using :
 
-    POST /iot/services
+    POST /iot/configGroups
     Content-Type: application/json
     Fiware-service: smartown
     Fiware-servicepath: /roads
