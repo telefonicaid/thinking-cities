@@ -28,7 +28,7 @@ South Bound protocol again. Use the provided data for future interactions.
 
 The following excerpt shows you how to provision a Configuration Group directly to the API:
 
-    POST /iot/services?protocol=IoTA-UL
+    POST /iot/configGroups?protocol=IoTA-UL
     Content-Type: application/json
     Fiware-service: OpenIoT
     Fiware-servicepath: /

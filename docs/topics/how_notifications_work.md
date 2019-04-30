@@ -14,7 +14,7 @@ onboard sensor, all them managed by the platform [IoT Agents](../device_gateway.
 between the sensor and the platform. First of all, the sensor provider has to provision a Configuration Group
 for its devices. This can be achieved with the following query:
 
-    POST /iot/services
+    POST /iot/configGroups
     Content-Type: application/json
     Fiware-service: smartown
     Fiware-servicepath: /roads
