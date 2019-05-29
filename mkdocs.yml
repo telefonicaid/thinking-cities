@@ -1,9 +1,10 @@
 site_name: Thinking Cities
 site_url: https://github.com/telefonicaid/thinking-cities/
-repo_url: https://github.com/telefonicaid/thinking-cities.git
+repo_url: https://github.com/telefonicaid/thinking-cities
 site_description: IoT Platform document site
 docs_dir: docs/
 site_dir: html
+edit_uri: edit/master/docs/
 markdown_extensions: [toc,tables, fenced_code]
 extra_css: ["telefonica.css" ]
 use_directory_urls: false
