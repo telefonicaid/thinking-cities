@@ -984,17 +984,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"services\": [\r\n    {\r\n      \"apikey\": \"{{JSON_APIKEY}}\",\r\n      \"entity_type\": \"device\",\r\n      \"attributes\": [\r\n        { \"object_id\": \"t\", \"name\": \"temperature\", \"type\": \"float\" },\r\n        { \"object_id\": \"h\", \"name\": \"humidity\", \"type\": \"float\" }\r\n      ],\r\n      \"static_attributes\": [\r\n        { \"name\": \"deviceFamily\", \"type\": \"integer\", \"value\": \"02598347\" }\r\n      ],      \r\n      \"lazy\": [\r\n        { \"object_id\": \"l\", \"name\": \"luminosity\", \"type\": \"percentage\" }\r\n      ],\r\n      \"commands\": [\r\n      \t{ \"object_id\": \"u\", \"name\": \"turn\", \"type\": \"string\" }\r\n      ],\r\n      \"protocol\": [ \"IoTA-JSON\" ]\r\n    }\r\n  ]\r\n}"
+							"raw": "{\r\n  \"configGroups\": [\r\n    {\r\n      \"apikey\": \"{{JSON_APIKEY}}\",\r\n      \"entity_type\": \"device\",\r\n      \"attributes\": [\r\n        { \"object_id\": \"t\", \"name\": \"temperature\", \"type\": \"float\" },\r\n        { \"object_id\": \"h\", \"name\": \"humidity\", \"type\": \"float\" }\r\n      ],\r\n      \"static_attributes\": [\r\n        { \"name\": \"deviceFamily\", \"type\": \"integer\", \"value\": \"02598347\" }\r\n      ],      \r\n      \"lazy\": [\r\n        { \"object_id\": \"l\", \"name\": \"luminosity\", \"type\": \"percentage\" }\r\n      ],\r\n      \"commands\": [\r\n      \t{ \"object_id\": \"u\", \"name\": \"turn\", \"type\": \"string\" }\r\n      ],\r\n      \"protocol\": [ \"IoTA-JSON\" ]\r\n    }\r\n  ]\r\n}"
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/configGroups",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"configGroups"
 							]
 						}
 					},
@@ -1024,17 +1024,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"services\": [\r\n    {\r\n      \"apikey\": \"{{UL_APIKEY}}\",\r\n      \"entity_type\": \"device\",\r\n      \"attributes\": [\r\n        { \"object_id\": \"t\", \"name\": \"temperature\", \"type\": \"float\" },\r\n        { \"object_id\": \"h\", \"name\": \"humidity\", \"type\": \"float\" }\r\n      ],\r\n      \"static_attributes\": [\r\n        { \"name\": \"deviceFamily\", \"type\": \"integer\", \"value\": \"02598347\" }\r\n      ],\r\n      \"commands\": [\r\n      \t{ \"object_id\": \"u\", \"name\": \"turn\", \"type\": \"string\" }\r\n      ],\r\n      \"lazy\": [\r\n        { \"object_id\": \"l\", \"name\": \"luminosity\", \"type\": \"percentage\" }\r\n      ],\r\n      \"protocol\": [ \"IoTA-UL\" ]\r\n    }\r\n  ]\r\n}"
+							"raw": "{\r\n  \"configGroups\": [\r\n    {\r\n      \"apikey\": \"{{UL_APIKEY}}\",\r\n      \"entity_type\": \"device\",\r\n      \"attributes\": [\r\n        { \"object_id\": \"t\", \"name\": \"temperature\", \"type\": \"float\" },\r\n        { \"object_id\": \"h\", \"name\": \"humidity\", \"type\": \"float\" }\r\n      ],\r\n      \"static_attributes\": [\r\n        { \"name\": \"deviceFamily\", \"type\": \"integer\", \"value\": \"02598347\" }\r\n      ],\r\n      \"commands\": [\r\n      \t{ \"object_id\": \"u\", \"name\": \"turn\", \"type\": \"string\" }\r\n      ],\r\n      \"lazy\": [\r\n        { \"object_id\": \"l\", \"name\": \"luminosity\", \"type\": \"percentage\" }\r\n      ],\r\n      \"protocol\": [ \"IoTA-UL\" ]\r\n    }\r\n  ]\r\n}"
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/configGroups",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"configGroups"
 							]
 						}
 					},
@@ -1067,14 +1067,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services?protocol=IoTA-JSON&apikey={{JSON_APIKEY}}",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/configGroups?protocol=IoTA-JSON&apikey={{JSON_APIKEY}}",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"configGroups"
 							],
 							"query": [
 								{
@@ -1117,14 +1117,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services?protocol=IoTA-UL&apikey={{UL_APIKEY}}",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/configGroups?protocol=IoTA-UL&apikey={{UL_APIKEY}}",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"configGroups"
 							],
 							"query": [
 								{
@@ -1163,14 +1163,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/configGroups",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"configGroups"
 							]
 						}
 					},
