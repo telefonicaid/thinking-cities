@@ -364,7 +364,8 @@ Context Broker API is quite flexible and allows to update an attribute in severa
 **Important note**: don't use operations in the NGSI API with creation semantics. Otherwise, the entity/attribute will be created locally to Context Broker and the command will not progress to the device (and you will need to delete the created entity/attribute if you want to make it to work again). Thus, the following operations *must not* be used:
 
 * `POST /v2/entities`
-* `PUT /v2/entities`
+* `POST /v2/entities/<id>/attrs`
+* `PUT /v2/entities/<id>/attrs`
 * `POST /v2/op/entites` with `actionType` `append`, `appendStrict` or `replace`
 * `POST /v1/updateContext` with `actionType` `APPEND`, `APPEND_STRICT` or `REPLACE`
 
