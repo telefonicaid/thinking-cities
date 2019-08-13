@@ -56,11 +56,13 @@ will return generic 403 errors to the offending user.
 
 ## Reference documentation and API
 
-** ID system: Keystone & SCIM APIs **
-
-[SCIM APIs Github](https://github.com/telefonicaid/fiware-keystone-scim)
+** ID system: Keystone and SCIM APIs **
 
 [Keystone](http://developer.openstack.org/api-ref-identity-v3.html)
+
+[Keystone-spassword](https://github.com/telefonicaid/fiware-keystone-spassword#usage)
+
+[SCIM APIs Github](https://github.com/telefonicaid/fiware-keystone-scim)
 
 ** Access Control: Keypass **
 
