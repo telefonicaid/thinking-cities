@@ -87,7 +87,7 @@ Once the entities location is correctly configured, it can be exploited at diffe
 
 - At the [CEP API](../cep_api.md). CEP is able to process entity point locations
   (other shapes as line, polygon, etc. not yet supported) so its latitude and
-  longitude can be easily used in EPL conditions. See [CEP documentation](https://github.com/telefonicaid/perseo-fe/blob/master/documentation/plain_rules.md#location-fields) for more detail. For example, the following rule will send an email when the entity with attribute `location` is 
+  longitude can be easily used in EPL conditions. See [CEP documentation](https://github.com/telefonicaid/perseo-fe/blob/1.9.0/documentation/plain_rules.md#location-fields) for more detail. For example, the following rule will send an email when the entity with attribute `location` is 
   less than 5 km far away from Cuenca. It uses the circle equation, `(x - a)^2 + (y - b)^2 = d^2`, being (a, b) 618618.8286057833 and 
   9764160.736945232 the UTMC coordinates of Cuenca and d the distance of 5000 m.
 
@@ -107,8 +107,8 @@ Once the entities location is correctly configured, it can be exploited at diffe
 
 - Persistence backends:
     - CKAN (column mode): there are two ways of providing location, either using two columns (one for latitude
-    another for longitude) or joining both in a single colum. See [Cygnus documentation](https://fiware-cygnus.readthedocs.io/en/master/cygnus-ngsi/flume_extensions_catalogue/ngsi_ckan_sink/index.html#section2.3.4) for more detail. Note this is not the standard way of mark entity location in the Data API (see aforementioned "Geospacial properties of entities" section) and probably would be aligned in the
-    future to work in a similar way to the [Carto experimental persistence sink](http://fiware-cygnus.readthedocs.io/en/master/cygnus-ngsi/flume_extensions_catalogue/ngsi_cartodb_sink/index.html#section2.3.6).
+    another for longitude) or joining both in a single colum. See [Cygnus documentation](https://fiware-cygnus.readthedocs.io/en/1.15.0/cygnus-ngsi/flume_extensions_catalogue/ngsi_ckan_sink/index.html#section2.3.4) for more detail. Note this is not the standard way of mark entity location in the Data API (see aforementioned "Geospacial properties of entities" section) and probably would be aligned in the
+    future to work in a similar way to the [Carto experimental persistence sink](http://fiware-cygnus.readthedocs.io/en/1.15.0/cygnus-ngsi/flume_extensions_catalogue/ngsi_cartodb_sink/index.html#section2.3.6).
 
     ![CKAN grid view](images/ckan_grid_geolocation_example.png)
 
@@ -119,5 +119,5 @@ Once the entities location is correctly configured, it can be exploited at diffe
 To include in the Persisente backends section, once Carto sink would be ready for production usage:
 
   - Carto. Both point and arbitrary GeoJSON location are supported and correctly persisted
-    at Carto. See [Cygnus documentation](http://fiware-cygnus.readthedocs.io/en/master/cygnus-ngsi/flume_extensions_catalogue/ngsi_cartodb_sink/index.html#section2.3.6) for more detail.
+    at Carto. See [Cygnus documentation](http://fiware-cygnus.readthedocs.io/en/1.15.0/cygnus-ngsi/flume_extensions_catalogue/ngsi_cartodb_sink/index.html#section2.3.6) for more detail.
 -->

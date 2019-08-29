@@ -18,12 +18,12 @@ One of the most important features of the Context Broker is that it allows to mo
 
 ## API Reference Documentation ##
 
-- [API V2 Walkthrough](http://fiware-orion.readthedocs.io/en/master/user/walkthrough_apiv2/index.html)
+- [API V2 Walkthrough](http://fiware-orion.readthedocs.io/en/2.2.0/user/walkthrough_apiv2/index.html)
 - [Cookbook](http://telefonicaid.github.io/fiware-orion/api/v2/stable/cookbook/)
 - [NGSIv2 full specification (RC 2016.05)](http://telefonicaid.github.io/fiware-orion/api/v2/stable)
 
 ## Orion Context Broker references
 
 - [Introduction to Context Management and Orion Context Broker](http://bit.ly/fiware-orion) (slideshare)
-- [User & Administrator Manual](https://fiware-orion.readthedocs.io/en/master/)
+- [User & Administrator Manual](https://fiware-orion.readthedocs.io/en/2.2.0/)
 - [Source code repository](https://github.com/telefonicaid/fiware-orion)

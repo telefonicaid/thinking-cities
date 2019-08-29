@@ -464,7 +464,7 @@ weatherStation167@ping|param1=val1|param2=val2
 
 This example will tell the Weather Station 167 to reply to a ping message with the provided params. 
 
-Note that you cannot use [forbidden character for Context Broker](https://fiware-orion.readthedocs.io/en/master/user/forbidden_characters/index.html) as part of command parameters, because that would result in a 400 Bad Request error and at CB and the triggering of the command would be never progressed.
+Note that you cannot use [forbidden character for Context Broker](https://fiware-orion.readthedocs.io/en/2.2.0/user/forbidden_characters/index.html) as part of command parameters, because that would result in a 400 Bad Request error and at CB and the triggering of the command would be never progressed.
 
 Once the command has finished its execution in the device, the reply to the IOTA must adhere to the following format:
 
@@ -524,7 +524,7 @@ In the case of complex commands requiring parameters, the `commandValue` could b
 
 This example will tell the device to reply to a ping message with the provided params. 
 
-Note that you cannot use [forbidden character for Context Broker](https://fiware-orion.readthedocs.io/en/master/user/forbidden_characters/index.html) as part of command parameters, because that would result in a 400 Bad Request error and at CB and the triggering of the command would be never progressed.
+Note that you cannot use [forbidden character for Context Broker](https://fiware-orion.readthedocs.io/en/2.2.0/user/forbidden_characters/index.html) as part of command parameters, because that would result in a 400 Bad Request error and at CB and the triggering of the command would be never progressed.
 
 Once the command has finished its execution in the device, the reply to the IOTA must adhere to the following format:
 
