@@ -1009,7 +1009,7 @@
 					"response": []
 				},
 				{
-					"name": "Create service (JSON) stattic attributes",
+					"name": "Create service (JSON) static attributes",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -3134,7 +3134,7 @@
 					"response": []
 				},
 				{
-					"name": "Regla cese alarma (contaminacion dos o mas estaciones)",
+					"name": "Create rule Alarm off (pollution in two or more stations)",
 					"request": {
 						"method": "POST",
 						"header": [
