@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7bc52ef7-e1a7-4c99-907f-c86347302637",
+		"_postman_id": "f1431c62-ffe1-4ddd-858d-6e2e50833eff",
 		"name": "ThinkingCities APIs Basic Ops",
 		"description": "A set with the basic API operations used by ThikingCities platform, covering:\n\n* IDM & Auth\n* Orion Context Broker\n* STH\n* Perseo CEP\n* CKAN\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -124,7 +124,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Orion Context Broker",
@@ -923,7 +924,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "IOTA",
@@ -2639,7 +2641,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "STH",
@@ -2663,23 +2666,24 @@
 							}
 						],
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_STH}}/STH/v1/contextEntities/type/myType/id/myEntity/attributes/temperature?hLimit=3&hOffset=0&dateFrom=2017-10-16T00:00:00.000Z&dateTo=2017-10-26T23:59:59.999Z",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_STH}}/STH/v2/entities/myEntity/attrs/temperature?type=myEntityType&hLimit=3&hOffset=0&dateFrom=2017-10-16T00:00:00.000Z&dateTo=2017-10-26T23:59:59.999Z\n",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_STH}}"
 							],
 							"path": [
 								"STH",
-								"v1",
-								"contextEntities",
-								"type",
-								"myType",
-								"id",
+								"v2",
+								"entities",
 								"myEntity",
-								"attributes",
+								"attrs",
 								"temperature"
 							],
 							"query": [
+								{
+									"key": "type",
+									"value": "myEntityType"
+								},
 								{
 									"key": "hLimit",
 									"value": "3"
@@ -2720,7 +2724,65 @@
 							}
 						],
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_STH}}/STH/v1/contextEntities/type/myType/id/myEntity/attributes/temperature?aggrMethod=sum&aggrPeriod=hour&dateFrom=2017-10-16T00:00:00.000Z&dateTo=2017-10-26T23:59:59.999Z",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_STH}}/STH/v2/entities/myEntity/attrs/temperature?type=myEntityType&aggrMethod=sum&aggrPeriod=hour&dateFrom=2017-10-16T00:00:00.000Z&dateTo=2017-10-26T23:59:59.999Z\n",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_STH}}"
+							],
+							"path": [
+								"STH",
+								"v2",
+								"entities",
+								"myEntity",
+								"attrs",
+								"temperature"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "myEntityType"
+								},
+								{
+									"key": "aggrMethod",
+									"value": "sum"
+								},
+								{
+									"key": "aggrPeriod",
+									"value": "hour"
+								},
+								{
+									"key": "dateFrom",
+									"value": "2017-10-16T00:00:00.000Z"
+								},
+								{
+									"key": "dateTo",
+									"value": "2017-10-26T23:59:59.999Z\n"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get attribute history (deprecated)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_STH}}/STH/v1/contextEntities/type/myEntityType/id/myEntity/attributes/temperature?hLimit=3&hOffset=0&dateFrom=2017-10-16T00:00:00.000Z&dateTo=2017-10-26T23:59:59.999Z\n",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_STH}}"
@@ -2730,7 +2792,64 @@
 								"v1",
 								"contextEntities",
 								"type",
-								"myType",
+								"myEntityType",
+								"id",
+								"myEntity",
+								"attributes",
+								"temperature"
+							],
+							"query": [
+								{
+									"key": "hLimit",
+									"value": "3"
+								},
+								{
+									"key": "hOffset",
+									"value": "0"
+								},
+								{
+									"key": "dateFrom",
+									"value": "2017-10-16T00:00:00.000Z"
+								},
+								{
+									"key": "dateTo",
+									"value": "2017-10-26T23:59:59.999Z\n"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get attribute aggregation (deprecated)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_STH}}/STH/v1/contextEntities/type/myEntityType/id/myEntity/attributes/temperature?aggrMethod=sum&aggrPeriod=hour&dateFrom=2017-10-16T00:00:00.000Z&dateTo=2017-10-26T23:59:59.999Z\n",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_STH}}"
+							],
+							"path": [
+								"STH",
+								"v1",
+								"contextEntities",
+								"type",
+								"myEntityType",
 								"id",
 								"myEntity",
 								"attributes",
@@ -2758,7 +2877,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Perseo CEP",
@@ -2872,7 +2992,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"regla_sonometros_1\",\n  \"action\" : {\n        \"type\" : \"post\",\n        \"template\" : \"timeout=2\",\n        \"parameters\" : {\n            \"url\" : \"http://sonometro:${tokenLuminaria}@uvax.ddns.net:7080/API/web/index.php/mode/remote\",\n            \"method\" : \"PUT\",\n            \"headers\" : \"text/plain\"\n        }\n    },\n  \"subservice\": \"/sonometros\",\n  \"service\": \"sc_vlci\",\n  \"text\": \"select *,\\\"regla_sonometros_1\\\" as ruleName from pattern [every ev=iotEvent((cast(cast(`LAeq`?, String), float)  >=  cast(cast(`thresholdRemote`?, String), float)))]\"\n}"
+							"raw": "{\n  \"name\": \"regla_sonometros_1\",\n  \"action\" : {\n        \"type\" : \"post\",\n        \"template\" : \"timeout=2\",\n        \"parameters\" : {\n            \"url\" : \"http://sonometro:${tokenLuminaria}@uvax.ddns.net:7080/API/web/index.php/mode/remote\",\n            \"method\" : \"PUT\",\n            \"headers\" : \"text/plain\"\n        }\n    },\n  \"subservice\": \"/sonometros\",\n  \"service\": \"sc_vlci\",\n  \"text\": \"select *,\\\"regla_sonometros_1\\\" as ruleName from pattern [every ev=iotEvent((cast(cast(`LAeq`?, String), float)  >=  cast(cast(`thresholdRemote`?, String), float)))]\"\n}"
 						},
 						"url": {
 							"raw": "https://{{ENDPOINT_CEP}}/rules",
@@ -3554,7 +3674,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "CKAN",
@@ -3988,7 +4109,9 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
