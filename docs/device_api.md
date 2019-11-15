@@ -98,28 +98,28 @@ Fiware-Service: OpenIoT
 Fiware-ServicePath: /
 
 {
-	"devices": [{
-		"device_id": "[DEV_ID]",
-		"entity_name": "[ENTITY_ID]",
-		"entity_type": "thing",
-		"protocol":"IoTA-UL",
-		"timezone": "Europe/Madrid",
-		"endpoint": "http://[DEVICE_IP]:[PORT]",
-		"attributes": [{
-			"object_id": "t",
-			"name": "temperature",
-			"type": "int"
-		}],
-		"commands": [{
-			"name": "ping",
-			"type": "command"
-		}],
-		"static_attributes": [{
-			"name": "att_name",
-			"type": "string",
-			"value": "value"
-		}]
-	}]
+    "devices": [{
+        "device_id": "[DEV_ID]",
+        "entity_name": "[ENTITY_ID]",
+        "entity_type": "thing",
+        "protocol":"IoTA-UL",
+        "timezone": "Europe/Madrid",
+        "endpoint": "http://[DEVICE_IP]:[PORT]",
+        "attributes": [{
+            "object_id": "t",
+            "name": "temperature",
+            "type": "int"
+        }],
+        "commands": [{
+            "name": "ping",
+            "type": "command"
+        }],
+        "static_attributes": [{
+            "name": "att_name",
+            "type": "string",
+            "value": "value"
+        }]
+    }]
 }
 ```
 
@@ -148,28 +148,28 @@ Fiware-Service: OpenIoT
 Fiware-ServicePath: /
 
 {
-	"devices": [{
-		"device_id": "[DEV_ID]",
-		"entity_name": "[ENTITY_ID]",
-		"entity_type": "thing",
-		"protocol":"IoTA-UL",
-		"transport": "MQTT",
-		"timezone": "Europe/Madrid",
-		"attributes": [{
-			"object_id": "t",
-			"name": "temperature",
-			"type": "int"
-		}],
-		"commands": [{
-			"name": "ping",
-			"type": "command"
-		}],
-		"static_attributes": [{
-			"name": "att_name",
-			"type": "string",
-			"value": "value"
-		}]
-	}]
+    "devices": [{
+        "device_id": "[DEV_ID]",
+        "entity_name": "[ENTITY_ID]",
+        "entity_type": "thing",
+        "protocol":"IoTA-UL",
+        "transport": "MQTT",
+        "timezone": "Europe/Madrid",
+        "attributes": [{
+            "object_id": "t",
+            "name": "temperature",
+            "type": "int"
+        }],
+        "commands": [{
+            "name": "ping",
+            "type": "command"
+        }],
+        "static_attributes": [{
+            "name": "att_name",
+            "type": "string",
+            "value": "value"
+        }]
+    }]
 }
 ```
 
@@ -246,12 +246,13 @@ The information can be typically sensors measures.
 This is the topic hierarchy that has to be used by devices:
 
 ```
-/<apikey>/<deviceId>/attrs/<attrName>
+/<iotagent-protocol>/<apikey>/<deviceId>/attrs/<attrName>
 ```
 
 Where:
 
-- "apikey": this is a unique value per service. It is provided through the provisioning API.
+- "iotagent-protocol": this is an unique value per iotagent. Both values posible are "ul" (for UL iotagent)  and "json" (for JSON iotagent). UL2.0 MQTT will be "ul"
+- "apikey": this is an unique value per service. It is provided through the provisioning API.
 - "deviceId": this is typically a sensor id, it has to be unique per “apikey”.
 - "attrName": name of the magnitude being measured, for example: temperature, pressure, etc… this is the name of
 the attribute being published on Context Broker.
@@ -259,7 +260,7 @@ the attribute being published on Context Broker.
 Example:
 
 ```
-$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<apikey>/mydevicemqtt/t -m 44.4
+$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /ul/<apikey>/mydevicemqtt/t -m 44.4
 ```
 
 As it can be noticed in this example, the MQTT broker uses a set of credentials to authenticate users. Please, if you
@@ -274,13 +275,13 @@ same Ultralight 2.0 format as in the HTTP case.
 Topic:
 
 ```
-/<apikey>/<deviceId>/attrs
+/<protocol>/<apikey>/<deviceId>/attrs
 ```
 
 Example:
 
 ```
-$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<apikey>/mydevicemqtt/attrs -m "t|5.4#o|4.3#n|3.2#c|2.1"
+$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /ul/<apikey>/mydevicemqtt/attrs -m "t|5.4#o|4.3#n|3.2#c|2.1"
 ```
 
 **Send measures using JSON HTTP**
@@ -316,10 +317,11 @@ In the case of single measurements, just the value of the measurement is sent as
 of information needed for the update confined to the MQTT topic, as illustrated in the following example:
 
 ```
-$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<myapikey>/<mydevicemqtt>/attrs/<measurename> -m '5.4'
+$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<iotagent-protocol>/<myapikey>/<mydevicemqtt>/attrs/<measurename> -m '5.4'
 ```
 
 In this example we can see that the topic contains three pieces of data:
+- Iotagent protocol ('<iotagent-protocol>'): this is an unique value per iotagent. Both values posible are "ul" (for UL iotagent)  and "json" (for JSON iotagent). JSON MQTT will be "json"
 - The API Key ('<myapikey>'): identifies the service or configuration associated to the device.
 - The Device ID ('<mydevicemqtt>'): that uniquely identifies a device in a service.
 - The Measure name ('<measurename>'): that indicates the name of the measure to update.
@@ -330,7 +332,7 @@ In the case of multiple measurements, the MQTT message will contain a JSON Objec
 indicating the value of a single measurement, as illustrated in the following example:
 
 ```
-$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<myapikey>/<mydevicemqtt>/attrs -m '{ "t": 5.4, "o": 4.3, "n": 3.2, "c": 2.1 }'
+$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /json/<myapikey>/<mydevicemqtt>/attrs -m '{ "t": 5.4, "o": 4.3, "n": 3.2, "c": 2.1 }'
 ```
 
 As it can be noticed in this example, the MQTT broker uses a set of credentials to authenticate users. Please, if you
@@ -411,7 +413,7 @@ Once the command request is issued to the IoT agent, the command is stored waiti
 For MQTT devices, it is not needed to declare and endpoint. The device is supposed to be subscribed to the following MQTT topic:
 
 ```
-/<apiKey>/<deviceId>/cmd
+/<iotagent-protocol>/<apiKey>/<deviceId>/cmd
 ```
 
 where it will receive the command information. Please note that the device should subscribe to the broker using the disabled clean session mode (enabled using `--disable-clean-session` option CLI parameter in mosquitto_sub). This option means that all of the subscriptions for the device will be maintained after it disconnects, along with subsequent QoS 1 and QoS 2 commands that arrive. When the device reconnects, it will receive all of the queued commands.
@@ -419,7 +421,7 @@ where it will receive the command information. Please note that the device shoul
 Once the command is completed, the device should return the result of the command to the IoT Agent to the following topic:
 
 ```
-/<apiKey>/<deviceId>/cmdexe
+/<iotagent-protocol>/<apiKey>/<deviceId>/cmdexe
 ```
 
 This result will be progressed to the Context Broker where it will be stored in the "command_info" attribute. The status of the command will be stored in the "command_status" attribute (`OK` if everything goes right). 
