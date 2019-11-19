@@ -260,7 +260,7 @@ the attribute being published on Context Broker.
 Example:
 
 ```
-$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /ul/<apikey>/mydevicemqtt/t -m 44.4
+$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<iotagent-protocol>/<apikey>/mydevicemqtt/t -m 44.4
 ```
 
 As it can be noticed in this example, the MQTT broker uses a set of credentials to authenticate users. Please, if you
@@ -281,7 +281,7 @@ Topic:
 Example:
 
 ```
-$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /ul/<apikey>/mydevicemqtt/attrs -m "t|5.4#o|4.3#n|3.2#c|2.1"
+$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<iotagent-protocol>/<apikey>/mydevicemqtt/attrs -m "t|5.4#o|4.3#n|3.2#c|2.1"
 ```
 
 **Send measures using JSON HTTP**
@@ -332,7 +332,7 @@ In the case of multiple measurements, the MQTT message will contain a JSON Objec
 indicating the value of a single measurement, as illustrated in the following example:
 
 ```
-$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /json/<myapikey>/<mydevicemqtt>/attrs -m '{ "t": 5.4, "o": 4.3, "n": 3.2, "c": 2.1 }'
+$ mosquitto_pub -h $HOST_IOTAGENT_MQTT -u theUser -P thePassword -t /<iotagent-protocol>/<myapikey>/<mydevicemqtt>/attrs -m '{ "t": 5.4, "o": 4.3, "n": 3.2, "c": 2.1 }'
 ```
 
 As it can be noticed in this example, the MQTT broker uses a set of credentials to authenticate users. Please, if you
@@ -413,7 +413,7 @@ Once the command request is issued to the IoT agent, the command is stored waiti
 For MQTT devices, it is not needed to declare and endpoint. The device is supposed to be subscribed to the following MQTT topic:
 
 ```
-/<iotagent-protocol>/<apiKey>/<deviceId>/cmd
+/<apiKey>/<deviceId>/cmd
 ```
 
 where it will receive the command information. Please note that the device should subscribe to the broker using the disabled clean session mode (enabled using `--disable-clean-session` option CLI parameter in mosquitto_sub). This option means that all of the subscriptions for the device will be maintained after it disconnects, along with subsequent QoS 1 and QoS 2 commands that arrive. When the device reconnects, it will receive all of the queued commands.
