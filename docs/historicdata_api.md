@@ -48,7 +48,7 @@ Once the historical and aggregated time series context information for the devic
 For example, to get the last 10 values of the  `temperature` attribute registered by the device of interest, a request such as the following one should be sent to the platform:
 
 ```
-GET /STH/v1/contextEntities/type/device/id/mydevice/attributes/temperature?lastN=10 HTTP/1.1
+GET /STH/v2/entities/mydevice/attrs/temperature?type=device&lastN=10 HTTP/1.1
 Host: <sth_host>:<sth_port>
 Accept: application/json
 Content-Type: application/json
@@ -62,7 +62,7 @@ Obviously, the `temperature` attribute could be changed by any other attribute f
 The Historical Data API also supports pagination by means of the `hLimit`and `hOffset` query parameters. For example, to get the first 3 temperature values from the specified date, a request such as the following should be sent to the platform:
 
 ```
-GET /STH/v1/contextEntities/type/device/id/mydevice/attributes/temperature?hLimit=3&hOffset=0&dateFrom=2014-02-14T00:00:00.00
+GET /STH/v2/entities/mydevice/attrs/temperature?type=device&hLimit=3&hOffset=0&dateFrom=2014-02-14T00:00:00.00
 Host: <sth_host>:<sth_port>
 Accept: application/json
 Content-Type: application/json
@@ -78,40 +78,22 @@ HTTP 200 OK
 Content-Type : application/json
 
 {
-  "contextResponses": [
-    {
-      "contextElement": {
-        "attributes": [
-          {
-            "name": "temperature",
-            "values": [
-                {
-                    "recvTime": "2014-02-14T13:43:33.306Z"
-                    "attrValue": "21.28"
-                },
-                {
-                    "recvTime": "2014-02-14T13:43:34.636Z",
-                    "attrValue": "23.42"
-                },
-                {
-                    "recvTime": "2014-02-14T13:43:35.424Z",
-                    "attrValue": "22.12"
-                }
-            ]
-          }
-        ],
-        "id": "mydevice",
-        "isPattern": false,
-        "type": "device"
-      },
-      "statusCode": {
-        "code": "200",
-        "reasonPhrase": "OK"
-      }
-    }
-  ]
-}
-
+    "type": "StructuredValue",
+    "values": [
+        {
+            "recvTime": "2014-02-14T13:43:33.306Z"
+            "attrValue": "21.28"
+        },
+        {
+            "recvTime": "2014-02-14T13:43:34.636Z",
+            "attrValue": "23.42"
+        },
+        {
+            "recvTime": "2014-02-14T13:43:35.424Z",
+            "attrValue": "22.12"
+        }
+    ]
+}       
 ```
 
 Please, take into account that currently the Historical Data API only makes it possible to get historical context information associated to one concrete attribute (i.e. temperature, hummidity, etc.) per request.
@@ -123,7 +105,7 @@ Apart from exposing historical context information, the Historical Data API also
 This aggregated time series context information makes it possible, for example, to get the maximum temperature values registered into the platform by certain device during certain period of time and grouped by certain time or resolution, such as in the next request:
 
 ```
-GET /STH/v1/contextEntities/type/device/id/mydevice/attributes/temperature?aggrMethod=sum&aggrPeriod=second&dateFrom=2015-02-22T00:00:00.000Z&dateTo=2015-02-22T23:00:00.000Z
+GET /STH/v2/entities/mydevice/attrs/temperature?device&aggrMethod=sum&aggrPeriod=second&dateFrom=2015-02-22T00:00:00.000Z&dateTo=2015-02-22T23:00:00.000Z
 Host: <sth_host>:<sth_port>
 Accept: application/json
 Content-Type: application/json
@@ -151,44 +133,27 @@ HTTP 200 OK
 Content-Type : application/json
 
 {
-  "contextResponses": [
-    {
-      "contextElement": {
-        "attributes": [
-          {
-            "name": "temperature",
-            "values": [
-              {
-                "_id": {
-                  "origin": "2015-02-18T02:46:00.000Z",
-                  "resolution": "second"
-                },
-                "points": [
-                  {
+    "type": "StructuredValue",
+    "values": [
+        {
+            "_id": {
+                "origin": "2015-02-18T02:46:00.000Z",
+                "resolution": "second"
+            },
+            "points": [
+                {
                     "offset": 0,
                     "samples": 123,
                     "sum": 34.59
-                  },
-                  {
+                },
+                {
                     "offset": 11,
                     "samples": 34,
                     "sum": 28.38
-                  }
-                ]
-              }
+                }
             ]
-          }
-        ],
-        "id": "mydevice",
-        "isPattern": false,
-        "type": "device"
-      },
-      "statusCode": {
-        "code": "200",
-        "reasonPhrase": "OK"
-      }
-    }
-  ]
+        }
+    ]    
 }
 ```
 
