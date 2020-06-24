@@ -40,6 +40,26 @@ X-Auth-Token: D3wiv5j7y6oiwo9w4ds5u20Y0bb6pL
 }
 ```
 
+Sometimes you may want to create an entity, but don't know if the entity already exists, in which case you want to update it. This is
+commonly known as "upsert" (update or insert) semantic and the Orion Context Broker allows it using a query parameter, as shown below:
+
+```
+POST <cb_host>:<cb_port>/v2/entities?options=upsert
+Content-Type: application/json
+Fiware-service: smartown
+Fiware-servicepath: /NiceEating
+X-Auth-Token: D3wiv5j7y6oiwo9w4ds5u20Y0bb6pL
+
+{
+  "id": "LeBistro::Client1234",
+  "type": "Rating",
+  "score": {
+    "type" : "Integer",
+    "value" : 4
+  }
+}
+```
+
 Each time a new Rating entity is created, the average rating for the corresponding restaurant is recalculated by the application backend which (playing also the role of Context Producer) **updates** the Restaurant entity accordingly:
 
 ```
@@ -107,8 +127,11 @@ getting a JSON response such as the following one:
     "value": 4.2
   },
   "location": {
-    "type": "geo:point",
-    "value": "40.419697, -3.691281"
+    "type": "geo:json",
+    "value": {
+      "type": "Point",
+      "coordinates": [-3.691281, 40.419697]
+    }
   },
   "postal_address": {
     "type": "Address",
