@@ -12,14 +12,14 @@ There is a complete description about grants for [Urbo2](https://github.com/tele
 
 # Create Grants
 
-Grants, like other subservices (keystone project), can be created using [Management API](https://thinking-cities.readthedocs.io/en/latest/management_api/index.html#create-subservice)
+Grants, like other subservices (keystone project), can be created using [Management API for create subservice](https://thinking-cities.readthedocs.io/en/latest/management_api/index.html#create-subservice)
 
 Morever, like others subservices, can be created using Administrationt Portal of ThinkingCities Platform.
 
 
 # Assign Grants
 
-For assign a grant to a user a role should be asigned to a user in that grant (keystone project) using [Management API](https://orchestrator2.docs.apiary.io/#reference/orchestrator/user-role-assigment/assign-role-to-user)
+For assign a grant to a user a role should be asigned to a user in that grant (keystone project) using [Management API for assign role to user](https://orchestrator2.docs.apiary.io/#reference/orchestrator/user-role-assigment/assign-role-to-user)
 
 Morever, like others role assigments, can be performed using Administrationt Portal of ThinkingCities Platform.
 
