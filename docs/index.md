@@ -18,6 +18,7 @@ These are the main benefits of Thinking Cities platform:
 Thinking Cities provides the following APIs:
 
 - [Authentication API](authentication_api.md): manages tokens for APIs usage.
+- [Authorization API](authorization_api.md): manages grants.
 - [Device API](device_api.md): allows managing devices, sending data from the device to the cloud and receiving commands.
 - [Data API](data_api.md): allows querying and subscribing to data stored at the cloud.
 - [Historical Data API](historicdata_api.md): allows querying historic data series and statistics stored at the cloud.
