@@ -7,6 +7,8 @@ Grants are a kind of subservices (keystone projects) which can implies for an us
 
 Grants always starts with a '#' characters, in contrast to others subservices which starts without that character.
 
+Some examples of grants could be: `#readerApp`, `#adminApp`, `#managerApp` and so on.
+
 There is a complete description about grants for [Urbo2](https://github.com/telefonicasc/urbo2/blob/master/docs/grants.md)
 
 
