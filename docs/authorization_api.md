@@ -5,7 +5,7 @@ Authorization API allows you to create, assign and retrieve grants for users of 
 Grants are a kind of subservices (keystone projects) which can imply for a user that has any role in that subservice a permission for do something in an application built on top of ThingkinCities Platform.
 
 
-Grants always starts with a '#' characters, in contrast to others subservices which starts without that character.
+Grants always start with a '#' character, in contrast to other subservices which start without that character.
 
 Some examples of grants could be: `#readerApp`, `#adminApp`, `#managerApp` and so on.
 
