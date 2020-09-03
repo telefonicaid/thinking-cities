@@ -13,6 +13,7 @@ pages:
   - 'Introduction': 'index.md'
   - 'APIs':
     - 'Authentication API': 'authentication_api.md'
+    - 'Authorization with grants API': 'authorization_api.md'
     - 'Device API': 'device_api.md'
     - 'Data API': 'data_api.md'
     - 'Historical Data API': 'historicdata_api.md'
