@@ -2,7 +2,7 @@ Authorization API allows you to create, assign and retrieve grants for users of 
 
 # Grants
 
-Grants are a kind of subservices (keystone projects) which can implies for an user that has any role in that subservice a permission for do something in an apllication built on top of ThingkinCities Platform.
+Grants are a kind of subservices (keystone projects) which can imply for a user that has any role in that subservice a permission for do something in an application built on top of ThingkinCities Platform.
 
 
 Grants always starts with a '#' characters, in contrast to others subservices which starts without that character.
