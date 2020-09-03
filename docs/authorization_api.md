@@ -21,7 +21,7 @@ Morever, like others subservices, can be created using Administration Portal of 
 
 # Assign Grants
 
-For assign a grant to a user a role should be asigned to a user in that grant (keystone project) using [Management API for assign role to user](https://orchestrator2.docs.apiary.io/#reference/orchestrator/user-role-assigment/assign-role-to-user)
+To assign a grant to a user, a role should be assigned to a user in that grant (keystone project) using [Management API for assign role to user](https://orchestrator2.docs.apiary.io/#reference/orchestrator/user-role-assigment/assign-role-to-user)
 
 Morever, like others role assigments, can be performed using Administrationt Portal of ThinkingCities Platform.
 
