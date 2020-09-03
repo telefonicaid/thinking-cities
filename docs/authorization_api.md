@@ -16,7 +16,7 @@ There is a complete description about grants for [Urbo2](https://github.com/tele
 
 Grants, like other subservices (keystone project), can be created using [Management API for create subservice](https://thinking-cities.readthedocs.io/en/latest/management_api/index.html#create-subservice)
 
-Morever, like others subservices, can be created using Administrationt Portal of ThinkingCities Platform.
+Morever, like others subservices, can be created using Administration Portal of ThinkingCities Platform.
 
 
 # Assign Grants
