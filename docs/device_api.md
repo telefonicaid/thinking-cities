@@ -402,9 +402,9 @@ HTTP request. This result will be progressed to the Context Broker where it will
 
 Push commands are only valid for HTTP devices. For MQTT devices it is not needed to set the "endpoint" parameter. 
 
-**Pull commands**
+**Poll commands**
 
-Pull commands are those that are stored in the IoT Agent waiting to be retrieved by the devices. This kind of commands are typically used for devices that doesn't have a public IP or the IP cannot be reached. The device connects to the IoT Agent periodically to retrieve commands. In order to send pull commands you just need to ignore the "endpoint" parameter in the device provision.
+Poll commands are those that are stored in the IoT Agent waiting to be retrieved by the devices. This kind of commands are typically used for devices that doesn't have a public IP or the IP cannot be reached. The device connects to the IoT Agent periodically to retrieve commands. In order to send poll commands you just need to ignore the "endpoint" parameter in the device provision.
 
 Once the command request is issued to the IoT agent, the command is stored waiting to be retrieved by the device. In that moment, the status of the command is "command_status": "PENDING". Once the command is retrieved by the device the status is updated to "command_status": "DELIVERED". Eventually, once the device makes the response request with the result of the command the status is updated to "command_status": "OK". Also the result of the command delivered by the device is stored in the "command_info" attribute.
 
