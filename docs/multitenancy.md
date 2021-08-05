@@ -29,8 +29,8 @@ The following syntax rules apply to service:
 
 The following syntax rules apply to subservice:
 
-* It must start with the `/` character.
+* It uses the following syntax: `/<token1>/<token2>/.../<tokenN>` (regular subservices) or `#<token1>/<token2>/.../<tokenN>` (grants). The most common case is `/<token1>`.
 * Maximum length is 50 characters.
-* Minimum length is 1 character.
-* Only alphanumeric characters and underscores (`_`) are allowed (apart from the initial `/`).
+* Minimum length in each token is 1 character.
+* Only alphanumeric characters and underscores (`_`) are allowed in each token.
 * It is interpreted in a case-sensitive way.
