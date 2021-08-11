@@ -548,6 +548,16 @@ In this case, the device replies with a String value indicating everything has w
 
 
 
+## Device removal
+    
+If you need to remove a device the recommended sequence is as follows:
+    
+- First, remove the device (using the Device API)
+- Second, remove the entity (using the [Data API](data_api.md))
+- Finally, remove the configuration group (using the Device API)
+    
+You can do also the above operations using the administration portal instead of Device/Data API
+    
 # In more detail ...
 
 You can get more information about the FIWARE component providing this functionality, reference API documentation and source code at the [IoT Agent](device_gateway.md)
