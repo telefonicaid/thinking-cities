@@ -115,7 +115,7 @@ Please, be careful pasting your {{user-token}} properly on next steps. This is y
 
 # Get a new token from another given token
 
-Once you get a token you can get another one with the same effect:
+Once you get a token you can get another one with the same effect and expiration date:
 
 ```
 POST /v3/auth/tokens HTTP/1.1
