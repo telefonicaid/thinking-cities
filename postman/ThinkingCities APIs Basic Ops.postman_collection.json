@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7bc52ef7-e1a7-4c99-907f-c86347302637",
+		"_postman_id": "39ea19a8-fa1b-4853-8a4c-81b0488ae467",
 		"name": "ThinkingCities APIs Basic Ops",
 		"description": "A set with the basic API operations used by ThikingCities platform, covering:\n\n* IDM & Auth\n* Orion Context Broker\n* STH\n* Perseo CEP\n* CKAN\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -170,17 +170,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "ORC",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": ""
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -325,6 +314,52 @@
 					"response": []
 				},
 				{
+					"name": "Create entity (keyValues)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"CAM7\",\n    \"type\": \"VehiclesCounter\",\n    \"description\": \"Conteo de vehículos\",\n    \"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n            -3.734511592,\n            40.297203367\n        ]\n    },\n    \"addressLocality\": \"Majadahonda\",\n    \"addressCountry\": \"ES\",\n    \"streetAddress\": \"Camino del Pocito Km 3\",\n    \"postalCode\": 28901,\n    \"streetNumber\": 3,\n    \"roadPointID\": \"Spain-RoadPoint-M406-45-A\",\n    \"sourceOriginator\": \"PolimerMadrid1Alcobendas\",\n    \"trackID\": \"Suma de todos los carriles sentido Alcoboendas\",\n    \"sourceOriginEventID\": \"21\",\n    \"TimeInstant\": \"2020-06-06T13:06:06\",\n    \"dailyMotorbikeNumber\": 44,\n    \"dailyCarNumber\": 44,\n    \"dailyLorryNumber\": 23,\n    \"dailyBicycleNumber\": 0,\n    \"averageDailyCarSpeed\": 112,\n    \"averageDailyMotorbikeSpeed\": 92,\n    \"averageDailyLorrySpeed\": 87,\n    \"averageDailyBicycleSpeed\": 18,\n    \"averageHourlyCarSpeed\": 99,\n    \"averageHourlyMotorbikeSpeed\": 83,\n    \"averageHourlyLorrySpeed\": 87,\n    \"averageHourlyBicycleSpeed\": 0,\n    \"maxDailyCarSpeed\": 142,\n    \"maxDailyMotorbikeSpeed\": 171,\n    \"maxDailyLorrySpeed\": 95,\n    \"maxDailyBicycleSpeed\": 14,\n    \"maxHourlyCarSpeed\": 113,\n    \"maxHourlyMotorbikeSpeed\": 119,\n    \"maxHourlyLorrySpeed\": 91,\n    \"maxHourlyBicycleSpeed\": 0,\n    \"averageHourlyHeadwayTime\": 0.8,\n    \"dailyHeadwayTime\": 0.9\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_CB}}/v2/entities?options=keyValues",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_CB}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							],
+							"query": [
+								{
+									"key": "options",
+									"value": "keyValues"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get a single entity",
 					"request": {
 						"method": "GET",
@@ -343,7 +378,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_CB}}/v2/entities/CAM1-34533EX?type=TrafficCameraControl",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_CB}}/v2/entities/myEntity",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_CB}}"
@@ -351,13 +386,7 @@
 							"path": [
 								"v2",
 								"entities",
-								"CAM1-34533EX"
-							],
-							"query": [
-								{
-									"key": "type",
-									"value": "TrafficCameraControl"
-								}
+								"myEntity"
 							]
 						}
 					},
@@ -490,7 +519,7 @@
 					"response": []
 				},
 				{
-					"name": "Bath creation/update",
+					"name": "Batch creation/update",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -513,7 +542,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"actionType\": \"APPEND\",\n\t\"entities\": [\n\t\t{\n\t\t\t\"id\": \"myEntity1\",\n\t\t\t\"type\": \"myType\",\n\t\t\t\"description\": {\n\t\t\t\t\"value\": \"My happy entity\",\n\t\t\t\t\"type\": \"Text\"\n\t\t\t},\n\t\t\t\"online\": {\n\t\t\t\t\"value\": true,\n\t\t\t\t\"type\": \"Boolean\"\n\t\t\t},\n\t\t\t\"temperature\": {\n\t\t\t\t\"value\": 42.3,\n\t\t\t\t\"type\": \"Number\"\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\": \"myEntity2\",\n\t\t\t\"type\": \"myType\",\n\t\t\t\"description\": {\n\t\t\t\t\"value\": \"My second happy entity\",\n\t\t\t\t\"type\": \"Text\"\n\t\t\t},\n\t\t\t\"online\": {\n\t\t\t\t\"value\": false,\n\t\t\t\t\"type\": \"Boolean\"\n\t\t\t},\n\t\t\t\"temperature\": {\n\t\t\t\t\"value\": -12,\n\t\t\t\t\"type\": \"Number\"\n\t\t\t}\n\t\t}\n\t]\n}"
+							"raw": "{\n\t\"actionType\": \"append\",\n\t\"entities\": [\n\t\t{\n\t\t\t\"id\": \"myEntity1\",\n\t\t\t\"type\": \"myType\",\n\t\t\t\"description\": {\n\t\t\t\t\"value\": \"My happy entity\",\n\t\t\t\t\"type\": \"Text\"\n\t\t\t},\n\t\t\t\"online\": {\n\t\t\t\t\"value\": true,\n\t\t\t\t\"type\": \"Boolean\"\n\t\t\t},\n\t\t\t\"temperature\": {\n\t\t\t\t\"value\": 42.3,\n\t\t\t\t\"type\": \"Number\"\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\": \"myEntity2\",\n\t\t\t\"type\": \"myType\",\n\t\t\t\"description\": {\n\t\t\t\t\"value\": \"My second happy entity\",\n\t\t\t\t\"type\": \"Text\"\n\t\t\t},\n\t\t\t\"online\": {\n\t\t\t\t\"value\": false,\n\t\t\t\t\"type\": \"Boolean\"\n\t\t\t},\n\t\t\t\"temperature\": {\n\t\t\t\t\"value\": -12,\n\t\t\t\t\"type\": \"Number\"\n\t\t\t}\n\t\t}\n\t]\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_CB}}/v2/op/update",
@@ -877,6 +906,46 @@
 					"response": []
 				},
 				{
+					"name": "Create subscription (custom notification only header)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"Notificacion para vaciados\",\n  \"subject\": {\n    \"entities\": [\n      {\n        \"id\": \".*\",\n        \"type\": \"WasteContainer\"\n      }\n    ],\n    \"condition\": {\n      \"attrs\": [\n        \"TimeInstant\"\n      ]\n    }\n  },\n  \"notification\": {\n    \"httpCustom\": {\n      \"url\": \"http://iot-cygnus:5057/notify\",\n        \"headers\": {\n          \"fiware-servicepath\": \"/emptyings\"  \n      }\n    },\n    \"attrs\": [\n      \"dateModified\", \"dateCalculatedEmptyings\", \"emptyingValue\", \"location\", \"storedWasteKind\", \"badEfficiency\", \"goodEfficiency\"\n    ]\n  }\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_CB}}/v2/subscriptions",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_CB}}"
+							],
+							"path": [
+								"v2",
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get a single subscription",
 					"request": {
 						"method": "GET",
@@ -988,47 +1057,7 @@
 					"response": []
 				},
 				{
-					"name": "Create subscription (custom notification only header)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Fiware-Service",
-								"value": "{{SERVICE}}"
-							},
-							{
-								"key": "Fiware-ServicePath",
-								"value": "{{SUBSERVICE}}"
-							},
-							{
-								"key": "X-Auth-Token",
-								"value": "{{TOKEN}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"description\": \"Notificacion para vaciados\",\n  \"subject\": {\n    \"entities\": [\n      {\n        \"id\": \".*\",\n        \"type\": \"WasteContainer\"\n      }\n    ],\n    \"condition\": {\n      \"attrs\": [\n        \"TimeInstant\"\n      ]\n    }\n  },\n  \"notification\": {\n    \"httpCustom\": {\n      \"url\": \"http://iot-cygnus:5057/notify\",\n        \"headers\": {\n          \"fiware-servicepath\": \"/emptyings\"  \n      }\n    },\n    \"attrs\": [\n      \"dateModified\", \"dateCalculatedEmptyings\", \"emptyingValue\", \"location\", \"storedWasteKind\", \"badEfficiency\", \"goodEfficiency\"\n    ]\n  }\n}"
-						},
-						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_CB}}/v2/subscriptions",
-							"protocol": "{{PROTOCOL}}",
-							"host": [
-								"{{ENDPOINT_CB}}"
-							],
-							"path": [
-								"v2",
-								"subscriptions"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create registro",
+					"name": "Create registration",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1062,52 +1091,6 @@
 							"path": [
 								"v2",
 								"registrations"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create entity (keyValues)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Fiware-Service",
-								"value": "{{SERVICE}}"
-							},
-							{
-								"key": "Fiware-ServicePath",
-								"value": "{{SUBSERVICE}}"
-							},
-							{
-								"key": "X-Auth-Token",
-								"value": "{{TOKEN}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"id\": \"CAM7-34DGSDMM\",\n    \"type\": \"VehiclesCounter\",\n    \"description\": \"Conteo de vehículos\",\n    \"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n            -3.734511592,\n            40.297203367\n        ]\n    },\n    \"addressLocality\": \"Majadahonda\",\n    \"addressCountry\": \"ES\",\n    \"streetAddress\": \"Camino del Pocito Km 3\",\n    \"postalCode\": 28901,\n    \"streetNumber\": 3,\n    \"roadPointID\": \"Spain-RoadPoint-M406-45-A\",\n    \"sourceOriginator\": \"PolimerMadrid1Alcobendas\",\n    \"trackID\": \"Suma de todos los carriles sentido Alcoboendas\",\n    \"sourceOriginEventID\": \"21\",\n    \"TimeInstant\": \"2020-06-06T13:06:06\",\n    \"dailyMotorbikeNumber\": 44,\n    \"dailyCarNumber\": 44,\n    \"dailyLorryNumber\": 23,\n    \"dailyBicycleNumber\": 0,\n    \"averageDailyCarSpeed\": 112,\n    \"averageDailyMotorbikeSpeed\": 92,\n    \"averageDailyLorrySpeed\": 87,\n    \"averageDailyBicycleSpeed\": 18,\n    \"averageHourlyCarSpeed\": 99,\n    \"averageHourlyMotorbikeSpeed\": 83,\n    \"averageHourlyLorrySpeed\": 87,\n    \"averageHourlyBicycleSpeed\": 0,\n    \"maxDailyCarSpeed\": 142,\n    \"maxDailyMotorbikeSpeed\": 171,\n    \"maxDailyLorrySpeed\": 95,\n    \"maxDailyBicycleSpeed\": 14,\n    \"maxHourlyCarSpeed\": 113,\n    \"maxHourlyMotorbikeSpeed\": 119,\n    \"maxHourlyLorrySpeed\": 91,\n    \"maxHourlyBicycleSpeed\": 0,\n    \"averageHourlyHeadwayTime\": 0.8,\n    \"dailyHeadwayTime\": 0.9\n}"
-						},
-						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_CB}}/v2/entities?options=keyValues",
-							"protocol": "{{PROTOCOL}}",
-							"host": [
-								"{{ENDPOINT_CB}}"
-							],
-							"path": [
-								"v2",
-								"entities"
-							],
-							"query": [
-								{
-									"key": "options",
-									"value": "keyValues"
-								}
 							]
 						}
 					},
@@ -3399,7 +3382,7 @@
 					"response": []
 				},
 				{
-					"name": "Modificacion device",
+					"name": "Modification device",
 					"request": {
 						"method": "PUT",
 						"header": [
