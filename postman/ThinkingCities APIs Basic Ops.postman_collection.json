@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f1431c62-ffe1-4ddd-858d-6e2e50833eff",
+		"_postman_id": "39ea19a8-fa1b-4853-8a4c-81b0488ae467",
 		"name": "ThinkingCities APIs Basic Ops",
 		"description": "A set with the basic API operations used by ThikingCities platform, covering:\n\n* IDM & Auth\n* Orion Context Broker\n* STH\n* Perseo CEP\n* CKAN\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -15,7 +15,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "05d0bd16-98aa-40e5-96da-49270db93978",
 								"exec": [
 									"postman.setGlobalVariable(\"TOKEN\",postman.getResponseHeader(\"X-Subject-Token\") );"
 								],
@@ -56,7 +55,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f8917622-dc16-4b9a-afe6-b18a5dff988f",
 								"exec": [
 									"postman.setGlobalVariable(\"TOKEN\",postman.getResponseHeader(\"X-Subject-Token\") );"
 								],
@@ -123,9 +121,57 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get user roles",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setGlobalVariable(\"TOKEN\",postman.getResponseHeader(\"X-Subject-Token\") );"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_KEYSTONE}}/v3/users/a241a19fd3264dcc85d1e50b5f48a3cb/project_roles",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_KEYSTONE}}"
+							],
+							"path": [
+								"v3",
+								"users",
+								"a241a19fd3264dcc85d1e50b5f48a3cb",
+								"project_roles"
+							]
+						}
+					},
+					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Orion Context Broker",
@@ -262,6 +308,52 @@
 							"path": [
 								"v2",
 								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create entity (keyValues)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"CAM7\",\n    \"type\": \"VehiclesCounter\",\n    \"description\": \"Conteo de vehículos\",\n    \"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n            -3.734511592,\n            40.297203367\n        ]\n    },\n    \"addressLocality\": \"Majadahonda\"\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_CB}}/v2/entities?options=keyValues",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_CB}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							],
+							"query": [
+								{
+									"key": "options",
+									"value": "keyValues"
+								}
 							]
 						}
 					},
@@ -427,7 +519,7 @@
 					"response": []
 				},
 				{
-					"name": "Bath creation/update",
+					"name": "Batch creation/update",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -450,7 +542,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"actionType\": \"APPEND\",\n\t\"entities\": [\n\t\t{\n\t\t\t\"id\": \"myEntity1\",\n\t\t\t\"type\": \"myType\",\n\t\t\t\"description\": {\n\t\t\t\t\"value\": \"My happy entity\",\n\t\t\t\t\"type\": \"Text\"\n\t\t\t},\n\t\t\t\"online\": {\n\t\t\t\t\"value\": true,\n\t\t\t\t\"type\": \"Boolean\"\n\t\t\t},\n\t\t\t\"temperature\": {\n\t\t\t\t\"value\": 42.3,\n\t\t\t\t\"type\": \"Number\"\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\": \"myEntity2\",\n\t\t\t\"type\": \"myType\",\n\t\t\t\"description\": {\n\t\t\t\t\"value\": \"My second happy entity\",\n\t\t\t\t\"type\": \"Text\"\n\t\t\t},\n\t\t\t\"online\": {\n\t\t\t\t\"value\": false,\n\t\t\t\t\"type\": \"Boolean\"\n\t\t\t},\n\t\t\t\"temperature\": {\n\t\t\t\t\"value\": -12,\n\t\t\t\t\"type\": \"Number\"\n\t\t\t}\n\t\t}\n\t]\n}"
+							"raw": "{\n\t\"actionType\": \"append\",\n\t\"entities\": [\n\t\t{\n\t\t\t\"id\": \"myEntity1\",\n\t\t\t\"type\": \"myType\",\n\t\t\t\"description\": {\n\t\t\t\t\"value\": \"My happy entity\",\n\t\t\t\t\"type\": \"Text\"\n\t\t\t},\n\t\t\t\"online\": {\n\t\t\t\t\"value\": true,\n\t\t\t\t\"type\": \"Boolean\"\n\t\t\t},\n\t\t\t\"temperature\": {\n\t\t\t\t\"value\": 42.3,\n\t\t\t\t\"type\": \"Number\"\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"id\": \"myEntity2\",\n\t\t\t\"type\": \"myType\",\n\t\t\t\"description\": {\n\t\t\t\t\"value\": \"My second happy entity\",\n\t\t\t\t\"type\": \"Text\"\n\t\t\t},\n\t\t\t\"online\": {\n\t\t\t\t\"value\": false,\n\t\t\t\t\"type\": \"Boolean\"\n\t\t\t},\n\t\t\t\"temperature\": {\n\t\t\t\t\"value\": -12,\n\t\t\t\t\"type\": \"Number\"\n\t\t\t}\n\t\t}\n\t]\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_CB}}/v2/op/update",
@@ -814,6 +906,46 @@
 					"response": []
 				},
 				{
+					"name": "Create subscription (custom notification only header)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"Notificacion para vaciados\",\n  \"subject\": {\n    \"entities\": [\n      {\n        \"id\": \".*\",\n        \"type\": \"WasteContainer\"\n      }\n    ],\n    \"condition\": {\n      \"attrs\": [\n        \"TimeInstant\"\n      ]\n    }\n  },\n  \"notification\": {\n    \"httpCustom\": {\n      \"url\": \"http://putsreq.com/aGSZ2hnoTXRaO4JHZNY1\",\n        \"headers\": {\n          \"fiware-servicepath\": \"/emptyings\"  \n      }\n    },\n    \"attrs\": [\n      \"dateModified\", \"dateCalculatedEmptyings\", \"emptyingValue\", \"location\", \"storedWasteKind\", \"badEfficiency\", \"goodEfficiency\"\n    ]\n  }\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_CB}}/v2/subscriptions",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_CB}}"
+							],
+							"path": [
+								"v2",
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get a single subscription",
 					"request": {
 						"method": "GET",
@@ -923,9 +1055,48 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Create registration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"dataProvided\": {\n    \"entities\": [\n      {\n        \"id\": \"Street4\",\n        \"type\": \"Street\"\n      }\n    ],\n    \"attrs\": [\n      \"temperature\"\n    ]\n  },\n  \"provider\": {\n    \"http\": {\n      \"url\": \"http://sensor48.mycity.com/v2\"\n    }\n  }\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_CB}}/v2/registrations",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_CB}}"
+							],
+							"path": [
+								"v2",
+								"registrations"
+							]
+						}
+					},
+					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "IOTA",
@@ -954,7 +1125,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"services\": [\r\n    {\r\n      \"apikey\": \"{{JSON_APIKEY}}\",\r\n      \"entity_type\": \"device\",\r\n      \"protocol\": [ \"IoTA-JSON\" ]\r\n    }\r\n  ]\r\n}"
+							"raw": "{\r\n    \"services\": [\r\n        {\r\n            \"apikey\": \"{{JSON_APIKEY}}\",\r\n            \"entity_type\": \"device\",\r\n            \"protocol\": [\r\n                \"IoTA-JSON\"\r\n            ]\r\n        }\r\n    ]\r\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
@@ -994,7 +1165,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"services\": [\r\n    {\r\n      \"apikey\": \"{{JSON_APIKEY}}\",\r\n      \"entity_type\": \"device\",\r\n      \"attributes\": [\r\n        { \"object_id\": \"t\", \"name\": \"temperature\", \"type\": \"float\" },\r\n        { \"object_id\": \"h\", \"name\": \"humidity\", \"type\": \"float\" }\r\n      ],\r\n      \"protocol\": [ \"IoTA-JSON\" ]\r\n    }\r\n  ]\r\n}"
+							"raw": "{\r\n    \"services\": [\r\n        {\r\n            \"apikey\": \"{{JSON_APIKEY}}\",\r\n            \"entity_type\": \"device\",\r\n            \"attributes\": [\r\n                {\r\n                    \"object_id\": \"t\",\r\n                    \"name\": \"temperature\",\r\n                    \"type\": \"Number\"\r\n                },\r\n                {\r\n                    \"object_id\": \"h\",\r\n                    \"name\": \"humidity\",\r\n                    \"type\": \"Number\"\r\n                }\r\n            ],\r\n            \"protocol\": [\r\n                \"IoTA-JSON\"\r\n            ]\r\n        }\r\n    ]\r\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
@@ -1011,7 +1182,7 @@
 					"response": []
 				},
 				{
-					"name": "Create service (JSON) static attributes",
+					"name": "Create service (JSON) stattic attributes",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1034,7 +1205,87 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"services\": [\r\n    {\r\n      \"apikey\": \"{{JSON_APIKEY}}\",\r\n      \"entity_type\": \"device\",\r\n      \"static_attributes\": [\r\n        { \"name\": \"deviceFamily\", \"type\": \"integer\", \"value\": \"02598347\" }\r\n      ],\r\n      \"protocol\": [ \"IoTA-JSON\" ]\r\n    }\r\n  ]\r\n}"
+							"raw": "{\r\n    \"services\": [\r\n        {\r\n            \"apikey\": \"{{JSON_APIKEY}}\",\r\n            \"entity_type\": \"device\",\r\n            \"static_attributes\": [\r\n                {\r\n                    \"name\": \"manufacturer\",\r\n                    \"type\": \"Text\",\r\n                    \"value\": \"TEF\"\r\n                }\r\n            ],\r\n            \"protocol\": [\r\n                \"IoTA-JSON\"\r\n            ]\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_IOTAM}}"
+							],
+							"path": [
+								"iot",
+								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create service (JSON) explicit attrs",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"services\": [\r\n        {\r\n            \"apikey\": \"{{JSON_APIKEY}}\",\r\n            \"entity_type\": \"device\",\r\n            \"explicitAttrs\": true,\r\n            \"attributes\": [\r\n                {\r\n                    \"object_id\": \"t\",\r\n                    \"name\": \"temperature\",\r\n                    \"type\": \"Number\"\r\n                },\r\n                {\r\n                    \"object_id\": \"h\",\r\n                    \"name\": \"humidity\",\r\n                    \"type\": \"Number\"\r\n                }\r\n            ],\r\n            \"protocol\": [\r\n                \"IoTA-JSON\"\r\n            ]\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_IOTAM}}"
+							],
+							"path": [
+								"iot",
+								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create service (JSON) timestamp",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"services\": [\r\n        {\r\n            \"apikey\": \"{{JSON_APIKEY}}\",\r\n            \"entity_type\": \"device\",\r\n            \"timestamp\": true,\r\n            \"protocol\": [\r\n                \"IoTA-JSON\"\r\n            ]\r\n        }\r\n    ]\r\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
@@ -1074,7 +1325,87 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"services\": [\n        {\n            \"apikey\": \"qawsedrftgyhujikolpñxc\",\n            \"entity_type\": \"device\",\n            \"attributes\": [\n                {\n                    \"object_id\": \"t\",\n                    \"name\": \"temperature\",\n                    \"type\": \"float\",\n                    \"entity_name\": \"WaterMeter02\",\n                    \"entity_type\": \"WaterMeter\",\n                    \"expression\": \"${@temperature * 100}\"\n                },\n                {\n                    \"object_id\": \"h\",\n                    \"name\": \"humidity\",\n                    \"type\": \"float\",\n                    \"entity_name\": \"WaterMeter02\",\n                    \"entity_type\": \"WaterMeter\"\n                }\n            ],\n            \"protocol\": [\n                \"IoTA-JSON\"\n            ]\n        }\n    ]\n}"
+							"raw": "{\n    \"services\": [\n        {\n            \"apikey\": \"{{JSON_APIKEY}}\",\n            \"entity_type\": \"device\",\n            \"attributes\": [\n                {\n                    \"object_id\": \"t\",\n                    \"name\": \"temperature\",\n                    \"type\": \"float\",\n                    \"entity_name\": \"WaterMeter02\",\n                    \"entity_type\": \"WaterMeter\",\n                    \"expression\": \"${@temperature * 100}\"\n                },\n                {\n                    \"object_id\": \"h\",\n                    \"name\": \"humidity\",\n                    \"type\": \"float\",\n                    \"entity_name\": \"WaterMeter02\",\n                    \"entity_type\": \"WaterMeter\"\n                }\n            ],\n            \"protocol\": [\n                \"IoTA-JSON\"\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_IOTAM}}"
+							],
+							"path": [
+								"iot",
+								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create service (JSON) JEXL expression",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"services\": [\n        {\n            \"apikey\": \"{{JSON_APIKEY}}\",\n            \"entity_type\": \"device\",\n            \"attributes\": [\n                {\n                    \"object_id\": \"t\",\n                    \"name\": \"temperature\",\n                    \"type\": \"Number\",\n                    \"expression\": \"@t == 6? true : false\"\n                }\n            ],\n            \"protocol\": [\n                \"IoTA-JSON\"\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_IOTAM}}"
+							],
+							"path": [
+								"iot",
+								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create service (JSON) commands",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"services\": [\r\n    {\r\n      \"apikey\": \"{{JSON_APIKEY}}\",\r\n      \"entity_type\": \"device\",\r\n      \"protocol\": \"IoTA-JSON\",\r\n      \"commands\": [\r\n      \t{ \"object_id\": \"r\", \"name\": \"reset\", \"type\": \"string\" }\r\n      ]       \r\n    }\r\n  ]\r\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
@@ -1114,7 +1445,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"services\": [\r\n    {\r\n      \"apikey\": \"{{UL_APIKEY}}\",\r\n      \"entity_type\": \"device\",\r\n      \"protocol\": [ \"IoTA-UL\" ]\r\n    }\r\n  ]\r\n}"
+							"raw": "{\r\n    \"services\": [\r\n        {\r\n            \"apikey\": \"{{UL_APIKEY}}\",\r\n            \"entity_type\": \"device\",\r\n            \"protocol\": [\r\n                \"IoTA-UL\"\r\n            ]\r\n        }\r\n    ]\r\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
@@ -1234,7 +1565,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"services\": [\n        {\n            \"apikey\": \"u1ifpllfyghuohxwbnt0azt5k\",\n            \"entity_type\": \"parking\",\n            \"attributes\": [\n                {\n                    \"expression\": \"${(@plazasOcupadas / @plazasTotal) * 100}\",\n                    \"type\": \"Number\",\n                    \"name\": \"plazasPorcentaje\"\n                }\n            ],\n            \"protocol\": [\n                \"IoTA-UL\"\n            ]\n        }\n    ]\n}"
+							"raw": "{\n    \"services\": [\n        {\n            \"apikey\": \"{{UL_APIKEY}}\",\n            \"entity_type\": \"parking\",\n            \"attributes\": [\n                {\n                    \"expression\": \"${(@plazasOcupadas / @plazasTotal) * 100}\",\n                    \"type\": \"Number\",\n                    \"name\": \"plazasPorcentaje\"\n                }\n            ],\n            \"protocol\": [\n                \"IoTA-UL\"\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
@@ -1406,7 +1737,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"devices\": [\r\n    {\r\n      \"device_id\": \"dev1json\", \r\n      \"entity_name\": \"entity1json\", \r\n      \"entity_type\": \"devicejson\",\r\n      \"protocol\": \"IoTA-JSON\"\r\n    }\r\n  ]\r\n}"
+							"raw": "{\r\n    \"devices\": [\r\n        {\r\n            \"device_id\": \"dev1json\",\r\n            \"entity_name\": \"entity1json\",\r\n            \"entity_type\": \"devicejson\",\r\n            \"apikey\": \"{{JSON_APIKEY}}\",\r\n            \"protocol\": \"IoTA-JSON\"\r\n        }\r\n    ]\r\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/devices",
@@ -1446,7 +1777,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"devices\": [\r\n    {\r\n      \"device_id\": \"dev1json\", \r\n      \"entity_name\": \"entity1json\", \r\n      \"entity_type\": \"devicejson\",\r\n      \"attributes\": [\r\n        { \"object_id\": \"w\", \"name\": \"power\", \"type\": \"float\" },\r\n        { \"object_id\": \"e\", \"name\": \"electricPotential\", \"type\": \"float\" }\r\n      ],\r\n      \"protocol\": \"IoTA-JSON\"\r\n    }\r\n  ]\r\n}"
+							"raw": "{\r\n    \"devices\": [\r\n        {\r\n            \"device_id\": \"dev2json\",\r\n            \"entity_name\": \"entity2json\",\r\n            \"entity_type\": \"devicejson\",\r\n            \"apikey\": \"{{JSON_APIKEY}}\",\r\n            \"attributes\": [\r\n                {\r\n                    \"object_id\": \"w\",\r\n                    \"name\": \"power\",\r\n                    \"type\": \"Number\"\r\n                },\r\n                {\r\n                    \"object_id\": \"e\",\r\n                    \"name\": \"electricPotential\",\r\n                    \"type\": \"Number\"\r\n                }\r\n            ],\r\n            \"protocol\": \"IoTA-JSON\"\r\n        }\r\n    ]\r\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/devices",
@@ -1486,7 +1817,299 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"devices\": [\r\n    {\r\n      \"device_id\": \"dev1json\", \r\n      \"entity_name\": \"entity1json\", \r\n      \"entity_type\": \"devicejson\",\r\n      \"static_attributes\": [\r\n        { \"name\": \"partNumber\", \"type\": \"Integer\", \"value\": \"2136721\" }\r\n      ],\r\n      \"protocol\": \"IoTA-JSON\"\r\n    }\r\n  ]\r\n}"
+							"raw": "{\r\n    \"devices\": [\r\n        {\r\n            \"device_id\": \"dev3json\",\r\n            \"entity_name\": \"entity3json\",\r\n            \"entity_type\": \"devicejson\",\r\n            \"static_attributes\": [\r\n                {\r\n                    \"name\": \"partNumber\",\r\n                    \"type\": \"Text\",\r\n                    \"value\": \"2136721\"\r\n                }\r\n            ],\r\n            \"protocol\": \"IoTA-JSON\"\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/devices",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_IOTAM}}"
+							],
+							"path": [
+								"iot",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create device (JSON) explicit attributes",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"devices\": [\r\n        {\r\n            \"device_id\": \"dev4json\",\r\n            \"entity_name\": \"entity4json\",\r\n            \"entity_type\": \"devicejson\",\r\n            \"apikey\": \"{{JSON_APIKEY}}\",\r\n            \"explicitAttrs\": true,\r\n            \"attributes\": [\r\n                {\r\n                    \"object_id\": \"w\",\r\n                    \"name\": \"power\",\r\n                    \"type\": \"Number\"\r\n                },\r\n                {\r\n                    \"object_id\": \"e\",\r\n                    \"name\": \"electricPotential\",\r\n                    \"type\": \"Number\"\r\n                }\r\n            ],\r\n            \"protocol\": \"IoTA-JSON\"\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/devices",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_IOTAM}}"
+							],
+							"path": [
+								"iot",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create device (JSON) multientity plugin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "fiware-service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "fiware-servicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"devices\": [\n        {\n            \"protocol\": \"IoTA-JSON\",\n            \"entity_name\": \"contador12\",\n            \"entity_type\": \"multientity\",\n            \"apikey\": \"{{JSON_APIKEY}}\",\n            \"attributes\": [\n                {\n                    \"object_id\": \"cont1\",\n                    \"name\": \"vol\",\n                    \"type\": \"string\",\n                    \"entity_name\": \"WaterMeterSoria01\",\n                    \"entity_type\": \"WaterMeter\"\n                },\n                {\n                    \"object_id\": \"cont2\",\n                    \"name\": \"vol\",\n                    \"type\": \"string\",\n                    \"entity_name\": \"WaterMeterSoria02\",\n                    \"entity_type\": \"WaterMeter\"\n                },\n                {\n                    \"object_id\": \"cont3\",\n                    \"name\": \"vol\",\n                    \"type\": \"string\",\n                    \"entity_name\": \"WaterMeterSoria03\",\n                    \"entity_type\": \"WaterMeter\"\n                }\n            ],\n            \"device_id\": \"test99\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/devices",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_IOTAM}}"
+							],
+							"path": [
+								"iot",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create device (JSON) expression plugin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "fiware-service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "fiware-servicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"devices\": [\n        {\n            \"device_id\": \"testmulti\",\n            \"protocol\": \"IoTA-JSON\",\n            \"entity_name\": \"testmulti\",\n            \"entity_type\": \"device\",\n            \"attributes\": [\n                {\n                    \"object_id\": \"cont1\",\n                    \"name\": \"vol\",\n                    \"type\": \"string\",\n                    \"expression\": \"${@vol*100}\",\n                    \"entity_name\": \"WaterMeterSoria01\",\n                    \"entity_type\": \"WaterMeter\"\n                },\n                {\n                    \"object_id\": \"cont2\",\n                    \"name\": \"vol\",\n                    \"type\": \"string\",\n                    \"expression\": \"${@vol*100}\",\n                    \"entity_name\": \"WaterMeterSoria02\",\n                    \"entity_type\": \"WaterMeter\"\n                },\n                {\n                    \"object_id\": \"cont3\",\n                    \"name\": \"vol\",\n                    \"type\": \"string\",\n                    \"expression\": \"${@vol*100}\",\n                    \"entity_name\": \"WaterMeterSoria03\",\n                    \"entity_type\": \"WaterMeter\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/devices",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_IOTAM}}"
+							],
+							"path": [
+								"iot",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create device (JSON) multientity + expression plugin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "fiware-service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "fiware-servicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"devices\": [\n        {\n            \"device_id\": \"testmulti\",\n            \"protocol\": \"IoTA-JSON\",\n            \"entity_name\": \"testmulti\",\n            \"entity_type\": \"device\",\n            \"attributes\": [\n                {\n                    \"object_id\": \"cont1\",\n                    \"name\": \"vol\",\n                    \"type\": \"string\",\n                    \"expression\": \"${@vol*100}\",\n                    \"entity_name\": \"WaterMeterSoria01\",\n                    \"entity_type\": \"WaterMeter\"\n                },\n                {\n                    \"object_id\": \"cont2\",\n                    \"name\": \"vol\",\n                    \"type\": \"string\",\n                    \"expression\": \"${@vol*100}\",\n                    \"entity_name\": \"WaterMeterSoria02\",\n                    \"entity_type\": \"WaterMeter\"\n                },\n                {\n                    \"object_id\": \"cont3\",\n                    \"name\": \"vol\",\n                    \"type\": \"string\",\n                    \"expression\": \"${@vol*100}\",\n                    \"entity_name\": \"WaterMeterSoria03\",\n                    \"entity_type\": \"WaterMeter\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/devices",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_IOTAM}}"
+							],
+							"path": [
+								"iot",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create device (JSON) JEXL",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "fiware-service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "fiware-servicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"devices\": [\n        {\n            \"device_id\": \"device006\",\n            \"protocol\": \"IoTA-JSON\",\n            \"entity_name\": \"device006\",\n            \"entity_type\": \"device\",\n            \"apikey\": \"{{JSON_APIKEY}}\",\n            \"expressionLanguage\": \"jexl\",\n            \"attributes\": [\n                {\n                    \"name\": \"location\",\n                    \"type\": \"geo:json\",\n                    \"expression\": \"{type:\\\"Point\\\",coordinates: [lat, long]}\"\n                },\n                {\n                    \"name\": \"lat\",\n                    \"type\": \"Number\"\n                },\n                {\n                    \"name\": \"long\",\n                    \"type\": \"Number\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/devices",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_IOTAM}}"
+							],
+							"path": [
+								"iot",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create device (JSON) JEXL2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "fiware-service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "fiware-servicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"devices\": [\n        {\n            \"device_id\": \"device007\",\n            \"protocol\": \"IoTA-JSON\",\n            \"entity_name\": \"device007\",\n            \"entity_type\": \"device\",\n            \"expressionLanguage\": \"jexl\",\n            \"apikey\": \"{{JSON_APIKEY}}\",\n            \"attributes\": [\n                {\n                    \"name\": \"location\",\n                    \"type\": \"geo:json\",\n                    \"expression\": \"lat && long ?{type:'Point',coordinates: [lat, long]}:{type:'Point',coordinates: [0, 0]}\"\n                },\n                {\n                    \"name\": \"lat\",\n                    \"type\": \"Number\"\n                },\n                {\n                    \"name\": \"long\",\n                    \"type\": \"Number\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/devices",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_IOTAM}}"
+							],
+							"path": [
+								"iot",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create device (JSON) JEXL operador ternario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "fiware-service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "fiware-servicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"devices\": [\n        {\n            \"device_id\": \"device008\",\n            \"protocol\": \"IoTA-JSON\",\n            \"entity_name\": \"device008\",\n            \"entity_type\": \"device\",\n            \"expressionLanguage\": \"jexl\",\n            \"apikey\": \"{{JSON_APIKEY}}\",\n            \"attributes\": [\n                {\n                    \"name\": \"alarma\",\n                    \"type\": \"Text\",\n                    \"expression\": \"v>10?'Umbral alto':'Umbral bajo'\"\n                },\n                {\n                    \"name\": \"v\",\n                    \"type\": \"Number\"\n                }\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/devices",
@@ -1553,20 +2176,20 @@
 							},
 							{
 								"key": "fiware-service",
-								"value": "{{servicio}}"
+								"value": "{{SERVICE}}"
 							},
 							{
 								"key": "fiware-servicePath",
-								"value": "{{subservicio}}"
+								"value": "{{SUBSERVICE}}"
 							},
 							{
 								"key": "x-auth-token",
-								"value": "{{token}}"
+								"value": "{{TOKEN}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"protocol\" : \"IoTA-JSON\",\n    \"name\" : \"SO_GOLMA_RI_0004\",\n    \"type\" : \"WeatherObserved\",\n    \"id\" : \"IA0201E16000100023E\",\n    \"static_attributes\" : [ \n        {\n            \"name\" : \"position\",\n            \"type\" : \"geo:point\",\n            \"value\" : \"41.772635, -2.500192\"\n        }, \n        {\n            \"name\" : \"compassMagic\",\n            \"type\" : \"string\",\n            \"value\" : \"0N 1NE2E 3SE4S 5SO6O 7NO8N \"\n        }, \n        {\n            \"name\" : \"estimatedTemperature\",\n            \"type\" : \"number\",\n            \"value\" : \"10\"\n        }, \n        {\n            \"value\" : \"camaretas\",\n            \"type\" : \"string\",\n            \"name\" : \"park\"\n        }\n    ],\n    \"attributes\" : [ \n        {\n            \"expression\" : \"${@atmosphericPressure*((@estimatedTemperature+273)/((@estimatedTemperature+273)+(0.0065*(-1047))))^((9.80665*0.0289644)/(8.31432*0.0065))}\",\n            \"type\" : \"number\",\n            \"name\" : \"atmosphericPressure\",\n            \"object_id\" : \"bar\"\n        }, \n        {\n            \"type\" : \"number\",\n            \"name\" : \"temperature\",\n            \"object_id\" : \"tamb\"\n        }, \n        {\n            \"type\" : \"number\",\n            \"name\" : \"relativeHumidity\",\n            \"object_id\" : \"hamb\"\n        }, \n        {\n            \"type\" : \"number\",\n            \"name\" : \"correctedWindSpeed\",\n            \"object_id\" : \"vv\"\n        }, \n        {\n            \"type\" : \"number\",\n            \"name\" : \"windDirection\",\n            \"object_id\" : \"dv\"\n        }, \n        {\n            \"type\" : \"number\",\n            \"name\" : \"solarRadiation\",\n            \"object_id\" : \"rs\"\n        }, \n        {\n            \"type\" : \"number\",\n            \"name\" : \"rainfall\",\n            \"object_id\" : \"pl\"\n        }, \n        {\n            \"expression\" : \"${trim(substr(@compassMagic, indexOf(@compassMagic, substr(@windDirection / 45 + 0.45, 0, 1)) + 1, 2))}\",\n            \"type\" : \"number\",\n            \"name\" : \"windDirectionCompass\",\n            \"object_id\" : \"windDirectionCompass\"\n        }\n    ]\n}"
+							"raw": "{\n    \"protocol\" : \"IoTA-JSON\",\n    \"name\" : \"entidadprueba\",\n    \"type\" : \"Water\",\n    \"id\" : \"prueba\",\n    \"attributes\" : [ \n        {\n            \"expression\" : \"${@turbidity*100}\",\n            \"type\" : \"number\",\n            \"name\" : \"turbidity\",\n            \"object_id\" : \"tss\"\n        }, \n        {\n            \"expression\" : \"${@temperature*17.14-14}\",\n            \"type\" : \"number\",\n            \"name\" : \"temperature\",\n            \"object_id\" : \"temp\"\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/devices",
@@ -1606,7 +2229,47 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"devices\": [\r\n    {\r\n      \"device_id\": \"dev1ul\", \r\n      \"entity_name\": \"entity1ul\", \r\n      \"entity_type\": \"deviceul\",\r\n      \"attributes\": [\r\n        { \"object_id\": \"w\", \"name\": \"power\", \"type\": \"float\" },\r\n        { \"object_id\": \"e\", \"name\": \"electricPotential\", \"type\": \"float\" }\r\n      ],\r\n      \"static_attributes\": [\r\n        { \"name\": \"serialNumber\", \"type\": \"Integer\", \"value\": \"2136721\" }\r\n      ],\r\n      \"lazy\": [\r\n        { \"object_id\": \"p\", \"name\": \"pressure\", \"type\": \"percentage\" }\r\n      ],\r\n      \"commands\": [\r\n      \t{ \"object_id\": \"r\", \"name\": \"reset\", \"type\": \"string\" }\r\n      ],\r\n      \"endpoint\": \"http://foo.bar:999\",\r\n      \"protocol\": \"IoTA-UL\"\r\n    }\r\n  ]\r\n}"
+							"raw": "{\r\n    \"devices\": [\r\n        {\r\n            \"device_id\": \"dev1ul\",\r\n            \"entity_name\": \"entity1ul\",\r\n            \"entity_type\": \"deviceul\",\r\n            \"protocol\": \"IoTA-UL\"\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/devices",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_IOTAM}}"
+							],
+							"path": [
+								"iot",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create device (UL) attributes",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"devices\": [\r\n        {\r\n            \"device_id\": \"dev1ul\",\r\n            \"entity_name\": \"entity1ul\",\r\n            \"entity_type\": \"deviceul\",\r\n            \"attributes\": [\r\n                {\r\n                    \"object_id\": \"w\",\r\n                    \"name\": \"power\",\r\n                    \"type\": \"float\"\r\n                },\r\n                {\r\n                    \"object_id\": \"e\",\r\n                    \"name\": \"electricPotential\",\r\n                    \"type\": \"float\"\r\n                }\r\n            ],\r\n            \"static_attributes\": [\r\n                {\r\n                    \"name\": \"serialNumber\",\r\n                    \"type\": \"Integer\",\r\n                    \"value\": \"2136721\"\r\n                }\r\n            ],\r\n            \"lazy\": [\r\n                {\r\n                    \"object_id\": \"p\",\r\n                    \"name\": \"pressure\",\r\n                    \"type\": \"percentage\"\r\n                }\r\n            ],\r\n            \"commands\": [\r\n                {\r\n                    \"object_id\": \"r\",\r\n                    \"name\": \"reset\",\r\n                    \"type\": \"string\"\r\n                }\r\n            ],\r\n            \"endpoint\": \"http://foo.bar:999\",\r\n            \"protocol\": \"IoTA-UL\"\r\n        }\r\n    ]\r\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/devices",
@@ -1651,6 +2314,50 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"devices\": [\n    {\n      \"protocol\": \"IoTA-UL\",\n      \"entity_name\": \"contador12\",\n      \"entity_type\": \"multientity\",\n      \"attributes\": [\n        {\n          \"object_id\": \"cont1\",\n          \"name\": \"vol\",\n          \"type\": \"string\",\n          \"entity_name\": \"WaterMeterSoria01\",\n          \"entity_type\": \"WaterMeter\"\n        },\n        {\n          \"object_id\": \"cont2\",\n          \"name\": \"vol\",\n          \"type\": \"string\",\n          \"entity_name\": \"WaterMeterSoria02\",\n          \"entity_type\": \"WaterMeter\"\n        },\n        {\n          \"object_id\": \"cont3\",\n          \"name\": \"vol\",\n          \"type\": \"string\",\n          \"entity_name\": \"WaterMeterSoria03\",\n          \"entity_type\": \"WaterMeter\"\n        }\n      ],\n      \"device_id\": \"test99\"\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/devices",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_IOTAM}}"
+							],
+							"path": [
+								"iot",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create device (UL) multientity + expression plugin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "fiware-service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "fiware-servicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"devices\": [\n    {\n      \"device_id\": \"testmulti\",\n      \"protocol\": \"IoTA-JSON\",\n      \"entity_name\": \"testmulti\",\n      \"entity_type\": \"device\",\n      \"expressionLanguage\": \"jexl\",\n      \"attributes\": [\n        {\n          \"object_id\": \"cont1\",\n          \"name\": \"vol\",\n          \"type\": \"string\",\n          \"expression\" : \"${@vol*100}\",\n          \"entity_name\": \"WaterMeterSoria01\",\n          \"entity_type\": \"WaterMeter\"\n        },\n        {\n          \"object_id\": \"cont2\",\n          \"name\": \"vol\",\n          \"type\": \"string\",\n          \"expression\" : \"${@vol*100}\",\n          \"entity_name\": \"WaterMeterSoria02\",\n          \"entity_type\": \"WaterMeter\"\n        },\n        {\n          \"object_id\": \"cont3\",\n          \"name\": \"vol\",\n          \"type\": \"string\",\n          \"expression\" : \"${@vol*100}\",\n          \"entity_name\": \"WaterMeterSoria03\",\n          \"entity_type\": \"WaterMeter\"\n        }\n      ]\n    }\n  ]\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/devices",
@@ -1990,10 +2697,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"w\": \"36\",\r\n  \"e\": \"23\"\r\n}"
+							"raw": "{\r\n  \"t\": 16,\r\n  \"h\": 34\r\n}"
 						},
 						"url": {
-							"raw": "http://{{ENDPOINT_IOTA_JSON_HTTP}}/iot/json?i=dev1json&k={{JSON_APIKEY}}",
+							"raw": "http://{{ENDPOINT_IOTA_JSON_HTTP}}/iot/json?i=farola1&k={{JSON_APIKEY}}",
 							"protocol": "http",
 							"host": [
 								"{{ENDPOINT_IOTA_JSON_HTTP}}"
@@ -2005,7 +2712,7 @@
 							"query": [
 								{
 									"key": "i",
-									"value": "dev1json"
+									"value": "farola1"
 								},
 								{
 									"key": "k",
@@ -2113,7 +2820,7 @@
 							"raw": "{\n  \"value\": \"1\",\n  \"type\": \"command\"\n}\n"
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_CB}}/v2/entities/test77/attrs/ping?type=thing",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_CB}}/v2/entities/test777/attrs/reset?type=thing",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_CB}}"
@@ -2121,9 +2828,9 @@
 							"path": [
 								"v2",
 								"entities",
-								"test77",
+								"test777",
 								"attrs",
-								"ping"
+								"reset"
 							],
 							"query": [
 								{
@@ -2199,7 +2906,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://{{ENDPOINT_IOTA_JSON_HTTP}}/iot/json?k=jsona3wuhrlune2drj937002c&i=test101&getCmd=1",
+							"raw": "http://{{ENDPOINT_IOTA_JSON_HTTP}}/iot/json?k={{JSON_APIKEY}}&i=test777&getCmd=1",
 							"protocol": "http",
 							"host": [
 								"{{ENDPOINT_IOTA_JSON_HTTP}}"
@@ -2211,11 +2918,11 @@
 							"query": [
 								{
 									"key": "k",
-									"value": "jsona3wuhrlune2drj937002c"
+									"value": "{{JSON_APIKEY}}"
 								},
 								{
 									"key": "i",
-									"value": "test101"
+									"value": "test777"
 								},
 								{
 									"key": "getCmd",
@@ -2289,10 +2996,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"back\": \"back OK\"}"
+							"raw": "{ \"reset\": \"Comando reset ejecutado OK\"}"
 						},
 						"url": {
-							"raw": "http://{{ENDPOINT_IOTA_JSON_HTTP}}/iot/json/commands?k=jsona3wuhrlune2drj937002c&i=test777",
+							"raw": "http://{{ENDPOINT_IOTA_JSON_HTTP}}/iot/json/commands?k={{JSON_APIKEY}}&i=test777",
 							"protocol": "http",
 							"host": [
 								"{{ENDPOINT_IOTA_JSON_HTTP}}"
@@ -2305,7 +3012,7 @@
 							"query": [
 								{
 									"key": "k",
-									"value": "jsona3wuhrlune2drj937002c"
+									"value": "{{JSON_APIKEY}}"
 								},
 								{
 									"key": "i",
@@ -2418,7 +3125,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"devices\": [{\n        \"device_id\": \"test26\",\n        \"protocol\": \"IoTA-UL\",\n        \"entity_name\": \"test26\",\n        \"entity_type\": \"thing\",\n        \"transport\":\"HTTP\",\n        \"endpoint\": \"http://10.0.0.24:6500\",\n        \"commands\": [{\n            \"name\": \"ping\",\n            \"type\": \"command\"\n        }]\n    }]\n}"
+							"raw": "{\n    \"devices\": [\n        {\n            \"device_id\": \"test126\",\n            \"protocol\": \"IoTA-JSON\",\n            \"entity_name\": \"test126\",\n            \"entity_type\": \"thing\",\n            \"transport\": \"HTTP\",\n            \"endpoint\": \"http://10.0.0.24:6500\",\n            \"commands\": [\n                {\n                    \"name\": \"ping\",\n                    \"type\": \"command\"\n                }\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ENDPOINT_IOTAM}}/iot/devices",
@@ -2458,7 +3165,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"devices\": [{\n        \"device_id\": \"test77\",\n        \"protocol\": \"IoTA-UL\",\n        \"entity_name\": \"test77\",\n        \"entity_type\": \"thing\",\n        \"transport\":\"HTTP\",\n        \"commands\": [{\n            \"name\": \"ping\",\n            \"type\": \"command\"\n        }]\n    }]\n}"
+							"raw": "{\n    \"devices\": [\n        {\n            \"device_id\": \"test77\",\n            \"protocol\": \"IoTA-UL\",\n            \"entity_name\": \"test77\",\n            \"entity_type\": \"thing\",\n            \"transport\": \"HTTP\",\n            \"commands\": [\n                {\n                    \"name\": \"ping\",\n                    \"type\": \"command\"\n                }\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/devices",
@@ -2498,7 +3205,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"devices\": [{\n        \"device_id\": \"test777\",\n        \"protocol\": \"IoTA-JSON\",\n        \"entity_name\": \"test777\",\n        \"entity_type\": \"thing\",\n        \"transport\":\"HTTP\",\n        \"commands\": [{\n            \"name\": \"back\",\n            \"type\": \"command\"\n        }]\n    }]\n}"
+							"raw": "{\n    \"devices\": [\n        {\n            \"device_id\": \"test777\",\n            \"protocol\": \"IoTA-JSON\",\n            \"entity_name\": \"test777\",\n            \"entity_type\": \"thing\",\n            \"apikey\": \"{{JSON_APIKEY}}\",\n            \"transport\": \"HTTP\",\n            \"commands\": [\n                {\n                    \"name\": \"reset\",\n                    \"type\": \"command\"\n                }\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/devices",
@@ -2595,7 +3302,87 @@
 					"response": []
 				},
 				{
-					"name": "Modificacion device",
+					"name": "CREATE DEVICE (push command lwm2m)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "fiware-service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "fiware-servicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"devices\": [{\n        \"device_id\": \"testlw\",\n        \"protocol\": \"IoTA-LWM2M\",\n        \"entity_name\": \"testlw\",\n        \"entity_type\": \"thing\",\n        \"transport\":\"HTTP\",\n        \"endpoint\": \"http://10.0.0.24:6500\",\n        \"commands\": [{\n            \"name\": \"ping\",\n            \"type\": \"command\"\n        }]\n    }]\n}"
+						},
+						"url": {
+							"raw": "https://{{ENDPOINT_IOTAM}}/iot/devices",
+							"protocol": "https",
+							"host": [
+								"{{ENDPOINT_IOTAM}}"
+							],
+							"path": [
+								"iot",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE DEVICE (pull command lwm2m)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "fiware-service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "fiware-servicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "x-auth-token",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"devices\": [{\n        \"device_id\": \"testlw77\",\n        \"protocol\": \"IoTA-LWM2M\",\n        \"entity_name\": \"testlw77\",\n        \"entity_type\": \"thing\",\n        \"commands\": [{\n            \"name\": \"ping\",\n            \"type\": \"command\"\n        }]\n    }]\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/devices",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_IOTAM}}"
+							],
+							"path": [
+								"iot",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modification device",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -2641,8 +3428,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "STH",
@@ -2666,24 +3452,23 @@
 							}
 						],
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_STH}}/STH/v2/entities/myEntity/attrs/temperature?type=myEntityType&hLimit=3&hOffset=0&dateFrom=2017-10-16T00:00:00.000Z&dateTo=2017-10-26T23:59:59.999Z\n",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_STH}}/STH/v1/contextEntities/type/myType/id/myEntity/attributes/temperature?hLimit=3&hOffset=0&dateFrom=2017-10-16T00:00:00.000Z&dateTo=2017-10-26T23:59:59.999Z\n",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_STH}}"
 							],
 							"path": [
 								"STH",
-								"v2",
-								"entities",
+								"v1",
+								"contextEntities",
+								"type",
+								"myType",
+								"id",
 								"myEntity",
-								"attrs",
+								"attributes",
 								"temperature"
 							],
 							"query": [
-								{
-									"key": "type",
-									"value": "myEntityType"
-								},
 								{
 									"key": "hLimit",
 									"value": "3"
@@ -2724,65 +3509,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_STH}}/STH/v2/entities/myEntity/attrs/temperature?type=myEntityType&aggrMethod=sum&aggrPeriod=hour&dateFrom=2017-10-16T00:00:00.000Z&dateTo=2017-10-26T23:59:59.999Z\n",
-							"protocol": "{{PROTOCOL}}",
-							"host": [
-								"{{ENDPOINT_STH}}"
-							],
-							"path": [
-								"STH",
-								"v2",
-								"entities",
-								"myEntity",
-								"attrs",
-								"temperature"
-							],
-							"query": [
-								{
-									"key": "type",
-									"value": "myEntityType"
-								},
-								{
-									"key": "aggrMethod",
-									"value": "sum"
-								},
-								{
-									"key": "aggrPeriod",
-									"value": "hour"
-								},
-								{
-									"key": "dateFrom",
-									"value": "2017-10-16T00:00:00.000Z"
-								},
-								{
-									"key": "dateTo",
-									"value": "2017-10-26T23:59:59.999Z\n"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get attribute history (deprecated)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Fiware-Service",
-								"value": "{{SERVICE}}"
-							},
-							{
-								"key": "Fiware-ServicePath",
-								"value": "{{SUBSERVICE}}"
-							},
-							{
-								"key": "X-Auth-Token",
-								"value": "{{TOKEN}}"
-							}
-						],
-						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_STH}}/STH/v1/contextEntities/type/myEntityType/id/myEntity/attributes/temperature?hLimit=3&hOffset=0&dateFrom=2017-10-16T00:00:00.000Z&dateTo=2017-10-26T23:59:59.999Z\n",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_STH}}/STH/v1/contextEntities/type/myType/id/myEntity/attributes/temperature?aggrMethod=sum&aggrPeriod=hour&dateFrom=2017-10-16T00:00:00.000Z&dateTo=2017-10-26T23:59:59.999Z\n",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_STH}}"
@@ -2792,64 +3519,7 @@
 								"v1",
 								"contextEntities",
 								"type",
-								"myEntityType",
-								"id",
-								"myEntity",
-								"attributes",
-								"temperature"
-							],
-							"query": [
-								{
-									"key": "hLimit",
-									"value": "3"
-								},
-								{
-									"key": "hOffset",
-									"value": "0"
-								},
-								{
-									"key": "dateFrom",
-									"value": "2017-10-16T00:00:00.000Z"
-								},
-								{
-									"key": "dateTo",
-									"value": "2017-10-26T23:59:59.999Z\n"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get attribute aggregation (deprecated)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Fiware-Service",
-								"value": "{{SERVICE}}"
-							},
-							{
-								"key": "Fiware-ServicePath",
-								"value": "{{SUBSERVICE}}"
-							},
-							{
-								"key": "X-Auth-Token",
-								"value": "{{TOKEN}}"
-							}
-						],
-						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_STH}}/STH/v1/contextEntities/type/myEntityType/id/myEntity/attributes/temperature?aggrMethod=sum&aggrPeriod=hour&dateFrom=2017-10-16T00:00:00.000Z&dateTo=2017-10-26T23:59:59.999Z\n",
-							"protocol": "{{PROTOCOL}}",
-							"host": [
-								"{{ENDPOINT_STH}}"
-							],
-							"path": [
-								"STH",
-								"v1",
-								"contextEntities",
-								"type",
-								"myEntityType",
+								"myType",
 								"id",
 								"myEntity",
 								"attributes",
@@ -2877,8 +3547,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Perseo CEP",
@@ -2907,7 +3576,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"LowTemperature\",\r\n    \"text\": \"select *, temperature? from iotEvent where cast(id?, String) regexp 'vigo.*' AND type? =  'myType' AND cast(cast(temperature?, String), float)<10\",\r\n\t\"action\": {\r\n        \"type\": \"email\",\r\n        \"template\": \"Entity ${id} temperature is ${temperature}\",\r\n        \"parameters\": {\r\n            \"to\": \"manuel.carracedosanchez@telefonica.com\",\r\n            \"from\": \"no-reply@iotplatform.telefonica.com\",\r\n            \"subject\": \"Low temperature\"\r\n        }\r\n    }\r\n}"
+							"raw": "{\r\n    \"name\": \"enviaemail\",\r\n    \"text\": \"select *, temperature?, mantenedor?, getNextSunset(java.util.Calendar.getInstance(),37.9, -1.1).format(\\\"yyyy-MM-dd'T'HH:mm:ss.SSSX\\\") as sunset from iotEvent where cast(cast(temperature?, String),float) >= 20 \",\r\n\t\"action\": {\r\n        \"type\": \"email\",\r\n        \"template\": \"La temperatura de la entidad ${id} es ${temperature}. El ocaso será a las ${sunset}\",\r\n        \"parameters\": {\r\n            \"to\": \"${mantenedor}\",\r\n            \"from\": \"soporte@urbo2.es\",\r\n            \"subject\": \"Temperatura de la entidad ${id}\"\r\n        }\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
@@ -2946,7 +3615,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"BatteryLow\",\r\n    \"text\": \"select *, battery? from iotEvent where type?='Lamp' AND cast(cast(battery?, String), float)<20\",\r\n\t\"action\": {\r\n        \"type\": \"update\",\r\n        \"parameters\": {\r\n            \"id\": \"TestEntity2\",\r\n            \"type\": \"TestEntity\",\r\n            \"attributes\": [\r\n            \t{\r\n            \t\t\"name\": \"msg\",\r\n            \t\t\"value\": \"Battery in ${id} is ${battery}\"\r\n            \t}\r\n            ]\r\n        }\r\n    }\r\n}"
+							"raw": "{\r\n    \"name\": \"entityupdate\",\r\n    \"text\": \"select *, humidity? from iotEvent where type?='devicejson' AND cast(cast(humidity?, String), float)<20\",\r\n\t\"action\": {\r\n        \"type\": \"update\",\r\n        \"parameters\": {\r\n            \"id\": \"TestEntity2\",\r\n            \"type\": \"TestEntity\",\r\n            \"attributes\": [\r\n            \t{\r\n            \t\t\"name\": \"msg\",\r\n            \t\t\"value\": \"Humedad en ${id} es ${humidity}\"\r\n            \t}\r\n            ]\r\n        }\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
@@ -2979,24 +3648,24 @@
 							},
 							{
 								"key": "Fiware-Service",
-								"value": "sc_vlci"
+								"value": "{{SERVICE}}"
 							},
 							{
 								"key": "fiware-servicepath",
-								"value": "/sonometros"
+								"value": "{{SUBSERVICE}}"
 							},
 							{
 								"key": "x-auth-token",
-								"value": "f4f6508a01f344f486f916067299e464"
+								"value": "{{TOKEN}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"regla_sonometros_1\",\n  \"action\" : {\n        \"type\" : \"post\",\n        \"template\" : \"timeout=2\",\n        \"parameters\" : {\n            \"url\" : \"http://sonometro:${tokenLuminaria}@uvax.ddns.net:7080/API/web/index.php/mode/remote\",\n            \"method\" : \"PUT\",\n            \"headers\" : \"text/plain\"\n        }\n    },\n  \"subservice\": \"/sonometros\",\n  \"service\": \"sc_vlci\",\n  \"text\": \"select *,\\\"regla_sonometros_1\\\" as ruleName from pattern [every ev=iotEvent((cast(cast(`LAeq`?, String), float)  >=  cast(cast(`thresholdRemote`?, String), float)))]\"\n}"
+							"raw": "{\n    \"name\": \"postaction3\",\n    \"text\": \"select *, temperature?  from iotEvent where cast(cast(temperature?, String),float) >= 20\",\n    \"action\": [\n        {\n            \"type\": \"post\",\n            \"template\": \"La temperatura es ${temperature} grados.\",\n            \"parameters\": {\n                \"url\": \"https://enauzlunp3tcc.x.pipedream.net/${id}\",\n                \"method\": \"PUT\",\n                \"headers\": {\n                    \"Content-type\": \"application/json\",\n                    \"fiware-service\": \"${service}\",\n                    \"fiware-servicepath\": \"${subservice}\"\n                },\n                \"qs\": {\"type\": \"${type}\"}\n            }\n        }\n    ]\n}"
 						},
 						"url": {
-							"raw": "https://{{ENDPOINT_CEP}}/rules",
-							"protocol": "https",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
+							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_CEP}}"
 							],
@@ -3032,7 +3701,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_id\": \"5ce5225bd299206f2b320bbf\",\n    \"action\": [\n        {\n            \"type\": \"update\",\n            \"parameters\": {\n                \"attributes\": [\n                    {\n                        \"name\": \"status\",\n                        \"type\": \"Text\",\n                        \"value\": \"Alarma, fallo en equipo de medición. Nivel de PH. ${id}\"\n                    }\n                ],\n                \"actionType\": \"UPDATE\"\n            }\n        },\n        {\n            \"type\": \"email\",\n            \"template\": \"Problema sonda medicion Mediana de Voltoya\",\n            \"parameters\": {\n                \"to\": \"alberto.novolobato@telefonica.com\",\n                \"from\": \"no-reply@iotplatform.telefonica.com\",\n                \"subject\": \"Problema sonda medicion Mediana de Voltoya\"\n            }\n        },\n        {\n            \"type\": \"sms\",\n            \"template\": \"Problema sonda medicion Mediana de Voltoya\",\n            \"parameters\": {\n                \"to\": \"+34679245010\"\n            }\n        }\n    ],\n    \"text\": \"select *,\\\"alarma_nivel_ph_on\\\" as ruleName from pattern [every ev=iotEvent((cast(`phExitLevel`?,String))=\\\"-999999\\\" and type=\\\"WaterTank\\\")]\",\n    \"name\": \"alarma_nivel_ph_on\",\n    \"subservice\": \"/avmedvocacal\",\n    \"service\": \"dip_avila\"\n}"
+							"raw": "{\n    \"name\": \"accionmultiple\",\n    \"text\": \"select *, temperature?, mantenedor? from iotEvent where cast(cast(temperature?, String),float) >= 20\",\n    \"action\": [\n        {\n        \"type\": \"update\",\n        \"parameters\": {\n            \"id\": \"TestEntity3\",\n            \"type\": \"TestEntity\",\n            \"attributes\": [\n            \t{\n            \t\t\"name\": \"msg\",\n            \t\t\"value\": \"La temperature de ${id} es ${temperature}\"\n            \t}\n            ]\n        }\n    },\n        {\n        \"type\": \"email\",\n        \"template\": \"La temperatura de la entidad ${id} es ${temperature}\",\n        \"parameters\": {\n            \"to\": \"${mantenedor}\",\n            \"from\": \"soporte@urbo2.es\",\n            \"subject\": \"[ACCION MULTIPLE] Temperatura de la entidad ${id}\"\n        }\n    },\n        {\n            \"type\": \"sms\",\n            \"template\": \"Accion multiple. La temperatura de ${id} es ${temperature}\",\n            \"parameters\": {\n                \"to\": \"+34679245010\"\n            }\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
@@ -3049,7 +3718,163 @@
 					"response": []
 				},
 				{
-					"name": "Create rule chacking NGSIv2 types",
+					"name": "Create simple rule (entity update multiple entities)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"cambia_modo_cuadro\",\r\n    \"description\": \"Cambia el modo de las luminarias de un cuadro\",\r\n    \"text\": \"select \\\"cambia_modo_cuadro\\\" as ruleName, *, setWorkingMode? as mode, current_timestamp().format(\\\"yyyy-MM-dd'T'HH:mm:ss.SSSX\\\") as timeinstant from iotEvent where type = 'StreetlightControlCabinet' and setWorkingMode? is not null\",\r\n    \"action\": [\r\n        {\r\n            \"type\": \"update\",\r\n            \"parameters\": {\r\n                \"actionType\": \"UPDATE\",\r\n                \"filter\": {\r\n                    \"type\": \"Streetlight\",\r\n                    \"q\": \"refStreetlightControlCabinet:${id};status:ok\"\r\n                },\r\n                \"version\": 2,\r\n                \"attributes\": [\r\n                    {\r\n                        \"name\": \"setWorkingMode\",\r\n                        \"type\": \"Command\",\r\n                        \"value\": \"${mode}\"\r\n                    }\r\n                ]\r\n            }\r\n        },\r\n        {\r\n            \"type\": \"update\",\r\n            \"parameters\": {\r\n                \"actionType\": \"APPEND\",\r\n                \"filter\": {\r\n                    \"type\": \"Streetlight\",\r\n                    \"q\": \"refStreetlightControlCabinet:${id};status:ok\"\r\n                },\r\n                \"version\": 2,\r\n                \"attributes\": [\r\n                    {\r\n                        \"name\": \"workingMode\",\r\n                        \"type\": \"Text\",\r\n                        \"value\": \"${mode}\"\r\n                    },\r\n                    {\r\n                        \"name\": \"dateLastCommanded\",\r\n                        \"type\": \"DateTime\",\r\n                        \"value\": \"${timeinstant}\"\r\n                    },\r\n                    {\r\n                        \"name\": \"lastCommanderMessage\",\r\n                        \"type\": \"Text\",\r\n                        \"value\": \"Cambio de modo del cuadro ${id} a ${mode}\"\r\n                    },\r\n                    {\r\n                        \"name\": \"lastCommander\",\r\n                        \"type\": \"Text\",\r\n                        \"value\": \"${ruleName}\"\r\n                    },\r\n                    {\r\n                        \"name\": \"commandTimeinstant\",\r\n                        \"value\": \"${timeinstant}\",\r\n                        \"type\": \"DateTime\"\r\n                    }\r\n                ]\r\n            }\r\n        }\r\n    ],\r\n    \"subservice\": \"/alumbrado\",\r\n    \"service\": \"alcobendas\"\r\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_CEP}}"
+							],
+							"path": [
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create rule (ausencia ESPER)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "       {\r\n            \"name\": \"ausencia_coche\",\r\n            \"text\": \"SELECT *, a.id as identificador, a.type as tipo,  current_timestamp().format(\\\"yyyy-MM-dd'T'HH:mm:ssX\\\") as timeinstant FROM PATTERN [ EVERY a=iotEvent(a.subservice = '/pruebas') -> (timer:interval(10 sec) AND NOT b=iotEvent (a.id is b.id))]\",\r\n            \"action\": {\r\n                \"type\": \"update\",\r\n                \"parameters\": {\r\n                    \"id\": \"${identificador}\",\r\n                    \"type\":\"${tipo}\",\r\n                    \"attributes\": [\r\n                        {\r\n                            \"name\": \"TimeInstant\",\r\n                            \"type\": \"DateTime\",\r\n                            \"value\": \"${timeinstant}\"\r\n                        }\r\n                    ]\r\n                }\r\n            }\r\n        }"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_CEP}}"
+							],
+							"path": [
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create rule (ausencia nosignal)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ausencia_medida\",\r\n    \"action\": [\r\n        {\r\n            \"type\": \"update\",\r\n            \"parameters\": {\r\n                \"name\": \"status\",\r\n                \"value\": \"off\",\r\n                \"actionType\": \"APPEND\"\r\n            }\r\n        },\r\n        {\r\n            \"type\": \"email\",\r\n            \"template\": \"La entidad ${id} ha dejado de enviar datos\",\r\n            \"parameters\": {\r\n                \"to\": \"anovo@gmail.com\",\r\n                \"from\": \"soporte@urbo2.es\",\r\n                \"subject\": \"[ALARMA] Incomunicación\"\r\n            }\r\n        }\r\n    ],\r\n    \"nosignal\": {\r\n        \"checkInterval\": \"30\",\r\n        \"attribute\": \"temperature\",\r\n        \"reportInterval\": \"14400\",\r\n        \"idRegexp\": \".*\",\r\n        \"type\": \"WheatherObserved\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_CEP}}"
+							],
+							"path": [
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create rule (actualiza otro subservicio)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\r\n            \"name\": \"alarm_luminosity\",\r\n            \"description\": \"Crea una alarma si la luminosidad baja de 20\",\r\n            \"text\": \"select \\\"alarm_luminosity\\\" as ruleName, *, municipality?, luminosity?, location__lat? as lati, location__lon? as longi, current_timestamp().format(\\\"yyyy-MM-dd'T'HH:mm:ss.SSSX\\\") as timeinstant from iotEvent where type='Streetlight' and not exists(error_alarma_lampara?) and cast(powerState?, String) = \\\"on\\\" and cast(cast(luminosity?, String), float) <= 20\",\r\n            \"action\": [\r\n                {\r\n                    \"type\": \"update\",\r\n                    \"parameters\": {\r\n                        \"id\": \"malfunction:${id}\",\r\n                        \"type\": \"Alert\",\r\n                        \"version\": 2,\r\n                        \"subservice\": \"/alarmas\",\r\n                        \"attributes\": [\r\n                            {\r\n                                \"name\": \"description\",\r\n                                \"type\": \"Text\",\r\n                                \"value\": \"Lampara fundida. Medida: ${luminosity}\"\r\n                            },\r\n                            {\r\n                                \"name\": \"location\",\r\n                                \"type\": \"geo:json\",\r\n                                \"value\": \"{\\\"type\\\": \\\"Point\\\",\\\"coordinates\\\": [${longi},${lati}]}\"\r\n                            },\r\n                            {\r\n                                \"name\": \"sourceType\",\r\n                                \"type\": \"Text\",\r\n                                \"value\": \"${type}\"\r\n                            },\r\n                            {\r\n                                \"name\": \"severity\",\r\n                                \"type\": \"Text\",\r\n                                \"value\": \"Medium\"\r\n                            },\r\n                            {\r\n                                \"name\": \"category\",\r\n                                \"type\": \"Text\",\r\n                                \"value\": \"malfunction\"\r\n                            },\r\n                            {\r\n                                \"name\": \"source\",\r\n                                \"type\": \"Text\",\r\n                                \"value\": \"${id}\"\r\n                            },\r\n                            {\r\n                                \"name\": \"alertSource\",\r\n                                \"type\": \"Text\",\r\n                                \"value\": \"${subservice}\"\r\n                            },\r\n                            {\r\n                                \"name\": \"dateIssued\",\r\n                                \"type\": \"DateTime\",\r\n                                \"value\": \"${timeinstant}\"\r\n                            },\r\n                            {\r\n                                \"name\": \"TimeInstant\",\r\n                                \"type\": \"DateTime\",\r\n                                \"value\": \"${timeinstant}\"\r\n                            },\r\n                            {\r\n                                \"name\": \"status\",\r\n                                \"type\": \"Text\",\r\n                                \"value\": \"active\"\r\n                            },\r\n                            {\r\n                                \"name\": \"municipality\",\r\n                                \"type\": \"Text\",\r\n                                \"value\": \"${municipality}\"\r\n                            }\r\n                        ],\r\n                        \"actionType\": \"append\"\r\n                    }\r\n                },\r\n                {\r\n                    \"type\": \"update\",\r\n                    \"parameters\": {\r\n                        \"id\": \"${id}\",\r\n                        \"type\": \"Streetlight\",\r\n                        \"version\": 2,\r\n                        \"attributes\": [\r\n                            {\r\n                                \"name\": \"Error-alarma_lampara\",\r\n                                \"type\": \"Text\",\r\n                                \"value\": \"true\"\r\n                            },\r\n                            {\r\n                                \"name\": \"error_alarma_lampara\",\r\n                                \"type\": \"Text\",\r\n                                \"value\": \"true\"\r\n                            }\r\n                        ],\r\n                        \"actionType\": \"append\"\r\n                    }\r\n                }\r\n            ]\r\n        }"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_CEP}}"
+							],
+							"path": [
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create rule (HTTP POST - activar riego electrovalvula)",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -3073,7 +3898,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\":\"streetlight_NGSIv2Values\",\n\t\"text\":\"select (cast(cast(ev.illuminanceLevel?, string),float) * 100) as ilumLevel, ev.location__coordinates__1? as locationLat, ev.location__coordinates__0? as locationLon, current_timestamp().format(\\\"yyyy-MM-dd'T'HH:mm:ss.SSSX\\\") as timeinstant, ev.id? as id, ev.status? as laststatus, ev.powerState? as powerState, ev.areaServed? as areaServed, ev.dateLastLampChange? as lastchange, ev.address__streetAddress? as streetAddress, ev.address__addressLocality? as addressLocality, ev.address__postalCode? as postalCode, \\\"streetlight_NGSIv2Values\\\" as ruleName from pattern [every ev=iotEvent(type='Streetlight')]\",\n\t\"action\": [{\n\t\t\"type\":\"update\",\n\t\t\"parameters\":{\n\t\t\t\"id\":\"${id}_NGSIv2Test\",\n\t\t\t\"type\":\"NGSIv2TypesTest\",\n\t\t\t\"version\": \"2\",\n\t\t\t\"attributes\": [\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"streetLightID\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${id}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"illuminanceLevel\",\n\t\t\t\t\t\"type\": \"Number\",\n\t\t\t\t\t\"value\": \"${ilumLevel}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"lastchange\",\n\t\t\t\t\t\"type\": \"DateTime\",\n\t\t\t\t\t\"value\": \"${timeinstant}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"district\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${areaServed}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"status\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${laststatus}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"address\",\n\t\t\t\t\t\"type\": \"Address\",\n\t\t\t\t\t\"value\": \"${streetAddress} ${postalCode}, ${addressLocality}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"powerState\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${powerState}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"location\",\n\t\t\t\t\t\"type\": \"loc\",\n\t\t\t\t\t\"value\": \"${locationLat}, ${locationLon}\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t}]\n}"
+							"raw": "{\n    \"name\": \"streetlight_column_alarm_with_mail\",\n    \"text\": \"select ev.illuminanceLevel? as ilumLevel, ev.id? as id, ev.status? as laststatus, ev.powerState? as powerState, ev.areaServed? as areaServed, ev.dateLastLampChange__iso? as lastchange, ev.address__streetAddress? as streetAddress, ev.address__addressLocality? as addressLocality, ev.address__addressCountry? as addressCountry, ev.address__postalCode? as postalCode, \\\"streetlight_column_alarm_with_mail\\\" as ruleName from pattern [every ev=iotEvent(type='Streetlight' and ev.status? = 'columnIssue')]\",\n    \"action\": [\n        {\n            \"action\": {\n                \"type\": \"post\",\n                \"template\": \"{\\\"type\\\":\\\"command\\\",\\\"value\\\":1}\",\n                \"parameters\": {\n                    \"url\": \"http://10.0.0.2:1026/v2/entities/${electrovalveId}/attrs/activate?type=electrovalve\",\n                    \"method\": \"PUT\",\n                    \"headers\": {\n                        \"Content-type\": \"application/json\",\n                        \"fiware-service\": \"${service}\",\n                        \"fiware-servicepath\": \"${subservice}\"\n                    }\n                }\n            }\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
@@ -3104,7 +3929,9 @@
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
 							},
 							{
 								"key": "x-auth-token",
@@ -3114,7 +3941,12 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n   \"name\":\"simple_timed_rule\",\n   \"text\":\"select *, current_timestamp().toDate() as currentTS, \\\"simple_timed_rule\\\" as ruleName from pattern [every timer:interval(10 sec)]\",\n   \"action\":{\n\t\t\"type\":\"update\",\n        \"parameters\":{\n            \"id\":\"temp_example_10_sec\",\n            \"type\":\"temp_example\",\n            \"version\": \"2\",\n            \"attributes\": [\n                {\n                    \"name\":\"Text\",\n                    \"value\":\"${currentTS}\"\n                }\n           ]\n        }\n\t}\n}"
+							"raw": "{\n    \"name\": \"calcula_ocaso_orto\",\n    \"text\": \"select ((ca.rmen.sunrisesunset.SunriseSunset.getSunriseSunset(java.util.Calendar.getInstance(), 48.85837, 2.294481)).get(0)).getTime() as Sunrise, ((ca.rmen.sunrisesunset.SunriseSunset.getSunriseSunset(java.util.Calendar.getInstance(), 48.85837, 2.294481)).get(1)).getTime() as Sunset from iotEvent where type = 'Streetlight'\",\n    \"action\": {\n        \"type\": \"update\",\n        \"parameters\": {\n            \"version\": 2,\n            \"id\": \"${id}\",\n            \"type\":\"${type}\",\n            \"attributes\": [\n                {\n                    \"name\": \"orto\",\n                    \"type\": \"Mitipo\",\n                    \"value\": \"${Sunrise}\"\n                },\n                {\n                    \"name\": \"ocaso\",\n                    \"type\": \"Mitipo\",\n                    \"value\": \"${Sunset}\"\n                }\n            ],\n            \"actionType\": \"update\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
 							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
@@ -3172,7 +4004,7 @@
 					"response": []
 				},
 				{
-					"name": "Create complex rule (contaminación en dos o mas estaciones)",
+					"name": "Create rule (contaminación en dos o mas estaciones)",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -3243,45 +4075,6 @@
 						"url": {
 							"raw": "https://{{ENDPOINT_CEP}}/rules",
 							"protocol": "https",
-							"host": [
-								"{{ENDPOINT_CEP}}"
-							],
-							"path": [
-								"rules"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create rule Alarm off (pollution in two or more stations)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Fiware-Service",
-								"value": "{{SERVICE}}"
-							},
-							{
-								"key": "Fiware-ServicePath",
-								"value": "{{SUBSERVICE}}"
-							},
-							{
-								"key": "X-Auth-Token",
-								"value": "{{TOKEN}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"contaminacion_off\",\r\n    \"text\": \"SELECT Window(id?, filter: (cast(cast(now?,string),float)>100 and cast(cast(old?, string),float)>100)) as alarmas FROM iotEvent.std:unique(id?) HAVING count(Window(*), filter: (cast(cast(now?,string),float)>100 and cast(cast(old?, string),float)>100))<1\",\r\n\t\"action\": {\r\n        \"type\": \"update\",\r\n        \"parameters\": {\r\n            \"id\": \"TestEntitiQ\",\r\n            \"type\": \"TestEntity\",\r\n            \"attributes\": [\r\n            \t{\r\n            \t\t\"name\": \"msg\",\r\n            \t\t\"value\": \"alarma cesada\"\r\n            \t}\r\n            ]\r\n        }\r\n    }\r\n}"
-						},
-						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
-							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_CEP}}"
 							],
@@ -3371,170 +4164,6 @@
 					"response": []
 				},
 				{
-					"name": "Create rule Lamp Warning",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Fiware-Service",
-								"value": "{{SERVICE}}"
-							},
-							{
-								"key": "Fiware-ServicePath",
-								"value": "{{SUBSERVICE}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "x-auth-token",
-								"type": "text",
-								"value": "{{TOKEN}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"name\":\"streetlight_lamp_warn\",\n\t\"text\":\"select ev.illuminanceLevel? as ilumLevel, ev.id? as id, ev.status? as laststatus, ev.powerState? as powerState, ev.areaServed? as areaServed, ev.dateLastLampChange__iso? as lastchange, ev.address__streetAddress? as streetAddress, ev.address__addressLocality? as addressLocality, ev.address__postalCode? as postalCode, \\\"streetlight_lamp_warn\\\" as ruleName from pattern [every ev=iotEvent(type='Streetlight' and (ev.status? = 'brokenLantern' or ev.status? = 'defectiveLamp'))]\",\n\t\"action\": [{\n\t\t\"type\":\"update\",\n\t\t\"parameters\":{\n\t\t\t\"id\":\"${id}_lamp_warning_${ruleName}\",\n\t\t\t\"type\":\"StreetlightWarning\",\n\t\t\t\"version\": \"2\",\n\t\t\t\"attributes\": [\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"refEntity\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${id}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"illuminanceLevel\",\n\t\t\t\t\t\"type\": \"Number\",\n\t\t\t\t\t\"value\": \"${ilumLevel}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"lastchange\",\n\t\t\t\t\t\"type\": \"DateTime\",\n\t\t\t\t\t\"value\": \"${lastchange}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"district\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${areaServed}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"status\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${laststatus}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"address\",\n\t\t\t\t\t\"type\": \"Address\",\n\t\t\t\t\t\"value\": \"${streetAddress} ${postalCode}, ${addressLocality}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"powerState\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${powerState}\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t}]\n}"
-						},
-						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
-							"protocol": "{{PROTOCOL}}",
-							"host": [
-								"{{ENDPOINT_CEP}}"
-							],
-							"path": [
-								"rules"
-							]
-						},
-						"description": "Adds a rule to CEP"
-					},
-					"response": []
-				},
-				{
-					"name": "Create rule Lamp Alarm",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Fiware-Service",
-								"value": "{{SERVICE}}"
-							},
-							{
-								"key": "Fiware-ServicePath",
-								"value": "{{SUBSERVICE}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "x-auth-token",
-								"type": "text",
-								"value": "{{TOKEN}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"name\":\"streetlight_column_alarm\",\n\t\"text\":\"select ev.illuminanceLevel? as ilumLevel, ev.id? as id, ev.status? as laststatus, ev.powerState? as powerState, ev.areaServed? as areaServed, ev.dateLastLampChange__iso? as lastchange, ev.address__streetAddress? as streetAddress, ev.address__addressLocality? as addressLocality, ev.address__postalCode? as postalCode, \\\"streetlight_column_alarm\\\" as ruleName from pattern [every ev=iotEvent(type='Streetlight' and ev.status? = 'columnIssue')]\",\n\t\"action\": [{\n\t\t\"type\":\"update\",\n\t\t\"parameters\":{\n\t\t\t\"id\":\"${id}_column_alarm_${ruleName}\",\n\t\t\t\"type\":\"StreetlightAlarm\",\n\t\t\t\"version\": \"2\",\n\t\t\t\"attributes\": [\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"refEntity\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${id}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"illuminanceLevel\",\n\t\t\t\t\t\"type\": \"Number\",\n\t\t\t\t\t\"value\": \"${ilumLevel}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"lastchange\",\n\t\t\t\t\t\"type\": \"DateTime\",\n\t\t\t\t\t\"value\": \"${lastchange}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"district\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${areaServed}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"status\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${laststatus}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"address\",\n\t\t\t\t\t\"type\": \"Address\",\n\t\t\t\t\t\"value\": \"${streetAddress} ${postalCode}, ${addressLocality}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"powerState\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${powerState}\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t}]\n}"
-						},
-						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
-							"protocol": "{{PROTOCOL}}",
-							"host": [
-								"{{ENDPOINT_CEP}}"
-							],
-							"path": [
-								"rules"
-							]
-						},
-						"description": "Adds a rule to CEP"
-					},
-					"response": []
-				},
-				{
-					"name": "Create rule Lamp Alarm MAIL",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Fiware-Service",
-								"value": "{{SERVICE}}"
-							},
-							{
-								"key": "Fiware-ServicePath",
-								"value": "{{SUBSERVICE}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "x-auth-token",
-								"type": "text",
-								"value": "{{TOKEN}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"name\":\"streetlight_column_alarm_with_mail\",\n\t\"text\":\"select ev.illuminanceLevel? as ilumLevel, ev.id? as id, ev.status? as laststatus, ev.powerState? as powerState, ev.areaServed? as areaServed, ev.dateLastLampChange__iso? as lastchange, ev.address__streetAddress? as streetAddress, ev.address__addressLocality? as addressLocality, ev.address__addressCountry? as addressCountry, ev.address__postalCode? as postalCode, \\\"streetlight_column_alarm_with_mail\\\" as ruleName from pattern [every ev=iotEvent(type='Streetlight' and ev.status? = 'columnIssue')]\",\n\t\"action\": [{\n\t\t\"type\":\"update\",\n\t\t\"parameters\":{\n\t\t\t\"id\":\"${id}_column_alarm_${ruleName}\",\n\t\t\t\"type\":\"StreetlightAlarm\",\n\t\t\t\"version\": \"2\",\n\t\t\t\"attributes\": [\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"refEntity\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${id}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"illuminanceLevel\",\n\t\t\t\t\t\"type\": \"Number\",\n\t\t\t\t\t\"value\": \"${ilumLevel}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"lastchange\",\n\t\t\t\t\t\"type\": \"DateTime\",\n\t\t\t\t\t\"value\": \"${lastchange}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"district\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${areaServed}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"status\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${laststatus}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"address\",\n\t\t\t\t\t\"type\": \"Address\",\n\t\t\t\t\t\"value\": \"${streetAddress} ${postalCode}, ${addressLocality}\"\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\t\"name\":\"powerState\",\n\t\t\t\t\t\"type\": \"Text\",\n\t\t\t\t\t\"value\": \"${powerState}\"\n\t\t\t\t}\n\t\t\t]\n\t\t}\n\t},\n\t{\n\t\t\"type\":\"email\",\n\t\t\"template\": \"The following StreetLight has a column issue.\\n\\n    ID: ${id}\\n    Address: ${streetAddress} ${postalCode}, ${addressLocality} (${addressCountry}) \\n    PowerState: ${powerState} \\n\\n!Please send the firefighters as soon as possible!\",\n\t\t\"parameters\": {\n\t\t\t\"to\": \"macs@tid.es\",\n\t\t\t\"from\": \"manuel.carracedosanchez@telefonica.com\",\n\t\t\t\"subject\": \"Alert ${id}\"\n\t\t}\n\t}]\n}"
-						},
-						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
-							"protocol": "{{PROTOCOL}}",
-							"host": [
-								"{{ENDPOINT_CEP}}"
-							],
-							"path": [
-								"rules"
-							]
-						},
-						"description": "Adds a rule to CEP"
-					},
-					"response": []
-				},
-				{
-					"name": "Create rule HTTP POST (activar riego electrovalvula)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Fiware-Service",
-								"value": "{{SERVICE}}"
-							},
-							{
-								"key": "Fiware-ServicePath",
-								"value": "{{SUBSERVICE}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "x-auth-token",
-								"type": "text",
-								"value": "{{TOKEN}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"streetlight_column_alarm_with_mail\",\n    \"text\": \"select ev.illuminanceLevel? as ilumLevel, ev.id? as id, ev.status? as laststatus, ev.powerState? as powerState, ev.areaServed? as areaServed, ev.dateLastLampChange__iso? as lastchange, ev.address__streetAddress? as streetAddress, ev.address__addressLocality? as addressLocality, ev.address__addressCountry? as addressCountry, ev.address__postalCode? as postalCode, \\\"streetlight_column_alarm_with_mail\\\" as ruleName from pattern [every ev=iotEvent(type='Streetlight' and ev.status? = 'columnIssue')]\",\n    \"action\": [\n        {\n            \"action\": {\n                \"type\": \"post\",\n                \"template\": \"{\\\"type\\\":\\\"command\\\",\\\"value\\\":1}\",\n                \"parameters\": {\n                    \"url\": \"http://10.0.0.2:1026/v2/entities/${electrovalveId}/attrs/activate?type=electrovalve\",\n                    \"method\": \"PUT\",\n                    \"headers\": {\n                        \"Content-type\": \"application/json\",\n                        \"fiware-service\": \"${service}\",\n                        \"fiware-servicepath\": \"${subservice}\"\n                    }\n                }\n            }\n        }\n    ]\n}"
-						},
-						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
-							"protocol": "{{PROTOCOL}}",
-							"host": [
-								"{{ENDPOINT_CEP}}"
-							],
-							"path": [
-								"rules"
-							]
-						},
-						"description": "Adds a rule to CEP"
-					},
-					"response": []
-				},
-				{
 					"name": "Create rule MatchRecognize (3 fails in the same area)",
 					"request": {
 						"method": "POST",
@@ -3572,6 +4201,217 @@
 							]
 						},
 						"description": "Adds a rule to CEP"
+					},
+					"response": []
+				},
+				{
+					"name": "Create rule (Calcula Ocaso-orto)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"calcula_ocaso_orto\",\n    \"text\": \"select ((ca.rmen.sunrisesunset.SunriseSunset.getSunriseSunset(java.util.Calendar.getInstance(), 48.85837, 2.294481)).get(0)).getTime() as Sunrise, ((ca.rmen.sunrisesunset.SunriseSunset.getSunriseSunset(java.util.Calendar.getInstance(), 48.85837, 2.294481)).get(1)).getTime() as Sunset from iotEvent where type = 'Streetlight'\",\n    \"action\": {\n        \"type\": \"update\",\n        \"parameters\": {\n            \"version\": 2,\n            \"id\": \"${id}\",\n            \"type\":\"${type}\",\n            \"attributes\": [\n                {\n                    \"name\": \"orto\",\n                    \"type\": \"Mitipo\",\n                    \"value\": \"${Sunrise}\"\n                },\n                {\n                    \"name\": \"ocaso\",\n                    \"type\": \"Mitipo\",\n                    \"value\": \"${Sunset}\"\n                }\n            ],\n            \"actionType\": \"update\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_CEP}}"
+							],
+							"path": [
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create rule (Anochecer)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-auth-token",
+								"type": "text",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"anochecer\",\n    \"text\": \"select \\\"schedule_ocaso\\\" as ruleName, *, current_timestamp().format(\\\"yyyy-MM-dd'T'HH:mm:ss.SSSX\\\") as timeinstant from pattern [every timer:interval(((getMilisToNextSunset(java.util.Calendar.getInstance(), 37.993446, -1.130605)))/1000 sec)]\",\n            \"action\": [\n                {\n                    \"type\": \"update\",\n                    \"parameters\": {\n                        \"filter\": {\n                            \"type\": \"Streetlight\"\n                        },\n                        \"version\": 2,\n                        \"attributes\": [\n                            {\n                                \"name\": \"switchOnOff\",\n                                \"type\": \"command\",\n                                \"value\": \"1\"\n                            }\n                        ]\n                    }\n                },\n                {\n                    \"type\": \"email\",\n                    \"template\": \"Se han encendido las farolas a las ${timeinstant}\",\n                    \"parameters\": {\n                        \"to\": \"macs@tid.es\",\n                        \"from\": \"soporte@urbo2.es\",\n                        \"subject\": \"Se han encendido las farolas\"\n                    }\n                }\n            ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_CEP}}"
+							],
+							"path": [
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create rule (potencia con funcion)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"regla_carlos\",\r\n    \"text\": \"select current_timestamp() as time, ((x-Tini)(Ymax-Ymin))/(Tfin-Tini) + Ymin as potencia, getNextSunset(java.util.Calendar.getInstance(), 37.993446, -1.130605).format(\\\"yyyy-MM-dd'T'HH:mm:ss.SSSX\\\") as sunset from pattern [every timer:at(18,*,*,*,*) -> every timer:schedule(repetitions: 10, date: getNextSunset(java.util.Calendar.getInstance(), 37.993446, -1.130605).toMillisec(), period: 10 minutes)]\",\r\n    \"action\": {\r\n        \"type\": \"update\",\r\n        \"parameters\": {\r\n            \"id\": \"coche${time}\",\r\n            \"type\": \"coche\",\r\n            \"attributes\": [\r\n                {\r\n                    \"name\": \"potencia\",\r\n                    \"value\": \"${potencia}\"\r\n                },\r\n                {\r\n                    \"name\": \"sunset\",\r\n                    \"value\": \"${sunset}\"\r\n                },\r\n                {\r\n                    \"name\": \"timestamp\",\r\n                    \"value\": \"${timestamp}\"\r\n                }                \r\n            ]\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_CEP}}"
+							],
+							"path": [
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create rule (Apaga luminarias si cuadro se apaga)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "       {\r\n            \"name\": \"apaga_luminarias_cuadro\",\r\n            \"text\": \"select \\\"apaga_luminarias_cuadro\\\" as ruleName, *, current_timestamp().format(\\\"yyyy-MM-dd'T'HH:mm:ssX\\\") as timeinstant from iotEvent.std:groupwin(id).win:length(2) group by id having cast(window(powerState?).firstOf(),string).toUpperCase() = 'ON' and cast(window(powerState?).lastOf(),string).toUpperCase() = 'OFF' \",\r\n            \"action\": [\r\n                {\r\n                    \"type\": \"update\",\r\n                    \"parameters\": {\r\n                        \"filter\": {\r\n                            \"type\": \"Streetlight\",\r\n                            \"q\": \"refStreetlightControlCabinet:${id}\"\r\n                        },\r\n                        \"version\": 2,\r\n                        \"attributes\": [\r\n                            {\r\n                                \"name\": \"dateLastCommanded\",\r\n                                \"type\": \"DateTime\",\r\n                                \"value\": \"${timeinstant}\"\r\n                            },\r\n                            {\r\n                                \"name\": \"lastCommander\",\r\n                                \"type\": \"Text\",\r\n                                \"value\": \"manualmente\"\r\n                            },\r\n                            {\r\n                                \"name\": \"commandTimeinstant\",\r\n                                \"value\": \"${timeinstant}\"\r\n                            }\r\n                        ]\r\n                    }\r\n                },\r\n                {\r\n                    \"type\": \"update\",\r\n                    \"parameters\": {\r\n                        \"filter\": {\r\n                            \"type\": \"Streetlight\",\r\n                            \"q\": \"refStreetlightControlCabinet:${id}\"\r\n                        },\r\n                        \"version\": 2,\r\n                        \"actionType\": \"UPDATE\",\r\n                        \"attributes\": [\r\n                            {\r\n                                \"name\": \"powerState\",\r\n                                \"type\": \"text\",\r\n                                \"value\": \"off\"\r\n                            },\r\n                            {\r\n                                \"name\": \"setIlluminanceLevel\",\r\n                                \"type\": \"Command\",\r\n                                \"value\": 0\r\n                            },\r\n                            {\r\n                                \"name\": \"illuminanceLevel\",\r\n                                \"type\": \"Number\",\r\n                                \"value\": 0\r\n                            }\r\n                        ]\r\n                    }\r\n                }\r\n            ]\r\n        }"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_CEP}}"
+							],
+							"path": [
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create rule (Regla de cocinado de conteo de vehiculos)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fiware-Service",
+								"value": "{{SERVICE}}"
+							},
+							{
+								"key": "Fiware-ServicePath",
+								"value": "{{SUBSERVICE}}"
+							},
+							{
+								"key": "X-Auth-Token",
+								"value": "{{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"corrige_errores_camaras\",\r\n    \"description\": \"Corrige errores de detección de las camaras en base a unos parametros de correción horarios por franjas\",\r\n    \"text\": \"expression DOUBLE {(val)=> case when val is null or cast(cast(val,string),double) < 0 or cast(val,string) = '' then 0 else cast(cast(val,string),double) end } expression TS alias for {cast(cast(TimeInstant?, String), long,dateformat:'iso')} expression RD alias for {DOUBLE(ratioDay?)} expression RN alias for {DOUBLE(ratioNigth?)} expression RT alias for {DOUBLE(ratioTwiglight?)} expression LAT alias for {cast(cast(location__lat?,string),double)} expression LON alias for {cast(cast(location__lon?,string),double)} expression MILISTOORTO alias for {getNextSunrise(java.util.Calendar.getInstance(),39, 2).toMillisec()} expression MILISTOOCASO alias for {getNextSunset(java.util.Calendar.getInstance(),39, 2).toMillisec()} expression TWTHRESOLD alias for {case when threshold? is null then 60*60*1000 else DOUBLE(threshold?) end } expression ONEDAY alias for {24*60*60*1000} expression ISNIGHT { (ts)=> MILISTOOCASO>MILISTOORTO and (ts-(MILISTOOCASO-ONEDAY))>TWTHRESOLD and (MILISTOORTO-ts)>TWTHRESOLD } expression ISDAY { (ts)=> MILISTOORTO>MILISTOOCASO and (ts-(MILISTOORTO-ONEDAY))>TWTHRESOLD and (MILISTOOCASO-ts)>TWTHRESOLD } expression CALCULATED {(n,rd,rn,rt,ts)=> case when ISDAY(ts) then n*(1+rd) else case when ISNIGHT(ts) then n*(1+rn) else n*(1+rt) end end } select *, CALCULATED(DOUBLE(carNumberAscending?), RD,RN,RT, TS) as ascendingCar, CALCULATED(DOUBLE(carNumberDescending?), RD,RN,RT, TS) as descendingCar, CALCULATED(DOUBLE(carNumberAscending?)+DOUBLE(carNumberDescending?), RD,RN,RT, TS) as totalCar, CALCULATED(DOUBLE(lorryNumberAscending?), RD,RN,RT, TS) as ascendingLorry, CALCULATED(DOUBLE(lorryNumberDescending?), RD,RN,RT, TS) as descendingLorry, CALCULATED(DOUBLE(lorryNumberAscending?)+DOUBLE(lorryNumberDescending?), RD,RN,RT, TS) as totalLorry, CALCULATED(DOUBLE(bicycleNumberAscending?), RD,RN,RT, TS) as ascendingBicycle, CALCULATED(DOUBLE(bicycleNumberDescending?), RD,RN,RT, TS) as descendingBicycle, CALCULATED(DOUBLE(bicycleNumberAscending?)+DOUBLE(bicycleNumberDescending?), RD,RN,RT, TS) as totalBicycle, CALCULATED(DOUBLE(motorbikeNumberAscending?), RD,RN,RT, TS) as ascendingMotorbike, CALCULATED(DOUBLE(motorbikeNumberDescending?), RD,RN,RT, TS) as descendingMotorbike, CALCULATED(DOUBLE(motorbikeNumberAscending?)+DOUBLE(motorbikeNumberDescending?), RD,RN,RT, TS) as totalMotorbike, CALCULATED(DOUBLE(carNumberAscending?)+DOUBLE(carNumberDescending?)+DOUBLE(lorryNumberAscending?)+DOUBLE(lorryNumberDescending?)+DOUBLE(bicycleNumberAscending?)+DOUBLE(bicycleNumberDescending?)+DOUBLE(motorbikeNumberAscending?)+DOUBLE(motorbikeNumberDescending?), RD,RN,RT, TS) as totalVehicles, current_timestamp().format(\\\"yyyy-MM-dd'T'HH:mm:ss.SSSX\\\") as timeinstant, ISDAY(TS) as dia, ISNIGHT(TS) as noche, MILISTOORTO as orto, MILISTOOCASO as ocaso, TS as ts, LAT as lat, LON as lon from iotEvent where type = 'VehiclesCounter'\",\r\n    \"action\": {\r\n        \"type\": \"update\",\r\n        \"parameters\": {\r\n            \"version\": 2,\r\n            \"attributes\": [\r\n                {\r\n                    \"name\": \"calculatedCarNumberAscending\",\r\n                    \"type\": \"Number\",\r\n                    \"value\": \"${ascendingCar}\"\r\n                },\r\n                {\r\n                    \"name\": \"calculatedCarNumberDescending\",\r\n                    \"type\": \"Number\",\r\n                    \"value\": \"${descendingCar}\"\r\n                },\r\n                {\r\n                    \"name\": \"calculatedCarNumber\",\r\n                    \"type\": \"Number\",\r\n                    \"value\": \"${totalCar}\"\r\n                },\r\n                {\r\n                    \"name\": \"calculatedLorryNumberAscending\",\r\n                    \"type\": \"Number\",\r\n                    \"value\": \"${ascendingLorry}\"\r\n                },\r\n                {\r\n                    \"name\": \"calculatedLorryNumberDescending\",\r\n                    \"type\": \"Number\",\r\n                    \"value\": \"${descendingLorry}\"\r\n                },\r\n                {\r\n                    \"name\": \"calculatedLorryNumber\",\r\n                    \"type\": \"Number\",\r\n                    \"value\": \"${totalLorry}\"\r\n                },\r\n                {\r\n                    \"name\": \"calculatedBicycleNumberAscending\",\r\n                    \"type\": \"Number\",\r\n                    \"value\": \"${ascendingBicycle}\"\r\n                },\r\n                {\r\n                    \"name\": \"calculatedBicycleNumberDescending\",\r\n                    \"type\": \"Number\",\r\n                    \"value\": \"${descendingBicycle}\"\r\n                },\r\n                {\r\n                    \"name\": \"calculatedBicycleNumber\",\r\n                    \"type\": \"Number\",\r\n                    \"value\": \"${totalBicycle}\"\r\n                },\r\n                {\r\n                    \"name\": \"calculatedMotorbikeNumberAscending\",\r\n                    \"type\": \"Number\",\r\n                    \"value\": \"${ascendingMotorbike}\"\r\n                },\r\n                {\r\n                    \"name\": \"calculatedMotorbikeNumberDescending\",\r\n                    \"type\": \"Number\",\r\n                    \"value\": \"${descendingMotorbike}\"\r\n                },\r\n                {\r\n                    \"name\": \"calculatedMotorbikeNumber\",\r\n                    \"type\": \"Number\",\r\n                    \"value\": \"${totalMotorbike}\"\r\n                },\r\n                {\r\n                    \"name\": \"calculatedVehiclesNumber\",\r\n                    \"type\": \"Number\",\r\n                    \"value\": \"${totalVehicles}\"\r\n                },\r\n                {\r\n                    \"name\": \"dateCalculatedVehiclesNumber\",\r\n                    \"type\": \"DateTime\",\r\n                    \"value\": \"${timeinstant}\"\r\n                },\r\n                {\r\n                    \"name\": \"orto\",\r\n                    \"type\": \"Text\",\r\n                    \"value\": \"${orto}\"\r\n                },\r\n                {\r\n                    \"name\": \"ocaso\",\r\n                    \"type\": \"Text\",\r\n                    \"value\": \"${ocaso}\"\r\n                },\r\n                {\r\n                    \"name\": \"isday\",\r\n                    \"type\": \"Text\",\r\n                    \"value\": \"${dia}\"\r\n                },\r\n                {\r\n                    \"name\": \"isnight\",\r\n                    \"type\": \"Text\",\r\n                    \"value\": \"${noche}\"\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_CEP}}/rules",
+							"protocol": "{{PROTOCOL}}",
+							"host": [
+								"{{ENDPOINT_CEP}}"
+							],
+							"path": [
+								"rules"
+							]
+						}
 					},
 					"response": []
 				},
@@ -3674,12 +4514,58 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "CKAN",
 			"item": [
+				{
+					"name": "SHOW Organization",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{CKAN_APIKEY}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n       \"name\": \"city012\"\n}"
+						},
+						"url": {
+							"raw": "https://{{ENDPOINT_CKAN}}/api/3/action/organization_show?id=alcobendas&include_datasets=true",
+							"protocol": "https",
+							"host": [
+								"{{ENDPOINT_CKAN}}"
+							],
+							"path": [
+								"api",
+								"3",
+								"action",
+								"organization_show"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "alcobendas"
+								},
+								{
+									"key": "include_datasets",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "CREATE Organization",
 					"request": {
@@ -4109,9 +4995,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
