@@ -502,7 +502,7 @@ Concerning the payload for JSON, the command information will have the same info
 
 ```
 {
-  "<commandName>": <commandValue>
+  "<commandName>": "<commandValue>"
 }
 ```
 
@@ -532,7 +532,7 @@ Once the command has finished its execution in the device, the reply to the IOTA
 
 ```
 {
-  "<commandName>": "<result>
+  "<commandName>": "<result>"
 }
 ```
 
