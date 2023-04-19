@@ -33,4 +33,4 @@ The following syntax rules apply to subservice:
 * Maximum length is 128 characters.
 * Minimum length in each token is 1 character.
 * Only alphanumeric characters and underscores (`_`) are allowed in each token.
-* It is interpreted in a case-sensitive way.
+* It is interpreted in a case-insensitive way considering the platform end-to-end
