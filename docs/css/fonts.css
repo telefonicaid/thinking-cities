@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
+
+@font-face {
+  font-family: "TelefonicaSans";
+  src: url(../fonts/Telefonica_Sans_Hairline.woff2) format('woff2');
+  font-style: normal;
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "TelefonicaSans";
+  src: url(../fonts/Telefonica_Sans_ExtraLight.woff2) format('woff2');
+  font-style: normal;
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "TelefonicaSans";
+  src: url(../fonts/Telefonica_Sans_Light.woff2) format('woff2');
+  font-style: normal;
+  font-weight: 250;
+}
+
+@font-face {
+  font-family: "TelefonicaSans";
+  src: url(../fonts/Telefonica_Sans_Thin.woff2) format('woff2');
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "TelefonicaSans";
+  src: url(../fonts/Telefonica_Sans_Regular.woff2) format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "TelefonicaSans";
+  src: url(../fonts/Telefonica_Sans_Medium.woff2) format('woff2');
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "TelefonicaSans";
+  src: url(../fonts/Telefonica_Sans_DemiBold.woff2) format('woff2');
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "TelefonicaSans";
+  src: url(../fonts/Telefonica_Sans_Bold.woff2) format('woff2');
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "TelefonicaSans";
+  src: url(../fonts/Telefonica_Sans_ExtraBold.woff2) format('woff2');
+  font-style: normal;
+  font-weight: 800;
+}
+
+
+
+@font-face {
+  font-family: "TelefonicaSans";
+  src: url(../fonts/Telefonica_Sans_Hairline_Italic.woff2) format('woff2');
+  font-style: italic;
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "TelefonicaSans";
+  src: url(../fonts/Telefonica_Sans_ExtraLight_Italic.woff2) format('woff2');
+  font-style: italic;
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "TelefonicaSans";
+  src: url(../fonts/Telefonica_Sans_Light_Italic.woff2) format('woff2');
+  font-style: italic;
+  font-weight: 250;
+}
+
+@font-face {
+  font-family: "TelefonicaSans";
+  src: url(../fonts/Telefonica_Sans_Thin_Italic.woff2) format('woff2');
+  font-style: italic;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "TelefonicaSans";
+  src: url(../fonts/Telefonica_Sans_Italic.woff2) format('woff2');
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "TelefonicaSans";
+  src: url(../fonts/Telefonica_Sans_Medium_Italic.woff2) format('woff2');
+  font-style: italic;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "TelefonicaSans";
+  src: url(../fonts/Telefonica_Sans_DemiBold_Italic.woff2) format('woff2');
+  font-style: italic;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "TelefonicaSans";
+  src: url(../fonts/Telefonica_Sans_Bold_Italic.woff2) format('woff2');
+  font-style: italic;
+  font-weight: 700;
+}
+
+@font-face {
+    font-family: "TelefonicaSans";
+    src: url(../fonts/Telefonica_Sans_ExtraBold_Italic.woff2) format('woff2');
+    font-style: italic;
+    font-weight: 800;
+  }
+  
