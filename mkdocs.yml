@@ -6,10 +6,10 @@ docs_dir: docs/
 site_dir: html
 edit_uri: edit/master/docs/
 markdown_extensions: [toc,tables, fenced_code]
-extra_css: ["telefonica.css" ]
+extra_css: ["css/style.css" ]
 use_directory_urls: false
 theme: readthedocs
-pages:
+nav:
   - 'Introduction': 'index.md'
   - 'APIs':
     - 'Authentication API': 'authentication_api.md'
