@@ -17,8 +17,7 @@ but it should be transparent for the users of the Platform.
 
 In order for the South Bound protocols (i.e.: the protocols used to communicate physical devices with the Platform)
 to work for your service, you must provision the information about your devices, either by provisioning the device itself,
-by provisioning a Configuration Group (for each subservice) or both. Configuration Groups (prevously called Services; do not
-mistake them for the multitenancy Service concept), define some default values for the South Bound protocol to NGSI mapping,
+by provisioning a Configuration Group (for each subservice) or both. Configuration Groups define some default values for the South Bound protocol to NGSI mapping,
 that will be applied to every device associated to the group. Devices will be associated to groups based on the API Key
 provided by the Device in the communications.
 
