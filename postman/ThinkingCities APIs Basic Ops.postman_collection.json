@@ -1102,7 +1102,7 @@
 			"name": "IOTA",
 			"item": [
 				{
-					"name": "Create service (JSON)",
+					"name": "Create group (JSON)",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1125,24 +1125,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"services\": [\r\n        {\r\n            \"apikey\": \"{{JSON_APIKEY}}\",\r\n            \"entity_type\": \"device\",\r\n            \"protocol\": [\r\n                \"IoTA-JSON\"\r\n            ]\r\n        }\r\n    ]\r\n}"
+							"raw": "{\r\n    \"groups\": [\r\n        {\r\n            \"apikey\": \"{{JSON_APIKEY}}\",\r\n            \"entity_type\": \"device\",\r\n            \"protocol\": [\r\n                \"IoTA-JSON\"\r\n            ]\r\n        }\r\n    ]\r\n}"
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/groups",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"groups"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Create service (JSON) attributes",
+					"name": "Create group (JSON) attributes",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1165,24 +1165,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"services\": [\r\n        {\r\n            \"apikey\": \"{{JSON_APIKEY}}\",\r\n            \"entity_type\": \"device\",\r\n            \"attributes\": [\r\n                {\r\n                    \"object_id\": \"t\",\r\n                    \"name\": \"temperature\",\r\n                    \"type\": \"Number\"\r\n                },\r\n                {\r\n                    \"object_id\": \"h\",\r\n                    \"name\": \"humidity\",\r\n                    \"type\": \"Number\"\r\n                }\r\n            ],\r\n            \"protocol\": [\r\n                \"IoTA-JSON\"\r\n            ]\r\n        }\r\n    ]\r\n}"
+							"raw": "{\r\n    \"groups\": [\r\n        {\r\n            \"apikey\": \"{{JSON_APIKEY}}\",\r\n            \"entity_type\": \"device\",\r\n            \"attributes\": [\r\n                {\r\n                    \"object_id\": \"t\",\r\n                    \"name\": \"temperature\",\r\n                    \"type\": \"Number\"\r\n                },\r\n                {\r\n                    \"object_id\": \"h\",\r\n                    \"name\": \"humidity\",\r\n                    \"type\": \"Number\"\r\n                }\r\n            ],\r\n            \"protocol\": [\r\n                \"IoTA-JSON\"\r\n            ]\r\n        }\r\n    ]\r\n}"
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/groups",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"groups"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Create service (JSON) stattic attributes",
+					"name": "Create group (JSON) stattic attributes",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1205,24 +1205,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"services\": [\r\n        {\r\n            \"apikey\": \"{{JSON_APIKEY}}\",\r\n            \"entity_type\": \"device\",\r\n            \"static_attributes\": [\r\n                {\r\n                    \"name\": \"manufacturer\",\r\n                    \"type\": \"Text\",\r\n                    \"value\": \"TEF\"\r\n                }\r\n            ],\r\n            \"protocol\": [\r\n                \"IoTA-JSON\"\r\n            ]\r\n        }\r\n    ]\r\n}"
+							"raw": "{\r\n    \"groups\": [\r\n        {\r\n            \"apikey\": \"{{JSON_APIKEY}}\",\r\n            \"entity_type\": \"device\",\r\n            \"static_attributes\": [\r\n                {\r\n                    \"name\": \"manufacturer\",\r\n                    \"type\": \"Text\",\r\n                    \"value\": \"TEF\"\r\n                }\r\n            ],\r\n            \"protocol\": [\r\n                \"IoTA-JSON\"\r\n            ]\r\n        }\r\n    ]\r\n}"
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/groups",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"groups"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Create service (JSON) explicit attrs",
+					"name": "Create group (JSON) explicit attrs",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1245,24 +1245,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"services\": [\r\n        {\r\n            \"apikey\": \"{{JSON_APIKEY}}\",\r\n            \"entity_type\": \"device\",\r\n            \"explicitAttrs\": true,\r\n            \"attributes\": [\r\n                {\r\n                    \"object_id\": \"t\",\r\n                    \"name\": \"temperature\",\r\n                    \"type\": \"Number\"\r\n                },\r\n                {\r\n                    \"object_id\": \"h\",\r\n                    \"name\": \"humidity\",\r\n                    \"type\": \"Number\"\r\n                }\r\n            ],\r\n            \"protocol\": [\r\n                \"IoTA-JSON\"\r\n            ]\r\n        }\r\n    ]\r\n}"
+							"raw": "{\r\n    \"groups\": [\r\n        {\r\n            \"apikey\": \"{{JSON_APIKEY}}\",\r\n            \"entity_type\": \"device\",\r\n            \"explicitAttrs\": true,\r\n            \"attributes\": [\r\n                {\r\n                    \"object_id\": \"t\",\r\n                    \"name\": \"temperature\",\r\n                    \"type\": \"Number\"\r\n                },\r\n                {\r\n                    \"object_id\": \"h\",\r\n                    \"name\": \"humidity\",\r\n                    \"type\": \"Number\"\r\n                }\r\n            ],\r\n            \"protocol\": [\r\n                \"IoTA-JSON\"\r\n            ]\r\n        }\r\n    ]\r\n}"
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/groups",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"groups"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Create service (JSON) timestamp",
+					"name": "Create group (JSON) timestamp",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1285,24 +1285,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"services\": [\r\n        {\r\n            \"apikey\": \"{{JSON_APIKEY}}\",\r\n            \"entity_type\": \"device\",\r\n            \"timestamp\": true,\r\n            \"protocol\": [\r\n                \"IoTA-JSON\"\r\n            ]\r\n        }\r\n    ]\r\n}"
+							"raw": "{\r\n    \"groups\": [\r\n        {\r\n            \"apikey\": \"{{JSON_APIKEY}}\",\r\n            \"entity_type\": \"device\",\r\n            \"timestamp\": true,\r\n            \"protocol\": [\r\n                \"IoTA-JSON\"\r\n            ]\r\n        }\r\n    ]\r\n}"
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/groups",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"groups"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Create service (JSON) expression",
+					"name": "Create group (JSON) expression",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1325,24 +1325,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"services\": [\n        {\n            \"apikey\": \"{{JSON_APIKEY}}\",\n            \"entity_type\": \"device\",\n            \"attributes\": [\n                {\n                    \"object_id\": \"t\",\n                    \"name\": \"temperature\",\n                    \"type\": \"float\",\n                    \"entity_name\": \"WaterMeter02\",\n                    \"entity_type\": \"WaterMeter\",\n                    \"expression\": \"${@temperature * 100}\"\n                },\n                {\n                    \"object_id\": \"h\",\n                    \"name\": \"humidity\",\n                    \"type\": \"float\",\n                    \"entity_name\": \"WaterMeter02\",\n                    \"entity_type\": \"WaterMeter\"\n                }\n            ],\n            \"protocol\": [\n                \"IoTA-JSON\"\n            ]\n        }\n    ]\n}"
+							"raw": "{\n    \"groups\": [\n        {\n            \"apikey\": \"{{JSON_APIKEY}}\",\n            \"entity_type\": \"device\",\n            \"attributes\": [\n                {\n                    \"object_id\": \"t\",\n                    \"name\": \"temperature\",\n                    \"type\": \"float\",\n                    \"entity_name\": \"WaterMeter02\",\n                    \"entity_type\": \"WaterMeter\",\n                    \"expression\": \"${@temperature * 100}\"\n                },\n                {\n                    \"object_id\": \"h\",\n                    \"name\": \"humidity\",\n                    \"type\": \"float\",\n                    \"entity_name\": \"WaterMeter02\",\n                    \"entity_type\": \"WaterMeter\"\n                }\n            ],\n            \"protocol\": [\n                \"IoTA-JSON\"\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/groups",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"groups"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Create service (JSON) JEXL expression",
+					"name": "Create group (JSON) JEXL expression",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1365,24 +1365,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"services\": [\n        {\n            \"apikey\": \"{{JSON_APIKEY}}\",\n            \"entity_type\": \"device\",\n            \"attributes\": [\n                {\n                    \"object_id\": \"t\",\n                    \"name\": \"temperature\",\n                    \"type\": \"Number\",\n                    \"expression\": \"@t == 6? true : false\"\n                }\n            ],\n            \"protocol\": [\n                \"IoTA-JSON\"\n            ]\n        }\n    ]\n}"
+							"raw": "{\n    \"groups\": [\n        {\n            \"apikey\": \"{{JSON_APIKEY}}\",\n            \"entity_type\": \"device\",\n            \"attributes\": [\n                {\n                    \"object_id\": \"t\",\n                    \"name\": \"temperature\",\n                    \"type\": \"Number\",\n                    \"expression\": \"@t == 6? true : false\"\n                }\n            ],\n            \"protocol\": [\n                \"IoTA-JSON\"\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/groups",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"groups"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Create service (JSON) commands",
+					"name": "Create group (JSON) commands",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1405,24 +1405,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"services\": [\r\n    {\r\n      \"apikey\": \"{{JSON_APIKEY}}\",\r\n      \"entity_type\": \"device\",\r\n      \"protocol\": \"IoTA-JSON\",\r\n      \"commands\": [\r\n      \t{ \"object_id\": \"r\", \"name\": \"reset\", \"type\": \"string\" }\r\n      ]       \r\n    }\r\n  ]\r\n}"
+							"raw": "{\r\n  \"groups\": [\r\n    {\r\n      \"apikey\": \"{{JSON_APIKEY}}\",\r\n      \"entity_type\": \"device\",\r\n      \"protocol\": \"IoTA-JSON\",\r\n      \"commands\": [\r\n      \t{ \"object_id\": \"r\", \"name\": \"reset\", \"type\": \"string\" }\r\n      ]       \r\n    }\r\n  ]\r\n}"
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/groups",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"groups"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Create service (UL)",
+					"name": "Create group (UL)",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1445,24 +1445,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"services\": [\r\n        {\r\n            \"apikey\": \"{{UL_APIKEY}}\",\r\n            \"entity_type\": \"device\",\r\n            \"protocol\": [\r\n                \"IoTA-UL\"\r\n            ]\r\n        }\r\n    ]\r\n}"
+							"raw": "{\r\n    \"groups\": [\r\n        {\r\n            \"apikey\": \"{{UL_APIKEY}}\",\r\n            \"entity_type\": \"device\",\r\n            \"protocol\": [\r\n                \"IoTA-UL\"\r\n            ]\r\n        }\r\n    ]\r\n}"
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/groups",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"groups"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Create service (UL) attributes",
+					"name": "Create group (UL) attributes",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1485,24 +1485,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"services\": [\r\n    {\r\n      \"apikey\": \"{{UL_APIKEY}}\",\r\n      \"entity_type\": \"device\",\r\n      \"attributes\": [\r\n        { \"object_id\": \"t\", \"name\": \"temperature\", \"type\": \"float\" },\r\n        { \"object_id\": \"h\", \"name\": \"humidity\", \"type\": \"float\" }\r\n      ],\r\n      \"protocol\": [ \"IoTA-UL\" ]\r\n    }\r\n  ]\r\n}"
+							"raw": "{\r\n  \"groups\": [\r\n    {\r\n      \"apikey\": \"{{UL_APIKEY}}\",\r\n      \"entity_type\": \"device\",\r\n      \"attributes\": [\r\n        { \"object_id\": \"t\", \"name\": \"temperature\", \"type\": \"float\" },\r\n        { \"object_id\": \"h\", \"name\": \"humidity\", \"type\": \"float\" }\r\n      ],\r\n      \"protocol\": [ \"IoTA-UL\" ]\r\n    }\r\n  ]\r\n}"
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/groups",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"groups"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Create service (UL) static attributes",
+					"name": "Create group (UL) static attributes",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1525,24 +1525,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"services\": [\r\n    {\r\n      \"apikey\": \"{{UL_APIKEY}}\",\r\n      \"entity_type\": \"device\",\r\n      \"static_attributes\": [\r\n        { \"name\": \"deviceFamily\", \"type\": \"integer\", \"value\": \"02598347\" }\r\n      ],\r\n      \"protocol\": [ \"IoTA-UL\" ]\r\n    }\r\n  ]\r\n}"
+							"raw": "{\r\n  \"groups\": [\r\n    {\r\n      \"apikey\": \"{{UL_APIKEY}}\",\r\n      \"entity_type\": \"device\",\r\n      \"static_attributes\": [\r\n        { \"name\": \"deviceFamily\", \"type\": \"integer\", \"value\": \"02598347\" }\r\n      ],\r\n      \"protocol\": [ \"IoTA-UL\" ]\r\n    }\r\n  ]\r\n}"
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/groups",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"groups"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Create service (UL) expression",
+					"name": "Create group (UL) expression",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1565,24 +1565,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"services\": [\n        {\n            \"apikey\": \"{{UL_APIKEY}}\",\n            \"entity_type\": \"parking\",\n            \"attributes\": [\n                {\n                    \"expression\": \"${(@plazasOcupadas / @plazasTotal) * 100}\",\n                    \"type\": \"Number\",\n                    \"name\": \"plazasPorcentaje\"\n                }\n            ],\n            \"protocol\": [\n                \"IoTA-UL\"\n            ]\n        }\n    ]\n}"
+							"raw": "{\n    \"groups\": [\n        {\n            \"apikey\": \"{{UL_APIKEY}}\",\n            \"entity_type\": \"parking\",\n            \"attributes\": [\n                {\n                    \"expression\": \"${(@plazasOcupadas / @plazasTotal) * 100}\",\n                    \"type\": \"Number\",\n                    \"name\": \"plazasPorcentaje\"\n                }\n            ],\n            \"protocol\": [\n                \"IoTA-UL\"\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/groups",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"groups"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Delete service (JSON)",
+					"name": "Delete group (JSON)",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1608,14 +1608,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services?protocol=IoTA-JSON&apikey={{JSON_APIKEY}}",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/groups?protocol=IoTA-JSON&apikey={{JSON_APIKEY}}",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"groups"
 							],
 							"query": [
 								{
@@ -1632,7 +1632,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete service (UL)",
+					"name": "Delete group (UL)",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -1658,14 +1658,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services?protocol=IoTA-UL&apikey={{UL_APIKEY}}",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/groups?protocol=IoTA-UL&apikey={{UL_APIKEY}}",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"groups"
 							],
 							"query": [
 								{
@@ -1682,7 +1682,7 @@
 					"response": []
 				},
 				{
-					"name": "Get all services",
+					"name": "Get all groups",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1700,14 +1700,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/services",
+							"raw": "{{PROTOCOL}}://{{ENDPOINT_IOTAM}}/iot/groups",
 							"protocol": "{{PROTOCOL}}",
 							"host": [
 								"{{ENDPOINT_IOTAM}}"
 							],
 							"path": [
 								"iot",
-								"services"
+								"groups"
 							]
 						}
 					},
