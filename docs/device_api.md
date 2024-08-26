@@ -17,8 +17,7 @@ but it should be transparent for the users of the Platform.
 
 In order for the South Bound protocols (i.e.: the protocols used to communicate physical devices with the Platform)
 to work for your service, you must provision the information about your devices, either by provisioning the device itself,
-by provisioning a Configuration Group (for each subservice) or both. Configuration Groups (also called Services; do not
-mistake them for the multitenancy Service concept), define some default values for the South Bound protocol to NGSI mapping,
+by provisioning a Configuration Group (for each subservice) or both. Configuration Groups define some default values for the South Bound protocol to NGSI mapping,
 that will be applied to every device associated to the group. Devices will be associated to groups based on the API Key
 provided by the Device in the communications.
 
@@ -28,13 +27,13 @@ South Bound protocol again. Use the provided data for future interactions.
 
 The following excerpt shows you how to provision a Configuration Group directly to the API:
 
-    POST /iot/services?protocol=IoTA-UL
+    POST /iot/groups?protocol=IoTA-UL
     Content-Type: application/json
     Fiware-service: OpenIoT
     Fiware-servicepath: /
 
     {
-      "services": [
+      "groups": [
         {
           "apikey": "801230BJKL23Y9090DSFL123HJK09H324HV8732",
           "entity_type": "SensorMachine",

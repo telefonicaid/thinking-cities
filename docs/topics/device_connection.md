@@ -30,13 +30,13 @@ belong to that particular group.
 
 The following request will create the required group for our subservice:
 
-    POST /iot/services
+    POST /iot/groups
     Content-Type: application/json
     Fiware-service: smartown
     Fiware-servicepath: /gardens
 
     {
-      "services": [
+      "groups": [
         {
           "protocol": [
                   "IoTA-UL"
