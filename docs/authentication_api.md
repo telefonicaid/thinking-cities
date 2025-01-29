@@ -132,6 +132,11 @@ X-Auth-Token: {{user-token}}
             "token": {
                 "id": "{{user-token}}"
             }
+        },
+        "scope": {
+            "domain": {
+                "name": "{{Fiware-Service}}"
+            }
         }
     }
 }
